@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_getCaseHistoryForCaseTypeAndId</name>
+        <uuid>46ffb1fc-c9a4-4386-a27e-e78e6e308389</uuid>
+        <description>Given a case type and a case id this will retrieve the case history from the DB</description>
+        <parentUuid>_a-0000d9b9-6309-8000-9ba2-011c48011c48_1981</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>#&quot;SYSTEM_SYSRULES_queryEntity&quot;(
+  #&quot;_a-0000da89-b5e9-8000-9ba2-011c48011c48_3548&quot;,
+  #&quot;SYSTEM_SYSRULES_query&quot;(
+    logicalExpression:#&quot;SYSTEM_SYSRULES_queryLogicalExpression&quot;(
+      operator:&quot;AND&quot;,
+      filters:{
+        #&quot;SYSTEM_SYSRULES_queryFilter&quot;(
+          field:&quot;parentCaseType&quot;,
+          operator:&quot;=&quot;,
+          value:ri!parentCaseType
+        ),
+        #&quot;SYSTEM_SYSRULES_queryFilter&quot;(
+          field:&quot;parentCaseId&quot;,
+          operator:&quot;=&quot;,
+          value:ri!parentCaseId
+        )
+      }
+    ),
+    pagingInfo:#&quot;SYSTEM_SYSRULES_pagingInfo&quot;(1,50,#&quot;SYSTEM_SYSRULES_sortInfo&quot;(field:&quot;timestamp&quot;, ascending:true))
+  )
+)</definition>
+        <namedTypedValue>
+            <name>parentCaseType</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>parentCaseId</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

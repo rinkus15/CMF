@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_GenerateUUIDSegment</name>
+        <uuid>_a-0000d9b9-57db-8000-9e06-010000010000_831</uuid>
+        <description>Generates a 4 character long UUID segment.  </description>
+        <parentUuid>_a-0000d9b9-57db-8000-9e06-010000010000_837</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>= if(
+  #&quot;_a-0000d9b9-57db-8000-9e06-010000010000_833&quot;(
+    int(
+      10 * rand()
+    )
+  ),
+  #&quot;_a-0000d9b9-57db-8000-9e06-010000010000_832&quot;[int(
+    100 * rand()
+  ) + 1],
+  int(
+    10 * rand()
+  )
+) &amp; if(
+  #&quot;_a-0000d9b9-57db-8000-9e06-010000010000_833&quot;(
+    int(
+      10 * rand()
+    )
+  ),
+  #&quot;_a-0000d9b9-57db-8000-9e06-010000010000_832&quot;[int(
+    100 * rand()
+  ) + 1],
+  int(
+    10 * rand()
+  )
+) &amp; if(
+  #&quot;_a-0000d9b9-57db-8000-9e06-010000010000_833&quot;(
+    int(
+      10 * rand()
+    )
+  ),
+  #&quot;_a-0000d9b9-57db-8000-9e06-010000010000_832&quot;[int(
+    100 * rand()
+  ) + 1],
+  int(
+    10 * rand()
+  )
+) &amp; if(
+  #&quot;_a-0000d9b9-57db-8000-9e06-010000010000_833&quot;(
+    int(
+      10 * rand()
+    )
+  ),
+  #&quot;_a-0000d9b9-57db-8000-9e06-010000010000_832&quot;[int(
+    100 * rand()
+  ) + 1],
+  int(
+    10 * rand()
+  )
+)</definition>
+        <preferredEditor>legacy</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>Administrator</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

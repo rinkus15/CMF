@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_getReportDataFormatter</name>
+        <uuid>_a-0000da5f-caaa-8000-9ba2-011c48011c48_2909</uuid>
+        <description></description>
+        <parentUuid>_a-0000da5f-caaa-8000-9ba2-011c48011c48_2880</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>/* Not a complete list*/
+with(
+  local!formatOptions:{
+    &quot;NORMAL_TEXT&quot;,
+    &quot;NUMBER&quot;,
+    &quot;NUMBER_ROUNDED&quot;,
+    &quot;DATE&quot;,
+    &quot;TIME&quot;,
+    &quot;DATE_TIME&quot;,
+    &quot;USER_NAME&quot;,
+    &quot;USER_OR_GROUP_NAME&quot;,
+    &quot;PRIORITY&quot;,
+    &quot;TASK_STATUS&quot;,
+    &quot;PROCESS_STATUS_ICON&quot;,
+    &quot;DURATION&quot;
+  },
+  local!formatIndex:wherecontains(ri!configuredFormatting,local!formatOptions),
+  if(#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(ri!columnData[ri!index]),
+    {},
+    if(#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(local!formatIndex),
+      #&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2898&quot;(data: ri!columnData, index: ri!index),
+      choose(
+        local!formatIndex,
+        #&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2898&quot;(data: ri!columnData, index: ri!index),
+        #&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2898&quot;(data: ri!columnData, index: ri!index),
+        #&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2898&quot;(data: ri!columnData, index: ri!index),
+        fn!datetext(ri!columnData[ri!index],&quot;MMM dd, yyyy&quot;),
+        fn!datetext(ri!columnData[ri!index],&quot;HH:mm a&quot;),
+        fn!datetext(ri!columnData[ri!index],&quot;MMM dd, yyyy HH:mm a&quot;),
+        #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1983&quot;(ri!columnData[ri!index]),
+        #&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2885&quot;(ri!columnData[ri!index]),
+        #&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2890&quot;(ri!columnData[ri!index]),
+        #&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2889&quot;(ri!columnData,ri!index),
+        #&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2898&quot;(data: ri!columnData, index: ri!index),
+        #&quot;_a-0000da89-b5e9-8000-9ba2-011c48011c48_3929&quot;(ri!columnData[ri!index])
+      )
+    )
+  )
+)</definition>
+        <namedTypedValue>
+            <name>configuredFormatting</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>columnData</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>index</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>legacy</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_documentImage</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_2965</uuid>
+        <description>Used to generate an array of document images in grids or image fields</description>
+        <parentUuid>_a-0000d9b9-6309-8000-9ba2-011c48011c48_1981</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>= #&quot;SYSTEM_SYSRULES_documentImage&quot;(
+  document: if(
+    isnull(
+      ri!document
+    ),
+    #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_2691&quot;,
+    ri!document
+  ),
+  caption: if(
+    isnull(
+      ri!document
+    ),
+    document(
+      #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_2691&quot;,
+      &quot;name&quot;
+    ),
+    document(
+      ri!document,
+      &quot;name&quot;
+    )
+  )
+)</definition>
+        <namedTypedValue>
+            <name>document</name>
+            <type>
+                <name>CollaborationDocument</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>legacy</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

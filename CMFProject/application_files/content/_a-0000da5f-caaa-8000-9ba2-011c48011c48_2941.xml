@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_getTaskPriorityImage</name>
+        <uuid>_a-0000da5f-caaa-8000-9ba2-011c48011c48_2941</uuid>
+        <description></description>
+        <parentUuid>_a-0000da5f-caaa-8000-9ba2-011c48011c48_2880</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>= if(#&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1982&quot;(ri!priorities),
+  {},
+  displayvalue(
+    ri!priorities[ri!index],
+    enumerate(3),
+    {
+      #&quot;SYSTEM_SYSRULES_documentImage&quot;(document: #&quot;SYSTEM_SYSRULES_iconIndicator&quot;(icon: &quot;PRIORITY_LOW&quot;)),
+      #&quot;SYSTEM_SYSRULES_documentImage&quot;(document: #&quot;SYSTEM_SYSRULES_iconIndicator&quot;(icon:&quot;TREND_FLAT&quot;)),
+      #&quot;SYSTEM_SYSRULES_documentImage&quot;(document: #&quot;SYSTEM_SYSRULES_iconIndicator&quot;(icon: &quot;PRIORITY_HIGH&quot;))
+    },
+    {}
+  )
+)</definition>
+        <namedTypedValue>
+            <name>priorities</name>
+            <type>
+                <name>Integer?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>index</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

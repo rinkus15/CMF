@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_MultiFileUploadWithNameAndDesc</name>
+        <uuid>c00a8d5e-6ce1-46de-8d05-cd92c4b23d31</uuid>
+        <description>Allows you to add any number of documents and sets the name and description for each document.</description>
+        <parentUuid>_a-0000d9b9-6309-8000-9ba2-011c48011c48_1672</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>/* To Test:&#xD;
+1. set caseDocs to: {type!CASE_APP_CaseDocument()}&#xD;
+2. set Target Folder to: cons!CASE_APP_SR_MAIN_CASE_FOLDER,&#xD;
+3. Set uploadedDocs to: todocument(null)&#xD;
+*/&#xD;
+=load(&#xD;
+  local!recordTokens,&#xD;
+  {&#xD;
+    #&quot;SYSTEM_SYSRULES_applyComponents&quot;(&#xD;
+      function: #&quot;a8e27521-0f4d-468a-bcf9-ecf3686881bd&quot;(&#xD;
+        index: _,&#xD;
+        records: ri!caseDocs,&#xD;
+        recordTokens: local!recordTokens,&#xD;
+        targetFolder:ri!targetFolder,&#xD;
+        uploadedDocs:ri!uploadedDocs,&#xD;
+        sectionLabel:ri!sectionLabel,&#xD;
+        parentCaseType:ri!parentCaseType,&#xD;
+        parentCaseId:ri!parentCaseId,&#xD;
+        isRequired:ri!isRequired&#xD;
+      ),&#xD;
+      array: 1+enumerate(count(ri!caseDocs)),&#xD;
+      arrayVariable: local!recordTokens&#xD;
+    )&#xD;
+  }&#xD;
+)</definition>
+        <namedTypedValue>
+            <name>caseDocs</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>targetFolder</name>
+            <type>
+                <name>CollaborationFolder</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>uploadedDocs</name>
+            <type>
+                <name>CollaborationDocument?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>sectionLabel</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>parentCaseType</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>parentCaseId</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>isRequired</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

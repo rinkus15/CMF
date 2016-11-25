@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_AddressSection</name>
+        <uuid>769503c1-a459-4f96-82e6-7120e9c69fb4</uuid>
+        <description>This is a reusable section for capturing or displaying an address</description>
+        <parentUuid>_a-0000d9b8-0d4a-8000-9e06-010000010000_781</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>/*  A default ri!country value must be provided for this form to work properly. &#xD;
+Input a value such as ( ) to load the form. &#xD;
+Country names must match the list in cons!CASE_APP)_CountriesList&#xD;
+*/&#xD;
+=#&quot;SYSTEM_SYSRULES_sectionLayout&quot;(&#xD;
+  label: ri!SectionTitle,&#xD;
+  isCollapsible: ri!isCollapsible,&#xD;
+  firstColumnContents: {&#xD;
+    if(ri!readOnly, &#xD;
+    {&#xD;
+      #&quot;SYSTEM_SYSRULES_textField&quot;(&#xD;
+        label:&quot;Country&quot;,&#xD;
+        labelPosition: ri!labelPosition,&#xD;
+        value: ri!country,&#xD;
+        readOnly: true()&#xD;
+      )&#xD;
+    }, &#xD;
+    {&#xD;
+      #&quot;SYSTEM_SYSRULES_dropdownField&quot;( /*Dropdown for selecting a country */&#xD;
+        label: &quot;Country&quot;,&#xD;
+        instructions: if(ri!readOnly, null, &quot;Select the country&quot;),&#xD;
+        labelPosition: ri!labelPosition,&#xD;
+        required: true,&#xD;
+        disabled: ri!readOnly,&#xD;
+        choiceLabels: #&quot;_a-0000d9b5-6c6c-8000-9e06-010000010000_756&quot;,&#xD;
+        choiceValues: #&quot;_a-0000d9b5-6c6c-8000-9e06-010000010000_756&quot;,&#xD;
+        value:if(isnull(ri!country), #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_2093&quot;, ri!country),&#xD;
+        saveInto: { ri!country, a!save(ri!state, null) }&#xD;
+      &#xD;
+      )&#xD;
+    }&#xD;
+    ),&#xD;
+    #&quot;SYSTEM_SYSRULES_paragraphField&quot;( /*Text field capture for Address - paragraph is used to capture multi line Addresses */&#xD;
+      label: &quot;Address&quot;,&#xD;
+      instructions: if(ri!readOnly, null, &quot;Enter the street address&quot;),&#xD;
+      labelPosition: ri!labelPosition,&#xD;
+      readOnly: ri!readOnly,&#xD;
+      value: ri!address,&#xD;
+      saveInto: ri!address&#xD;
+    )&#xD;
+  },&#xD;
+  secondColumnContents: {&#xD;
+    #&quot;SYSTEM_SYSRULES_textField&quot;( /*Simple City capture text field */&#xD;
+      label: &quot;City&quot;,&#xD;
+      instructions: if(ri!readOnly, null, &quot;Enter the city&quot;),&#xD;
+      labelPosition: ri!labelPosition,&#xD;
+      readOnly: ri!readOnly,&#xD;
+      value: ri!city,&#xD;
+      saveInto: ri!city&#xD;
+    ),&#xD;
+&#xD;
+/*  A limited number of countries require a State or Province to be specified in the address area.&#xD;
+The dropdown for State/Province selection only displays if the country name is in the list of countries that requires that value&#xD;
+Refer to the cons!CASE_APP_CountrieswithStates for a list of countries that requires this */&#xD;
+&#xD;
+    if(#&quot;_a-0000d9b9-57db-8000-9e06-010000010000_808&quot;(if(isnull(ri!country), #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_2093&quot;, ri!country)),  &#xD;
+      {&#xD;
+        if(ri!readOnly, &#xD;
+        {&#xD;
+          #&quot;SYSTEM_SYSRULES_textField&quot;(&#xD;
+            label:&quot;State/Province&quot;,&#xD;
+            labelPosition: ri!labelPosition,&#xD;
+            value: ri!state,&#xD;
+            readOnly: true()&#xD;
+          )&#xD;
+        },&#xD;
+        {&#xD;
+          #&quot;SYSTEM_SYSRULES_dropdownField&quot;(&#xD;
+                label: &quot;State/Province&quot;,&#xD;
+                instructions: if(ri!readOnly, null, &quot;Select a state/province&quot;),&#xD;
+                labelPosition: ri!labelPosition,&#xD;
+                disabled: ri!readOnly,&#xD;
+                required: true,&#xD;
+                choiceLabels: #&quot;_a-0000d9b9-57db-8000-9e06-010000010000_816&quot;(if(isnull(ri!country), #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_2093&quot;, ri!country)), /* The rule simply checks if the country selected exists in cons!CASE_APP_CountrieswithStates */&#xD;
+                choiceValues: #&quot;_a-0000d9b9-57db-8000-9e06-010000010000_816&quot;(if(isnull(ri!country), #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_2093&quot;, ri!country)),&#xD;
+                placeholderLabel: &quot;-- Select a State/Province --&quot;,&#xD;
+                value: ri!state,&#xD;
+                saveInto: ri!state&#xD;
+            )&#xD;
+        }&#xD;
+      )&#xD;
+      },&#xD;
+      {}&#xD;
+      &#xD;
+    ),&#xD;
+    #&quot;SYSTEM_SYSRULES_textField&quot;(&#xD;
+      label: &quot;Postal Code&quot;,&#xD;
+      instructions: if(ri!readOnly, null, &quot;Enter the postal code&quot;),&#xD;
+      labelPosition: ri!labelPosition,&#xD;
+      readOnly: ri!readOnly,&#xD;
+      value: ri!postalcode,&#xD;
+      saveInto: ri!postalcode&#xD;
+    ),&#xD;
+  }&#xD;
+)</definition>
+        <namedTypedValue>
+            <name>SectionTitle</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>address</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>city</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>state</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>postalcode</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>country</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>readOnly</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>labelPosition</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>isCollapsible</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+                <userUuid>Administrator</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <constant>
+        <name>CASE_APP_USAStates</name>
+        <uuid>_a-0000d9b8-0d4a-8000-9e06-010000010000_782</uuid>
+        <description>A listing of all states and territories used for addressing in the USA</description>
+        <parentUuid>_a-0000d9b8-0d4a-8000-9e06-010000010000_781</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <typedValue>
+            <type>
+                <name>Text?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+            <value>
+                <el>Alaska</el>
+                <el>Alabama</el>
+                <el>Arkansas</el>
+                <el>Arizona</el>
+                <el>California</el>
+                <el>Colorado</el>
+                <el>Connecticut</el>
+                <el>District of Columbia</el>
+                <el>Delaware</el>
+                <el>Florida</el>
+                <el>Georgia</el>
+                <el>Guam</el>
+                <el>Hawaii</el>
+                <el>Iowa</el>
+                <el>Idaho</el>
+                <el>Illinois</el>
+                <el>Indiana</el>
+                <el>Kansas</el>
+                <el>Kentucky</el>
+                <el>Louisiana</el>
+                <el>Massachusetts</el>
+                <el>Maryland</el>
+                <el>Maine</el>
+                <el>Michigan</el>
+                <el>Minnesota</el>
+                <el>Missouri</el>
+                <el>Mississippi</el>
+                <el>Montana</el>
+                <el>North Carolina</el>
+                <el>North Dakota</el>
+                <el>Nebraska</el>
+                <el>New Hampshire</el>
+                <el>New Jersey</el>
+                <el>New Mexico</el>
+                <el>Nevada</el>
+                <el>New York</el>
+                <el>Ohio</el>
+                <el>Oklahoma</el>
+                <el>Oregon</el>
+                <el>Pennsylvania</el>
+                <el>Rhode Island</el>
+                <el>South Carolina</el>
+                <el>South Dakota</el>
+                <el>Tennessee</el>
+                <el>Texas</el>
+                <el>Utah</el>
+                <el>Virginia</el>
+                <el>Vermont</el>
+                <el>Washington</el>
+                <el>Wisconsin</el>
+                <el>West Virginia</el>
+                <el>Wyoming</el>
+                <el>Armed Forces Americas</el>
+                <el>Armed Forces Europe</el>
+                <el>Armed Forces Pacific</el>
+                <el>American Samoa</el>
+                <el>Federated Micronesia</el>
+                <el>Marshall Islands</el>
+                <el>N. Mariana Islands</el>
+                <el>Palau</el>
+                <el>Puerto Rico</el>
+                <el>US Virgin Islands</el>
+            </value>
+        </typedValue>
+    </constant>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>Administrator</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

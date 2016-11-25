@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_SR_uiGetInitialRequestDetails</name>
+        <uuid>747235e9-8060-436f-85f8-5c1a2fce0b7d</uuid>
+        <description>Displays the first couple of questions of the service request: Select a customer and select the case type.</description>
+        <parentUuid>_a-0000da5f-caaa-8000-9ba2-011c48011c48_2618</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>{
+  #&quot;SYSTEM_SYSRULES_sectionLayout&quot;(
+    firstColumnContents:{
+      #&quot;883b3172-4929-4171-98ef-34f0407545bf&quot;(
+        label:&quot;1. Select a Customer&quot;,
+        instructions:&quot;Select a customer to begin the service request&quot;,
+        required:true,
+        maxSelections:1,
+        record:#&quot;_a-0000d9b8-a7c6-8000-9e06-010000010000_504&quot;,
+        primaryKeyField:&quot;id&quot;,
+        searchFields: {&quot;Name&quot;, &quot;GlobalID&quot;, &quot;ContactName&quot;},
+        selectedValues:ri!customer,
+        saveInto: {
+          ri!customer,
+          a!save(target:ri!serviceReq.type, value:null)
+        }
+      )
+      /* 4/9/2015: Removing restriction on which customers a user can select. 
+       * For now, any user can start a CSR for any customer.
+       */
+      /*if(fn!isusermemberofgroup(ri!requestUsr,cons!CASE_APP_POWER_USERS),
+        rule!CASE_APP_RecordPicker(
+          label:&quot;1. Select a Customer&quot;,
+          instructions:&quot;Select a customer to begin the service request&quot;,
+          required:true,
+          maxSelections:1,
+          record:cons!CASE_APP_CUSTOMER_RECORD_TYPE,
+          primaryKeyField:&quot;id&quot;,
+          searchFields: {&quot;Name&quot;, &quot;GlobalID&quot;, &quot;ContactName&quot;},
+          selectedValues:ri!customer,
+          saveInto: {
+            ri!customer,
+            a!save(target:ri!serviceReq.type, value:null)
+          }
+        ),
+        load(
+          local!customerList:rule!CASE_APP_getCustomerByOwner(ri!requestUsr, a!pagingInfo(startIndex:1,batchSize:-1)),
+          if(local!customerList.totalCount=0,
+            rule!CASE_APP_createUiMessage(&quot;There are currently no Customers assigned to you&quot;),
+            a!dropdownField(
+              label:&quot;1. Select a Customer&quot;,
+              instructions:&quot;Select a customer to begin the service request&quot;,
+              choiceLabels:local!customerList.data.Name,
+              placeholderLabel:&quot;---Select a Customer---&quot;,
+              choiceValues:local!customerList.data,
+              value:ri!customer,
+              saveInto: {
+                a!save(target:ri!customer,value:{save!value}),
+                a!save(target:ri!serviceReq.type, value:null),
+                a!save(target:ri!serviceReq.requesterName, value:ri!customer[1].ContactName),
+                a!save(target:ri!serviceReq.requesterEmail, value:ri!customer[1].Email),
+                a!save(target:ri!serviceReq.requesterPhone, value:ri!customer[1].OfficePhone)
+              },
+              required:true
+            )
+          )
+        )
+      )*/
+    },
+    secondColumnContents:{
+      if(#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(ri!customer),
+        {},
+        if(#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(ri!customer.LogoID),
+          {},
+          #&quot;SYSTEM_SYSRULES_imageField&quot;(
+            images:#&quot;SYSTEM_SYSRULES_documentImage&quot;(document:fn!todocument(ri!customer.LogoID)),
+            size:&quot;THUMBNAIL&quot;
+          )
+        )
+      )
+    }
+  ),
+  if(#&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1982&quot;(ri!customer),
+    {},
+    #&quot;SYSTEM_SYSRULES_dropdownField&quot;(
+      label:&quot;2. What do you need help with?&quot;,
+      choiceLabels:#&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2620&quot;,
+      placeholderLabel:&quot;--Select Case Type---&quot;,
+      choiceValues:#&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2620&quot;,
+      value:ri!serviceReq.type,
+      saveInto:{
+        ri!serviceReq.type,
+        a!save(target:ri!customer, value:cast(typeof({'type!{urn:com:appian:types:CASE_APP}CASE_APP_Customer'()}),ri!customer)),
+        a!save(target:ri!q1, value:null),
+        a!save(target:ri!hideOkButton, value:true),
+        a!save(target:ri!serviceReq.relatedOrderItemId, value:null),
+        a!save(target:ri!serviceReq.requesterName, value:ri!customer[1].ContactName),
+        a!save(target:ri!serviceReq.requesterEmail, value:ri!customer[1].Email),
+        a!save(target:ri!serviceReq.requesterPhone, value:ri!customer[1].OfficePhone)
+      },
+      required:true
+    )
+  )
+}</definition>
+        <namedTypedValue>
+            <name>customer</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>q1</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>hideOkButton</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>serviceReq</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>requestUsr</name>
+            <type>
+                <name>User</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

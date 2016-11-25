@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_uiChartMortPurchaseProductByCustomer</name>
+        <uuid>565d9914-d2af-4204-8954-b178f60c228e</uuid>
+        <description></description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5839</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>load(
+  local!pagingInfo: #&quot;SYSTEM_SYSRULES_pagingInfo&quot;(
+    startIndex: 1,
+    batchSize: if(#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(ri!batchSize),3,ri!batchSize),
+    sort: #&quot;SYSTEM_SYSRULES_sortInfo&quot;(
+      field: &quot;orderItemQty&quot;,
+      ascending: false
+    )
+  ),
+  with(
+    local!datasubset: #&quot;SYSTEM_SYSRULES_queryEntity&quot;(
+      entity: #&quot;_a-0000da89-b5e9-8000-9ba2-011c48011c48_3190&quot;,
+      query: #&quot;SYSTEM_SYSRULES_query&quot;(
+        aggregation: #&quot;SYSTEM_SYSRULES_queryAggregation&quot;(aggregationColumns: {
+          #&quot;SYSTEM_SYSRULES_queryAggregationColumn&quot;(field: &quot;productId&quot;, isGrouping: true),
+          #&quot;SYSTEM_SYSRULES_queryAggregationColumn&quot;(field: &quot;productName&quot;, isGrouping: true),
+          #&quot;SYSTEM_SYSRULES_queryAggregationColumn&quot;(field: &quot;orderItemQty&quot;, aggregationFunction: &quot;SUM&quot;),
+        }),
+        pagingInfo: local!pagingInfo
+      )
+    ),
+    #&quot;SYSTEM_SYSRULES_columnChartField&quot;(
+      label:&quot;Most Purchased Products&quot;,
+      categories: apply(
+        #&quot;_a-0000da89-b5e9-8000-9ba2-011c48011c48_3580&quot;(_,40),
+        index(local!datasubset.data, &quot;productName&quot;, null)
+      ),
+      series: {
+        #&quot;SYSTEM_SYSRULES_chartSeries&quot;(
+          label: &quot;Quantity&quot;,
+          data:index(local!datasubset.data, &quot;orderItemQty&quot;, null),
+          links:apply(
+            #&quot;SYSTEM_SYSRULES_recordLink&quot;(
+              recordType:#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3830&quot;,
+              identifier: _
+            ),
+            index(local!datasubset.data, &quot;productId&quot;, null)
+          )
+          
+        )
+      },
+      yAxisTitle:&quot;Quantity Purchased&quot;,
+      showdatalabels: false,
+      showtooltips: true
+    )
+  )
+)
+</definition>
+        <namedTypedValue>
+            <name>customerId</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>batchSize</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

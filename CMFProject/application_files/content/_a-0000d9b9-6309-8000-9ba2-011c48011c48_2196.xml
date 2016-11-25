@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_stockQuoteGraph</name>
+        <uuid>_a-0000d9b9-6309-8000-9ba2-011c48011c48_2196</uuid>
+        <description>Displays a stock quote graph with different display options. If choosing multiple symbols, the axis will just be percentage points. isSmall will render a smaller version appropriate for a single column.
+Needs to be in some kind of SAIL container / section.</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5839</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>=load(
+  local!dr: 3,
+{
+  #&quot;SYSTEM_SYSRULES_dropdownFieldByIndex&quot;(
+    label: &quot;Range&quot;,
+    choiceLabels: {
+      &quot;1 Month&quot;,&quot;3 Months&quot;,&quot;6 Months&quot;,&quot;1 Year&quot;,&quot;2 Years&quot;
+    },
+    value: local!dr,
+    saveInto: local!dr
+  ),
+#&quot;SYSTEM_SYSRULES_externalImageField&quot;(
+  label: &quot;&quot;,
+  source: #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_2200&quot;(symbols:ri!symbols,range:index(#&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_2205&quot;,local!dr,&quot;1y&quot;),size:if(ri!isSmall,&quot;s&quot;,&quot;l&quot;)),
+  altText: &quot;Yahoo Stock Graph&quot;
+)
+
+})</definition>
+        <namedTypedValue>
+            <name>symbols</name>
+            <type>
+                <name>Text?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>issmall</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

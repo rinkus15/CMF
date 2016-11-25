@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_CalculateOrderTotal</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6123</uuid>
+        <description>Used to calculate the total cost of an order given all order items, tax rates, and shipping costs</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5996</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>=if(#&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1982&quot;(ri!Order.OrderItems),
+null,
+trunc(
+  round(
+    if(
+      or(
+        isnull(
+          ri!Order
+        ),
+        isnull(
+          ri!Order.OrderItems
+        ),
+        count(
+          ri!Order.OrderItems
+        ) &lt; 1
+      ),
+      0,
+      ri!Order.ShippingCost + sum(
+        apply(
+          #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6126&quot;(
+            if(
+              isnull(
+                ri!Order.TaxRate
+              ),
+              #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6120&quot;,
+              ri!Order.TaxRate
+            ),
+            _
+          ),
+          ri!Order.OrderItems
+        )
+      )
+    ),
+    2
+  ),
+  2
+)
+)</definition>
+        <namedTypedValue>
+            <name>Order</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>legacy</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

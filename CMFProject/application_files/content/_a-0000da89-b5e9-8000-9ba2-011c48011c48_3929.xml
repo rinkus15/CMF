@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_formatDuration</name>
+        <uuid>_a-0000da89-b5e9-8000-9ba2-011c48011c48_3929</uuid>
+        <description></description>
+        <parentUuid>_a-0000da5f-caaa-8000-9ba2-011c48011c48_2880</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>=with(
+  local!split1:split(ri!duration,&quot;::&quot;),
+  local!split2:split(local!split1[2],&quot;:&quot;),
+  local!days:local!split1[1],
+  local!hours:local!split2[1],
+  local!minutes:local!split2[2],
+  substitute(
+    substitute(local!days&amp;&quot; days, &quot;&amp;local!hours&amp;&quot; hrs, &quot;&amp;local!minutes&amp;&quot; mins&quot;,&quot;0 days, &quot;,&quot;&quot;),
+    &quot;00 hours, &quot;,&quot;&quot;
+  )
+)</definition>
+        <namedTypedValue>
+            <name>duration</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <preferredEditor>legacy</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

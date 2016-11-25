@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_ReturnStatesforCountry</name>
+        <uuid>_a-0000d9b9-57db-8000-9e06-010000010000_816</uuid>
+        <description>Returns the correct state/province list given a country</description>
+        <parentUuid>_a-0000d9b8-0d4a-8000-9e06-010000010000_781</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>=choose(wherecontains(ri!country, #&quot;_a-0000d9b9-57db-8000-9e06-010000010000_807&quot;), #&quot;_a-0000d9b8-0d4a-8000-9e06-010000010000_782&quot;, #&quot;_a-0000d9b5-6c6c-8000-9e06-010000010000_767&quot;, #&quot;_a-0000d9b5-6c6c-8000-9e06-010000010000_768&quot;, #&quot;_a-0000d9b5-6c6c-8000-9e06-010000010000_766&quot;, #&quot;_a-0000d9b5-6c6c-8000-9e06-010000010000_770&quot;, #&quot;_a-0000d9b9-57db-8000-9e06-010000010000_806&quot;, #&quot;_a-0000d9b8-0d4a-8000-9e06-010000010000_784&quot;, #&quot;_a-0000d9b5-6c6c-8000-9e06-010000010000_764&quot;, #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_2078&quot;)</definition>
+        <namedTypedValue>
+            <name>country</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <preferredEditor>legacy</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>Administrator</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

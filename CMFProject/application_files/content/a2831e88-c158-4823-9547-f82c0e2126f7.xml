@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_DisplayWebandDocImages</name>
+        <uuid>a2831e88-c158-4823-9547-f82c0e2126f7</uuid>
+        <description>Used to display a combination of document and web images</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5297</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>load(
+  local!loadVariable,
+  local!loadDocs,
+{
+
+#&quot;SYSTEM_SYSRULES_imageField&quot;(
+ label: ri!label,
+ instructions: ri!instructions,
+ images: {
+          if(or(isnull(ri!documents), length(ri!documents)&lt;1), {}, #&quot;SYSTEM_SYSRULES_applyComponents&quot;(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_2965&quot;(_), ri!documents, local!loadDocs)),
+          if(or(isnull(ri!webImages), length(ri!webImages)&lt;1), {}, #&quot;SYSTEM_SYSRULES_applyComponents&quot;(#&quot;SYSTEM_SYSRULES_webImage&quot;(source: _), ri!webImages, local!loadVariable))
+
+ },
+ size: if(isnull(ri!size), &quot;THUMBNAIL&quot;, ri!size)
+),
+
+}
+
+)</definition>
+        <namedTypedValue>
+            <name>documents</name>
+            <type>
+                <name>CollaborationDocument?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>webImages</name>
+            <type>
+                <name>Text?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>label</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>instructions</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>size</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

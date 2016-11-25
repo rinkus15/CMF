@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_CustomerDashboardDetailsSection</name>
+        <uuid>_a-0000d9b9-6309-8000-9ba2-011c48011c48_2134</uuid>
+        <description>Details section of the CASE_APP Customer summary dashboard, which can be re-used</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5839</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>#&quot;SYSTEM_SYSRULES_sectionLayout&quot;(
+  label: &quot;Details&quot;,
+  firstColumnContents: {
+    #&quot;SYSTEM_SYSRULES_imageField&quot;(
+      labelPosition: &quot;COLLAPSED&quot;,
+      images: {
+        if(#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(ri!c.LogoID),
+          {},
+          #&quot;SYSTEM_SYSRULES_documentImage&quot;(document:ri!c.LogoID)
+        )
+      },
+      size: &quot;THUMBNAIL&quot;
+    ),
+    #&quot;SYSTEM_SYSRULES_linkField&quot;(
+      label: &quot;Account Owner&quot;,
+      labelPosition: &quot;ADJACENT&quot;,
+      links: #&quot;SYSTEM_SYSRULES_userRecordLink&quot;(
+        label:#&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1983&quot;(ri!c.AccountOwner),
+        user:touser(ri!c.AccountOwner))
+    ),
+    #&quot;SYSTEM_SYSRULES_textField&quot;(
+      label: &quot;Customer Since&quot;,
+      labelPosition: &quot;ADJACENT&quot;,
+      value: ri!c.CustomerSince,
+      readOnly: true
+    ),
+    #&quot;SYSTEM_SYSRULES_textField&quot;(
+      label: &quot;Industry&quot;,
+      labelPosition: &quot;ADJACENT&quot;,
+      value: ri!c.Industry,
+      readOnly: true
+    ),
+    if(#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(ri!c.Website),
+      #&quot;SYSTEM_SYSRULES_textField&quot;(
+        label: &quot;Website&quot;,
+        labelPosition: &quot;ADJACENT&quot;,
+       value: ri!c.Website,
+        readOnly: true
+      ),
+      #&quot;SYSTEM_SYSRULES_linkField&quot;(
+        label: &quot;Corporate Website&quot;,
+        labelPosition: &quot;ADJACENT&quot;,
+        links: {
+          #&quot;SYSTEM_SYSRULES_safeLink&quot;(
+            label: ri!c.Website,
+            uri: ri!c.Website
+          )
+        }
+      )
+    ),
+    #&quot;SYSTEM_SYSRULES_textField&quot;(
+      label: &quot;Global ID&quot;,
+      labelPosition: &quot;ADJACENT&quot;,
+      value: ri!c.GlobalID,
+      readOnly: true
+    ),
+    #&quot;32051912-c19c-4f83-aaea-b8de61766e09&quot;(
+      itemsPerPage: 5, 
+      gridLabel: &quot;Most Recent Orders&quot;,
+      gridInstructions: null,
+      customerId: ri!c.id
+    ),
+    #&quot;280a7d74-2109-4ef0-90c1-6bd1dddf0cf7&quot;(ri!c.id)
+  },
+  secondColumnContents:{
+    #&quot;f0547768-55ed-40ce-b329-860dd2050c2e&quot;(ri!c.id, -1),
+    #&quot;9e433c5f-c4c1-4947-9673-6cce68803bd3&quot;(ri!c.id, 5)
+  }
+)</definition>
+        <namedTypedValue>
+            <name>c</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_GenerateRecordIdentifiers</name>
+        <uuid>_a-0000d9b9-6309-8000-9ba2-011c48011c48_2190</uuid>
+        <description>Takes in a record association record type, and outputs the list of record identifiers noted in the association</description>
+        <parentUuid>_a-0000da20-55d5-8000-9ba2-011c48011c48_11112</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>= if(
+  keyval(
+    ri!recordAssociation,
+    &quot;recordUUID&quot;,
+    &quot;=&quot;,
+    &quot;,&quot;
+  ) = &quot;SYSTEM_RECORD_TYPE_USER&quot;,
+  #&quot;SYSTEM_SYSRULES_userRecordIdentifier&quot;(
+    touser(
+      split(
+        stripwith(
+          keyval(
+            ri!recordAssociation,
+            &quot;identifiers&quot;,
+            &quot;=&quot;,
+            &quot;]&quot;
+          ),
+          &quot; &quot;
+        ),
+        &quot;;&quot;
+      )
+    )
+  ),
+  #&quot;SYSTEM_SYSRULES_toRecordIdentifier&quot;(
+    recordType: #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1466&quot;[wherecontains(
+      keyval(
+        ri!recordAssociation, &quot;recordName&quot;, &quot;=&quot;, &quot;,&quot;
+      ), #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1464&quot;
+    )],
+    identifier: tointeger(
+      split(
+        stripwith(
+          keyval(
+            ri!recordAssociation,
+            &quot;identifiers&quot;,
+            &quot;=&quot;,
+            &quot;]&quot;
+          ),
+          &quot; &quot;
+        ),
+        &quot;;&quot;
+      )
+    )
+  )
+)</definition>
+        <namedTypedValue>
+            <name>recordAssociation</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>legacy</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_DocColumn</name>
+        <uuid>_a-0000d9b9-6309-8000-9ba2-011c48011c48_1860</uuid>
+        <description>Generates columns given the column type name.   Valid column names include
+
+&quot;NAME&quot;, &quot;DESCRIPTION&quot;, &quot;EXTENSION&quot;, &quot;DATECREATED&quot;, &quot;LASTUSERTOMODIFY&quot;, &quot;TOTALNUMBEROFVERSIONS&quot;, &quot;SIZE&quot;, &quot;IMAGE&quot;, </description>
+        <parentUuid>_a-0000d9b9-6309-8000-9ba2-011c48011c48_1751</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>=choose(wherecontains(upper(ri!columnType), #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1861&quot;),
+  /*NAME*/
+  #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+    label: &quot;Name&quot;,
+    field: &quot;Name&quot;,
+    data: index(ri!datasubset.data, &quot;name&quot;, null),
+    alignment: &quot;LEFT&quot;,
+    links:
+     if(ri!LinktoDoc, 
+        apply(#&quot;SYSTEM_SYSRULES_documentDownloadLink&quot;(document: _), ri!datasubset.data.document),
+        {})
+  ),
+  /*DESCRIPTION*/
+  #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+    label: &quot;Description&quot;,
+    field: &quot;Description&quot;,
+    data: index(ri!datasubset.data, &quot;description&quot;, null),
+    alignment: &quot;LEFT&quot;,
+    links:
+     if(ri!LinktoDoc, 
+        apply(#&quot;SYSTEM_SYSRULES_documentDownloadLink&quot;(document: _), ri!datasubset.data.document),
+        {})
+  ),
+  /*EXTENSION*/
+  #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+    label: &quot;Extension&quot;,
+    field: &quot;Extension&quot;,
+    data: index(ri!datasubset.data, &quot;extension&quot;, null),
+    alignment: &quot;LEFT&quot;,
+    links:
+     if(ri!LinktoDoc, 
+        apply(#&quot;SYSTEM_SYSRULES_documentDownloadLink&quot;(document: _), ri!datasubset.data.document),
+        {})
+  ),
+  /*DATECREATED*/
+  #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+    label: &quot;Last Modified&quot;,
+    field: &quot;Last Modified&quot;,
+    data: index(ri!datasubset.data, &quot;dateCreated&quot;, null),
+    alignment: &quot;LEFT&quot;,
+    links:
+     if(ri!LinktoDoc, 
+        apply(#&quot;SYSTEM_SYSRULES_documentDownloadLink&quot;(document: _), ri!datasubset.data.document),
+        {})
+  ),
+  /*LASTUSERTOMODIFY*/
+  #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+    label: &quot;Modified By&quot;,
+    field: &quot;Modified By&quot;,
+    data: index(ri!datasubset.data, &quot;lastUserToModify&quot;, null),
+    alignment: &quot;LEFT&quot;,
+    links: apply(
+       #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1876&quot;(user: _), 
+       ri!datasubset.data.lastUserToModify)
+  ),
+  /*TOTALNUMBEROFVERSIONS*/
+  #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+    label: &quot;Versions&quot;,
+    field: &quot;Versions&quot;,
+    data: index(ri!datasubset.data, &quot;totalNumberOfVersions&quot;, null),
+    alignment: &quot;LEFT&quot;,
+    links:
+     if(ri!LinktoDoc, 
+        apply(#&quot;SYSTEM_SYSRULES_documentDownloadLink&quot;(document: _), ri!datasubset.data.document),
+        {})
+  ),
+  /*SIZE*/
+  #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+    label: &quot;Size&quot;,
+    field: &quot;Size&quot;,
+    data: index(ri!datasubset.data, &quot;size&quot;, null),
+    alignment: &quot;LEFT&quot;,
+    links:
+     if(ri!LinktoDoc, 
+        apply(#&quot;SYSTEM_SYSRULES_documentDownloadLink&quot;(document: _), ri!datasubset.data.document),
+        {})
+  ),
+  /*IMAGE*/
+  #&quot;SYSTEM_SYSRULES_gridImageColumn&quot;(
+    label: &quot;Images&quot;,
+    field: &quot;Images&quot;,
+    data: apply(#&quot;_a-0000da89-b5e9-8000-9ba2-011c48011c48_3514&quot;(doc: _), ri!documents),
+    size: upper(ri!showDocImageType)
+  )
+)</definition>
+        <namedTypedValue>
+            <name>columnType</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>datasubset</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>showDocImageType</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>documents</name>
+            <type>
+                <name>CollaborationDocument?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>LinktoDoc</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>legacy</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_RecordAssocDisplayGrid</name>
+        <uuid>2b614100-b051-4226-b66f-9449bfa72340</uuid>
+        <description>A grid layout used for displaying a readonly view of objects in a record association array given an array of record association ids</description>
+        <parentUuid>_a-0000d9f1-8353-8000-9ba2-011c48011c48_10348</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>/* To Test: Pass an ARRAY for ri!recordAssociations */
+#&quot;SYSTEM_SYSRULES_gridLayout&quot;(
+  label: ri!gridLabel,
+  instructions: ri!gridInstructions,
+  headerCells: {
+                  #&quot;SYSTEM_SYSRULES_gridLayoutHeaderCell&quot;(
+                  label: &quot;Record Type&quot;,
+                  align: &quot;LEFT&quot;
+                ),
+                #&quot;SYSTEM_SYSRULES_gridLayoutHeaderCell&quot;(
+                  label: &quot;Record&quot;,
+                  align: &quot;LEFT&quot;
+                )
+              },
+  columnConfigs: {
+                #&quot;SYSTEM_SYSRULES_gridLayoutColumnConfig&quot;(
+                  width: &quot;DISTRIBUTE&quot;
+                ),
+                #&quot;SYSTEM_SYSRULES_gridLayoutColumnConfig&quot;(
+                  width: &quot;DISTRIBUTE&quot;
+                )
+              },
+  rows: if(#&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1982&quot;(array: ri!recordAssociation),
+    {},
+    {
+      /* Was running into a strange error with apply(),
+      so I hardcoded up to 10 associations*/
+      if(length(ri!recordAssociation)&gt;0, #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_8139&quot;(ri!recordAssociation[1]),{}),
+      if(length(ri!recordAssociation)&gt;1, #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_8139&quot;(ri!recordAssociation[2]),{}),
+      if(length(ri!recordAssociation)&gt;2, #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_8139&quot;(ri!recordAssociation[3]),{}),
+      if(length(ri!recordAssociation)&gt;3, #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_8139&quot;(ri!recordAssociation[4]),{}),
+      if(length(ri!recordAssociation)&gt;4, #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_8139&quot;(ri!recordAssociation[5]),{}),
+      if(length(ri!recordAssociation)&gt;5, #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_8139&quot;(ri!recordAssociation[6]),{}),
+      if(length(ri!recordAssociation)&gt;6, #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_8139&quot;(ri!recordAssociation[7]),{}),
+      if(length(ri!recordAssociation)&gt;7, #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_8139&quot;(ri!recordAssociation[8]),{}),
+      if(length(ri!recordAssociation)&gt;8, #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_8139&quot;(ri!recordAssociation[9]),{}),
+      if(length(ri!recordAssociation)&gt;9, #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_8139&quot;(ri!recordAssociation[10]),{})
+    }
+  )
+)</definition>
+        <namedTypedValue>
+            <name>gridLabel</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>gridInstructions</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>recordAssociation</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

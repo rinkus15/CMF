@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_productListViewItem</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3792</uuid>
+        <description>List view item template for CASE_APP product record type</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5847</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>= #&quot;SYSTEM_SYSRULES_listViewItem&quot;(
+  image: 
+  if(#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(rf!productImageDocId),
+  	#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3849&quot;,
+  	todocument(rf!productImageDocId)
+  ),
+  title: rf!name&amp;&quot; | &quot;&amp;rf!sku,
+  details: 
+  &quot;Description: &quot; &amp; rf!description
+  &amp; char(10) &amp; 
+  &quot;Category: &quot; &amp; rf!productCategory
+  &amp; char(10) &amp; 
+  &quot;Model Number: &quot; &amp; rf!modelNumber
+  &amp; char(10) &amp; 
+  &quot;Price: &quot; &amp; rf!price
+)</definition>
+        <preferredEditor>legacy</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

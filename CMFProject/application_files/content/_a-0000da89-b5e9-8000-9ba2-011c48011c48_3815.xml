@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_updateCaseDocId</name>
+        <uuid>_a-0000da89-b5e9-8000-9ba2-011c48011c48_3815</uuid>
+        <description>Updates the CaseDoc Id</description>
+        <parentUuid>_a-0000d9b9-6309-8000-9ba2-011c48011c48_1672</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>with(
+  local!updatedCaseDoc:'type!{urn:com:appian:types:CASE_APP}CASE_APP_CaseDocument'(
+    id:ri!caseDoc.id,
+    currentDocId:ri!docId,
+    parentCaseType:ri!caseDoc.parentCaseType,
+    parentCaseId:ri!caseDoc.parentCaseId,
+    docName:ri!caseDoc.docName,
+    docDescription:ri!caseDoc.docDescription,
+    author:ri!caseDoc.author,
+    dateCreated:ri!caseDoc.dateCreated,
+    lastModified:ri!caseDoc.lastModified,
+    versionHistory:ri!caseDoc.versionHistory,
+    isActive:ri!caseDoc.isActive
+  ),
+  local!updatedCaseDoc
+)</definition>
+        <namedTypedValue>
+            <name>caseDoc</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>docId</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>legacy</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

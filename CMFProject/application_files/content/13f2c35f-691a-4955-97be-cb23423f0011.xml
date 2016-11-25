@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_ViewOrder</name>
+        <uuid>13f2c35f-691a-4955-97be-cb23423f0011</uuid>
+        <description>Used to embed a readonly view of an order in page</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5995</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>{
+  #&quot;SYSTEM_SYSRULES_milestoneField&quot;(
+    label: null,
+    steps: #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6146&quot;,
+    active: wherecontains(tostring(ri!Order.Status),#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6146&quot;)
+  ),
+  #&quot;SYSTEM_SYSRULES_sectionLayout&quot;(
+    label: &quot;Order Items&quot;,
+    firstColumnContents: {
+      #&quot;3ad1404e-fd3d-496a-9033-789297edc4cb&quot;(
+        orderItems: ri!Order.OrderItems,
+        isSelectable:false,
+        selectedOrderItem:null,
+        gridSelection:#&quot;SYSTEM_SYSRULES_gridSelection&quot;(pagingInfo: #&quot;SYSTEM_SYSRULES_pagingInfo&quot;(1,10,null))
+      ),
+      #&quot;SYSTEM_SYSRULES_textField&quot;(
+        label: &quot;Sales Tax&quot;,
+        labelPosition: &quot;ADJACENT&quot;,
+        value: 100 * todecimal(ri!Order.TaxRate) &amp; &quot;%&quot;,
+        readOnly: true
+      ),
+      #&quot;SYSTEM_SYSRULES_textField&quot;(
+        label: &quot;Shipping Costs&quot;,
+        labelPosition: &quot;ADJACENT&quot;,
+        value: dollar(ri!Order.ShippingCost, 2),
+        readOnly: true
+      ),
+      #&quot;SYSTEM_SYSRULES_textField&quot;(
+        label: &quot;Total&quot;,
+        labelPosition: &quot;ADJACENT&quot;,
+        value: dollar(ri!Order.Total, 2),
+        readOnly: true
+      )
+    },
+    isCollapsible: true()
+  ),
+  #&quot;fcc1ec91-4693-4c90-9074-a5f6642b06a8&quot;(ri!Order, false)
+}</definition>
+        <namedTypedValue>
+            <name>Order</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

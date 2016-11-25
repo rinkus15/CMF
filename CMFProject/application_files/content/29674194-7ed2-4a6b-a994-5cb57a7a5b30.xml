@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_uiGetRelatedPopularProducts</name>
+        <uuid>29674194-7ed2-4a6b-a994-5cb57a7a5b30</uuid>
+        <description></description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5845</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>load(
+  local!orderDataForProduct:#&quot;dcdda2a1-f6f4-4b09-9bc1-4664604a3533&quot;(ri!productIds),
+  local!orderIdsWithProduct:if(local!orderDataForProduct.totalCount=0,null,local!orderDataForProduct.data.orderId),
+  local!relatedProductIds:if(isnull(local!orderIdsWithProduct),null,#&quot;c3db9919-aac8-4cf1-bc26-258df97e9fd2&quot;(local!orderIdsWithProduct,ri!productIds,5).data.productId),
+  local!relatedProductDetails:#&quot;SYSTEM_SYSRULES_queryEntity&quot;(
+    #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4329&quot;,
+    #&quot;SYSTEM_SYSRULES_query&quot;(
+      selection:#&quot;SYSTEM_SYSRULES_querySelection&quot;({
+        #&quot;SYSTEM_SYSRULES_queryColumn&quot;(field:&quot;id&quot;),
+        #&quot;SYSTEM_SYSRULES_queryColumn&quot;(field:&quot;name&quot;),
+        #&quot;SYSTEM_SYSRULES_queryColumn&quot;(field:&quot;sku&quot;),
+        #&quot;SYSTEM_SYSRULES_queryColumn&quot;(field:&quot;description&quot;),
+        #&quot;SYSTEM_SYSRULES_queryColumn&quot;(field:&quot;productCategory&quot;),
+        #&quot;SYSTEM_SYSRULES_queryColumn&quot;(field:&quot;productImageDocId&quot;)
+      }),
+      filter:#&quot;SYSTEM_SYSRULES_queryFilter&quot;(&quot;id&quot;,&quot;in&quot;,if(isnull(local!relatedProductIds),{-1},tointeger(local!relatedProductIds))),
+      pagingInfo:#&quot;SYSTEM_SYSRULES_pagingInfo&quot;(1,5,null)
+    )
+  ),
+  {
+    #&quot;SYSTEM_SYSRULES_sectionLayout&quot;(
+      label:&quot;Customers who purchased [&quot;&amp;#&quot;_a-0000da89-b5e9-8000-9ba2-011c48011c48_3580&quot;(ri!productName, 40) &amp; &quot;] also purchased&quot;,
+      firstColumnContents:{
+        #&quot;SYSTEM_SYSRULES_gridField&quot;(
+          totalCount:local!relatedProductDetails.totalCount,
+          columns:{
+            #&quot;SYSTEM_SYSRULES_gridImageColumn&quot;(
+              label:&quot;Image&quot;,
+              data:apply(
+                #&quot;SYSTEM_SYSRULES_documentImage&quot;(document:_,caption:_),
+                merge(
+                  index(local!relatedProductDetails.data,&quot;productImageDocId&quot;,{}),
+                  index(local!relatedProductDetails.data,&quot;name&quot;,{})
+                )
+              )
+            ),
+            #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+              label:&quot;Product Name&quot;,
+              data: index(local!relatedProductDetails.data,&quot;name&quot;,{}),
+              links:apply(
+                #&quot;SYSTEM_SYSRULES_recordLink&quot;(recordType:#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3830&quot;,identifier:_),
+                index(local!relatedProductDetails.data,&quot;id&quot;,{})
+              )
+            ),
+            #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+              label:&quot;Product Category&quot;,
+              data: index(local!relatedProductDetails.data,&quot;productCategory&quot;,{})
+            ),
+            if(ri!showAddToOrder,
+              #&quot;SYSTEM_SYSRULES_gridImageColumn&quot;(
+                label:&quot;Add?&quot;,
+                data: apply(
+                  #&quot;SYSTEM_SYSRULES_documentImage&quot;(document:#&quot;SYSTEM_SYSRULES_iconIndicator&quot;(&quot;ADD&quot;),link:_),
+                  apply(
+                    #&quot;SYSTEM_SYSRULES_dynamicLink&quot;(value:_, saveInto:{ri!addedProductId}),
+                    index(local!relatedProductDetails.data,&quot;id&quot;,{})
+                  )
+                ),
+                size:&quot;ICON&quot;
+              ),
+              {}
+            )
+          },
+          value:#&quot;SYSTEM_SYSRULES_pagingInfo&quot;(1,5,null)
+        )
+        
+        
+      },
+      isCollapsible:true
+    )
+    /*
+     * Al alternative way of showing products...
+     
+    a!sectionLayout(
+      label:local!relatedProductDetails.data.name[1],
+      firstColumnContents:{
+        a!imageField(
+          images:a!documentImage(
+            document:index(local!relatedProductDetails.data,&quot;productImageId&quot;,{})[1]
+          )  
+        )
+      },
+      secondColumnContents:{
+        a!textField(
+          label:&quot;Product Name&quot;,
+          readOnly:true,
+          value:index(local!relatedProductDetails.data,&quot;name&quot;,{})[1]
+        ),
+        a!textField(
+          label:&quot;SKU&quot;,
+          readOnly:true,
+          value:index(local!relatedProductDetails.data,&quot;sku&quot;,{})[1]
+        ),
+        a!textField(
+          label:&quot;Product Category&quot;,
+          readOnly:true,
+          value:index(local!relatedProductDetails.data,&quot;productCategory&quot;,{})[1]
+        ),
+        a!linkField(
+          labelPosition:&quot;COLLAPSED&quot;,
+          links:a!dynamicLink(
+            label:&quot;[+] Add to order&quot;
+          )
+        )
+      }
+    )
+    */
+  }
+)</definition>
+        <namedTypedValue>
+            <name>productIds</name>
+            <type>
+                <name>Integer?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>productName</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>addedProductId</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>showAddToOrder</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

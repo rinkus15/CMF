@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_createNewCustomer</name>
+        <uuid>0345d6e5-5f06-4f3d-ac96-964aca8dea87</uuid>
+        <description>This is the SAIL form for creating a new customer.</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5839</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>#&quot;SYSTEM_SYSRULES_formLayout&quot; (&#xD;
+  label: &quot;Create New Customer&quot;,&#xD;
+  firstColumnContents: #&quot;d3b95f27-f45a-4d97-812f-ef8de3681197&quot;(customerData:ri!customerData,logo:ri!logo,isCreate:true,isShippingBillingSame:ri!isShippingBillingSame),&#xD;
+    buttons: #&quot;SYSTEM_SYSRULES_ButtonLayout&quot;(&#xD;
+          primaryButtons: {&#xD;
+            #&quot;SYSTEM_SYSRULES_ButtonWidgetSubmit&quot;(&#xD;
+                label: &quot;Submit&quot;,&#xD;
+                style: &quot;PRIMARY&quot;,&#xD;
+                value: &quot;submit&quot;,&#xD;
+                saveInto: {&#xD;
+                            ri!button,&#xD;
+                            &#xD;
+                            a!save(ri!customerData.InactiveFlag, false),&#xD;
+                            a!save(ri!customerData.CustomerSince, todate(now()))&#xD;
+                          }&#xD;
+&#xD;
+            )&#xD;
+            },&#xD;
+            secondaryButtons: {&#xD;
+              #&quot;SYSTEM_SYSRULES_ButtonWidgetSubmit&quot;(&#xD;
+                label: &quot;Cancel&quot;,&#xD;
+                skipValidation: true,&#xD;
+                value: true,&#xD;
+                saveInto: ri!button&#xD;
+              )&#xD;
+            }&#xD;
+      ) &#xD;
+  )&#xD;
+</definition>
+        <namedTypedValue>
+            <name>customerData</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>logo</name>
+            <type>
+                <name>CollaborationDocument</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>button</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>isShippingBillingSame</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

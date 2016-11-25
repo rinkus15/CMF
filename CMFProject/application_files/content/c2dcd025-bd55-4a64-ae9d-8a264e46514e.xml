@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_uiGridDetailedGridViewByIndustry</name>
+        <uuid>c2dcd025-bd55-4a64-ae9d-8a264e46514e</uuid>
+        <description>Displays a grid of orders filterable by industry if specified</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5995</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>load(
+  local!gridPI: #&quot;SYSTEM_SYSRULES_pagingInfo&quot;(
+    startIndex: 1,
+    batchSize: 10,
+    sort: #&quot;SYSTEM_SYSRULES_sortInfo&quot;(
+      field: &quot;OrderNum&quot;,
+      ascending: true
+    )
+  ),
+  with(
+    local!gridData: queryrecord(
+      #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6210&quot;,
+      #&quot;SYSTEM_SYSRULES_query&quot;(
+        selection:#&quot;SYSTEM_SYSRULES_querySelection&quot;(
+          columns:{
+            #&quot;SYSTEM_SYSRULES_queryColumn&quot;(field:&quot;id&quot;),
+            #&quot;SYSTEM_SYSRULES_queryColumn&quot;(field:&quot;OrderNum&quot;),
+            #&quot;SYSTEM_SYSRULES_queryColumn&quot;(field:&quot;OrderDate&quot;),
+            #&quot;SYSTEM_SYSRULES_queryColumn&quot;(field:&quot;Total&quot;, alias:&quot;OrderTotal&quot;),
+            #&quot;SYSTEM_SYSRULES_queryColumn&quot;(field:&quot;PurchaserName&quot;),
+            #&quot;SYSTEM_SYSRULES_queryColumn&quot;(field:&quot;Customer.Industry&quot;, alias:&quot;Industry&quot;),
+            #&quot;SYSTEM_SYSRULES_queryColumn&quot;(field:&quot;Status&quot;)
+          }
+        ),
+        filter:if(#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(ri!industryFilter),
+          null,
+          #&quot;SYSTEM_SYSRULES_queryFilter&quot;(field:&quot;Customer.Industry&quot;,operator:&quot;=&quot;,value:ri!industryFilter)
+        ),
+        pagingInfo: local!gridPI
+      )
+    ),
+    {
+      #&quot;SYSTEM_SYSRULES_gridField&quot;(
+        label:&quot;Detailed Orders View&quot;,
+        totalCount:local!gridData.totalCount,
+        columns:{
+          #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+            label:&quot;Order #&quot;,
+            field:&quot;OrderNum&quot;,
+            data:index(local!gridData.data,&quot;OrderNum&quot;,{}),
+            links:apply(
+              #&quot;SYSTEM_SYSRULES_recordLink&quot;(recordType:#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6210&quot;,identifier:_),
+              index(local!gridData.data,&quot;id&quot;,{})
+            )
+          ),
+          #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+            label:&quot;Order Date&quot;,
+            field:&quot;OrderDate&quot;,
+            data:index(local!gridData.data,&quot;OrderDate&quot;,{})
+          ),
+          #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+            label:&quot;Order Total&quot;,
+            field:&quot;OrderTotal&quot;,
+            data:apply(
+              fn!dollar,
+              index(local!gridData.data,&quot;OrderTotal&quot;,{})
+            )
+          ),
+          #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+            label:&quot;Purchaser Name&quot;,
+            field:&quot;PurchaserName&quot;,
+            data:index(local!gridData.data,&quot;PurchaserName&quot;,{})
+          ),
+          #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+            label:&quot;Industry&quot;,
+            field:&quot;Industry&quot;,
+            data:index(local!gridData.data,&quot;Industry&quot;,{})
+          ),
+          #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+            label:&quot;Status&quot;,
+            field:&quot;Status&quot;,
+            data:index(local!gridData.data,&quot;Status&quot;,{})
+          )
+        },
+        value:local!gridPI,
+        saveInto:local!gridPI
+      )
+    }
+  )
+)</definition>
+        <namedTypedValue>
+            <name>industryFilter</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <constant>
+        <name>CASE_APP_RecordTypes</name>
+        <uuid>_a-0000d9b9-6309-8000-9ba2-011c48011c48_1466</uuid>
+        <description>A list of the record types to select from for the record type picker&#xD;
+Customers;Users;Products;Orders;Investigations;Service Requests</description>
+        <parentUuid>_a-0000d9f1-8353-8000-9ba2-011c48011c48_10349</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <typedValue>
+            <type>
+                <name>RecordType?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+            <value>
+                <el a:id="-1" a:uuid="7db9a56b-b303-46e1-81c9-c11dfffab8d8" name="">
+                    <a:pluralName/>
+                    <a:description/>
+                    <a:urlStub/>
+                    <a:listViewTemplateExpr/>
+                    <a:isSystem>false</a:isSystem>
+                    <a:dataSrcExpr/>
+                    <a:facetsListExpr/>
+                    <a:defaultFiltersExpr/>
+                    <a:security>16383</a:security>
+                    <a:opaqueId/>
+                </el>
+                <el a:id="-1" a:uuid="SYSTEM_RECORD_TYPE_USER" name="">
+                    <a:pluralName/>
+                    <a:description/>
+                    <a:urlStub/>
+                    <a:listViewTemplateExpr/>
+                    <a:isSystem>false</a:isSystem>
+                    <a:dataSrcExpr/>
+                    <a:facetsListExpr/>
+                    <a:defaultFiltersExpr/>
+                    <a:security>16383</a:security>
+                    <a:opaqueId/>
+                </el>
+                <el a:id="-1" a:uuid="d1ea2edd-4da3-4f0f-a2db-236913478100" name="">
+                    <a:pluralName/>
+                    <a:description/>
+                    <a:urlStub/>
+                    <a:listViewTemplateExpr/>
+                    <a:isSystem>false</a:isSystem>
+                    <a:dataSrcExpr/>
+                    <a:facetsListExpr/>
+                    <a:defaultFiltersExpr/>
+                    <a:security>16383</a:security>
+                    <a:opaqueId/>
+                </el>
+                <el a:id="-1" a:uuid="b3b9659c-890b-45b1-89e9-97158d2482dd" name="">
+                    <a:pluralName/>
+                    <a:description/>
+                    <a:urlStub/>
+                    <a:listViewTemplateExpr/>
+                    <a:isSystem>false</a:isSystem>
+                    <a:dataSrcExpr/>
+                    <a:facetsListExpr/>
+                    <a:defaultFiltersExpr/>
+                    <a:security>16383</a:security>
+                    <a:opaqueId/>
+                </el>
+                <el a:id="-1" a:uuid="9938078a-b8f8-485c-a942-9c96192db48f" name="">
+                    <a:pluralName/>
+                    <a:description/>
+                    <a:urlStub/>
+                    <a:listViewTemplateExpr/>
+                    <a:isSystem>false</a:isSystem>
+                    <a:dataSrcExpr/>
+                    <a:facetsListExpr/>
+                    <a:defaultFiltersExpr/>
+                    <a:security>16383</a:security>
+                    <a:opaqueId/>
+                </el>
+            </value>
+        </typedValue>
+    </constant>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

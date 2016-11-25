@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="urn:com:appian:types:CASE_APP"
+  xmlns:tns="urn:com:appian:types:CASE_APP" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="%7Burn%3Acom%3Aappian%3Atypes%3ACASE_APP%7DCASE_APP_Assignee.xsd"/>
+  <xsd:complexType name="CASE_APP_AdHocTasking">
+    <xsd:sequence>
+      <xsd:element name="id" nillable="true" type="xsd:int">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">
+            @Column(nullable=false)
+            @Id
+            @GeneratedValue
+          </xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="requestUser" nillable="true" type="xsd:string"/>
+      <xsd:element name="taskName" nillable="true" type="xsd:string"/>
+      <xsd:element name="taskDescription" nillable="true" type="xsd:string">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">@Column(length=2000)</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" name="assignees" type="tns:CASE_APP_Assignee">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">
+            @OneToMany(indexed=false,cascade=CascadeType.ALL)
+            @JoinColumn(name="parentAdhocTaskId")
+          </xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="status" nillable="true" type="xsd:string"/>
+      <xsd:element name="requestDate" nillable="true" type="xsd:dateTime"/>
+      <xsd:element name="deadline" nillable="true" type="xsd:dateTime"/>
+      <xsd:element name="completed" nillable="true" type="xsd:dateTime"/>
+      <xsd:element name="completedBy" nillable="true" type="xsd:string"/>
+      <xsd:element name="parentProcessID" nillable="true" type="xsd:int"/>
+      <xsd:element name="parentCaseType" nillable="true" type="xsd:string"/>
+      <xsd:element name="parentCaseId" nillable="true" type="xsd:int"/>
+      <xsd:element name="completedComments" nillable="true" type="xsd:string">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">@Column(length=2000)</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="entryId" nillable="true" type="xsd:string"/>
+      <xsd:element name="processId" nillable="true" type="xsd:int"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

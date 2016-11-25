@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_uiReportTopCustomersByOrders</name>
+        <uuid>642c11ac-a327-423e-bd2b-1d4931779af4</uuid>
+        <description>Displays a chart or grid showing top 10 customers by orders.</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5839</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>load(
+  local!chartPI:#&quot;SYSTEM_SYSRULES_pagingInfo&quot;(1,10,#&quot;SYSTEM_SYSRULES_sortInfo&quot;(&quot;numOrders&quot;,false)),
+  local!viewAsGrid:true,
+  with(
+    local!data:#&quot;SYSTEM_SYSRULES_queryEntity&quot;(
+      #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6305&quot;,
+      #&quot;SYSTEM_SYSRULES_query&quot;(
+        aggregation:#&quot;SYSTEM_SYSRULES_queryAggregation&quot;(
+          {
+            #&quot;SYSTEM_SYSRULES_queryAggregationColumn&quot;(
+              field:&quot;Customer.Name&quot;,
+              alias:&quot;customerName&quot;,
+              isGrouping:true
+            ),
+            #&quot;SYSTEM_SYSRULES_queryAggregationColumn&quot;(
+              field:&quot;id&quot;,
+              alias:&quot;numOrders&quot;,
+              aggregationFunction:&quot;COUNT&quot;
+            )
+          }
+        ),
+        pagingInfo:local!chartPI
+      )
+    ),
+    if(local!viewAsGrid,
+      {
+        #&quot;SYSTEM_SYSRULES_linkField&quot;(
+          labelPosition:&quot;COLLAPSED&quot;,
+          links: #&quot;SYSTEM_SYSRULES_dynamicLink&quot;(label:&quot;View as chart&quot;, value:false, saveInto:local!viewAsGrid)
+        ),
+        #&quot;SYSTEM_SYSRULES_gridField&quot;(
+          label:&quot;Top Customers by number of Orders&quot;,
+          totalCount:local!data.totalCount,
+          columns:{
+            #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+              label:&quot;Customer&quot;,
+              data:index(local!data.data,&quot;customerName&quot;,{})
+            ),
+            #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+              label:&quot;Num Orders&quot;,
+              data:index(local!data.data,&quot;numOrders&quot;,{})
+            )
+          },
+          value:local!chartPI,
+          saveInto:local!chartPI
+        )
+      },
+      {
+        #&quot;SYSTEM_SYSRULES_linkField&quot;(
+          labelPosition:&quot;COLLAPSED&quot;,
+          links: #&quot;SYSTEM_SYSRULES_dynamicLink&quot;(label:&quot;View as grid&quot;, value:true, saveInto:local!viewAsGrid)
+        ),
+        #&quot;SYSTEM_SYSRULES_barChartField&quot;(
+          label:&quot;Top Customers by number of Orders&quot;,
+          categories:index(local!data.data,&quot;customerName&quot;,{}),
+          series:#&quot;SYSTEM_SYSRULES_chartSeries&quot;(
+            label:&quot;Number of Orders&quot;,
+            data:index(local!data.data,&quot;numOrders&quot;,{})
+          )
+        )
+      }
+    )
+  )
+)</definition>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

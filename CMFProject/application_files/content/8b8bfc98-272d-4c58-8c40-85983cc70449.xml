@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_DynamicRecordPickerFromRecordAssociation</name>
+        <uuid>8b8bfc98-272d-4c58-8c40-85983cc70449</uuid>
+        <description>Allows a user to pick from multiple record types to dynamically change the picker context. It also prepopulates it if a RecordAssociation CDT is passed in</description>
+        <parentUuid>_a-0000d9f1-8353-8000-9ba2-011c48011c48_10351</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>load(
+  local!selectedRecordName:if(or(#&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1982&quot;(ri!value),count(ri!value)&lt;ri!index),null,ri!value[ri!index].recordName),
+  local!selectedValues:if(or(#&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1982&quot;(ri!value),count(ri!value)&lt;ri!index),null,#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6214&quot;(ri!value[ri!index])),
+  local!recordType:if(or(#&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1982&quot;(ri!value),count(ri!value)&lt;ri!index),null,#&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1466&quot;[wherecontains(local!selectedRecordName, #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1464&quot;)]),
+  local!recordIndex:if(or(#&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1982&quot;(ri!value),count(ri!value)&lt;ri!index),null,wherecontains(local!selectedRecordName, #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1464&quot;)),
+  local!searchFields:if(or(#&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1982&quot;(ri!value),count(ri!value)&lt;ri!index,#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(local!selectedRecordName)),null,#&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1476&quot;(wherecontains(local!selectedRecordName, #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1464&quot;))),
+  local!primaryKeyField:if(or(#&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1982&quot;(ri!value),count(ri!value)&lt;ri!index),null,#&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1467&quot;[wherecontains(local!selectedRecordName, #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1464&quot;)]),
+  #&quot;SYSTEM_SYSRULES_sectionLayout&quot;(
+    label: ri!sectionLabel,
+    firstColumnContents: {
+      #&quot;SYSTEM_SYSRULES_dropdownField&quot;(
+        label: &quot;Record Type&quot;,
+        labelPosition: ri!labelPosition,
+        instructions: &quot;Select a record type to change the context of the picker&quot;,
+        required: ri!required,
+        disabled: if(ri!readOnly, true(), if(or(isnull(local!selectedValues), length(local!selectedValues)=0), false, true)),
+        choiceLabels: #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1464&quot;,
+        choiceValues: #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1464&quot;,
+        placeholderLabel: &quot;-- Select a Record Type --&quot;,
+        value: local!selectedRecordName,
+        saveInto: {
+                    local!selectedRecordName,
+                    a!save(
+                      local!recordIndex,
+                      wherecontains(local!selectedRecordName, #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1464&quot;)
+                    ),
+                    a!save(
+                      local!recordType,
+                      #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1466&quot;[wherecontains(local!selectedRecordName, #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1464&quot;)]
+                    ),
+                    a!save(
+                      local!searchFields,
+                      if(#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(save!value),
+                        null,
+                        #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1476&quot;(wherecontains(local!selectedRecordName, #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1464&quot;))
+                      )
+                    ),
+                    a!save(
+                      local!primaryKeyField,
+                      #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1467&quot;[wherecontains(local!selectedRecordName, #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1464&quot;)]
+                    ),
+                    a!save(
+                      local!selectedValues,
+                      null
+                    )
+                  }
+         )
+
+    },
+    secondColumnContents: {
+
+        
+      if(local!recordType.@attributes.uuid=&quot;SYSTEM_RECORD_TYPE_USER&quot;,
+        {
+          #&quot;SYSTEM_SYSRULES_pickerFieldUsers&quot;(
+            label: &quot;Selected users&quot;,
+            labelPosition: ri!labelPosition,
+            instructions: &quot;Type the name of the users to find and select them&quot;,
+            required: ri!required,
+            requiredMessage: ri!requiredMessage,
+            readOnly: ri!readOnly,
+            disabled: if(isnull(local!selectedRecordName), true, false),
+            maxSelections: ri!maxSelections,
+            value: local!selectedValues,
+            saveInto:{
+              local!selectedValues,
+              a!save(
+                ri!value,
+                if(
+                  count(ri!value)&lt;ri!index, 
+                  append(
+                    ri!value, 
+                    #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1960&quot;(
+                      recordType: local!recordType,
+                      recordName: local!selectedRecordName,
+                      recordUUID: local!recordType.@attributes.uuid,
+                      identifiers: local!selectedValues
+                    )
+                  ),
+                  updatearray(
+                    ri!value, 
+                    ri!index,
+                    #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1960&quot;(
+                      recordType: local!recordType,
+                      recordName: local!selectedRecordName,
+                      recordUUID: local!recordType.@attributes.uuid,
+                      identifiers: local!selectedValues
+                    )
+                  )
+                )
+              )
+            }
+          )
+        },
+        {
+          #&quot;6ec7ea86-c593-4d4b-b4b2-3f75b954ffc9&quot;(
+            label: &quot;Selected records &quot;,
+            labelPosition: ri!labelPosition,
+            instructions: &quot;Type the name of the records to find and select them&quot;,
+            required: ri!required,
+            requiredMessage: ri!requiredMessage,
+            readOnly: if(ri!readOnly, true, isnull(local!selectedRecordName)),
+            disabled: isnull(local!selectedRecordName),
+            maxSelections: ri!maxSelections,
+            associatedRecords:if(or(#&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1982&quot;(ri!value),count(ri!value)&lt;ri!index),null,ri!value[ri!index]),
+            record: local!recordType,
+            primaryKeyField: local!primaryKeyField,
+            searchFields: local!searchFields,
+            selectedValues: local!selectedValues,
+            saveInto: {
+              local!selectedValues,
+              a!save(
+                ri!value,
+                if(count(ri!value)&lt;ri!index, 
+                  append(
+                    ri!value, 
+                    #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1960&quot;(
+                      recordType: local!recordType,
+                      recordName: local!selectedRecordName,
+                      recordUUID: local!recordType.@attributes.uuid,
+                      identifiers: local!selectedValues
+                    )
+                  ),
+                  updatearray(
+                    ri!value,
+                    ri!index,
+                    #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1960&quot;(
+                      recordType: local!recordType,
+                      recordName: local!selectedRecordName,
+                      recordUUID: local!recordType.@attributes.uuid,
+                      identifiers: local!selectedValues
+                    )
+                  )
+                )
+              )
+            }
+          )
+        }
+      
+      )
+    }
+  )
+)</definition>
+        <namedTypedValue>
+            <name>sectionLabel</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>labelPosition</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>required</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>requiredMessage</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>maxSelections</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>value</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>index</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>readOnly</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

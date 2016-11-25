@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_createDynamicAddDocSection</name>
+        <uuid>a8e27521-0f4d-468a-bcf9-ecf3686881bd</uuid>
+        <description>Adds a section that allows users to upload a file and set its name and description.</description>
+        <parentUuid>_a-0000d9b9-6309-8000-9ba2-011c48011c48_1672</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>=#&quot;SYSTEM_SYSRULES_sectionLayout&quot;(&#xD;
+  label: ri!sectionLabel&amp;&quot; #&quot; &amp; ri!index &amp; &quot; &quot; &amp; index(ri!records,ri!index,&quot;docName&quot;,&quot;&quot;),&#xD;
+  isCollapsible: true(),&#xD;
+  firstColumnContents:{&#xD;
+    #&quot;SYSTEM_SYSRULES_fileUploadField&quot;(&#xD;
+      label:&quot;Upload Document&quot;,&#xD;
+      required:ri!isRequired,&#xD;
+      target:ri!targetFolder,&#xD;
+      documentName: ri!records[ri!index].docName,&#xD;
+      documentDescription: ri!records[ri!index].docDescription,&#xD;
+      value:ri!uploadedDocs[ri!index],&#xD;
+      saveInto: {&#xD;
+        ri!records[ri!index].currentDocId,&#xD;
+        a!save(target:ri!records[ri!index].parentCaseType,value:ri!parentCaseType),&#xD;
+        a!save(target:ri!records[ri!index].parentCaseId,value:ri!parentCaseId),&#xD;
+        a!save(target:ri!records[ri!index].author,value:fn!loggedInUser()),&#xD;
+        a!save(target:ri!records[ri!index].dateCreated,value:now()),&#xD;
+        a!save(target:ri!records[ri!index].isActive,value:true),&#xD;
+        ri!uploadedDocs[ri!index]&#xD;
+      }&#xD;
+    ),&#xD;
+    if(&#xD;
+      count(ri!records) &gt; 1,&#xD;
+      #&quot;SYSTEM_SYSRULES_ButtonLayout&quot;(&#xD;
+        secondaryButtons:&#xD;
+        #&quot;SYSTEM_SYSRULES_ButtonWidget&quot;(&#xD;
+          label: &quot;Remove&quot;,&#xD;
+          style: &quot;DESTRUCTIVE&quot;,&#xD;
+          value: ri!index,&#xD;
+          saveInto: {&#xD;
+            a!save(ri!records, #&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2785&quot;(index:save!value, array:ri!records)),&#xD;
+            a!save(ri!uploadedDocs, #&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2785&quot;(index:save!value, array:ri!uploadedDocs)),&#xD;
+            a!save(ri!recordTokens, #&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2785&quot;(index:save!value,  array:ri!recordTokens))&#xD;
+          }&#xD;
+        )&#xD;
+      ),&#xD;
+      {}&#xD;
+    ),&#xD;
+    if(count(ri!records) = ri!index,&#xD;
+      #&quot;SYSTEM_SYSRULES_linkField&quot;(&#xD;
+        labelPosition:&quot;COLLAPSED&quot;,&#xD;
+        links:#&quot;SYSTEM_SYSRULES_dynamicLink&quot;(&#xD;
+          label:&quot;+Add Another&quot;,&#xD;
+          value:1,&#xD;
+          saveInto: {&#xD;
+            a!save(ri!records, #&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2788&quot;(array:ri!records, index:ri!index)),&#xD;
+            a!save(ri!uploadedDocs, #&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2788&quot;(array:ri!uploadedDocs, index:ri!index)),&#xD;
+            a!save(ri!recordTokens, #&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2788&quot;(array:ri!recordTokens, index:ri!index))&#xD;
+          }&#xD;
+        )&#xD;
+      ),&#xD;
+      {}&#xD;
+    )&#xD;
+  },&#xD;
+  secondColumnContents:&#xD;
+  {&#xD;
+    #&quot;SYSTEM_SYSRULES_textField&quot;(&#xD;
+      label: &quot;Document Name&quot;,&#xD;
+      instructions:&quot;If left blank, the original file name will be used.&quot;,&#xD;
+      refreshAfter: &quot;KEYPRESS&quot;,&#xD;
+      value: index(ri!records,ri!index,&quot;docName&quot;,&quot;&quot;),&#xD;
+      saveInto: ri!records[ri!index].docName&#xD;
+    ),&#xD;
+    #&quot;SYSTEM_SYSRULES_textField&quot;(&#xD;
+      label: &quot;Document Description&quot;,&#xD;
+      refreshAfter: &quot;KEYPRESS&quot;,&#xD;
+      value: index(ri!records,ri!index,&quot;docDescription&quot;,&quot;&quot;),&#xD;
+      saveInto: ri!records[ri!index].docDescription&#xD;
+    )&#xD;
+  }&#xD;
+)&#xD;
+</definition>
+        <namedTypedValue>
+            <name>index</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>records</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>recordTokens</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>targetFolder</name>
+            <type>
+                <name>CollaborationFolder</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>uploadedDocs</name>
+            <type>
+                <name>CollaborationDocument?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>sectionLabel</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>parentCaseType</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>parentCaseId</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>isRequired</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

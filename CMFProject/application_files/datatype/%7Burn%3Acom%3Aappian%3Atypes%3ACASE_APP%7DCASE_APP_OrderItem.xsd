@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="urn:com:appian:types:CASE_APP"
+  xmlns:tns="urn:com:appian:types:CASE_APP" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="%7Burn%3Acom%3Aappian%3Atypes%3ACASE_APP%7DCASE_APP_Product.xsd"/>
+  <xsd:complexType name="CASE_APP_OrderItem">
+    <xsd:sequence>
+      <xsd:element name="id" nillable="true" type="xsd:int">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">
+            @Id
+            @GeneratedValue
+          </xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Quantity" nillable="true" type="xsd:int"/>
+      <xsd:element name="Status" nillable="true" type="xsd:string"/>
+      <xsd:element name="OrderItemNumber" nillable="true" type="xsd:string"/>
+      <xsd:element name="OrderItemUnitPrice" nillable="true" type="xsd:double"/>
+      <xsd:element name="Taxed" nillable="true" type="xsd:boolean"/>
+      <xsd:element name="Product" nillable="true" type="tns:CASE_APP_Product"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

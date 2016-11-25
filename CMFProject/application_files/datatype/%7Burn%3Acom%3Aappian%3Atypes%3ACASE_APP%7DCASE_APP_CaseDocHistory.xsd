@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="urn:com:appian:types:CASE_APP"
+  xmlns:tns="urn:com:appian:types:CASE_APP" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="CASE_APP_CaseDocHistory">
+    <xsd:sequence>
+      <xsd:element name="id" type="xsd:int">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">
+          @Column(nullable=false)
+          @Id
+          @GeneratedValue
+        </xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="docId" type="xsd:int"/>
+      <xsd:element minOccurs="0" name="parentCaseDocId" type="xsd:int"/>
+      <xsd:element minOccurs="0" name="docName" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="docDescription" type="xsd:string">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">
+          @Column(length=2000)
+        </xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="author" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="dateCreated" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">
+          @Temporal(TemporalType.TIMESTAMP)
+        </xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="updateJustification" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

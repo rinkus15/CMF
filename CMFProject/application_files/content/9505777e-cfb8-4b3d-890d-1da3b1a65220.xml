@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_SR_uiSectionCaseHistory</name>
+        <uuid>9505777e-cfb8-4b3d-890d-1da3b1a65220</uuid>
+        <description>Inserts a section showing the case history grid</description>
+        <parentUuid>_a-0000da5f-caaa-8000-9ba2-011c48011c48_2618</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>#&quot;SYSTEM_SYSRULES_sectionLayout&quot;(
+  label:&quot;Case History&quot;,
+  firstColumnContents:{
+    load(
+      local!gridPI:#&quot;SYSTEM_SYSRULES_pagingInfo&quot;(
+        startIndex:1,
+        batchSize:ri!batchSize,
+        sort:#&quot;SYSTEM_SYSRULES_sortInfo&quot;(field:&quot;timestamp&quot;)
+      ),
+      with(
+        local!gridData:todatasubset(ri!caseHistory, local!gridPI),
+        #&quot;SYSTEM_SYSRULES_gridField&quot;(
+          totalCount:local!gridData.totalCount,
+          columns:{
+            #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+              label:&quot;Date &amp; Time&quot;,
+              field:&quot;timestamp&quot;,
+              data:apply(
+                datetext(_,&quot;MMM dd, yyyy hh:mm a&quot;),
+                index(local!gridData.data,&quot;timestamp&quot;,{})
+              )
+            ),
+            #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+              label:&quot;User&quot;,
+              field:&quot;user&quot;,
+              data:index(local!gridData.data,&quot;user&quot;,{})
+            ),
+            #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+              label:&quot;User Title&quot;,
+              field:&quot;userTitle&quot;,
+              data:index(local!gridData.data,&quot;userTitle&quot;,{})
+            ),
+            #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+              label:&quot;Action&quot;,
+              field:&quot;action&quot;,
+              data:index(local!gridData.data,&quot;action&quot;,{})
+            ),
+            #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+              label:&quot;Notes&quot;,
+              field:&quot;notes&quot;,
+              data:index(local!gridData.data,&quot;notes&quot;,{})
+            )
+          },
+          value:local!gridPI,
+          saveInto:local!gridPI
+        )
+      )
+      
+    )
+  },
+  isCollapsible: true
+)</definition>
+        <namedTypedValue>
+            <name>caseHistory</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>batchSize</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

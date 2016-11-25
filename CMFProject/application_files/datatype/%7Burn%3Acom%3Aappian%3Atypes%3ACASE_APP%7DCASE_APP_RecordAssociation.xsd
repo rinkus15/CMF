@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="urn:com:appian:types:CASE_APP"
+  xmlns:tns="urn:com:appian:types:CASE_APP" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="CASE_APP_RecordAssociation">
+    <xsd:sequence>
+      <xsd:element name="id" type="xsd:int">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">
+            @Column(nullable=false)
+            @Id
+            @GeneratedValue
+          </xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="recordName" nillable="true" type="xsd:string"/>
+      <xsd:element name="recordUUID" nillable="true" type="xsd:string"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0"
+        name="identifiers" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

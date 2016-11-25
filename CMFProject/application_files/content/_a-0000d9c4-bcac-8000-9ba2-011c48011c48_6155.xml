@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_OrdersListView</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6155</uuid>
+        <description>List view for the orders record</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5996</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>= #&quot;SYSTEM_SYSRULES_listViewItem&quot;(
+  image: todocument(
+    rf!Customer.LogoID
+  ),
+  title: rf!OrderNum &amp; &quot; | &quot; &amp; rf!Customer.Name &amp; &quot; | &quot; &amp; rf!PurchaserName &amp; &quot; | &quot; &amp; rf!Status ,
+  details: &quot;Order Total: &quot; &amp; dollar(rf!Total, 2, 0) &amp; char(10) &amp; &quot;Status: &quot; &amp; rf!Status,
+  timestamp: rf!OrderDateTime
+)</definition>
+        <preferredEditor>legacy</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

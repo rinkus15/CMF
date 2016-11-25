@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_SR_uiFormNewServiceRequest</name>
+        <uuid>a577db91-7d4b-4ebc-b3f0-48564c3ce94a</uuid>
+        <description>Captures the required data to kick off a service request.</description>
+        <parentUuid>_a-0000da5f-caaa-8000-9ba2-011c48011c48_2618</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>/* To test:
+1) Set the serviceReq input to type!CASE_APP_ServiceRequest()
+2) set caseDocs to {type!CASE_APP_CaseDocument()}
+3) Set uploadedDocs to todocument(null)
+*/
+=load(
+  local!customer:if(#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(ri!serviceReq.relatedCustomer),null,{ri!serviceReq.relatedCustomer}),
+  local!enableSubmit:true,
+  local!hideOkButton:true,
+  local!startTime:now(),
+  local!reqNum: #&quot;_a-0000d9b9-57db-8000-9e06-010000010000_831&quot;() &amp; &quot;-&quot; &amp; #&quot;_a-0000d9b9-57db-8000-9e06-010000010000_831&quot;(),
+  local!q1,
+  local!q2,
+  local!gridSelection:#&quot;SYSTEM_SYSRULES_gridSelection&quot;(pagingInfo:#&quot;SYSTEM_SYSRULES_pagingInfo&quot;(1,5, null)),
+  with(
+    local!enableSubmit:or(
+      /*Need help with order, but not a product*/
+      not(isnull(ri!serviceReq.relatedOrder)),
+      ri!serviceReq.type=#&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2620&quot;[3],
+      ri!serviceReq.type=#&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2620&quot;[4]
+    ),
+    #&quot;SYSTEM_SYSRULES_formLayout&quot;(
+      label: &quot;New Customer Service Request&quot;&amp;if(#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(ri!forLabel),&quot;&quot;,&quot; for &quot;&amp;ri!forLabel),
+      instructions: &quot;Complete this form to create a new service request for a customer&quot;,
+      firstColumnContents: {
+        #&quot;747235e9-8060-436f-85f8-5c1a2fce0b7d&quot;(
+          local!customer,local!q1,local!hideOkButton,ri!serviceReq,fn!loggedInUser()),
+        if(#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(ri!serviceReq.type),
+          {},
+          /* Choose which form section to show depending on selection*/
+          choose(wherecontains(ri!serviceReq.type,#&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2620&quot;),
+            {
+              /*Case 1*/
+              #&quot;1780c64a-95dd-4c00-b83f-843a26e2807e&quot;(
+                local!customer,false,local!q1,
+                ri!serviceReq,local!hideOkButton,local!q2,local!gridSelection,
+                ri!uploadedDocs,ri!caseDocs)
+            },
+            {
+              /*Case 2*/
+              #&quot;1780c64a-95dd-4c00-b83f-843a26e2807e&quot;(
+                local!customer,true,local!q1,
+                ri!serviceReq,local!hideOkButton,local!q2,local!gridSelection,
+                ri!uploadedDocs,ri!caseDocs)
+              
+            },
+            {
+              /*Case 3*/
+              #&quot;6b45d182-798c-4cbb-9ef4-93103a0610c5&quot;(
+                customerData:local!customer,
+                isShippingBillingSame:ri!isShippingBillingSame,
+                isCreate:false,
+                logo:ri!logo
+              )
+            },
+            {
+              /*Case 4*/
+              #&quot;8328117a-7d23-4f27-bcb8-306068f7a080&quot;(ri!serviceReq,local!customer,ri!uploadedDocs,ri!caseDocs)
+            }
+          )
+        )
+      },
+      buttons: #&quot;SYSTEM_SYSRULES_ButtonLayout&quot;(
+        primaryButtons: {
+          if(local!hideOkButton,
+            {},
+            #&quot;SYSTEM_SYSRULES_ButtonWidgetSubmit&quot;(
+              label: &quot;Ok, I'm Done!&quot;,
+              style:&quot;PRIMARY&quot;,
+              value: true,
+              saveInto: {
+                ri!cancel,
+                a!save(target:ri!serviceReq.requestDateTime, value:local!startTime),
+                a!save(target:ri!serviceReq.requestNum, value:local!reqNum),
+                a!save(target:ri!serviceReq.relatedCustomer, value:local!customer),
+                a!save(target:ri!serviceReq.status, value: #&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2630&quot;[6])
+              }
+            )
+          ),
+          #&quot;SYSTEM_SYSRULES_ButtonWidgetSubmit&quot;(
+            label: &quot;Submit Request&quot;,
+            style:&quot;PRIMARY&quot;,
+            saveInto: {
+              a!save(target:ri!serviceReq.requestDateTime, value:local!startTime),
+              a!save(target:ri!serviceReq.requestNum, value:local!reqNum),
+              a!save(target:ri!serviceReq.relatedCustomer, value:local!customer),
+              a!save(target:ri!serviceReq.status, value: #&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2630&quot;[1]),
+              a!save(target:ri!serviceReq.caseDocuments, value:ri!caseDocs)
+            },
+            disabled:not(local!enableSubmit)
+          )
+          
+        },
+        secondaryButtons: {
+          #&quot;SYSTEM_SYSRULES_ButtonWidgetSubmit&quot;(
+            label: &quot;Cancel&quot;,
+            style: &quot;NORMAL&quot;,
+            value: true,
+            saveInto: ri!cancel,
+            skipValidation: true
+          )
+        }
+      )
+    )
+  )
+)</definition>
+        <namedTypedValue>
+            <name>cancel</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>serviceReq</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>caseDocs</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>uploadedDocs</name>
+            <type>
+                <name>CollaborationDocument?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>logo</name>
+            <type>
+                <name>CollaborationDocument</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>isShippingBillingSame</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>forLabel</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

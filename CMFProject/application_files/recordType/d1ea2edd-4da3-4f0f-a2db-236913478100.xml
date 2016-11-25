@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<recordTypeHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <recordType name="Products" a:uuid="d1ea2edd-4da3-4f0f-a2db-236913478100">
+        <a:pluralName>Products</a:pluralName>
+        <a:description>All active products</a:description>
+        <a:urlStub>case-app-product</a:urlStub>
+        <a:source xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="a:DataStoreEntity" a:uuid="7e5e6f09-0639-4a8d-8785-40ac8d2c314a@_a-0000da5f-b0b8-8000-9ba2-011c48011c48_12642"/>
+        <a:listViewTemplateExpr>=#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3792&quot;()</a:listViewTemplateExpr>
+        <a:fieldCfg name="Category">
+            <a:description></a:description>
+            <a:sourceRef>productCategory</a:sourceRef>
+            <a:isSortable>false</a:isSortable>
+            <a:isSearchable>false</a:isSearchable>
+            <a:isFacet>true</a:isFacet>
+            <a:facetType>CUSTOM_BUCKETS_CLOSED</a:facetType>
+            <a:isExclusiveFacet>true</a:isExclusiveFacet>
+            <a:facetLabelExpr>&quot;Category&quot;</a:facetLabelExpr>
+            <a:facetOption>
+                <a:labelExpr>if(length(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;)&gt;=1, #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;[1], null)</a:labelExpr>
+                <a:facetOperator>IN</a:facetOperator>
+                <a:lowerLimitExpr></a:lowerLimitExpr>
+                <a:upperLimitExpr></a:upperLimitExpr>
+                <a:values>if(length(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;)&gt;=1, #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;[1], null)</a:values>
+            </a:facetOption>
+            <a:facetOption>
+                <a:labelExpr>if(length(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;)&gt;=2, #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;[2], null)</a:labelExpr>
+                <a:facetOperator>IN</a:facetOperator>
+                <a:lowerLimitExpr></a:lowerLimitExpr>
+                <a:upperLimitExpr></a:upperLimitExpr>
+                <a:values>if(length(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;)&gt;=2, #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;[2], null)</a:values>
+            </a:facetOption>
+            <a:facetOption>
+                <a:labelExpr>if(length(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;)&gt;=3, #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;[3], null)</a:labelExpr>
+                <a:facetOperator>IN</a:facetOperator>
+                <a:lowerLimitExpr></a:lowerLimitExpr>
+                <a:upperLimitExpr></a:upperLimitExpr>
+                <a:values>if(length(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;)&gt;=3, #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;[3], null)</a:values>
+            </a:facetOption>
+            <a:facetOption>
+                <a:labelExpr>if(length(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;)&gt;=4, #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;[4], null)</a:labelExpr>
+                <a:facetOperator>IN</a:facetOperator>
+                <a:lowerLimitExpr></a:lowerLimitExpr>
+                <a:upperLimitExpr></a:upperLimitExpr>
+                <a:values>if(length(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;)&gt;=4, #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;[4], null)</a:values>
+            </a:facetOption>
+            <a:facetOption>
+                <a:labelExpr>if(length(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;)&gt;=5, #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;[5], null)</a:labelExpr>
+                <a:facetOperator>IN</a:facetOperator>
+                <a:lowerLimitExpr></a:lowerLimitExpr>
+                <a:upperLimitExpr></a:upperLimitExpr>
+                <a:values>if(length(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;)&gt;=5, #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;[5], null)</a:values>
+            </a:facetOption>
+            <a:facetOption>
+                <a:labelExpr>if(length(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;)&gt;=6, #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;[6], null)</a:labelExpr>
+                <a:facetOperator>IN</a:facetOperator>
+                <a:lowerLimitExpr></a:lowerLimitExpr>
+                <a:upperLimitExpr></a:upperLimitExpr>
+                <a:values>if(length(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;)&gt;=6, #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;[6], null)</a:values>
+            </a:facetOption>
+            <a:facetOption>
+                <a:labelExpr>if(length(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;)&gt;=7, #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;[7], null)</a:labelExpr>
+                <a:facetOperator>IN</a:facetOperator>
+                <a:lowerLimitExpr></a:lowerLimitExpr>
+                <a:upperLimitExpr></a:upperLimitExpr>
+                <a:values>if(length(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;)&gt;=7, #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;[7], null)</a:values>
+            </a:facetOption>
+            <a:facetOption>
+                <a:labelExpr>if(length(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;)&gt;=8, #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;[8], null)</a:labelExpr>
+                <a:facetOperator>IN</a:facetOperator>
+                <a:lowerLimitExpr></a:lowerLimitExpr>
+                <a:upperLimitExpr></a:upperLimitExpr>
+                <a:values>if(length(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;)&gt;=8, #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;[8], null)</a:values>
+            </a:facetOption>
+            <a:facetOption>
+                <a:labelExpr>if(length(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;)&gt;=9, #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;[9], null)</a:labelExpr>
+                <a:facetOperator>IN</a:facetOperator>
+                <a:lowerLimitExpr></a:lowerLimitExpr>
+                <a:upperLimitExpr></a:upperLimitExpr>
+                <a:values>if(length(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;)&gt;=9, #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;[9], null)</a:values>
+            </a:facetOption>
+            <a:facetOption>
+                <a:labelExpr>if(length(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;)&gt;=10, #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;[10], null)</a:labelExpr>
+                <a:facetOperator>IN</a:facetOperator>
+                <a:lowerLimitExpr></a:lowerLimitExpr>
+                <a:upperLimitExpr></a:upperLimitExpr>
+                <a:values>if(length(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;)&gt;=10, #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;[10], null)</a:values>
+            </a:facetOption>
+            <a:sortOrderIndex>0</a:sortOrderIndex>
+            <a:facetOrderIndex>0</a:facetOrderIndex>
+        </a:fieldCfg>
+        <a:fieldCfg name="Price">
+            <a:description></a:description>
+            <a:sourceRef>price</a:sourceRef>
+            <a:isSortable>false</a:isSortable>
+            <a:isSearchable>false</a:isSearchable>
+            <a:isFacet>true</a:isFacet>
+            <a:facetType>CUSTOM_BUCKETS_CLOSED</a:facetType>
+            <a:isExclusiveFacet>true</a:isExclusiveFacet>
+            <a:facetLabelExpr>&quot;Price&quot;</a:facetLabelExpr>
+            <a:facetOption>
+                <a:labelExpr>&quot;Less than $10&quot;</a:labelExpr>
+                <a:facetOperator>BETWEEN</a:facetOperator>
+                <a:lowerLimitExpr>0</a:lowerLimitExpr>
+                <a:upperLimitExpr>10</a:upperLimitExpr>
+            </a:facetOption>
+            <a:facetOption>
+                <a:labelExpr>&quot;$10 to $25&quot;</a:labelExpr>
+                <a:facetOperator>BETWEEN</a:facetOperator>
+                <a:lowerLimitExpr>10</a:lowerLimitExpr>
+                <a:upperLimitExpr>25</a:upperLimitExpr>
+            </a:facetOption>
+            <a:facetOption>
+                <a:labelExpr>&quot;$25 to $50&quot;</a:labelExpr>
+                <a:facetOperator>BETWEEN</a:facetOperator>
+                <a:lowerLimitExpr>25</a:lowerLimitExpr>
+                <a:upperLimitExpr>50</a:upperLimitExpr>
+            </a:facetOption>
+            <a:facetOption>
+                <a:labelExpr>&quot;$50 to $100&quot;</a:labelExpr>
+                <a:facetOperator>BETWEEN</a:facetOperator>
+                <a:lowerLimitExpr>50</a:lowerLimitExpr>
+                <a:upperLimitExpr>100</a:upperLimitExpr>
+            </a:facetOption>
+            <a:facetOption>
+                <a:labelExpr>&quot;$100 to $200&quot;</a:labelExpr>
+                <a:facetOperator>BETWEEN</a:facetOperator>
+                <a:lowerLimitExpr>100</a:lowerLimitExpr>
+                <a:upperLimitExpr>200</a:upperLimitExpr>
+            </a:facetOption>
+            <a:facetOption>
+                <a:labelExpr>&quot;$200 and Above&quot;</a:labelExpr>
+                <a:facetOperator>BETWEEN</a:facetOperator>
+                <a:lowerLimitExpr>200</a:lowerLimitExpr>
+                <a:upperLimitExpr>999999</a:upperLimitExpr>
+            </a:facetOption>
+            <a:sortOrderIndex>1</a:sortOrderIndex>
+            <a:facetOrderIndex>1</a:facetOrderIndex>
+        </a:fieldCfg>
+        <a:detailViewCfg>
+            <a:nameExpr>=&quot;Summary&quot;</a:nameExpr>
+            <a:uiExpr> #&quot;1f91132e-3675-45d6-ad5e-3a0c635e71a7&quot; (rp!id)</a:uiExpr>
+            <a:visibilityExpr>=true()</a:visibilityExpr>
+            <a:urlStub>summary</a:urlStub>
+            <a:headerExpr></a:headerExpr>
+            <a:relatedActionCfg>af0ad8f4-f267-400e-8062-bfd12236f7e5</a:relatedActionCfg>
+            <a:relatedActionCfg>47aad02b-4c77-453e-8199-c2e9d9ac61ad</a:relatedActionCfg>
+            <a:relatedActionCfg>b1060593-a9f4-416c-8057-930121323da2</a:relatedActionCfg>
+        </a:detailViewCfg>
+        <a:defaultFilter>
+            <a:field>isActive</a:field>
+            <a:operator>=</a:operator>
+            <a:valueExpression>true</a:valueExpression>
+        </a:defaultFilter>
+        <a:defaultSortInfo>
+            <field>name</field>
+            <ascending>true</ascending>
+        </a:defaultSortInfo>
+        <a:relatedActionCfg>
+            <a:target xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="a:ProcessModel" a:uuid="000ad9cb-ddef-8000-f92f-7f0000014e7a"/>
+            <a:contextExpr>=with(
+  local!productData:#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4326&quot;(rp!id),
+  {
+    product :local!productData,
+    preUpdateProductData: local!productData  }
+)</a:contextExpr>
+            <a:visibilityExpr>=true()</a:visibilityExpr>
+            <a:refId>af0ad8f4-f267-400e-8062-bfd12236f7e5</a:refId>
+        </a:relatedActionCfg>
+        <a:relatedActionCfg>
+            <a:target xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="a:ProcessModel" a:uuid="0009d9e6-2dc4-8000-f92f-7f0000014e7a"/>
+            <a:contextExpr>={
+ProductSKU: rf!sku,
+RestockCount: null,
+button: null
+}</a:contextExpr>
+            <a:visibilityExpr>=true()</a:visibilityExpr>
+            <a:refId>47aad02b-4c77-453e-8199-c2e9d9ac61ad</a:refId>
+        </a:relatedActionCfg>
+        <a:relatedActionCfg>
+            <a:target xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="a:ProcessModel" a:uuid="0009d9cb-f251-8000-f92f-7f0000014e7a"/>
+            <a:contextExpr>{&#xD;
+ product : #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4326&quot;(rp!id)&#xD;
+}</a:contextExpr>
+            <a:visibilityExpr>=true()</a:visibilityExpr>
+            <a:refId>b1060593-a9f4-416c-8057-930121323da2</a:refId>
+        </a:relatedActionCfg>
+        <a:isSystem>false</a:isSystem>
+        <a:dataSrcExpr></a:dataSrcExpr>
+        <a:facetsListExpr></a:facetsListExpr>
+        <a:defaultFiltersExpr></a:defaultFiltersExpr>
+        <a:security>32767</a:security>
+    </recordType>
+    <roleMap>
+        <role name="record_type_administrator">
+            <users/>
+            <groups>
+                <groupUuid>_e-0000d9c4-bcae-8000-9aee-01075c01075c_17</groupUuid>
+            </groups>
+        </role>
+        <role name="record_type_editor">
+            <users/>
+            <groups>
+                <groupUuid>_e-0000da5f-caa8-8000-9aee-01075c01075c_16</groupUuid>
+            </groups>
+        </role>
+    </roleMap>
+</recordTypeHaul>

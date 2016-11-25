@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_SR_uiShowCustomerOrders</name>
+        <uuid>1780c64a-95dd-4c00-b83f-843a26e2807e</uuid>
+        <description>Displays a grid showing the customer's orders and optionally the selected order's line items.</description>
+        <parentUuid>_a-0000da5f-caaa-8000-9ba2-011c48011c48_2618</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>/* To test:
+1) Set selectedCustomer to {rule!CASE_APP_getAllCustomerFieldsById(customerId)}
+2) set serviceRequest to type!CASE_APP_ServiceRequest()
+3) Set isSelectable to true or false
+4) Set gridSelection to a!gridSelection(a!pagingInfo(1,1,null),null)
+*/
+with(
+  /* Check to see if Customer has any orders*/
+  local!datasubset: queryrecord(
+    #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6210&quot;,
+    #&quot;SYSTEM_SYSRULES_query&quot;(
+      selection: #&quot;SYSTEM_SYSRULES_querySelection&quot;(columns: {#&quot;SYSTEM_SYSRULES_queryColumn&quot;(field:&quot;id&quot;)}),
+      filter: #&quot;SYSTEM_SYSRULES_queryFilter&quot;(&quot;Customer.id&quot;,&quot;=&quot;,ri!selectedCustomer.id[1]),
+      pagingInfo: #&quot;SYSTEM_SYSRULES_pagingInfo&quot;(1,1,null)
+    )
+  ),
+  /* Display Orders or &quot;No Orders&quot; Message */
+  if(local!datasubset.totalCount &gt; 0,
+    {
+      /* We have orders. Show orders grid */
+      #&quot;SYSTEM_SYSRULES_sectionLayout&quot;(
+        label:if(ri!isSelectable,&quot;Please choose the order you need help with&quot;,&quot;These are your Orders&quot;),
+        firstColumnContents:{
+          #&quot;6d0b94c1-374a-4090-bb16-9ea3ed219bd6&quot;(
+            customerId:ri!selectedCustomer.id,
+            itemsPerPage:5,
+            isSelectable:ri!isSelectable,
+            selectedOrder:ri!serviceReq.relatedOrder,
+            selectedOrderItem:ri!serviceReq.relatedOrderItemId,
+            q2:ri!q2,
+            gridSelection:ri!gridSelection
+          )
+        }
+      ),
+      /* Only show question if the grid is selectable and they have selected something */
+      if(and(ri!isSelectable,not(#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(ri!serviceReq.relatedOrder))),
+        {
+          #&quot;SYSTEM_SYSRULES_radioButtonField&quot;(
+            label:&quot;Do you need help with a specific product in your order?&quot;,
+            choiceLabels:{&quot;Yes&quot;,&quot;No&quot;},
+            choiceValues:{true,false},
+            value:ri!q2,
+            saveInto:{
+              ri!q2,
+              a!save(target:ri!serviceReq.relatedOrderItemId, value:null),
+              a!save(target:ri!gridSelection.selected, value:null)
+            },
+            required:true
+          ),
+          /* Only show OrderItems grid if they answered &quot;Yes&quot; */
+          if(and(not(#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(ri!q2)),ri!q2),
+            {
+              #&quot;3ad1404e-fd3d-496a-9033-789297edc4cb&quot;(
+                orderItems:ri!serviceReq.relatedOrder.OrderItems,
+                isSelectable:true,
+                selectedOrderItem:ri!serviceReq.relatedOrderItemId,
+                gridSelection:ri!gridSelection
+              ),
+              if(#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(ri!serviceReq.relatedOrderItemId),
+                {},
+                #&quot;8328117a-7d23-4f27-bcb8-306068f7a080&quot;(ri!serviceReq,ri!selectedCustomer,ri!uploadedDocs,ri!caseDocs)
+              )
+            },
+            /* If not related to a product, get requesters details */
+            if(and(not(#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(ri!q2)),not(ri!q2)),
+              #&quot;8328117a-7d23-4f27-bcb8-306068f7a080&quot;(ri!serviceReq,ri!selectedCustomer,ri!uploadedDocs,ri!caseDocs),
+              {}
+            )
+          )
+        },
+        if(ri!isSelectable,
+          {},
+          #&quot;SYSTEM_SYSRULES_radioButtonField&quot;(
+            label:&quot;Do you need help with an order?&quot;,
+            choiceLabels:{&quot;Yes&quot;,&quot;No&quot;},
+            choiceValues:{true,false},
+            value:ri!q1,
+            saveInto:{
+              ri!q1,
+              a!save(target:ri!hideOkButton, value:ri!q1),
+              a!save(target:ri!serviceReq.type, value:if(ri!q1,#&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2620&quot;[2],#&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2620&quot;[1]))
+            },
+            required:true
+          )
+        )
+      )
+    },
+    #&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2687&quot;(&quot;There are currently no orders for the selected customer&quot;)
+  )
+)</definition>
+        <namedTypedValue>
+            <name>selectedCustomer</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>isSelectable</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>q1</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>serviceReq</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>hideOkButton</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>q2</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>gridSelection</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>uploadedDocs</name>
+            <type>
+                <name>CollaborationDocument?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>caseDocs</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

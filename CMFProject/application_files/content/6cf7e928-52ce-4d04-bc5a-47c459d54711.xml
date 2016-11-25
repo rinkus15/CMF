@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_restockProduct</name>
+        <uuid>6cf7e928-52ce-4d04-bc5a-47c459d54711</uuid>
+        <description>Initial SAIL form for CASE_APP restock product process</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5845</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>load(&#xD;
+   local!product: #&quot;_a-0000d9df-3187-8000-9ba2-011c48011c48_9451&quot;(ri!productSKU),&#xD;
+#&quot;SYSTEM_SYSRULES_formLayout&quot; (&#xD;
+  label: &quot;Restock Product: &quot;&amp;local!product.name,&#xD;
+  firstColumnContents: {&#xD;
+	  #&quot;SYSTEM_SYSRULES_textField&quot;(&#xD;
+	    label: &quot;Product SKU&quot;,&#xD;
+	    labelPosition: &quot;ADJACENT&quot;,&#xD;
+	    value: ri!productSKU,&#xD;
+	    readOnly: true()&#xD;
+	  ),&#xD;
+	  #&quot;SYSTEM_SYSRULES_textField&quot;(&#xD;
+	    label: &quot;Current Stock&quot;,&#xD;
+	    labelPosition: &quot;ADJACENT&quot;,&#xD;
+	    value: local!product.quantity,&#xD;
+	    readOnly: true()&#xD;
+	  ),&#xD;
+	  #&quot;SYSTEM_SYSRULES_integerField&quot;(&#xD;
+	    label: &quot;# of New Items&quot;,&#xD;
+	    instructions: &quot;Enter the number of new stock items received and being added to the wareshouse&quot;,&#xD;
+	    value: ri!RestockCount,&#xD;
+	    saveInto: ri!RestockCount,&#xD;
+	    required: true(),&#xD;
+	    requiredMessage: &quot;You must enter a quantity number&quot;,&#xD;
+	    validations: {if(ri!RestockCount&lt;1, &quot;A value greater than 0 must be entered&quot;, null)}&#xD;
+	  )&#xD;
+	  &#xD;
+	  },&#xD;
+    buttons: #&quot;SYSTEM_SYSRULES_ButtonLayout&quot;(&#xD;
+          primaryButtons: {&#xD;
+            #&quot;SYSTEM_SYSRULES_ButtonWidgetSubmit&quot;(&#xD;
+                label: &quot;Submit&quot;,&#xD;
+                style: &quot;PRIMARY&quot;,&#xD;
+                confirmMessage:&quot;Are you sure?&quot;,&#xD;
+                value: &quot;submit&quot;,&#xD;
+                saveInto: ri!button&#xD;
+            )&#xD;
+&#xD;
+          },&#xD;
+          secondaryButtons:{&#xD;
+            #&quot;SYSTEM_SYSRULES_ButtonWidgetSubmit&quot;(&#xD;
+                label: &quot;Cancel&quot;,&#xD;
+                value: &quot;cancel&quot;,&#xD;
+                saveInto: {&#xD;
+                  ri!button,&#xD;
+                  a!save(&#xD;
+                    target: ri!RestockCount,&#xD;
+                    value: 0&#xD;
+                  )&#xD;
+                },&#xD;
+                skipValidation: true&#xD;
+            )            &#xD;
+          }&#xD;
+    ) &#xD;
+)&#xD;
+)&#xD;
+</definition>
+        <namedTypedValue>
+            <name>productSKU</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>RestockCount</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>button</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

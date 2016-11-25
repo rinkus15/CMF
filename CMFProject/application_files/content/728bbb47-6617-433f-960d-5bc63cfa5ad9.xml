@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_getOrderDetailsData</name>
+        <uuid>728bbb47-6617-433f-960d-5bc63cfa5ad9</uuid>
+        <description>Queries the OrderDetails view and provides options for selection or aggregation. 
+[customerId]: If provided, will only return results for that customer. 
+[columnNames]: If specified, it will return only the selected columns. Acceptable column options are: customerId, orderId, orderTaxRate, orderShippingCost, orderTotal, orderItemid, orderItemQty, orderItemUnitPrice, prodTotal, productId, productName, productManufacturer, productStock. 
+[groupByColumns]: When provided, this indicates which columns will be grouped by. The aggregationColumns and aggregationFunction cannot be null or the function will return null. 
+[aggregationColumns]: Indicates which columns to aggregate by. 
+[aggregationFunction]: The function to use when aggregating the field. Valid values: “COUNT”, “SUM”, “AVG”, “MIN”, “MAX”. </description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5841</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>with(
+  local!pagingInfo:#&quot;SYSTEM_SYSRULES_pagingInfo&quot;(1,ri!batchSize,#&quot;SYSTEM_SYSRULES_sortInfo&quot;(&quot;productId&quot;,false)),
+  #&quot;SYSTEM_SYSRULES_queryEntity&quot;(
+    #&quot;_a-0000da89-b5e9-8000-9ba2-011c48011c48_3190&quot;,
+    #&quot;SYSTEM_SYSRULES_query&quot;(
+      selection:if(#&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1982&quot;(ri!columnNames),
+        null,
+        #&quot;SYSTEM_SYSRULES_querySelection&quot;(
+          columns:apply(
+            #&quot;SYSTEM_SYSRULES_queryColumn&quot;(field:_),
+            ri!columnNames
+          )
+        )
+      ),
+      aggregation:if(
+        or(
+          not(#&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1982&quot;(ri!columnNames)),
+          #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1982&quot;(ri!groupByColumns),
+          #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1982&quot;(ri!aggregationFunction),
+          #&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(ri!aggregationFunction)
+        ),
+        null,
+        #&quot;SYSTEM_SYSRULES_queryAggregation&quot;(
+          {
+            apply(
+              #&quot;SYSTEM_SYSRULES_queryAggregationColumn&quot;(field:_,isGrouping:true),
+              ri!groupByColumns
+            ),
+            apply(
+              #&quot;SYSTEM_SYSRULES_queryAggregationColumn&quot;(field:_,aggregationFunction:ri!aggregationFunction),
+              ri!aggregationColumns
+            ),
+          }
+        )
+      ),
+      filter:if(#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(ri!customerId),
+        null,
+        #&quot;SYSTEM_SYSRULES_queryFilter&quot;(
+          field:&quot;customerId&quot;,
+          operator:&quot;=&quot;,
+          value:ri!customerId
+        )
+      ),
+      pagingInfo:local!pagingInfo
+    )
+  )
+)</definition>
+        <namedTypedValue>
+            <name>customerId</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>columnNames</name>
+            <type>
+                <name>Text?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>groupByColumns</name>
+            <type>
+                <name>Text?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>aggregationColumns</name>
+            <type>
+                <name>Text?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>aggregationFunction</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>batchSize</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_SR_uiFormAssignToCaseWorker</name>
+        <uuid>bf5b3b0f-ff3c-4efa-bbd5-e40a3a0982d4</uuid>
+        <description></description>
+        <parentUuid>_a-0000da5f-caaa-8000-9ba2-011c48011c48_2618</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>/* To Test:
+1) Set serviceReq to type!CASE_APP_ServiceRequest(
+  requestNum:&quot;123a-1234&quot;,
+  requestDateTime:now(),
+  type:&quot;I need help with an Order&quot;,
+  relatedCustomer:CASE_APP_getAllCustomerFieldsById(1),
+  relatedOrder: CASE_APP_getAllOrderFieldsById(1),
+  relatedOrderItemId:1,
+  comments:&quot;Sample comments&quot;,
+  status:&quot;Solution&quot;,
+  id:53051235
+)
+*/
+load(
+  local!userWorkload:apply(
+    #&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2769&quot;,
+    getdistinctusers(#&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2763&quot;)
+  ),
+  local!gridPI:#&quot;SYSTEM_SYSRULES_pagingInfo&quot;(1,5,#&quot;SYSTEM_SYSRULES_sortInfo&quot;(&quot;workload&quot;,true)),
+  local!suggestedUser:local!userWorkload.user[wherecontains(tointeger(min(local!userWorkload.workload)),tointeger(local!userWorkload.workload))[1]],
+  with(
+    local!gridData:todatasubset(local!userWorkload, local!gridPI),
+    #&quot;SYSTEM_SYSRULES_formLayout&quot;(
+      label: &quot;Assign Customer Service Request to Case Worker&quot;,
+      instructions: &quot;Please select a Case Worker for this Request&quot;,
+      firstColumnContents: {
+        #&quot;SYSTEM_SYSRULES_milestoneField&quot;(
+          steps:#&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2848&quot;,
+          active:ri!currentMilestone
+        ),
+        #&quot;051657d6-8b7d-4398-b529-edffef50deae&quot;(ri!serviceReq, ri!currentMilestone),
+        #&quot;SYSTEM_SYSRULES_sectionLayout&quot;(
+          label: &quot;Select Case Worker&quot;,
+          firstColumnContents: {
+            #&quot;SYSTEM_SYSRULES_dropdownField&quot;(
+              label:&quot;Available Case Workers&quot;,
+              instructions:&quot;User with less workload automatically selected. You may override selection.&quot;,
+              choiceLabels:local!userWorkload.userDisplay,
+              placeholderLabel:&quot;---Select a Case Worker---&quot;,
+              choiceValues:local!userWorkload.user,
+              value:local!suggestedUser,
+              saveInto:local!suggestedUser,
+              required:true
+            )
+          },
+          secondColumnContents:{
+            #&quot;SYSTEM_SYSRULES_gridField&quot;(
+              label:&quot;Workload per Case Worker&quot;,
+              totalCount:length(local!userWorkload),
+              columns:{
+                #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+                  label:&quot;Case Worker&quot;,
+                  field:&quot;userDisplay&quot;,
+                  data:index(local!gridData.data,&quot;userDisplay&quot;,null)
+                ),
+                #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+                  label:&quot;Task Workload&quot;,
+                  field:&quot;workload&quot;,
+                  data:index(local!gridData.data,&quot;workload&quot;,null)
+                )
+              },
+              value:local!gridPI,
+              saveInto:local!gridPI
+            )
+          }
+        )
+      },
+      secondColumnContents: {},
+      buttons: #&quot;SYSTEM_SYSRULES_ButtonLayout&quot;(
+        primaryButtons: {
+          #&quot;SYSTEM_SYSRULES_ButtonWidgetSubmit&quot;(
+            label: &quot;Submit&quot;,
+            style: &quot;PRIMARY&quot;,
+            saveInto: {
+              a!save(ri!caseWorker,local!suggestedUser),
+              a!save(ri!serviceReq.serviceRep, local!suggestedUser)
+            }
+          )
+        },
+        secondaryButtons: {}
+      ),
+      validations: {}
+    )
+  )
+)</definition>
+        <namedTypedValue>
+            <name>serviceReq</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>caseWorker</name>
+            <type>
+                <name>User</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>currentMilestone</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

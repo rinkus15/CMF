@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_reportOrdersDashboard</name>
+        <uuid>28747299-7776-4b38-b7ab-e256efc51d9d</uuid>
+        <description>Shows a report dashboard summarizing all orders</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5995</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>=load(
+  local!industryFilter,  
+  #&quot;SYSTEM_SYSRULES_dashboardLayout&quot;(
+    firstColumnContents: {
+      if(#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(local!industryFilter),
+        #&quot;SYSTEM_SYSRULES_sectionLayout&quot;(
+          label: &quot;Orders by Industry&quot;,
+          firstColumnContents: {
+              #&quot;7c34cb8a-4a6e-406f-bfeb-d1e17ad23adb&quot;(local!industryFilter)
+          },
+          secondColumnContents: {
+            #&quot;f453213f-a183-4c3f-a478-fda75de4a0c2&quot;(local!industryFilter)
+          }
+        ),
+        #&quot;SYSTEM_SYSRULES_sectionLayout&quot;(
+          label: &quot;Orders by Industry&quot;,
+          firstColumnContents: {
+            #&quot;c2dcd025-bd55-4a64-ae9d-8a264e46514e&quot;(local!industryFilter),
+            #&quot;SYSTEM_SYSRULES_ButtonLayout&quot;(
+              secondaryButtons:#&quot;SYSTEM_SYSRULES_ButtonWidget&quot;(
+                label:&quot;&lt;-- Back to charts&quot;,
+                style:&quot;DESTRUCTIVE&quot;,
+                value:null,
+                saveInto:local!industryFilter
+              )
+            )
+          }
+        )
+      ),
+      #&quot;SYSTEM_SYSRULES_sectionLayout&quot;(
+        label: &quot;Orders &amp; Sales Reps Performance&quot;,
+        firstColumnContents: {
+            #&quot;f6049858-d4af-4977-bcde-0e31395aa1e8&quot;()
+        },
+        secondColumnContents:{
+          #&quot;af1f9e57-2d3e-4dd0-9cce-fbed12aa3a98&quot;()
+        }
+      ),
+      #&quot;SYSTEM_SYSRULES_sectionLayout&quot;(
+        label: &quot;Orders by Date&quot;,
+        firstColumnContents: {
+            #&quot;c7e12438-7dfb-43dd-a925-59a178ef3668&quot;()
+        }
+      )
+    }
+  )
+)</definition>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

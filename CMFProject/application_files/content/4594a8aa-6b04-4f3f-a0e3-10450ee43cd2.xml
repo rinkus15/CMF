@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_uiDetailedTaskView</name>
+        <uuid>4594a8aa-6b04-4f3f-a0e3-10450ee43cd2</uuid>
+        <description>Shows a more detailed task view for current user.</description>
+        <parentUuid>_a-0000da5f-caaa-8000-9ba2-011c48011c48_2880</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>=load(
+  local!gridPI:#&quot;SYSTEM_SYSRULES_pagingInfo&quot;(1,10,#&quot;SYSTEM_SYSRULES_sortInfo&quot;(field:&quot;c1&quot;)),
+  local!statusFilter:-1,
+  with(
+    local!tasksForUser:a!queryProcessAnalytics(
+      report:#&quot;_a-0000da89-b5e9-8000-9ba2-011c48011c48_3978&quot;,
+      query:#&quot;SYSTEM_SYSRULES_query&quot;(
+        filter:if(local!statusFilter=-1, null,#&quot;SYSTEM_SYSRULES_queryFilter&quot;(field:&quot;c1&quot;,operator:&quot;=&quot;,value:local!statusFilter)),
+        pagingInfo:local!gridPI
+      )
+    ),
+    {
+      #&quot;SYSTEM_SYSRULES_dropdownField&quot;(
+        label: &quot;Status&quot;,
+        choiceLabels: {&quot;All&quot;, &quot;Assigned&quot;, &quot;Accepted&quot;},
+        choiceValues: {-1,0,1},
+        value: local!statusFilter,
+        saveInto: {
+          local!statusFilter,
+          a!save(local!gridPI.startIndex, 1)
+        }
+      ),
+      #&quot;SYSTEM_SYSRULES_gridField&quot;(
+        label:&quot;Current Tasks&quot;,
+        instructions:&quot;A list of all tasks for the current user.&quot;,
+        totalCount:local!tasksForUser.totalCount,
+        columns:apply(
+          #&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2897&quot;(columnConfig:_, data:local!tasksForUser.data, showLink:true),
+          local!tasksForUser.columnConfigs
+        ),
+        value:local!gridPI,
+        saveInto:local!gridPI
+      )
+    }
+  )
+)</definition>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

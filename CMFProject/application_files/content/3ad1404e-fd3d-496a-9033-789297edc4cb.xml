@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_uiGridProductsForOrder</name>
+        <uuid>3ad1404e-fd3d-496a-9033-789297edc4cb</uuid>
+        <description>Displays a paging grid with product information in a specified order.
+To test, set orderItems to:
+rule!CASE_APP_getAllOrderFieldsbyID(rf!id).OrderItems
+and set value for isSelectable</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5995</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>/*To Test:
+1) Set orderItems to rule!CASE_APP_getAllOrderFieldsbyID(Orderid).OrderItems
+2) Set gridSelection to a!gridSelection(pagingInfo:a!pagingInfo(1,5,null)
+*/
+with(
+  local!gridData:todatasubset(ri!orderItems,ri!gridSelection.pagingInfo),
+  #&quot;SYSTEM_SYSRULES_gridField&quot;(
+    totalCount:local!gridData.totalCount,
+    columns:{
+      #&quot;SYSTEM_SYSRULES_gridImageColumn&quot;(
+        label:&quot;Image&quot;,
+        field:&quot;id&quot;,
+        data:apply(
+          #&quot;SYSTEM_SYSRULES_documentImage&quot;(document:_),
+          local!gridData.data.product.productImageDocId
+        )
+      ),
+      #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+        label:&quot;Product&quot;,
+        field:&quot;Product.name&quot;,
+        data:index(local!gridData.data.Product,&quot;name&quot;,null)
+      ),
+      #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+        label:&quot;SKU&quot;,
+        field:&quot;Product.sku&quot;,
+        data:index(local!gridData.data.Product,&quot;sku&quot;,null),
+        links:apply(
+          #&quot;SYSTEM_SYSRULES_recordLink&quot;(
+            recordType:#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3830&quot;,
+            identifier:_),
+          index(local!gridData.data.Product,&quot;id&quot;,null)
+        )
+      ),
+      #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+        label:&quot;QTY&quot;,
+        field:&quot;Quantity&quot;,
+        data:index(local!gridData.data,&quot;quantity&quot;,null)
+      ),
+      #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+        label:&quot;Unit Price&quot;,
+        field:&quot;Product.price&quot;,
+        data:apply(
+          fn!dollar,
+          index(local!gridData.data.Product,&quot;price&quot;,null)
+        )
+      ),
+      #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+        label:&quot;Total&quot;,
+        field:&quot;Product.price&quot;,
+        data:apply(
+          fn!dollar,
+          index(local!gridData.data,&quot;quantity&quot;,null)*index(local!gridData.data.Product,&quot;price&quot;,null)
+        )
+      ),
+      #&quot;SYSTEM_SYSRULES_gridImageColumn&quot;(
+        label:&quot;Taxed?&quot;,
+        field:&quot;Taxed&quot;,
+        data:apply(
+          #&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2604&quot;,
+          index(local!gridData.data,&quot;Taxed&quot;,null)
+        ),
+        size:&quot;ICON&quot;
+      )
+    },
+    identifiers:local!gridData.data.id,
+    value:ri!gridSelection,
+    saveInto:{
+      ri!gridSelection,
+      a!save(
+        target:ri!selectedOrderItem,
+        value:ri!gridSelection.selected
+      )
+    },
+    selection:ri!isSelectable,
+    requireSelection:ri!isSelectable,
+    validations:if(count(ri!gridSelection.selected)&gt;if(#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(ri!maxSelection),1,ri!maxSelection),
+      &quot;You may only select &quot;&amp;if(#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(ri!maxSelection),&quot;1&quot;,ri!maxSelection)&amp;&quot; product&quot;,
+      null
+    )
+  )
+)</definition>
+        <namedTypedValue>
+            <name>orderItems</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>isSelectable</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>selectedOrderItem</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>gridSelection</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>maxSelection</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

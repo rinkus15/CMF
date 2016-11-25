@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_UpdateProductQuantity</name>
+        <uuid>_a-0000d9df-3187-8000-9ba2-011c48011c48_9489</uuid>
+        <description>Used to generate a structured CDT of Product that iterates the quantity</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5847</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>load(
+  local!product: #&quot;_a-0000d9df-3187-8000-9ba2-011c48011c48_9451&quot;(
+    ri!productSKU
+  ),
+  'type!{urn:com:appian:types:CASE_APP}CASE_APP_Product'(
+    id: local!product.id,
+    name: local!product.name,
+    sku: local!product.sku,
+    description: local!product.description,
+    category: local!product.category,
+    manufacturer: local!product.manufacturer,
+    modelNumber: local!product.modelNumber,
+    releaseDate: local!product.releaseDate,
+    isActive: local!product.isActive,
+    price: local!product.price,
+    quantity: local!product.quantity + ri!restockCount,
+    shippingDetails: local!product.shippingDetails,
+    productImageDocId: local!product.productImageDocId,
+    webImageID: local!product.webImageID,
+    productCategory: local!product.productCategory
+  )
+)</definition>
+        <namedTypedValue>
+            <name>productSKU</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>restockCount</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>legacy</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

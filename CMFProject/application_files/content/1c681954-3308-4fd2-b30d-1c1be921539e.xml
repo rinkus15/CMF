@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_UpdateOrderStatus</name>
+        <uuid>1c681954-3308-4fd2-b30d-1c1be921539e</uuid>
+        <description>Used as a related action on an order to update the status</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5995</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>=#&quot;SYSTEM_SYSRULES_formLayout&quot;(
+  label: &quot;Update Order&quot;,
+  firstColumnContents: {
+    #&quot;SYSTEM_SYSRULES_sectionLayout&quot;(
+      label: &quot;Order Items&quot;,
+      isCollapsible: true(),
+      firstColumnContents: {
+        #&quot;f6ebce54-e12d-42ee-97b9-b37c3c001125&quot;(OrderItems: ri!Order.OrderItems, gridLabel: null, gridInstructions: null, readOnly: true())
+      }
+    ),
+    #&quot;SYSTEM_SYSRULES_sectionLayout&quot;(
+      label: &quot;Update Order Status&quot;,
+      firstColumnContents:
+      {
+        #&quot;SYSTEM_SYSRULES_dropdownField&quot;(
+          label: &quot;Status&quot;,
+          labelPosition: &quot;ADJACENT&quot;,
+          instructions: &quot;Select the new order status&quot;,
+          required: true(),
+          requiredMessage: &quot;A order status must be selected&quot;,
+          choiceLabels: #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6146&quot;,
+          choiceValues: #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6146&quot;,
+          placeholderLabel: &quot;--Set Order Status--&quot;,
+          value: ri!Order.Status,
+          saveInto: ri!Order.Status
+        )
+      }
+    ),
+    if(ri!Order.Status=#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6146&quot;[2],
+      {
+        #&quot;SYSTEM_SYSRULES_sectionLayout&quot;(
+          label: &quot;Verify Order for Shipment&quot;
+        ),
+        #&quot;SYSTEM_SYSRULES_applyComponents&quot;(
+          function: #&quot;799e1fbe-6876-4320-9096-54d3bab97ee2&quot;(_),
+          array: ri!Order.OrderItems
+        )
+      },
+    if(ri!Order.Status=#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6146&quot;[3],
+      {
+            #&quot;SYSTEM_SYSRULES_sectionLayout&quot;(
+            label: &quot;Complete Order Shipment&quot;,
+            firstColumnContents:{
+              #&quot;SYSTEM_SYSRULES_textField&quot;(
+                label: &quot;Tracking Number&quot;,
+                labelPosition: &quot;ADJACENT&quot;,
+                instructions: &quot;Input the shipment tracking number&quot;,
+                required: true(),
+                readOnly: false(),
+                value: ri!Order.TrackingNumber,
+                saveInto: ri!Order.TrackingNumber
+              )
+            }
+          )
+      },
+        {}))
+    
+  },
+  buttons: #&quot;SYSTEM_SYSRULES_ButtonLayout&quot;(
+    primaryButtons: {
+      #&quot;SYSTEM_SYSRULES_ButtonWidgetSubmit&quot;(
+        label: &quot;Submit&quot;,
+        style: &quot;PRIMARY&quot;
+      )
+    }
+  )
+)</definition>
+        <namedTypedValue>
+            <name>Order</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

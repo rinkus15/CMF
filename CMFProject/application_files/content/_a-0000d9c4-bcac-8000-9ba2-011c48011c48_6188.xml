@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_OrderHTMLRowSnippet</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6188</uuid>
+        <description>Generates the HTML to insert into the order confirmation HTML document</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5996</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>&quot; &lt;tr height=20 style='mso-height-source:userset;height:20.25pt'&gt;
+  &lt;td height=20 class=xl67 style='height:20.25pt'&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td class=xl124&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td class=xl87 style='border-top:none'&gt;&lt;a name=StockNo&gt;&quot;
+
+ &amp; ri!OrderItem.Product.sku &amp; 
+
+&quot;&lt;/a&gt;&lt;/td&gt;
+  &lt;td class=xl88 width=86 style='border-top:none;border-left:none;width:86pt'&gt;&lt;a
+  name=Quantity1&gt;&lt;/a&gt;&lt;a name=Quantity&gt;&quot;
+
+ &amp; ri!OrderItem.Quantity &amp; 
+
+&quot;&lt;/a&gt;&lt;/td&gt;
+  &lt;td class=xl89 style='border-top:none;border-left:none'&gt;&lt;a name=Product1&gt;&lt;/a&gt;&lt;a
+  name=Description&gt;&quot;
+
+ &amp; ri!OrderItem.Product.name &amp; 
+
+&quot;&lt;/a&gt;&lt;/td&gt;
+  &lt;td class=xl90 style='border-top:none;border-left:none'&gt;&lt;a name=UnitPrice&gt;&quot;
+
+ &amp; ri!OrderItem.OrderItemUnitPrice &amp; 
+
+&quot;&lt;/a&gt;&lt;/td&gt;
+  &lt;td class=xl91 style='border-top:none;border-left:none'&gt;&lt;a name=Taxed&gt;&quot;
+
+ &amp; ri!OrderItem.Taxed &amp; 
+
+&quot;&lt;/a&gt;&lt;/td&gt;
+  &lt;td class=xl125&gt;&amp;nbsp;&lt;/td&gt;
+ &lt;/tr&gt;&quot;</definition>
+        <namedTypedValue>
+            <name>OrderItem</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>legacy</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

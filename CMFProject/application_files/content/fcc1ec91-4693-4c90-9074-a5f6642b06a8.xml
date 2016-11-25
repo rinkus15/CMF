@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_uiOrderDetailsInfo</name>
+        <uuid>fcc1ec91-4693-4c90-9074-a5f6642b06a8</uuid>
+        <description></description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5995</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>{
+  if(ri!showMilestones,
+    #&quot;SYSTEM_SYSRULES_milestoneField&quot;(
+      label: null,
+      steps: #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6146&quot;,
+      active: wherecontains(tostring(ri!Order.Status),#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6146&quot;)
+    ),
+    {}
+  ),
+  #&quot;SYSTEM_SYSRULES_sectionLayout&quot;(
+    label: &quot;Order Information&quot;,
+    firstColumnContents: {
+      #&quot;SYSTEM_SYSRULES_textField&quot;(
+        label: &quot;Order Number&quot;,
+        labelPosition: &quot;ADJACENT&quot;,
+        value: ri!Order.OrderNum,
+        readOnly: true
+      ),
+      #&quot;SYSTEM_SYSRULES_dateField&quot;(
+        label: &quot;Order Date&quot;,
+        labelPosition: &quot;ADJACENT&quot;,
+        value: ri!Order.OrderDate,
+        readOnly: true
+      ),
+      #&quot;SYSTEM_SYSRULES_textField&quot;(
+        label: &quot;Status&quot;,
+        labelPosition: &quot;ADJACENT&quot;,
+        value: ri!Order.Status,
+        readOnly: true
+      ),
+      if(or(ri!Order.Status=#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6146&quot;[3], ri!Order.Status=#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6146&quot;[4]), 
+      #&quot;SYSTEM_SYSRULES_textField&quot;(
+        label: &quot;Tracking #&quot;,
+        labelPosition: &quot;ADJACENT&quot;,
+        value: ri!Order.TrackingNumber,
+        readOnly: true
+      ),
+      {}
+      )
+    },
+    secondColumnContents: {
+      #&quot;SYSTEM_SYSRULES_linkField&quot;(
+        label: &quot;Customer&quot;,
+        labelPosition: &quot;ADJACENT&quot;,
+        links: {
+          #&quot;SYSTEM_SYSRULES_recordLink&quot;(
+            label: ri!Order.Customer.Name,
+            recordType: #&quot;_a-0000d9b8-a7c6-8000-9e06-010000010000_504&quot;,
+            identifier: ri!Order.Customer.id,
+            dashboard: &quot;summary&quot;
+          )
+        },
+        align: &quot;LEFT&quot;
+      ),
+      #&quot;SYSTEM_SYSRULES_textField&quot;(
+        label: &quot;Purchaser&quot;,
+        labelPosition: &quot;ADJACENT&quot;,
+        value: ri!Order.PurchaserName,
+        readOnly: true
+      ),
+      #&quot;SYSTEM_SYSRULES_textField&quot;(
+        label: &quot;Email&quot;,
+        labelPosition: &quot;ADJACENT&quot;,
+        value: ri!Order.PurchaserEmail,
+        readOnly: true
+      ),
+      #&quot;SYSTEM_SYSRULES_textField&quot;(
+        label: &quot;Phone&quot;,
+        labelPosition: &quot;ADJACENT&quot;,
+        value: ri!Order.PurchaserPhone,
+        readOnly: true
+      ),
+      if(isnull(ri!Order.CustomerOrderRefNumb), {}, 
+        #&quot;SYSTEM_SYSRULES_textField&quot;(
+          label: &quot;Customer Reference Number&quot;,
+          labelPosition: &quot;ADJACENT&quot;,
+          value: ri!Order.CustomerOrderRefNumb,
+          readOnly: true
+        )
+      )
+    },
+    isCollapsible: true()
+  ),
+  #&quot;SYSTEM_SYSRULES_sectionLayout&quot;(
+    label: &quot;Order Shipping &amp; Billing Addresses&quot;,
+    firstColumnContents: {
+      #&quot;SYSTEM_SYSRULES_richTextDisplayField&quot;(
+        label:&quot;Shipping Address&quot;,
+        labelPosition:&quot;ADJACENT&quot;,
+        value:{
+          #&quot;SYSTEM_SYSRULES_richTextItem&quot;(text:ri!Order.ShippingAddress.Address, style:&quot;EMPHASIS&quot;),
+          &quot;, &quot;&amp;char(10),
+          #&quot;SYSTEM_SYSRULES_richTextItem&quot;(text:ri!Order.ShippingAddress.City, style:&quot;EMPHASIS&quot;),
+          &quot;, &quot;,
+          #&quot;SYSTEM_SYSRULES_richTextItem&quot;(text:ri!Order.ShippingAddress.State, style:&quot;EMPHASIS&quot;),
+          &quot;, &quot;,
+          #&quot;SYSTEM_SYSRULES_richTextItem&quot;(text:ri!Order.ShippingAddress.ZIP, style:&quot;EMPHASIS&quot;),
+          &quot;,&quot;&amp;char(10),
+          #&quot;SYSTEM_SYSRULES_richTextItem&quot;(text:ri!Order.ShippingAddress.Country, style:&quot;EMPHASIS&quot;)
+        }
+      ),
+      #&quot;SYSTEM_SYSRULES_linkField&quot;(
+        label:&quot;Map&quot;,
+        labelPosition:&quot;ADJACENT&quot;,
+        links:#&quot;SYSTEM_SYSRULES_safeLink&quot;(
+          label:&quot;View address on map&quot;,
+          uri:#&quot;_a-0000d513-8ab8-8000-3ca7-0a000064044c_20749&quot;(tohtml(stripwith(concat(
+            ri!Order.ShippingAddress.Address,&quot;, &quot;,ri!Order.ShippingAddress.City,&quot;, &quot;,
+            ri!Order.ShippingAddress.State,&quot;, &quot;,ri!Order.ShippingAddress.ZIP,&quot;, &quot;,
+            ri!Order.ShippingAddress.Country),&quot;'&quot;))
+          )
+        )
+      )
+    },
+    secondColumnContents: {
+      #&quot;SYSTEM_SYSRULES_richTextDisplayField&quot;(
+        label:&quot;Billing Address&quot;,
+        labelPosition:&quot;ADJACENT&quot;,
+        value:{
+          #&quot;SYSTEM_SYSRULES_richTextItem&quot;(text:ri!Order.BillingAddress.Address, style:&quot;EMPHASIS&quot;),
+          &quot;, &quot;&amp;char(10),
+          #&quot;SYSTEM_SYSRULES_richTextItem&quot;(text:ri!Order.BillingAddress.City, style:&quot;EMPHASIS&quot;),
+          &quot;, &quot;,
+          #&quot;SYSTEM_SYSRULES_richTextItem&quot;(text:ri!Order.BillingAddress.State, style:&quot;EMPHASIS&quot;),
+          &quot;, &quot;,
+          #&quot;SYSTEM_SYSRULES_richTextItem&quot;(text:ri!Order.BillingAddress.ZIP, style:&quot;EMPHASIS&quot;),
+          &quot;,&quot;&amp;char(10),
+          #&quot;SYSTEM_SYSRULES_richTextItem&quot;(text:ri!Order.BillingAddress.Country, style:&quot;EMPHASIS&quot;)
+        }
+      ),
+      #&quot;SYSTEM_SYSRULES_linkField&quot;(
+        label:&quot;Map&quot;,
+        labelPosition:&quot;ADJACENT&quot;,
+        links:#&quot;SYSTEM_SYSRULES_safeLink&quot;(
+          label:&quot;View address on map&quot;,
+          uri:#&quot;_a-0000d513-8ab8-8000-3ca7-0a000064044c_20749&quot;(tohtml(stripwith(concat(
+            ri!Order.BillingAddress.Address,&quot;, &quot;,ri!Order.BillingAddress.City,&quot;, &quot;,
+            ri!Order.BillingAddress.State,&quot;, &quot;,ri!Order.BillingAddress.ZIP,&quot;, &quot;,
+            ri!Order.BillingAddress.Country),&quot;'&quot;))
+          )
+        )
+      )
+    }
+  )
+}</definition>
+        <namedTypedValue>
+            <name>Order</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>showMilestones</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

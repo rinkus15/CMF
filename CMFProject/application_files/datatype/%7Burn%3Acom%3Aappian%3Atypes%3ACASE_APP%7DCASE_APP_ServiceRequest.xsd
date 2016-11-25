@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="urn:com:appian:types:CASE_APP"
+  xmlns:tns="urn:com:appian:types:CASE_APP" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="%7Burn%3Acom%3Aappian%3Atypes%3ACASE_APP%7DCASE_APP_AdHocTasking.xsd"/>
+  <xsd:include schemaLocation="%7Burn%3Acom%3Aappian%3Atypes%3ACASE_APP%7DCASE_APP_CaseDocument.xsd"/>
+  <xsd:include schemaLocation="%7Burn%3Acom%3Aappian%3Atypes%3ACASE_APP%7DCASE_APP_CaseHistory.xsd"/>
+  <xsd:include schemaLocation="%7Burn%3Acom%3Aappian%3Atypes%3ACASE_APP%7DCASE_APP_Customer.xsd"/>
+  <xsd:include schemaLocation="%7Burn%3Acom%3Aappian%3Atypes%3ACASE_APP%7DCASE_APP_Order.xsd"/>
+  <xsd:complexType name="CASE_APP_ServiceRequest">
+    <xsd:sequence>
+      <xsd:element name="id" nillable="true" type="xsd:int">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">
+            @Column(nullable=false)
+            @Id
+            @GeneratedValue
+          </xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="requestNum" nillable="true" type="xsd:string"/>
+      <xsd:element name="serviceRep" nillable="true" type="xsd:string"/>
+      <xsd:element name="requestDateTime" nillable="true" type="xsd:dateTime"/>
+      <xsd:element name="requesterName" nillable="true" type="xsd:string"/>
+      <xsd:element name="requesterEmail" nillable="true" type="xsd:string"/>
+      <xsd:element name="requesterPhone" nillable="true" type="xsd:string"/>
+      <xsd:element name="comment" nillable="true" type="xsd:string">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">@Column(length=2000)</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="type" nillable="true" type="xsd:string"/>
+      <xsd:element name="status" nillable="true" type="xsd:string"/>
+      <xsd:element name="processId" nillable="true" type="xsd:int"/>
+      <xsd:element name="resolutionTime" nillable="true" type="xsd:dateTime"/>
+      <xsd:element name="duration" nillable="true" type="xsd:double"/>
+      <xsd:element name="relatedCustomer" nillable="true" type="tns:CASE_APP_Customer"/>
+      <xsd:element name="relatedOrder" nillable="true" type="tns:CASE_APP_Order"/>
+      <xsd:element name="relatedOrderItemId" nillable="true" type="xsd:int"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="subTasks" type="tns:CASE_APP_AdHocTasking"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0"
+        name="caseHistory" type="tns:CASE_APP_CaseHistory"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0"
+        name="caseDocuments" type="tns:CASE_APP_CaseDocument"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

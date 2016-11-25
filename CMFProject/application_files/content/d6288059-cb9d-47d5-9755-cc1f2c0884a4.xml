@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_SR_uiDashboardSummaryView</name>
+        <uuid>d6288059-cb9d-47d5-9755-cc1f2c0884a4</uuid>
+        <description>Summary View Dashboard</description>
+        <parentUuid>_a-0000da5f-caaa-8000-9ba2-011c48011c48_2618</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>=#&quot;SYSTEM_SYSRULES_dashboardLayout&quot;(
+  firstColumnContents: {
+    #&quot;SYSTEM_SYSRULES_milestoneField&quot;(
+      steps:#&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2848&quot;,
+      active:ri!currentMilestone
+    ),
+    #&quot;051657d6-8b7d-4398-b529-edffef50deae&quot;(
+      serviceReq:ri!serviceReqData,
+      currentMilestone:ri!currentMilestone
+    ),
+    #&quot;SYSTEM_SYSRULES_sectionLayout&quot;(
+      label:&quot;Case Documents&quot;,
+      firstColumnContents:{
+        #&quot;db22a1b1-edcb-4c87-a893-14880b22e957&quot;(
+          documents:ri!uploadedDocs,
+          gridSelectable:false,
+          showDocImageType:&quot;THUMBNAIL&quot;,
+          showColumns:{&quot;IMAGE&quot;,&quot;NAME&quot;,&quot;DESCRIPTION&quot;,&quot;EXTENSION&quot;,&quot;DATECREATED&quot;},
+          itemsPerPage:5,
+          linkToDoc:true
+        )
+      },
+      isCollapsible:true
+    ),
+    #&quot;4b363796-1752-4c70-ad51-3bc22d5a27f2&quot;(ri!pId)
+  }
+)</definition>
+        <namedTypedValue>
+            <name>currentMilestone</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>serviceReqData</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>uploadedDocs</name>
+            <type>
+                <name>CollaborationDocument?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>pId</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

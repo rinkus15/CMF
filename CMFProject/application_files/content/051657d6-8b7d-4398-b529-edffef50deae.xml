@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_SR_uiRequestDetailsSection</name>
+        <uuid>051657d6-8b7d-4398-b529-edffef50deae</uuid>
+        <description>Read-Only Section that shows the Service Request details. To be used in dashboards and forms that require displaying SR details</description>
+        <parentUuid>_a-0000da5f-caaa-8000-9ba2-011c48011c48_2618</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>#&quot;SYSTEM_SYSRULES_sectionLayout&quot;(
+  label: &quot;Service Request Details&quot;,
+  firstColumnContents: {
+    #&quot;SYSTEM_SYSRULES_textField&quot;(
+      label: &quot;Service Request Number&quot;,
+      value:ri!serviceReq.requestNum,
+      readOnly:true
+    ),
+    #&quot;SYSTEM_SYSRULES_textField&quot;(
+      label: &quot;Request Type&quot;,
+      value:ri!serviceReq.type,
+      readOnly:true
+    ),
+    #&quot;SYSTEM_SYSRULES_textField&quot;(
+      label: &quot;Request Date &amp; Time&quot;,
+      value:datetext(ri!serviceReq.requestDateTime,&quot;MMM dd, yyyy, h:mm a&quot;),
+      readOnly:true
+    ),
+    #&quot;SYSTEM_SYSRULES_textField&quot;(
+      label: &quot;Requester Name&quot;,
+      value:ri!serviceReq.requesterName,
+      readOnly:true
+    ),
+    #&quot;SYSTEM_SYSRULES_richTextDisplayField&quot;(
+      label:&quot;Current Status&quot;,
+      value:#&quot;SYSTEM_SYSRULES_richTextItem&quot;(text:#&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2630&quot;[ri!currentMilestone])
+    )
+  },
+  secondColumnContents: {
+    #&quot;SYSTEM_SYSRULES_linkField&quot;(
+      label:&quot;Related Customer&quot;,
+      links:#&quot;SYSTEM_SYSRULES_recordLink&quot;(
+        label:ri!serviceReq.relatedCustomer.Name,
+        recordType:#&quot;_a-0000d9b8-a7c6-8000-9e06-010000010000_504&quot;,
+        identifier:ri!serviceReq.relatedCustomer.id
+      )
+    ),
+    if(ri!serviceReq.type=#&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2620&quot;[2],
+      {
+        #&quot;SYSTEM_SYSRULES_linkField&quot;(
+          label:&quot;Related Order&quot;,
+          links:#&quot;SYSTEM_SYSRULES_recordLink&quot;(
+            label:ri!serviceReq.relatedOrder.OrderNum,
+            recordType:#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6210&quot;,
+            identifier:ri!serviceReq.relatedOrder.id
+          )
+        ),
+        if(#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(ri!serviceReq.relatedOrderItemId),
+          {},
+          {
+            with(
+              local!prodData:ri!serviceReq.relatedOrder.OrderItems[wherecontains(ri!serviceReq.relatedOrderItemId,ri!serviceReq.relatedOrder.OrderItems.id)],
+              #&quot;SYSTEM_SYSRULES_gridField&quot;(
+                label:&quot;Related Product&quot;,
+                totalCount:1,
+                columns:{
+                  #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+                    label:&quot;Product Name&quot;,
+                    data:apply(
+                      #&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2826&quot;(_,50),
+                      local!prodData.Product.Name
+                    ),
+                    links:#&quot;SYSTEM_SYSRULES_recordLink&quot;(
+                      recordType:#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3830&quot;,
+                      identifier:local!prodData.Product.id
+                    )
+                  ),
+                  #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+                    label:&quot;Quantity&quot;,
+                    data:local!prodData.Quantity
+                  ),
+                  #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+                    label:&quot;Unit Price&quot;,
+                    data:dollar(local!prodData.OrderItemUnitPrice)
+                  ),
+                  #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+                    label:&quot;Total&quot;,
+                    data:dollar(local!prodData.Quantity*local!prodData.OrderItemUnitPrice)
+                  )
+                },
+                value:#&quot;SYSTEM_SYSRULES_pagingInfo&quot;(1,1,null)
+              )/*close grid*/
+            )/*Close with*/
+          }
+        )/*close if*/
+      },
+      {}
+    ),
+    #&quot;SYSTEM_SYSRULES_textField&quot;(
+      label: &quot;Request Comment&quot;,
+      value:ri!serviceReq.comment,
+      readOnly:true
+    )
+  },
+  isCollapsible:true
+)</definition>
+        <namedTypedValue>
+            <name>serviceReq</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>currentMilestone</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

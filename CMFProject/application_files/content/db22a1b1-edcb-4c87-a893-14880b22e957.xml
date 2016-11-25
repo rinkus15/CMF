@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_DocumentsGrid</name>
+        <uuid>db22a1b1-edcb-4c87-a893-14880b22e957</uuid>
+        <description>Used to display a list of documents in a grid.  
+
+for ri!showColumns pass an array of column types using these names NAME , DESCRIPTION, EXTENSION, DATECREATED, LASTUSERTOMODIFY, TOTALNUMBEROFVERSIONS, IMAGE
+
+For ri!showDocImageType pass the value &quot;ICON&quot; or &quot;THUMBNAIL&quot;
+
+if ri!LinktoDoc - default is true to enable linking to the document.   Set to false to disable linking</description>
+        <parentUuid>_a-0000d9b9-6309-8000-9ba2-011c48011c48_1751</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>load(
+  local!documentData: #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1758&quot;(ri!documents),
+  /* Set the default paging and sorting config */
+  local!gridSelection: #&quot;SYSTEM_SYSRULES_gridSelection&quot;(
+    pagingInfo: #&quot;SYSTEM_SYSRULES_pagingInfo&quot;(
+      startIndex: 1,
+      batchSize: if(isnull(ri!itemsPerPage), 10, ri!itemsPerPage),
+      sort: #&quot;SYSTEM_SYSRULES_sortInfo&quot;(
+        field: &quot;Name&quot;,
+        ascending: true
+      )
+    )
+  ),
+  if(or(isnull(ri!documents), length(ri!documents)&lt;1), {},
+    with(
+        local!datasubset: todatasubset(local!documentData, local!gridSelection.pagingInfo),
+      {
+        
+        #&quot;SYSTEM_SYSRULES_gridField&quot;(
+          label: ri!gridLabel,
+          instructions: ri!gridinstructions,
+          selection: ri!gridSelectable,
+          identifiers: index(local!datasubset.data, &quot;id&quot; , {}),
+          requireSelection: ri!gridSelectionRequired,
+          requiredMessage: ri!gridRequiredMsg,
+          disabled: ri!gridSelectionDisabled,
+          columns: {
+            #&quot;SYSTEM_SYSRULES_applyComponents&quot;(
+              function: #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1860&quot;(
+                columnType: _, 
+                datasubset: local!datasubset, 
+                showDocImageType: ri!showDocImageType, 
+                documents: ri!documents,
+                LinktoDoc: if(isnull(ri!LinktoDoc), true(), ri!LinktoDoc)
+                ), 
+              array: ri!showColumns
+              )
+          },
+          totalCount: count(ri!documents),
+          value: local!gridSelection,
+          saveInto: {
+            ri!gridSelectedValues,
+            local!gridSelection,
+            a!save(ri!selectedDocs, index(save!value, &quot;selected&quot;, null))
+          }
+        )
+      }
+    )
+  )
+)</definition>
+        <namedTypedValue>
+            <name>documents</name>
+            <type>
+                <name>CollaborationDocument?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>gridLabel</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>gridInstructions</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>gridValidations</name>
+            <type>
+                <name>Text?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>gridSelectable</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>gridSelectionDisabled</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>gridSelectionRequired</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>gridSelectedValues</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>showDocImageType</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>gridRequiredMsg</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>showColumns</name>
+            <type>
+                <name>Text?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>itemsPerPage</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>selectedDocs</name>
+            <type>
+                <name>CollaborationDocument?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>LinktoDoc</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

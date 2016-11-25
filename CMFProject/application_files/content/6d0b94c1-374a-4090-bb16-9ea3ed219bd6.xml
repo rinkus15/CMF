@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_uiGridOrdersByCustomer</name>
+        <uuid>6d0b94c1-374a-4090-bb16-9ea3ed219bd6</uuid>
+        <description>Shows a Grid with all the orders by specified customer. gridLabel, gridInstructions, itemsPerPage and whether or not the grid is selectable can be configured as parameters. The customerId is required.</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5839</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>load(
+  local!gridSelection: #&quot;SYSTEM_SYSRULES_gridSelection&quot;(
+    pagingInfo:#&quot;SYSTEM_SYSRULES_pagingInfo&quot;(
+      startIndex: 1,
+      batchSize: ri!itemsPerPage,
+      sort: #&quot;SYSTEM_SYSRULES_sortInfo&quot;(
+        field: &quot;OrderDate&quot;,
+        ascending: false
+      )
+    ),
+    selected:if(#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(ri!selectedOrder),null,ri!selectedOrder.id)
+  ),
+  with(
+    local!gridData: queryrecord(
+      #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6210&quot;,
+      #&quot;SYSTEM_SYSRULES_query&quot;(
+        selection: #&quot;SYSTEM_SYSRULES_querySelection&quot;(columns: {
+          #&quot;SYSTEM_SYSRULES_queryColumn&quot;(field: &quot;OrderNum&quot;),
+          #&quot;SYSTEM_SYSRULES_queryColumn&quot;(field: &quot;PurchaserName&quot;),
+          #&quot;SYSTEM_SYSRULES_queryColumn&quot;(field: &quot;OrderDate&quot;),
+          #&quot;SYSTEM_SYSRULES_queryColumn&quot;(field: &quot;Total&quot;),
+          #&quot;SYSTEM_SYSRULES_queryColumn&quot;(field: &quot;Status&quot;),
+          #&quot;SYSTEM_SYSRULES_queryColumn&quot;(field: &quot;id&quot;),
+          #&quot;SYSTEM_SYSRULES_queryColumn&quot;(field: &quot;Customer.id&quot;),    
+          #&quot;SYSTEM_SYSRULES_queryColumn&quot;(field: &quot;OrderItems&quot;),  
+        }),
+        filter: #&quot;SYSTEM_SYSRULES_queryFilter&quot;(
+          field: &quot;Customer.id&quot;,
+          operator: &quot;=&quot;,
+          value: ri!customerId
+        ),
+        pagingInfo: local!gridSelection.pagingInfo
+      )
+    ),
+    #&quot;SYSTEM_SYSRULES_gridField&quot;(
+      label: ri!gridLabel,
+      instructions: ri!gridInstructions,
+      totalCount: local!gridData.totalCount,
+      columns: {
+        #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+          label: &quot;Order#&quot;,
+          field: &quot;OrderNum&quot;,
+          data: index(local!gridData.data, &quot;OrderNum&quot;, {}),
+          links: apply(
+            #&quot;SYSTEM_SYSRULES_recordLink&quot;(
+              label: &quot;Go to record dashboard&quot;,
+              recordType: #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6210&quot;,
+              identifier: _,
+              dashboard: &quot;summary&quot;
+            ),
+            local!gridData.identifiers
+          )
+        ),
+        #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+          label: &quot;Purchaser Name&quot;,
+          field: &quot;PurchaserName&quot;,
+          data: index(local!gridData.data, &quot;PurchaserName&quot;, {})
+        ),
+        #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+          label: &quot;Order Date&quot;,
+          field: &quot;OrderDate&quot;,
+          data: index(local!gridData.data, &quot;OrderDate&quot;, {})
+        ),
+        #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+          label: &quot;Total&quot;,
+          field: &quot;Total&quot;,
+          data: dollar(index(local!gridData.data, &quot;Total&quot;, {}), 2, 0)
+        ),
+        #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+          label: &quot;Status&quot;,
+          field: &quot;Status&quot;,
+          data: index(local!gridData.data, &quot;Status&quot;, {})
+        )
+      },
+      identifiers:local!gridData.data.id,
+      value: local!gridSelection,
+      saveInto: {
+        local!gridSelection,
+        a!save(
+          target:ri!selectedOrder,
+          value:if(#&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1982&quot;(local!gridSelection.selected),
+            null,
+            local!gridData.data[wherecontains(tointeger(local!gridSelection.selected),tointeger(local!gridData.data.id))][1]
+          )
+        ),
+        /* Clear any previous selections in other parts of the form*/
+        a!save(target:ri!selectedOrderItem, value:null),
+        a!save(target:ri!q2, value:null),
+        a!save(target:ri!gridSelection.selected, value:null)
+      },
+      selection:ri!isSelectable,
+      validations: if(count(local!gridSelection.selected)&gt;1, &quot;You may only select one order&quot;, null)
+    )
+  )
+)
+</definition>
+        <namedTypedValue>
+            <name>customerId</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>itemsPerPage</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>gridLabel</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>gridInstructions</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>isSelectable</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>selectedOrder</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>selectedOrderItem</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>q2</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>gridSelection</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

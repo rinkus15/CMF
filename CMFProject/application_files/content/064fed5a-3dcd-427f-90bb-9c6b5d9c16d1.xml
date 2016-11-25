@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_updateProduct</name>
+        <uuid>064fed5a-3dcd-427f-90bb-9c6b5d9c16d1</uuid>
+        <description>Initial SAIL form for CASE_APP Update Product process </description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5845</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>#&quot;SYSTEM_SYSRULES_formLayout&quot; (&#xD;
+  label: &quot;Update Product: &quot;&amp;ri!product.name,&#xD;
+  firstColumnContents: {&#xD;
+    #&quot;8af7ef67-8654-48e5-bab2-825cea2dae0f&quot;(&#xD;
+      product:ri!product,&#xD;
+      productImage:ri!productImage,&#xD;
+      isCreate:false&#xD;
+    )&#xD;
+  },&#xD;
+  buttons: #&quot;SYSTEM_SYSRULES_ButtonLayout&quot;(&#xD;
+    primaryButtons: {&#xD;
+      #&quot;SYSTEM_SYSRULES_ButtonWidgetSubmit&quot;(&#xD;
+          label: &quot;Submit&quot;,&#xD;
+          style: &quot;PRIMARY&quot;,&#xD;
+          confirmMessage:&quot;Are you sure?&quot;,&#xD;
+          value: &quot;submit&quot;,&#xD;
+          saveInto: ri!button&#xD;
+      ),&#xD;
+      #&quot;SYSTEM_SYSRULES_ButtonWidgetSubmit&quot;(&#xD;
+          label: &quot;Cancel&quot;,&#xD;
+          value: &quot;cancel&quot;,&#xD;
+          saveInto: ri!button,&#xD;
+          skipValidation: true&#xD;
+      )&#xD;
+    }&#xD;
+  ) &#xD;
+)&#xD;
+</definition>
+        <namedTypedValue>
+            <name>product</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>productImage</name>
+            <type>
+                <name>CollaborationDocument</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>button</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

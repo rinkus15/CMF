@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_OrderItemsRow</name>
+        <uuid>1ffac6f0-8bc9-46ee-b624-5a615fbaf482</uuid>
+        <description>Used to generate a single row of items in an Order grid</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5995</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>=#&quot;SYSTEM_SYSRULES_gridRowLayout&quot;(
+  contents: {
+    #&quot;SYSTEM_SYSRULES_imageField&quot;(
+      label: ri!OrderItems[ri!index].Product.name,
+      images: {
+        #&quot;SYSTEM_SYSRULES_documentImage&quot;(
+          document: todocument(if(isnull(ri!OrderItems[ri!index].Product.productImageDocId), #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3836&quot;, ri!OrderItems[ri!index].Product.productImageDocId))	
+        )
+      },
+      size: &quot;THUMBNAIL&quot;
+    ),
+    #&quot;SYSTEM_SYSRULES_textField&quot;(
+      label:&quot;Product&quot;,
+      labelPosition:&quot;ADJACENT&quot;,
+      value: #&quot;_a-0000da89-b5e9-8000-9ba2-011c48011c48_3580&quot;(ri!OrderItems[ri!index].Product.name,55),
+      readOnly:true
+    ),
+    #&quot;SYSTEM_SYSRULES_linkField&quot;(
+      label: &quot;SKU&quot;,
+      instructions: &quot;SKU and link to product &quot;,
+      links: #&quot;SYSTEM_SYSRULES_recordLink&quot;(
+        label: ri!OrderItems[ri!index].Product.sku,
+        recordType: #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3830&quot;,
+        identifier: ri!OrderItems[ri!index].Product.id,
+        dashboard: &quot;summary&quot;
+      )
+    ),
+    #&quot;SYSTEM_SYSRULES_integerField&quot;(
+      label: &quot;Quantity&quot;,
+      value: ri!OrderItems[ri!index].Quantity,
+      saveInto: ri!OrderItems[ri!index].Quantity,
+      refreshAfter:&quot;KEYPRESS&quot;,
+      required: true(),
+      requiredMessage: &quot;A quantity must be specified&quot;,
+      readOnly: if(not(ri!readOnly),#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(ri!OrderItems[ri!index].Product.name),ri!readOnly),
+      validations: if(ri!readOnly, null, if(ri!OrderItems[ri!index].Quantity &gt; ri!OrderItems[ri!index].Product.quantity, &quot;Not enough stock to  fulfill order.  Only &quot; &amp; ri!OrderItems[ri!index].Product.quantity &amp; &quot; items are available.&quot;, null))
+    ),
+    #&quot;SYSTEM_SYSRULES_floatingPointField&quot;(
+      label: &quot;Unit Price&quot;,
+      value: if(isnull(ri!OrderItems[ri!index].OrderItemUnitPrice), ri!OrderItems[ri!index].Product.price, ri!OrderItems[ri!index].OrderItemUnitPrice),
+      saveInto: ri!OrderItems[ri!index].OrderItemUnitPrice,
+      refreshAfter:&quot;KEYPRESS&quot;,
+      required: true(),
+      requiredMessage: &quot;A unit price must be specified&quot;,
+      readOnly: if(not(ri!readOnly),#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(ri!OrderItems[ri!index].Product.name),ri!readOnly)
+    ),
+    #&quot;SYSTEM_SYSRULES_dropdownField&quot;(
+      label: &quot;Taxed&quot;,
+      instructions: &quot;Indicate whether this item is subject to sales tax&quot;,
+      choiceLabels: {&quot;Yes&quot;, &quot;No&quot;},
+      choiceValues: {true(), false()},
+      value: if(isnull(ri!OrderItems[ri!index].Taxed), true(), ri!OrderItems[ri!index].Taxed),
+      saveInto: ri!OrderItems[ri!index].Taxed,
+      required: true(),
+      requiredMessage: &quot;Each item must be specified whether it is subject to sales tax&quot;,
+      disabled: if(not(ri!readOnly),#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(ri!OrderItems[ri!index].Product.name),ri!readOnly)
+    )    
+
+  },
+  id: ri!index
+)</definition>
+        <namedTypedValue>
+            <name>OrderItems</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>index</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>indexToken</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>readOnly</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

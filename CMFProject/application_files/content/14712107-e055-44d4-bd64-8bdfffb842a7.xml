@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_updateCustomer</name>
+        <uuid>14712107-e055-44d4-bd64-8bdfffb842a7</uuid>
+        <description>Initial SAIL form for CASE_APP Update Customer process </description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5839</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>#&quot;SYSTEM_SYSRULES_formLayout&quot; (&#xD;
+  label: &quot;Update Customer: &quot;&amp;ri!customerData.Name,&#xD;
+  firstColumnContents: {&#xD;
+	#&quot;d3b95f27-f45a-4d97-812f-ef8de3681197&quot;(customerData:ri!customerData,logo:ri!logo,isCreate:false,isShippingBillingSame:ri!isShippingBillingSame),&#xD;
+    },&#xD;
+    buttons: #&quot;SYSTEM_SYSRULES_ButtonLayout&quot;(&#xD;
+          primaryButtons: {&#xD;
+            #&quot;SYSTEM_SYSRULES_ButtonWidgetSubmit&quot;(&#xD;
+                label: &quot;Submit&quot;,&#xD;
+                confirmMessage:&quot;Are you sure?&quot;,&#xD;
+                style: &quot;PRIMARY&quot;,&#xD;
+                value: &quot;submit&quot;,&#xD;
+                saveInto: ri!button&#xD;
+            ),&#xD;
+            #&quot;SYSTEM_SYSRULES_ButtonWidgetSubmit&quot;(&#xD;
+                label: &quot;Cancel&quot;,&#xD;
+                skipValidation: true,&#xD;
+                value: &quot;cancel&quot;,&#xD;
+                saveInto: ri!button&#xD;
+            )&#xD;
+          }&#xD;
+    ) &#xD;
+)&#xD;
+</definition>
+        <namedTypedValue>
+            <name>customerData</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>logo</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>button</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>isShippingBillingSame</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

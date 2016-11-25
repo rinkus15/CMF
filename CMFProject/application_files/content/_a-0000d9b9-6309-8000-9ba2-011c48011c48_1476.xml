@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_RecordSearchFields</name>
+        <uuid>_a-0000d9b9-6309-8000-9ba2-011c48011c48_1476</uuid>
+        <description>Returns a list of fields to be used for the Record Search.   Uses a choose function to set the index position of the search fields.  The index position value should match the index position of the desired record type in the CASE_APP_RecordTypes constant.
+Customers;Users;Products;Orders;Investigations;Service Requests</description>
+        <parentUuid>_a-0000d9f1-8353-8000-9ba2-011c48011c48_10349</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>choose(
+  ri!indexposition,
+  {
+    /*  Index position 1 - Corresponds to Customer Record*/
+    &quot;Name&quot;,&quot;GlobalID&quot;
+  },
+  {
+    /* Index position 2 - Corresponds to the User record */
+    &quot;username&quot;
+  },
+  {
+    /* Index position 3 - Corresponds to the Product record */
+    &quot;name&quot;,&quot;description&quot;
+  },
+  {
+    /* Index position 4 - Corresponds to the Orders record */
+    &quot;OrderNum&quot;,&quot;PurchaserName&quot;,&quot;Customer.Name&quot;
+  },
+  {
+    /* Index position 5 - Corresponds to the Service Request record */
+    &quot;srName&quot;
+  }/*,
+  {
+    /* Index position 6 - Corresponds to the Investigation record *
+    &quot;icmName&quot;
+  }*/
+)</definition>
+        <namedTypedValue>
+            <name>indexposition</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>legacy</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

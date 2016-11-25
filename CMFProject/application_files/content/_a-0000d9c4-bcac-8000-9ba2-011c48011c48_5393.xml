@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_CustomerDiffLabelValue</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5393</uuid>
+        <description>Returns an array of label values showing the difference between two customer records</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5841</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>load(
+  local!Name: if(
+    ri!customerOrig.Name = ri!customerUpdate.Name,
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;none&quot;,
+        value: &quot;none&quot;
+      }
+    ),
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;Name&quot;,
+        value: &quot;From: &quot; &amp; ri!customerOrig.Name &amp; &quot; / To: &quot; &amp; ri!customerUpdate.Name
+      }
+    )
+  ),
+  local!Description: if(
+    ri!customerOrig.Description = ri!customerUpdate.Description,
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;none&quot;,
+        value: &quot;none&quot;
+      }
+    ),
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;Description&quot;,
+        value: &quot;From: &quot; &amp; ri!customerOrig.Description &amp; &quot; / To: &quot; &amp; ri!customerUpdate.Description
+      }
+    )
+  ),
+  local!AccountOwner: if(
+    ri!customerOrig.AccountOwner = ri!customerUpdate.AccountOwner,
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;none&quot;,
+        value: &quot;none&quot;
+      }
+    ),
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;Account Owner&quot;,
+        value: &quot;From: &quot; &amp; ri!customerOrig.AccountOwner &amp; &quot; / To: &quot; &amp; ri!customerUpdate.AccountOwner
+      }
+    )
+  ),
+  local!ContactName: if(
+    ri!customerOrig.ContactName = ri!customerUpdate.ContactName,
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;none&quot;,
+        value: &quot;none&quot;
+      }
+    ),
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;Contact Name&quot;,
+        value: &quot;From: &quot; &amp; ri!customerOrig.ContactName &amp; &quot; / To: &quot; &amp; ri!customerUpdate.ContactName
+      }
+    )
+  ),
+  local!Email: if(
+    ri!customerOrig.Email = ri!customerUpdate.Email,
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;none&quot;,
+        value: &quot;none&quot;
+      }
+    ),
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;Contact Email&quot;,
+        value: &quot;From: &quot; &amp; ri!customerOrig.Email &amp; &quot; / To: &quot; &amp; ri!customerUpdate.Email
+      }
+    )
+  ),
+  local!OfficePhone: if(
+    ri!customerOrig.OfficePhone = ri!customerUpdate.OfficePhone,
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;none&quot;,
+        value: &quot;none&quot;
+      }
+    ),
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;Contact Office Phone&quot;,
+        value: &quot;From: &quot; &amp; ri!customerOrig.OfficePhone &amp; &quot; / To: &quot; &amp; ri!customerUpdate.OfficePhone
+      }
+    )
+  ),
+  local!HomePhone: if(
+    ri!customerOrig.HomePhone = ri!customerUpdate.HomePhone,
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;none&quot;,
+        value: &quot;none&quot;
+      }
+    ),
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;Contact Home Phone&quot;,
+        value: &quot;From: &quot; &amp; ri!customerOrig.HomePhone &amp; &quot; / To: &quot; &amp; ri!customerUpdate.HomePhone
+      }
+    )
+  ),
+  local!MobilePhone: if(
+    ri!customerOrig.MobilePhone = ri!customerUpdate.MobilePhone,
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;none&quot;,
+        value: &quot;none&quot;
+      }
+    ),
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;Contact Mobile Phone&quot;,
+        value: &quot;From: &quot; &amp; ri!customerOrig.MobilePhone &amp; &quot; / To: &quot; &amp; ri!customerUpdate.MobilePhone
+      }
+    )
+  ),
+  local!Status: if(
+    ri!customerOrig.Status = ri!customerUpdate.Status,
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;none&quot;,
+        value: &quot;none&quot;
+      }
+    ),
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;Status&quot;,
+        value: &quot;From: &quot; &amp; ri!customerOrig.Status &amp; &quot; / To: &quot; &amp; ri!customerUpdate.Status
+      }
+    )
+  ),
+  local!ShippingAddress_Country: if(
+    ri!customerOrig.ShippingAddress.Country = ri!customerUpdate.ShippingAddress.Country,
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;none&quot;,
+        value: &quot;none&quot;
+      }
+    ),
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;Shipping Country&quot;,
+        value: &quot;From: &quot; &amp; ri!customerOrig.ShippingAddress.Country &amp; &quot; / To: &quot; &amp; ri!customerUpdate.ShippingAddress.Country
+      }
+    )
+  ),
+  local!ShippingAddress_Address: if(
+    ri!customerOrig.ShippingAddress.Address = ri!customerUpdate.ShippingAddress.Address,
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;none&quot;,
+        value: &quot;none&quot;
+      }
+    ),
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;Shipping Address&quot;,
+        value: &quot;From: &quot; &amp; ri!customerOrig.ShippingAddress.Address &amp; &quot; / To: &quot; &amp; ri!customerUpdate.ShippingAddress.Address
+      }
+    )
+  ),
+  local!ShippingAddress_City: if(
+    ri!customerOrig.ShippingAddress.City = ri!customerUpdate.ShippingAddress.City,
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;none&quot;,
+        value: &quot;none&quot;
+      }
+    ),
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;Shipping City&quot;,
+        value: &quot;From: &quot; &amp; ri!customerOrig.ShippingAddress.City &amp; &quot; / To: &quot; &amp; ri!customerUpdate.ShippingAddress.City
+      }
+    )
+  ),
+  local!ShippingAddress_State: if(
+    ri!customerOrig.ShippingAddress.State = ri!customerUpdate.ShippingAddress.State,
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;none&quot;,
+        value: &quot;none&quot;
+      }
+    ),
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;Shipping State/Province&quot;,
+        value: &quot;From: &quot; &amp; ri!customerOrig.ShippingAddress.State &amp; &quot; / To: &quot; &amp; ri!customerUpdate.ShippingAddress.State
+      }
+    )
+  ),
+  local!ShippingAddress_PostalCode: if(
+    ri!customerOrig.ShippingAddress.ZIP = ri!customerUpdate.ShippingAddress.ZIP,
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;none&quot;,
+        value: &quot;none&quot;
+      }
+    ),
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;Shipping Postal Code&quot;,
+        value: &quot;From: &quot; &amp; ri!customerOrig.ShippingAddress.ZIP &amp; &quot; / To: &quot; &amp; ri!customerUpdate.ShippingAddress.ZIP
+      }
+    )
+  ),
+  local!BillingAddress_Country: if(
+    ri!customerOrig.BillingAddress.Country = ri!customerUpdate.BillingAddress.Country,
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;none&quot;,
+        value: &quot;none&quot;
+      }
+    ),
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;Billing Country&quot;,
+        value: &quot;From: &quot; &amp; ri!customerOrig.BillingAddress.Country &amp; &quot; / To: &quot; &amp; ri!customerUpdate.BillingAddress.Country
+      }
+    )
+  ),
+  local!BillingAddress_Address: if(
+    ri!customerOrig.BillingAddress.Address = ri!customerUpdate.BillingAddress.Address,
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;none&quot;,
+        value: &quot;none&quot;
+      }
+    ),
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;Billing Address&quot;,
+        value: &quot;From: &quot; &amp; ri!customerOrig.BillingAddress.Address &amp; &quot; / To: &quot; &amp; ri!customerUpdate.BillingAddress.Address
+      }
+    )
+  ),
+  local!BillingAddress_City: if(
+    ri!customerOrig.BillingAddress.City = ri!customerUpdate.BillingAddress.City,
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;none&quot;,
+        value: &quot;none&quot;
+      }
+    ),
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;Billing City&quot;,
+        value: &quot;From: &quot; &amp; ri!customerOrig.BillingAddress.City &amp; &quot; / To: &quot; &amp; ri!customerUpdate.BillingAddress.City
+      }
+    )
+  ),
+  local!BillingAddress_State: if(
+    ri!customerOrig.BillingAddress.State = ri!customerUpdate.BillingAddress.State,
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;none&quot;,
+        value: &quot;none&quot;
+      }
+    ),
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;Billing State/Province&quot;,
+        value: &quot;From: &quot; &amp; ri!customerOrig.BillingAddress.State &amp; &quot; / To: &quot; &amp; ri!customerUpdate.BillingAddress.State
+      }
+    )
+  ),
+  local!BillingAddress_PostalCode: if(
+    ri!customerOrig.BillingAddress.ZIP = ri!customerUpdate.BillingAddress.ZIP,
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;none&quot;,
+        value: &quot;none&quot;
+      }
+    ),
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;Billing Postal Code&quot;,
+        value: &quot;From: &quot; &amp; ri!customerOrig.BillingAddress.ZIP &amp; &quot; / To: &quot; &amp; ri!customerUpdate.BillingAddress.ZIP
+      }
+    )
+  ),
+  local!FolderID: if(
+    ri!customerOrig.FolderID = ri!customerUpdate.FolderID,
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;none&quot;,
+        value: &quot;none&quot;
+      }
+    ),
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;Folder ID&quot;,
+        value: &quot;From: &quot; &amp; ri!customerOrig.FolderID &amp; &quot; / To: &quot; &amp; ri!customerUpdate.FolderID
+      }
+    )
+  ),
+  local!LogoID: if(
+    or(#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(ri!customerUpdate.LogoID),ri!customerOrig.LogoID = ri!customerUpdate.LogoID),
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;none&quot;,
+        value: &quot;none&quot;
+      }
+    ),
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;New Logo&quot;,
+        value: extract(
+          linktodocument(
+            ri!customerUpdate.LogoID,
+            &quot;Hello&quot;
+          ),
+          &quot;href=&quot;&quot;&quot;,
+          &quot;&quot;&quot; target=&quot;
+        )
+      }
+    )
+  ),
+  local!Industry: if(
+    ri!customerOrig.Industry = ri!customerUpdate.Industry,
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;none&quot;,
+        value: &quot;none&quot;
+      }
+    ),
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;Industry&quot;,
+        value: &quot;From: &quot; &amp; ri!customerOrig.Industry &amp; &quot; / To: &quot; &amp; ri!customerUpdate.Industry
+      }
+    )
+  ),
+  local!StockTicker: if(
+    ri!customerOrig.StockTicker = ri!customerUpdate.StockTicker,
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;none&quot;,
+        value: &quot;none&quot;
+      }
+    ),
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;Stock Ticker&quot;,
+        value: &quot;From: &quot; &amp; ri!customerOrig.StockTicker &amp; &quot; / To: &quot; &amp; ri!customerUpdate.StockTicker
+      }
+    )
+  ),
+  local!CustomerSince: if(
+    ri!customerOrig.CustomerSince = ri!customerUpdate.CustomerSince,
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;none&quot;,
+        value: &quot;none&quot;
+      }
+    ),
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;Customer Since&quot;,
+        value: &quot;From: &quot; &amp; ri!customerOrig.CustomerSince &amp; &quot; / To: &quot; &amp; ri!customerUpdate.CustomerSince
+      }
+    )
+  ),
+  local!InactiveFlag: if(
+    ri!customerOrig.InactiveFlag = ri!customerUpdate.InactiveFlag,
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;none&quot;,
+        value: &quot;none&quot;
+      }
+    ),
+    cast(
+      typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+      {
+        label: &quot;Inactive Flag&quot;,
+        value: &quot;From: &quot; &amp; ri!customerOrig.InactiveFlag &amp; &quot; / To: &quot; &amp; ri!customerUpdate.InactiveFlag
+      }
+    )
+  ),
+  remove(
+    append(
+      {
+        local!Name 
+      },
+      {
+        local!Description 
+      },
+      {
+        local!AccountOwner 
+      },
+      {
+        local!ContactName 
+      },
+      {
+        local!Email 
+      },
+      {
+        local!OfficePhone 
+      },
+      {
+        local!HomePhone 
+      },
+      {
+        local!MobilePhone 
+      },
+      {
+        local!Status 
+      },
+      {
+        local!ShippingAddress_Country 
+      },
+      {
+        local!ShippingAddress_Address 
+      },
+      {
+        local!ShippingAddress_City 
+      },
+      {
+        local!ShippingAddress_State 
+      },
+      {
+        local!ShippingAddress_PostalCode 
+      },
+      {
+        local!BillingAddress_Country 
+      },
+      {
+        local!BillingAddress_Address 
+      },
+      {
+        local!BillingAddress_City 
+      },
+      {
+        local!BillingAddress_State 
+      },
+      {
+        local!BillingAddress_PostalCode 
+      },
+      {
+        local!FolderID 
+      },
+      {
+        local!LogoID 
+      },
+      {
+        local!Industry 
+      },
+      {
+        local!StockTicker 
+      },
+      {
+        local!CustomerSince 
+      },
+      {
+        local!InactiveFlag 
+      }
+    ),
+    wherecontains(
+      cast(
+        typeof('type!{http://www.appian.com/ae/types/2009}LabelValue'()),
+        {
+          label: &quot;none&quot;,
+          value: &quot;none&quot;
+        }
+      ),
+      append(
+        {
+          local!Name 
+        },
+        {
+          local!Description 
+        },
+        {
+          local!AccountOwner 
+        },
+        {
+          local!ContactName 
+        },
+        {
+          local!Email 
+        },
+        {
+          local!OfficePhone 
+        },
+        {
+          local!HomePhone 
+        },
+        {
+          local!MobilePhone 
+        },
+        {
+          local!Status 
+        },
+        {
+          local!ShippingAddress_Country 
+        },
+        {
+          local!ShippingAddress_Address 
+        },
+        {
+          local!ShippingAddress_City 
+        },
+        {
+          local!ShippingAddress_State 
+        },
+        {
+          local!ShippingAddress_PostalCode 
+        },
+        {
+          local!BillingAddress_Country 
+        },
+        {
+          local!BillingAddress_Address 
+        },
+        {
+          local!BillingAddress_City 
+        },
+        {
+          local!BillingAddress_State 
+        },
+        {
+          local!BillingAddress_PostalCode 
+        },
+        {
+          local!FolderID 
+        },
+        {
+          local!LogoID 
+        },
+        {
+          local!Industry 
+        },
+        {
+          local!StockTicker 
+        },
+        {
+          local!CustomerSince 
+        },
+        {
+          local!InactiveFlag 
+        }
+      )
+    )
+  )
+)</definition>
+        <namedTypedValue>
+            <name>customerOrig</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>customerUpdate</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>legacy</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

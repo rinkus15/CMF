@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="urn:com:appian:types:CASE_APP"
+  xmlns:tns="urn:com:appian:types:CASE_APP" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="CASE_APP_AddressType">
+    <xsd:sequence>
+      <xsd:element name="id" type="xsd:int">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">
+            @Id
+            @GeneratedValue
+          </xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Address" nillable="true" type="xsd:string"/>
+      <xsd:element name="Country" nillable="true" type="xsd:string"/>
+      <xsd:element name="City" nillable="true" type="xsd:string"/>
+      <xsd:element name="State" nillable="true" type="xsd:string"/>
+      <xsd:element name="ZIP" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

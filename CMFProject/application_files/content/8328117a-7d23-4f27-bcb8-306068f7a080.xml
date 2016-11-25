@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_SR_uiGetRequestersDetails</name>
+        <uuid>8328117a-7d23-4f27-bcb8-306068f7a080</uuid>
+        <description>Displays a section that allows users to capture their request details</description>
+        <parentUuid>_a-0000da5f-caaa-8000-9ba2-011c48011c48_2618</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>={
+  #&quot;SYSTEM_SYSRULES_sectionLayout&quot;(
+    label: &quot;How may we help you?&quot;,
+    firstColumnContents:{
+      #&quot;SYSTEM_SYSRULES_paragraphField&quot;(
+        label:&quot;Please describe your request&quot;,
+        instructions:&quot;Describe your request and how we can help you.&quot;,
+        value:ri!serviceReq.comment,
+        saveInto:ri!serviceReq.comment,
+        required:true
+      )
+    },
+    secondColumnContents: {
+      #&quot;SYSTEM_SYSRULES_textField&quot;(
+        label: &quot;Requester's Name&quot;,
+        labelPosition: &quot;ABOVE&quot;,
+        instructions: &quot;Name of the person any follow up should be addressed to.&quot;,
+        value: ri!serviceReq.requesterName,
+        saveInto: ri!serviceReq.requesterName,
+        refreshAfter: &quot;UNFOCUS&quot;,
+        validations: {},
+        align: &quot;LEFT&quot;
+      ),
+      #&quot;SYSTEM_SYSRULES_textField&quot;(
+        label: &quot;Requester's Email&quot;,
+        labelPosition: &quot;ABOVE&quot;,
+        instructions: &quot;The email where notifications and updates on this case should go to.&quot;,
+        value: ri!serviceReq.requesterEmail,
+        saveInto: ri!serviceReq.requesterEmail,
+        refreshAfter: &quot;UNFOCUS&quot;,
+        validations: {},
+        align: &quot;LEFT&quot;
+      )
+    },
+    iscollapsible: true
+  ),
+  #&quot;c00a8d5e-6ce1-46de-8d05-cd92c4b23d31&quot;(
+    caseDocs:ri!caseDocs,
+    targetFolder:#&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2780&quot;,
+    uploadedDocs:ri!uploadedDocs,
+    sectionLabel:&quot;Upload Supporting Document&quot;,
+    parentCaseType:#&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2773&quot;,
+    isRequired:false
+  )
+}</definition>
+        <namedTypedValue>
+            <name>serviceReq</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>selectedCustomer</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>uploadedDocs</name>
+            <type>
+                <name>CollaborationDocument?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>caseDocs</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_SR_uiDashboardSRTasks</name>
+        <uuid>02125719-851d-4e63-b9e6-5c381fad080b</uuid>
+        <description>Shows all active Service Request tasks.</description>
+        <parentUuid>_a-0000da89-b5e9-8000-9ba2-011c48011c48_3881</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>=#&quot;SYSTEM_SYSRULES_dashboardLayout&quot;(
+  firstColumnContents: {
+    load(
+      local!gridPI:#&quot;SYSTEM_SYSRULES_pagingInfo&quot;(1,10,#&quot;SYSTEM_SYSRULES_sortInfo&quot;(field:&quot;c2&quot;)),
+      local!statusFilter:-1,
+      local!nameFilter,
+      with(
+        local!srTasks:a!queryProcessAnalytics(
+          report:#&quot;_a-0000dac9-8638-8000-9ba2-011c48011c48_5756&quot;,
+          contextProcessModels:{#&quot;_a-0000dac9-8638-8000-9ba2-011c48011c48_5757&quot;},
+          query:#&quot;SYSTEM_SYSRULES_query&quot;(
+            logicalExpression:#&quot;SYSTEM_SYSRULES_queryLogicalExpression&quot;(
+              operator:&quot;AND&quot;,
+              filters:{
+                if(local!statusFilter=-1, null,#&quot;SYSTEM_SYSRULES_queryFilter&quot;(field:&quot;c5&quot;,operator:&quot;=&quot;,value:local!statusFilter)),
+                if(isnull(local!nameFilter), null,#&quot;SYSTEM_SYSRULES_queryFilter&quot;(field:&quot;c0&quot;,operator:&quot;includes&quot;,value:local!nameFilter))
+              }
+            ),
+            pagingInfo:local!gridPI
+          )
+        ),
+        {
+          #&quot;SYSTEM_SYSRULES_sectionLayout&quot;(
+            firstColumnContents:{
+              #&quot;SYSTEM_SYSRULES_textField&quot;(
+                label:&quot;Task Name&quot;,
+                instructions:&quot;Filters the report based on task name.&quot;,
+                value:local!nameFilter,
+                saveInto:local!nameFilter
+              )
+            },
+            secondColumnContents:{
+              #&quot;SYSTEM_SYSRULES_dropdownField&quot;(
+                label: &quot;Status&quot;,
+                instructions:&quot;Filters the report based on Task Status&quot;,
+                choiceLabels: {&quot;All&quot;, &quot;Assigned&quot;, &quot;Accepted&quot;},
+                choiceValues: {-1,0,1},
+                value: local!statusFilter,
+                saveInto: {
+                  local!statusFilter,
+                  a!save(local!gridPI.startIndex, 1)
+                }
+              )
+            }
+          ),
+          #&quot;SYSTEM_SYSRULES_gridField&quot;(
+            label:&quot;Customer Service Requests Tasks&quot;,
+            instructions:&quot;A list of all tasks for the current user.&quot;,
+            totalCount:local!srTasks.totalCount,
+            columns:apply(
+              #&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2897&quot;(columnConfig:_, data:local!srTasks.data, showLink:true),
+              local!srTasks.columnConfigs
+            ),
+            value:local!gridPI,
+            saveInto:local!gridPI
+          )
+          
+        }
+      )
+    )
+  }
+)</definition>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

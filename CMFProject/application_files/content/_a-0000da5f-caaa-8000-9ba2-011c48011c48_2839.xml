@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_SR_getListView</name>
+        <uuid>_a-0000da5f-caaa-8000-9ba2-011c48011c48_2839</uuid>
+        <description>Generates the listview definition for the Process Backed Service Request record.</description>
+        <parentUuid>_a-0000da5f-caaa-8000-9ba2-011c48011c48_2617</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>=#&quot;SYSTEM_SYSRULES_listViewItem&quot;(
+  title:&quot;Service Request #&quot;&amp;rf!serviceReqData.requestNum&amp;&quot; - &quot;&amp;rf!serviceReqData.type,
+  details:&quot;Requested by: &quot;&amp;rf!serviceReqData.requesterName&amp;&quot;
+Related Customer: &quot;&amp;rf!serviceReqData.relatedCustomer.Name&amp;&quot;
+Status: &quot;&amp;#&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2630&quot;[rf!currentMilestone],
+  image:todocument(rf!serviceReqData.relatedCustomer.LogoID),
+  timestamp:rf!serviceReqData.requestDateTime
+)</definition>
+        <preferredEditor>legacy</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_ShipOrder</name>
+        <uuid>501ae05a-b9c8-4f7f-b80c-cfc4442437d1</uuid>
+        <description>Task step in order management for shipping an order</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5995</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>=load(
+  local!Order: #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_8248&quot;(ri!Order.OrderNum),
+  #&quot;SYSTEM_SYSRULES_formLayout&quot;(
+  label: &quot;Prepare Order&quot;,
+  firstColumnContents: {
+    #&quot;fcc1ec91-4693-4c90-9074-a5f6642b06a8&quot;(ri!Order,true),
+    #&quot;SYSTEM_SYSRULES_sectionLayout&quot;(
+      label: &quot;Order Items&quot;,
+      firstColumnContents: {
+        #&quot;f6ebce54-e12d-42ee-97b9-b37c3c001125&quot;(
+          OrderItems:  #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_7437&quot;(ri!Order.OrderNum),
+          gridLabel: null,
+          gridInstructions: null,
+          readOnly: true()
+        )
+      },
+      isCollapsible: true()
+    ),
+    #&quot;SYSTEM_SYSRULES_sectionLayout&quot;(
+      label: &quot;Complete Order Shipment&quot;,
+      firstColumnContents:{
+        #&quot;SYSTEM_SYSRULES_textField&quot;(
+          label: &quot;Tracking Number&quot;,
+          labelPosition: &quot;ADJACENT&quot;,
+          instructions: &quot;Input the shipment tracking number&quot;,
+          value: ri!TrackingNumber,
+          saveInto: ri!TrackingNumber,
+          required: true(),
+          readOnly: false()
+        )
+      }
+    )
+
+  },
+  buttons: #&quot;SYSTEM_SYSRULES_ButtonLayout&quot;(
+    primaryButtons: {
+      #&quot;SYSTEM_SYSRULES_ButtonWidgetSubmit&quot;(
+        label: &quot;Submit&quot;,
+        style: &quot;PRIMARY&quot;
+      )
+    }
+  )
+)
+)</definition>
+        <namedTypedValue>
+            <name>Order</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>TrackingNumber</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_SR_uiFormAddCommentOrFile</name>
+        <uuid>fc64a311-c70a-4533-ac04-19091e10c994</uuid>
+        <description>SET 
+  uploadedDocs to todocument(null)
+  caseDocs to {type!CASE_APP_CaseDocument()}</description>
+        <parentUuid>_a-0000da5f-caaa-8000-9ba2-011c48011c48_2618</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>/*To Test:
+1. Set servicerReq to: type!CASE_APP_ServiceRequest(
+  requestNum:&quot;123a-1234&quot;,
+  requestDateTime:now(),
+  type:&quot;I need help with an Order&quot;,
+  relatedCustomer:CASE_APP_getAllCustomerFieldsById(1),
+  relatedOrder: CASE_APP_getAllOrderFieldsById(1),
+  relatedOrderItemId:1,
+  comments:&quot;Sample comments&quot;,
+  status:&quot;Solution&quot;,
+  id:53051235
+)
+4. Set caseFolder to cons!CASE_APP_SR_MAIN_CASE_FOLDER 
+5. Set uploadedDocs to todocument(null)
+6. Set caseDocs to {type!CASE_APP_CaseDocument()}
+*/
+load(
+  local!updateCase:1,
+  local!milestoneStep:#&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2852&quot;(ri!serviceReq.status),
+  #&quot;SYSTEM_SYSRULES_formLayout&quot;(
+    label: &quot;Review Customer Service Request #&quot;&amp;ri!serviceReq.requestNum,
+    instructions: &quot;Please complete the form below&quot;,
+    firstColumnContents: {
+      #&quot;SYSTEM_SYSRULES_milestoneField&quot;(
+        steps:#&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2848&quot;,
+        active:local!milestoneStep
+      ),
+      #&quot;051657d6-8b7d-4398-b529-edffef50deae&quot;(ri!serviceReq,local!milestoneStep),
+      #&quot;9505777e-cfb8-4b3d-890d-1da3b1a65220&quot;(ri!serviceReq.caseHistory,3),
+      #&quot;SYSTEM_SYSRULES_sectionLayout&quot;(
+        label:&quot;Add Comment/File to Case&quot;,
+        firstColumnContents:{
+          #&quot;SYSTEM_SYSRULES_paragraphField&quot;(
+            label:&quot;Add Comments&quot;,
+            instructions:&quot;Comments will be added to case history and sent to Case Worker&quot;,
+            value:ri!comments,
+            saveInto:ri!comments,
+            required:true
+          )
+        }
+      ),
+      #&quot;c00a8d5e-6ce1-46de-8d05-cd92c4b23d31&quot;(
+        caseDocs:ri!caseDocs,
+        targetFolder:ri!caseFolder,
+        uploadedDocs:ri!uploadedDocs,
+        sectionLabel:&quot;Upload Supporting Document&quot;,
+        parentCaseType:#&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2773&quot;,
+        isRequired:false
+      )
+    },
+    buttons: #&quot;SYSTEM_SYSRULES_ButtonLayout&quot;(
+      primaryButtons: {
+        #&quot;SYSTEM_SYSRULES_ButtonWidgetSubmit&quot;(
+          label: &quot;Submit&quot;,
+          style: &quot;PRIMARY&quot;
+        )
+      }
+    ),
+    validations: {}
+  )
+)</definition>
+        <namedTypedValue>
+            <name>serviceReq</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>uploadedDocs</name>
+            <type>
+                <name>CollaborationDocument?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>caseFolder</name>
+            <type>
+                <name>CollaborationFolder</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>comments</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>caseDocs</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_Component_recordPicker_suggestFunction</name>
+        <uuid>_a-0000d9b9-6309-8000-9ba2-011c48011c48_1458</uuid>
+        <description>Will search a record for unique instances where the searchField includes the searchTerm. If primaryKeyField is null, defaults to &quot;id&quot;. Primary key must be an integer. If an array of primary keys (integers) is provided for existingIds, the query will filter out those existing records (useful for only allowing unique selections).</description>
+        <parentUuid>_a-0000da20-55d5-8000-9ba2-011c48011c48_11112</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>=with(
+  local!primaryKeyField: if (isnull(ri!primaryKeyField), &quot;id&quot;, ri!primaryKeyField),
+  local!labelField: if (isnull(ri!labelField), ri!searchFields[1], ri!labelField),
+
+  local!matches: if (ri!searchTerm = &quot;&quot;, null,
+    queryrecord(
+      recordType: ri!record,
+      query: #&quot;SYSTEM_SYSRULES_query&quot;(
+        logicalExpression: #&quot;SYSTEM_SYSRULES_queryLogicalExpression&quot;(
+          operator: &quot;AND&quot;,
+
+          logicalExpressions: {
+            #&quot;SYSTEM_SYSRULES_queryLogicalExpression&quot;(
+              operator: &quot;OR&quot;,
+              filters: #&quot;SYSTEM_SYSRULES_applyComponents&quot;(
+                function: #&quot;SYSTEM_SYSRULES_queryFilter&quot;(field: _, operator: &quot;includes&quot;, value: ri!searchTerm),
+                array: ri!searchFields
+              )
+            )
+          }
+        ),
+        pagingInfo: #&quot;SYSTEM_SYSRULES_pagingInfo&quot;(
+          startIndex: 1,
+          batchSize: 10,
+          sort: #&quot;SYSTEM_SYSRULES_sortInfo&quot;(
+            field: ri!labelField,
+            ascending: true()
+          )
+        )
+      )
+    )
+  ),
+
+  if (or(isnull(local!matches), count(local!matches) &lt; 1),
+    #&quot;SYSTEM_SYSRULES_dataSubset&quot;(),
+    #&quot;SYSTEM_SYSRULES_dataSubset&quot;(
+      data: index(local!matches.data, local!labelField, null),
+      identifiers: index(local!matches.data, local!primaryKeyField, null)
+    )
+  )
+)</definition>
+        <namedTypedValue>
+            <name>record</name>
+            <type>
+                <name>RecordType</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>primaryKeyField</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>searchFields</name>
+            <type>
+                <name>Text?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>labelField</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>searchTerm</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>existingIds</name>
+            <type>
+                <name>Integer?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>legacy</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

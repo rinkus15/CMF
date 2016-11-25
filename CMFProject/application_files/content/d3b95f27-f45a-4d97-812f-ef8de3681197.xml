@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_createUpdateCustomerFields</name>
+        <uuid>d3b95f27-f45a-4d97-812f-ef8de3681197</uuid>
+        <description>Section layouts for forms to create or update a customer</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5839</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>{&#xD;
+  #&quot;SYSTEM_SYSRULES_sectionLayout&quot; (&#xD;
+    label: &quot;Customer Details&quot;,&#xD;
+    firstColumnContents: {&#xD;
+      #&quot;SYSTEM_SYSRULES_textField&quot;(&#xD;
+        label: &quot;Stock Ticker&quot;,&#xD;
+        value: ri!customerData.StockTicker,&#xD;
+        saveInto: {&#xD;
+          ri!customerData.StockTicker,&#xD;
+          a!save(&#xD;
+            ri!customerData.Name,&#xD;
+            xpathsnippet(&quot;http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22&quot; &amp; stripwith(ri!customerData.StockTicker, &quot; !@#$%^&amp;*()_+={}[]\|':?/&gt;&lt;,`~'&quot;) &amp; &quot;%22)&amp;env=store://datatables.org/alltableswithkeys&quot;, &quot;/query/results/quote/Name/text()&quot;)&#xD;
+          )&#xD;
+        },&#xD;
+        refreshAfter: &quot;KEYPRESS&quot;,&#xD;
+        validations: {&#xD;
+          if(&#xD;
+            xpathsnippet(&quot;http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22&quot; &amp; stripwith(ri!customerData.StockTicker, &quot; !@#$%^&amp;*()_+={}[]\|':?/&gt;&lt;,`~'&quot;) &amp; &quot;%22)&amp;env=store://datatables.org/alltableswithkeys&quot;, &quot;/query/results/quote/Name/text()&quot;) = upper(ri!customerData.StockTicker),&#xD;
+            &quot;Invalid Stock Symbol&quot;,&#xD;
+            null&#xD;
+          )&#xD;
+        }&#xD;
+      ),&#xD;
+      #&quot;SYSTEM_SYSRULES_textField&quot;(&#xD;
+        label: &quot;Customer Name&quot;,&#xD;
+        value: ri!customerData.Name,&#xD;
+        saveInto: ri!customerData.Name,&#xD;
+        required: true()&#xD;
+      ),&#xD;
+      #&quot;SYSTEM_SYSRULES_pickerFieldUsers&quot;(&#xD;
+        label: &quot;Account Owner&quot;,&#xD;
+	      maxSelections:1,&#xD;
+        value: ri!customerData.AccountOwner,&#xD;
+        saveInto: ri!customerData.AccountOwner,&#xD;
+        required: true()&#xD;
+      ),&#xD;
+      #&quot;SYSTEM_SYSRULES_dropdownField&quot;(&#xD;
+        label: &quot;Industry&quot;,&#xD;
+        choiceLabels:#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_759&quot;,&#xD;
+        placeholderLabel: &quot;Please select an industry.&quot;,&#xD;
+        choiceValues: #&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_759&quot;,&#xD;
+	      value: ri!customerData.Industry,&#xD;
+        saveInto: ri!customerData.Industry&#xD;
+      )&#xD;
+    },&#xD;
+    secondColumnContents: {&#xD;
+      #&quot;SYSTEM_SYSRULES_paragraphField&quot;(&#xD;
+        label: &quot;Description&quot;,&#xD;
+        value: ri!customerData.Description,&#xD;
+        saveInto: ri!customerData.Description,&#xD;
+        required: false(),&#xD;
+	      validations: if(len(ri!customerData.Description)&gt;12000,&quot;Please limit the character count: &quot;&amp;len(ri!customerData.Description)&amp;&quot;/12000&quot;,null)&#xD;
+      ),&#xD;
+      #&quot;SYSTEM_SYSRULES_textField&quot;(&#xD;
+        label: &quot;Website&quot;,&#xD;
+        value: ri!customerData.Website,&#xD;
+        saveInto: ri!customerData.Website&#xD;
+      ),&#xD;
+		  if(ri!isCreate,&#xD;
+		    {},&#xD;
+  		  #&quot;SYSTEM_SYSRULES_imageField&quot;(&#xD;
+  			  label:&quot;Current Logo&quot;,&#xD;
+          labelPosition: &quot;ABOVE&quot;,&#xD;
+          images: {if(&#xD;
+            #&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(ri!customerData.LogoID),&#xD;
+            #&quot;SYSTEM_SYSRULES_documentImage&quot;(document:#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3836&quot;),&#xD;
+            #&quot;SYSTEM_SYSRULES_documentImage&quot;(document:ri!customerData.LogoID)&#xD;
+          )},&#xD;
+          size: &quot;THUMBNAIL&quot;&#xD;
+		    )&#xD;
+		  ),&#xD;
+      #&quot;SYSTEM_SYSRULES_fileUploadField&quot;(&#xD;
+        label: if(ri!isCreate,&quot;Logo&quot;,&quot;New Logo&quot;),&#xD;
+        target:#&quot;_a-0000d9b8-41a7-8000-9e06-010000010000_491&quot;,&#xD;
+        value: ri!logo,&#xD;
+        saveInto: {&#xD;
+          ri!logo&#xD;
+        },&#xD;
+        required: ri!isCreate&#xD;
+      )&#xD;
+    }&#xD;
+  ),&#xD;
+  #&quot;SYSTEM_SYSRULES_sectionLayout&quot; (&#xD;
+    label: &quot;Contact Information&quot;,&#xD;
+    firstColumnContents: {&#xD;
+      #&quot;SYSTEM_SYSRULES_textField&quot;(&#xD;
+        label: &quot;Contact Name&quot;,&#xD;
+        value: ri!customerData.ContactName,&#xD;
+        saveInto: ri!customerData.ContactName,&#xD;
+        required: true()&#xD;
+      ),&#xD;
+      #&quot;SYSTEM_SYSRULES_textField&quot;(&#xD;
+        label: &quot;Email&quot;,&#xD;
+        value: ri!customerData.Email,&#xD;
+        saveInto: ri!customerData.Email,&#xD;
+        required: true(),&#xD;
+        validations:if(#&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1640&quot;(ri!customerData.Email),&#xD;
+          null,&#xD;
+          &quot;Please enter a valid email address&quot;&#xD;
+        )&#xD;
+      )&#xD;
+    },&#xD;
+    secondColumnContents: {  &#xD;
+      #&quot;SYSTEM_SYSRULES_textField&quot;(&#xD;
+        label: &quot;Office Phone&quot;,&#xD;
+        value: ri!customerData.OfficePhone,&#xD;
+        saveInto: a!save(&#xD;
+          target:ri!customerData.HomePhone,&#xD;
+          value:cleanwith(save!value, &quot;1234567890()+- &quot;)&#xD;
+        )&#xD;
+      ),&#xD;
+      #&quot;SYSTEM_SYSRULES_textField&quot;(&#xD;
+        label: &quot;Home Phone&quot;,&#xD;
+        value: ri!customerData.HomePhone,&#xD;
+        saveInto: a!save(&#xD;
+          target:ri!customerData.HomePhone,&#xD;
+          value:cleanwith(save!value, &quot;1234567890()+- &quot;)&#xD;
+        )&#xD;
+      ),&#xD;
+      #&quot;SYSTEM_SYSRULES_textField&quot;(&#xD;
+        label: &quot;Mobile Phone&quot;,&#xD;
+        value: ri!customerData.MobilePhone,&#xD;
+        saveInto: a!save(&#xD;
+          target:ri!customerData.HomePhone,&#xD;
+          value:cleanwith(save!value, &quot;1234567890()+- &quot;)&#xD;
+        )&#xD;
+      )&#xD;
+    }&#xD;
+  ),&#xD;
+  #&quot;769503c1-a459-4f96-82e6-7120e9c69fb4&quot;(&#xD;
+    SectionTitle:&quot;Customer Shipping Address&quot;,&#xD;
+    address: ri!customerData.ShippingAddress.Address,&#xD;
+    city:ri!customerData.ShippingAddress.City,&#xD;
+    state:ri!customerData.ShippingAddress.State,&#xD;
+    postalcode:ri!customerData.ShippingAddress.Zip,&#xD;
+    country:ri!customerData.ShippingAddress.Country,&#xD;
+    readOnly:false,&#xD;
+    labelPosition:null&#xD;
+  ),&#xD;
+  #&quot;SYSTEM_SYSRULES_checkboxField&quot;(&#xD;
+  	labelPosition:&quot;COLLAPSED&quot;,&#xD;
+  	choiceLabels:{&quot;Are shipping and billing addresses the same?&quot;},&#xD;
+  	choiceValues:{true},&#xD;
+  	value:if(ri!isShippingBillingSame, ri!isShippingBillingSame, null),&#xD;
+  	saveInto:{&#xD;
+    	a!save(ri!isShippingBillingSame,save!value),&#xD;
+    	a!save(ri!customerData.BillingAddress,ri!customerData.ShippingAddress)&#xD;
+    }&#xD;
+	),&#xD;
+	&#xD;
+	/*If the shipping and billing address are the same, &#xD;
+	a subsequent script task will overwrite billing address with shipping address &#xD;
+	in order to render the billing address dynamically after the user selects the checkbox*/&#xD;
+  #&quot;769503c1-a459-4f96-82e6-7120e9c69fb4&quot;(&#xD;
+    SectionTitle:&quot;Customer Billing Address&quot;,&#xD;
+    address:if(ri!isShippingBillingSame,ri!customerData.ShippingAddress.Address,ri!customerData.BillingAddress.Address),&#xD;
+    city:if(ri!isShippingBillingSame,ri!customerData.ShippingAddress.City,ri!customerData.BillingAddress.City),&#xD;
+    state:if(ri!isShippingBillingSame,ri!customerData.ShippingAddress.State,ri!customerData.BillingAddress.State),&#xD;
+    postalcode:if(ri!isShippingBillingSame,ri!customerData.ShippingAddress.Zip,ri!customerData.BillingAddress.Zip),&#xD;
+    country:if(ri!isShippingBillingSame,ri!customerData.ShippingAddress.Country,ri!customerData.BillingAddress.Country),&#xD;
+    readOnly:ri!isShippingBillingSame,&#xD;
+    labelPosition:null&#xD;
+  )  &#xD;
+}&#xD;
+</definition>
+        <namedTypedValue>
+            <name>customerData</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>logo</name>
+            <type>
+                <name>CollaborationDocument</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>isCreate</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>isShippingBillingSame</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

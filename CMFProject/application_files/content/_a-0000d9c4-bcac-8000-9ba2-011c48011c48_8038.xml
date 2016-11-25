@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_generateRecordAssocRow</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_8038</uuid>
+        <description>Generates a row for a grid with the record type and record reference from a record association</description>
+        <parentUuid>_a-0000d9f1-8353-8000-9ba2-011c48011c48_10351</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>= with(
+  local!primaryKeyField: if(
+    isnull(
+      ri!primaryKeyField
+    ),
+    &quot;id&quot;,
+    ri!primaryKeyField
+  ),
+  local!labelField:#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_8051&quot;(ri!record),
+  local!datasubset: if(
+    ri!record.@attributes.uuid = &quot;SYSTEM_RECORD_TYPE_USER&quot;,
+    todatasubset(
+      ri!primaryKeyValue,
+      #&quot;SYSTEM_SYSRULES_pagingInfo&quot;(
+        startIndex: 1,
+        batchSize: 1
+      )
+    ),
+    queryrecord(
+      recordType: ri!record,
+      query: #&quot;SYSTEM_SYSRULES_query&quot;(
+        filter: #&quot;SYSTEM_SYSRULES_queryFilter&quot;(
+          field: local!primaryKeyField,
+          operator: &quot;=&quot;,
+          value: if(
+            isnull(
+              tointeger(
+                ri!primaryKeyValue
+              )
+            ),
+            ri!primaryKeyValue,
+            tointeger(
+              ri!primaryKeyValue
+            )
+          )
+        ),
+        selection:#&quot;SYSTEM_SYSRULES_querySelection&quot;(
+          columns:{
+            #&quot;SYSTEM_SYSRULES_queryColumn&quot;(
+              field:local!labelField
+            )
+          }
+        ),
+        pagingInfo: #&quot;SYSTEM_SYSRULES_pagingInfo&quot;(
+          startIndex: 1,
+          batchSize: 1
+        )
+      )
+    )
+  ),
+  if(
+    local!datasubset.totalCount &gt; 0,
+    if(
+    ri!record.@attributes.uuid = &quot;SYSTEM_RECORD_TYPE_USER&quot;,
+    #&quot;SYSTEM_SYSRULES_gridRowLayout&quot;(
+      contents: {
+        #&quot;SYSTEM_SYSRULES_textField&quot;(
+          label: &quot;Record Type&quot;,
+          readOnly: true(),
+          value: #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_8048&quot;(ri!record)
+        ),
+        #&quot;SYSTEM_SYSRULES_linkField&quot;(
+          label: &quot;Record Link&quot;,
+          links: #&quot;SYSTEM_SYSRULES_userRecordLink&quot;(
+            label: #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1983&quot;(local!datasubset.data[1]),
+            user: touser(local!datasubset.data[1]),
+            view: &quot;summary&quot;
+          )
+        )
+      }
+    )
+    ,
+    #&quot;SYSTEM_SYSRULES_gridRowLayout&quot;(
+      contents: {
+        #&quot;SYSTEM_SYSRULES_textField&quot;(
+          label: &quot;Record Type&quot;,
+          readOnly: true(),
+          value: #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_8048&quot;(ri!record)
+        ),
+        #&quot;SYSTEM_SYSRULES_linkField&quot;(
+          label: &quot;Record Link&quot;,
+          links: #&quot;SYSTEM_SYSRULES_recordLink&quot;(
+            recordType: ri!record,
+            label: index(local!datasubset.data,local!labelField,&quot;N/A&quot;),
+            identifier: ri!primaryKeyValue,
+            view: &quot;summary&quot;
+          )
+        )
+      }
+    )
+  ),
+  {}
+  )
+)</definition>
+        <namedTypedValue>
+            <name>record</name>
+            <type>
+                <name>RecordType</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>primaryKeyField</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>primaryKeyValue</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

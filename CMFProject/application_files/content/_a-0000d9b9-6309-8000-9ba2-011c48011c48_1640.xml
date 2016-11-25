@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_validateEmailAddressFormat</name>
+        <uuid>_a-0000d9b9-6309-8000-9ba2-011c48011c48_1640</uuid>
+        <description>Validates email for format in @ symbol, dot placement, and domain</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5841</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>=if(
+  or(
+    length(split(trim(ri!address),&quot; &quot;))&gt;1,
+    length(split(ri!address,&quot;@&quot;))&lt;&gt;2
+    ),
+  false(),
+  
+  with(
+    localPart:split(trim(ri!address),&quot;@&quot;)[1],
+    domainPart:split(trim(ri!address),&quot;@&quot;)[2],
+    
+    if(
+      or(
+        length(split(domainPart,&quot;.&quot;))&lt;2,
+        contains(split(localPart,&quot;.&quot;),&quot;&quot;),
+        contains(split(domainPart,&quot;.&quot;),&quot;&quot;),
+        not(isnull(stripwith(lower(domainPart),&quot;abcdefghijklmnopqrstuvwxyz1234567890-.&quot;))),
+        not(isnull(stripwith(lower(localPart),&quot;abcdefghijklmnopqrstuvwxyz1234567890-._+&amp;%&quot;)))
+        ),
+        
+      false(),
+      
+      true()
+      
+    )
+  )
+)</definition>
+        <namedTypedValue>
+            <name>address</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <preferredEditor>legacy</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

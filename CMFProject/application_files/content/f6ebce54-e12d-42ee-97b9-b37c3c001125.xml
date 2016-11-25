@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_OrdersGrid</name>
+        <uuid>f6ebce54-e12d-42ee-97b9-b37c3c001125</uuid>
+        <description>Grid control for managing the line items of an order</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5995</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>=load(
+  local!itemsToken,
+  local!selectedItems,
+  local!addItem,
+  local!showGrid:true,
+  {
+    if(showGrid,
+      {
+        #&quot;SYSTEM_SYSRULES_ButtonLayout&quot;(
+          secondaryButtons:
+            if(or(#&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1982&quot;(local!selectedItems), length(local!selectedItems)&lt;1), {},
+            {
+              #&quot;SYSTEM_SYSRULES_ButtonWidget&quot;(
+                label: &quot;Remove&quot;,
+                style: &quot;NORMAL&quot;,
+                confirmMessage: &quot;Are you sure you want to delete the selected items?&quot;,
+                saveInto:{
+                  a!save(
+                    target: ri!OrderItems,
+                    value: if(count(local!selectedItems)=count(ri!OrderItems), 
+                      null, 
+                      remove(ri!OrderItems, local!selectedItems)
+                    )
+                  ),
+                  a!save(
+                    target: local!selectedItems,
+                    value: {}
+                  )
+                }        
+              )
+            }
+          )
+        ),
+        #&quot;SYSTEM_SYSRULES_gridLayout&quot;(
+          label: ri!gridLabel,
+          instructions: ri!gridInstructions,
+          headerCells:{
+            #&quot;SYSTEM_SYSRULES_gridLayoutHeaderCell&quot;(
+              label: &quot;Image&quot;, 
+              align: &quot;LEFT&quot;
+            ),
+            #&quot;SYSTEM_SYSRULES_gridLayoutHeaderCell&quot;(
+              label: &quot;Product&quot;, 
+              align: &quot;LEFT&quot;
+            ),
+            #&quot;SYSTEM_SYSRULES_gridLayoutHeaderCell&quot;(
+              label: &quot;SKU&quot;,
+              align: &quot;LEFT&quot;
+            ),
+            #&quot;SYSTEM_SYSRULES_gridLayoutHeaderCell&quot;(
+              label: &quot;Quantity&quot;,
+              align: &quot;LEFT&quot;
+            ),
+            #&quot;SYSTEM_SYSRULES_gridLayoutHeaderCell&quot;(
+              label: &quot;Unit Price&quot;,
+              align: &quot;LEFT&quot;
+            ),
+            #&quot;SYSTEM_SYSRULES_gridLayoutHeaderCell&quot;(
+              label: &quot;Taxed&quot;,
+              align: &quot;LEFT&quot;
+            )
+          },
+          columnConfigs:{
+            #&quot;SYSTEM_SYSRULES_gridLayoutColumnConfig&quot;(
+              width: &quot;DISTRIBUTE&quot; 
+            ),
+            #&quot;SYSTEM_SYSRULES_gridLayoutColumnConfig&quot;(
+              width: &quot;DISTRIBUTE&quot; 
+            ),
+            #&quot;SYSTEM_SYSRULES_gridLayoutColumnConfig&quot;(
+              width: &quot;DISTRIBUTE&quot;
+            ),
+            #&quot;SYSTEM_SYSRULES_gridLayoutColumnConfig&quot;(
+              width: &quot;NARROW&quot;
+            ),
+            #&quot;SYSTEM_SYSRULES_gridLayoutColumnConfig&quot;(
+              width: &quot;NARROW&quot; 
+            ),
+            #&quot;SYSTEM_SYSRULES_gridLayoutColumnConfig&quot;(
+              width: &quot;NARROW&quot;
+            )
+          },
+          rows: #&quot;SYSTEM_SYSRULES_applyComponents&quot;(
+            function: #&quot;1ffac6f0-8bc9-46ee-b624-5a615fbaf482&quot;(
+              OrderItems: ri!OrderItems,
+              index: _,
+              itemsToken: local!itemsToken,
+              readOnly: ri!readOnly
+            ),
+            array: if(or(#&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1982&quot;(ri!OrderItems), count(ri!OrderItems) &lt; 1), {}, 1+enumerate(count(ri!OrderItems))),
+            arrayVariable: local!itemsToken
+          ),
+          selectable: if(ri!readOnly=true(), false(), true()),
+          selectionDisabled: ri!readOnly,
+          selectionValue: local!selectedItems,
+          selectionSaveInto: local!selectedItems,
+          validations: { if(or(#&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1982&quot;(ri!OrderItems), count(ri!OrderItems)&lt;1), &quot;You must add at least 1 item to the order&quot;, 
+            if(contains(ri!OrderItems.Product.name,null ), &quot;Select a product below to add to the order&quot;, null))
+          }
+        )
+      },
+      {}
+    ),
+    if(ri!readOnly, 
+      {}, 
+      if(or(#&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1982&quot;(ri!OrderItems), not(#&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1982&quot;(ri!OrderItems[count(ri!OrderItems)].Product))),
+        #&quot;SYSTEM_SYSRULES_linkField&quot;(
+          label: &quot;Add Item&quot;,
+          labelPosition: &quot;COLLAPSED&quot;,
+          links: #&quot;SYSTEM_SYSRULES_dynamicLink&quot;(
+            label: &quot;+Add Item&quot;,
+            value: true(),
+            saveInto: {
+              local!AddItem,
+              ri!OrderItems &lt;&lt; fn!append(ri!OrderItems, 'type!{urn:com:appian:types:CASE_APP}CASE_APP_OrderItem'(Taxed: true())),
+              local!itemsToken &lt;&lt; fn!append(local!itemsToken, 'type!{urn:com:appian:types:CASE_APP}CASE_APP_OrderItem'(Taxed: true())),
+              a!save(local!showGrid,false)
+            }
+          
+          )
+        ),
+        #&quot;3c080665-5d73-4dcc-b04a-2bec25d26b79&quot;(
+          OrderItems: ri!OrderItems,
+          itemsToken: local!itemsToken,
+          index: count(ri!OrderItems),
+          showGrid:local!showGrid
+        )
+      )
+    )
+  }                
+)
+</definition>
+        <namedTypedValue>
+            <name>OrderItems</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>gridLabel</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>gridInstructions</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>readOnly</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

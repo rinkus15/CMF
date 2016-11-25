@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_customerDashboardFinancialNews</name>
+        <uuid>41cb3b7b-8bdf-4d84-b53d-26611aacdbb1</uuid>
+        <description>Related dashboard layout for CASE_APP Customer Financial News</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5839</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>#&quot;SYSTEM_SYSRULES_dashboardLayout&quot;(
+  label:&quot;Finances &amp; News: &quot;&amp;rf!Name,
+  firstColumnContents:{
+    #&quot;SYSTEM_SYSRULES_sectionLayout&quot;(
+      label:&quot;Financials&quot;,
+      firstColumnContents:{
+        #&quot;SYSTEM_SYSRULES_imageField&quot;(
+          labelPosition: &quot;COLLAPSED&quot;,
+          images: {
+            if(#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(rf!LogoID),
+              {},
+              #&quot;SYSTEM_SYSRULES_documentImage&quot;(document:rf!LogoID)
+            )
+          },
+          size: &quot;THUMBNAIL&quot;
+        ),
+        #&quot;SYSTEM_SYSRULES_textField&quot;(
+          label: &quot;Company Type&quot;,
+          labelPosition: &quot;ADJACENT&quot;,
+          value: if(#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(rf!StockTicker),
+            &quot;Private&quot;,
+            &quot;Public&quot;
+          ),
+          readOnly: true
+        ),
+        #&quot;SYSTEM_SYSRULES_textField&quot;(
+          label: &quot;Stock Ticker&quot;,
+          labelPosition: &quot;ADJACENT&quot;,
+          value: rf!StockTicker,
+          readOnly: true
+        )
+      },
+      secondColumnContents: {
+        #&quot;SYSTEM_SYSRULES_paragraphField&quot;(
+          labelPosition: &quot;COLLAPSED&quot;,
+          value: rf!Description,
+          required: false(),
+          readOnly: true
+        )
+      }
+    ),
+    if(#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(rf!StockTicker),
+      #&quot;SYSTEM_SYSRULES_textField&quot;(
+        value:&quot;Financial news is only available for public companies with a loaded stock ticker.&quot;,
+        readOnly:true
+      ),
+      #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_2196&quot;(symbols:rf!StockTicker,isSmall:false)
+    )
+  }
+)</definition>
+        <namedTypedValue>
+            <name>cid</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

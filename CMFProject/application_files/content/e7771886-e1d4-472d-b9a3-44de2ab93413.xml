@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_NewOrder</name>
+        <uuid>e7771886-e1d4-472d-b9a3-44de2ab93413</uuid>
+        <description>SAIL UI for creating a new order</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5995</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>=load(
+  local!BillingSame: if(or(isnull(ri!customer), count(ri!customer)&lt;1),
+    null,
+    if(and(
+      ri!customer[1].ShippingAddress.Address=ri!customer[1].BillingAddress.Address,
+      ri!customer[1].ShippingAddress.City=ri!customer[1].BillingAddress.City,
+      ri!customer[1].ShippingAddress.ZIP=ri!customer[1].BillingAddress.ZIP,
+      ri!customer[1].ShippingAddress.Country=ri!customer[1].BillingAddress.Country
+      ),
+      {&quot;selected&quot;}, {}
+    )
+  ),
+  local!orderNum: #&quot;_a-0000d9b9-57db-8000-9e06-010000010000_831&quot;() &amp; &quot;-&quot; &amp; #&quot;_a-0000d9b9-57db-8000-9e06-010000010000_831&quot;(),
+  local!formStage:1,
+  #&quot;SYSTEM_SYSRULES_formLayout&quot;(
+    label: &quot;New Order Form&quot;, 
+    instructions: &quot;Complete this form to create a new order for a customer&quot;,
+    firstColumnContents: {
+      #&quot;SYSTEM_SYSRULES_milestoneField&quot;(
+        steps:{
+          &quot;Select Customer&quot;,
+          &quot;Add Products&quot;,
+          &quot;Confirm Contact Info&quot;
+        },
+        active:local!formStage
+      ),
+      #&quot;883b3172-4929-4171-98ef-34f0407545bf&quot;(
+        label: &quot;Select a Customer&quot;,
+        labelPosition: &quot;ABOVE&quot;,
+        instructions: &quot;Select a customer to begin an order&quot;,
+        required: true(),
+        requiredMessage: &quot;You must select a customer to create an order&quot;,
+        maxSelections: 1,
+        record: #&quot;_a-0000d9b8-a7c6-8000-9e06-010000010000_504&quot;,
+        primaryKeyField: &quot;id&quot;,
+        searchFields: {&quot;Name&quot;, &quot;GlobalID&quot;, &quot;ContactName&quot;}, 
+        labelField: &quot;Name&quot;,
+        requireUniqueValues: true(),
+        selectedValues:  ri!customer,
+        saveInto:  {
+          ri!customer,
+          a!save(
+            target: local!BillingSame,
+            value: {&quot;selected&quot;}
+          ),
+          a!save(
+            target: ri!Order,
+            value: 'type!{urn:com:appian:types:CASE_APP}CASE_APP_Order'(ShippingCost: #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6222&quot;(ri!Order) , TaxRate: #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6120&quot;)
+          ),
+          a!save(
+            target:local!formStage,
+            value:if(#&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1982&quot;(ri!customer),
+              local!formStage,
+              local!formStage+1
+            )
+          )
+        }
+      ),
+      if(local!formStage=2,
+        {
+          #&quot;SYSTEM_SYSRULES_richTextDisplayField&quot;(
+            labelPosition:&quot;COLLAPSED&quot;,
+            value:#&quot;SYSTEM_SYSRULES_richTextItem&quot;(text:&quot;Add Products&quot;,style:&quot;STRONG&quot;)
+          ),
+          #&quot;f6ebce54-e12d-42ee-97b9-b37c3c001125&quot;(
+            OrderItems: ri!Order.OrderItems,
+            readOnly:false
+          ),
+          #&quot;SYSTEM_SYSRULES_sectionLayout&quot;(
+            label: &quot;Order Total&quot;,
+            firstColumnContents: {
+              #&quot;SYSTEM_SYSRULES_floatingPointField&quot;(
+                label: &quot;Tax Rate&quot;,
+                value: if(isnull(ri!Order.TaxRate), #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6120&quot;, ri!Order.TaxRate),
+                saveInto: ri!Order.TaxRate
+              ),
+              #&quot;SYSTEM_SYSRULES_floatingPointField&quot;(
+                label: &quot;Shipping Costs&quot;,
+                value: if(isnull(ri!Order.ShippingCost), #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6222&quot;(ri!Order) , ri!Order.ShippingCost),
+                saveInto: ri!Order.ShippingCost
+              )
+            },
+            secondColumnContents: {
+              #&quot;SYSTEM_SYSRULES_textField&quot;(
+                label: &quot;Order Total&quot;,
+                value:  dollar(if(isnull(ri!Order.OrderItems), 0, #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6123&quot;(ri!Order)), 2, 0),
+                readOnly: true()
+              )
+            }
+          )
+        },
+        {}
+      ),
+      if(local!formStage=3,
+        {
+          #&quot;769503c1-a459-4f96-82e6-7120e9c69fb4&quot;(
+            SectionTitle: &quot;Shipping Address&quot;,
+            address: ri!customer[1].ShippingAddress.Address,
+            city: ri!customer[1].ShippingAddress.City,
+            state: ri!customer[1].ShippingAddress.State,
+            postalCode: ri!customer[1].ShippingAddress.ZIP,
+            country: ri!customer[1].ShippingAddress.Country,
+            readOnly: false(),
+            isCollapsible: true()
+          ),
+          #&quot;SYSTEM_SYSRULES_checkboxField&quot;(
+          	labelPosition:&quot;COLLAPSED&quot;,
+          	choiceLabels:{&quot;Are shipping and billing addresses the same?&quot;},
+          	choiceValues:{&quot;selected&quot;},
+          	value: local!BillingSame,
+          	saveInto:local!BillingSame
+          ),
+          if(local!BillingSame={&quot;selected&quot;},
+            #&quot;SYSTEM_SYSRULES_imageField&quot;(label: null,labelPosition: &quot;COLLAPSED&quot;, images: {}),
+            {
+          	  #&quot;769503c1-a459-4f96-82e6-7120e9c69fb4&quot;(
+                SectionTitle: &quot;Billing Address&quot;,
+                address: ri!customer[1].BillingAddress.Address,
+                city: ri!customer[1].BillingAddress.City,
+                state: ri!customer[1].BillingAddress.State,
+                postalCode: ri!customer[1].BillingAddress.ZIP,
+                country: ri!customer[1].BillingAddress.Country,
+                readOnly: false(),
+                isCollapsible: true()
+              )
+            }
+          ),
+          #&quot;SYSTEM_SYSRULES_sectionLayout&quot;(
+            label: &quot;Purchaser Contact Information&quot;,
+            firstColumnContents: {
+              #&quot;SYSTEM_SYSRULES_textField&quot;(
+                label: &quot;Name&quot;,
+                instructions: &quot;Verify the name of the person submitting this purchase order&quot;,
+                value: ri!customer[1].ContactName,
+                saveInto: ri!customer[1].ContactName,
+                refreshAfter: &quot;KEYPRESS&quot;
+              ),
+              #&quot;SYSTEM_SYSRULES_textField&quot;(
+                label: &quot;Customer Reference Number&quot;,
+                instructions: &quot;Optional number specified by customer for their reference.&quot;,
+                value: ri!Order.CustomerOrderRefNumb,
+                saveInto: ri!Order.CustomerOrderRefNumb
+              )
+            },
+            secondColumnContents: {
+              #&quot;SYSTEM_SYSRULES_textField&quot;(
+                label: &quot;Contact Email Address&quot;,
+                instructions: &quot;Verify the email address of the person submitting this purchase order&quot;,
+                value: ri!customer.Email,
+                saveInto: ri!customer[1].Email,
+                refreshAfter: &quot;KEYPRESS&quot;,
+          			validations:if(#&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1640&quot;(ri!customer.Email),null,
+          			&quot;Please enter a valid email address&quot;)
+              ),
+              #&quot;SYSTEM_SYSRULES_textField&quot;(
+                label: &quot;Contact Office Phone&quot;,
+                instructions: &quot;Verify the phone number of the person submitting this purchase order&quot;,
+                value: ri!customer[1].OfficePhone,
+                saveInto: ri!customer[1].OfficePhone,
+                refreshAfter: &quot;KEYPRESS&quot;,
+                validations: {
+                              if(
+                                cleanwith(ri!customer[1].OfficePhone, &quot;1234567890()+- &quot;)=ri!customer[1].OfficePhone, 
+                                null, &quot;Invalid characters in phone number&quot;
+                              )
+                            }          
+              )
+            },
+            isCollapsible: true()
+          )
+        },
+        {}
+  	  )
+    }, /* Close Form Contents */
+    buttons: #&quot;SYSTEM_SYSRULES_ButtonLayout&quot;(
+      primaryButtons: {
+        #&quot;SYSTEM_SYSRULES_ButtonWidget&quot;(
+          label: if(local!formStage=3,&quot;Submit Order&quot;,&quot;Next&quot;),
+          style: &quot;PRIMARY&quot;,
+          saveInto: {
+            if(local!formStage&lt;3,
+              a!save(target:local!formStage,value:local!formStage+1),
+              {
+                a!save(target: ri!Order.OrderNum, value: local!orderNum),
+                a!save(
+                  target: ri!Order.ShippingAddress,
+                  value: 'type!{urn:com:appian:types:CASE_APP}CASE_APP_AddressType'(
+                    Address: ri!customer[1].ShippingAddress.Address,
+                    City:  ri!customer[1].ShippingAddress.City,
+                    State:  ri!customer[1].ShippingAddress.State,
+                    Country:  ri!customer[1].ShippingAddress.Country,
+                    ZIP:  ri!customer[1].ShippingAddress.Zip
+                  )
+                ),
+                a!save(target: ri!Order.OrderItems.OrderItemNumber,value: local!orderNum),
+                a!save(
+                  target: ri!Order.BillingAddress,
+                  value: 'type!{urn:com:appian:types:CASE_APP}CASE_APP_AddressType'(
+                    Address: ri!customer[1].BillingAddress.Address,
+                    City:  ri!customer[1].BillingAddress.City,
+                    State:  ri!customer[1].BillingAddress.State,
+                    Country:  ri!customer[1].BillingAddress.Country,
+                    ZIP:  ri!customer[1].BillingAddress.Zip
+                  )
+                ),
+                a!save(target: ri!Order.Status,value: #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6146&quot;[1]),
+                a!save(target: ri!Order.Total,value: #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6123&quot;(ri!Order)),
+                a!save(
+                  target: ri!Order.Customer,
+                  value: #&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_2115&quot;(ri!customer[1].id) 
+                ),
+                a!save(
+                  target: ri!Order.OrderDateTime,
+                  value: now()
+                ),
+                a!save(
+                  target: ri!Order.OrderDate,
+                  value: todate(now())
+                ),
+                a!save(
+                  target: ri!Order.PurchaserName,
+                  value: ri!customer[1].ContactName
+                ),
+                a!save(
+                  target: ri!Order.PurchaserEmail,
+                  value: ri!customer[1].Email
+                ),
+                a!save(
+                  target: ri!Order.PurchaserPhone,
+                  value: ri!customer[1].OfficePhone
+                )
+              }
+            )
+          },
+          submit:local!formStage=3,
+          validate:true
+        )
+      },
+      secondaryButtons: {
+        #&quot;SYSTEM_SYSRULES_ButtonWidget&quot;(
+          label: &quot;Go Back&quot;,
+          value:local!formStage-1,
+          saveInto:local!formStage,
+          disabled:local!formStage=1
+        ),
+        #&quot;SYSTEM_SYSRULES_ButtonWidgetSubmit&quot;(
+          label: &quot;Cancel&quot;,
+          value: true,
+          saveInto: ri!cancel,
+          skipValidation: true
+        )
+      }
+    )
+  )
+)</definition>
+        <namedTypedValue>
+            <name>cancel</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>Order</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>customer</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_getallOrderFieldsbyOrderNum</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_8248</uuid>
+        <description>Returns all fields for an order given the Order Number</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5996</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition> #&quot;SYSTEM_SYSRULES_queryEntity&quot;(
+  entity: #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6305&quot;,
+  query: #&quot;SYSTEM_SYSRULES_query&quot;(
+    selection: #&quot;SYSTEM_SYSRULES_querySelection&quot;(
+      columns: {
+        #&quot;SYSTEM_SYSRULES_queryColumn&quot;(
+          field: &quot;id&quot;
+        ),
+        #&quot;SYSTEM_SYSRULES_queryColumn&quot;(
+          field: &quot;OrderNum&quot;
+        ),
+        #&quot;SYSTEM_SYSRULES_queryColumn&quot;(
+          field: &quot;OrderDate&quot;
+        ),
+        #&quot;SYSTEM_SYSRULES_queryColumn&quot;(
+          field: &quot;PurchaserName&quot;
+        ),
+        #&quot;SYSTEM_SYSRULES_queryColumn&quot;(
+          field: &quot;PurchaserEmail&quot;
+        ),
+        #&quot;SYSTEM_SYSRULES_queryColumn&quot;(
+          field: &quot;PurchaserPhone&quot;
+        ),
+        #&quot;SYSTEM_SYSRULES_queryColumn&quot;(
+          field: &quot;CustomerOrderRefNumb&quot;
+        ),
+        #&quot;SYSTEM_SYSRULES_queryColumn&quot;(
+          field: &quot;TaxRate&quot;
+        ),
+        #&quot;SYSTEM_SYSRULES_queryColumn&quot;(
+          field: &quot;ShippingCost&quot;
+        ),
+        #&quot;SYSTEM_SYSRULES_queryColumn&quot;(
+          field: &quot;Total&quot;
+        ),
+        #&quot;SYSTEM_SYSRULES_queryColumn&quot;(
+          field: &quot;Status&quot;
+        ),
+        #&quot;SYSTEM_SYSRULES_queryColumn&quot;(
+          field: &quot;Customer&quot;
+        ),
+        #&quot;SYSTEM_SYSRULES_queryColumn&quot;(
+          field: &quot;ShippingAddress&quot;
+        ),
+        #&quot;SYSTEM_SYSRULES_queryColumn&quot;(
+          field: &quot;BillingAddress&quot;
+        ),
+        #&quot;SYSTEM_SYSRULES_queryColumn&quot;(
+          field: &quot;OrderItems&quot;
+        ),
+        #&quot;SYSTEM_SYSRULES_queryColumn&quot;(
+          field: &quot;OrderDateTime&quot;
+        ),
+        #&quot;SYSTEM_SYSRULES_queryColumn&quot;(
+          field: &quot;TrackingNumber&quot;
+        ),
+        #&quot;SYSTEM_SYSRULES_queryColumn&quot;(
+          field: &quot;processId&quot;
+        )				
+      }
+    ),
+    filter: #&quot;SYSTEM_SYSRULES_queryFilter&quot;(
+      field: &quot;OrderNum&quot;,
+      operator: &quot;=&quot;,
+      value: ri!orderNum
+    ),
+    pagingInfo: #&quot;SYSTEM_SYSRULES_pagingInfo&quot;(
+      startIndex: 1,
+      batchSize: 500
+    )
+  )
+).data[1]</definition>
+        <namedTypedValue>
+            <name>orderNum</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <preferredEditor>legacy</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_FindProductGrid</name>
+        <uuid>3c080665-5d73-4dcc-b04a-2bec25d26b79</uuid>
+        <description>Grid control used in order form to find a specific product to add to an order</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5995</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>load(
+  local!pagingInfo: #&quot;SYSTEM_SYSRULES_pagingInfo&quot;(
+    startIndex: 1,
+    batchSize: 4,
+    sort: #&quot;SYSTEM_SYSRULES_sortInfo&quot;(
+      field: &quot;name&quot;,
+      ascending: true
+    )
+  ),
+  local!nameSearch,
+  local!skuSearch,
+  local!categoryFilter,
+  local!itemsToken,
+  {
+    #&quot;SYSTEM_SYSRULES_sectionLayout&quot;(
+      label:&quot;What product would you like to add?&quot;,
+      firstColumnContents: {
+        #&quot;SYSTEM_SYSRULES_textField&quot;(
+          label: &quot;Search Product by Name&quot;,
+          value: local!nameSearch,
+          saveInto: local!nameSearch,
+          refreshAfter: &quot;KEYPRESS&quot;
+        ),
+        #&quot;SYSTEM_SYSRULES_textField&quot;(
+          label: &quot;Search product by SKU&quot;,
+          value: local!skuSearch,
+          saveInto: local!skuSearch,
+          refreshAfter: &quot;KEYPRESS&quot;
+        )
+      },
+      secondColumnContents: {
+        #&quot;SYSTEM_SYSRULES_dropdownField&quot;(
+          label: &quot;Filter Products by Category&quot;,
+          choiceLabels: #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;,
+          placeholderLabel: &quot;--Filter by Category--&quot;,
+          choiceValues: #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3808&quot;,
+          value: local!categoryFilter,
+          saveInto: local!categoryFilter
+        ),
+        #&quot;SYSTEM_SYSRULES_ButtonLayout&quot;(primaryButtons:{
+          #&quot;SYSTEM_SYSRULES_ButtonWidget&quot;(
+            label:&quot;Cancel&quot;,
+            style:&quot;DESTRUCTIVE&quot;,
+            value:true,
+            saveInto:{
+              a!save(ri!showGrid, true),
+              a!save(
+                ri!OrderItems,
+                if(count(ri!OrderItems)=1, 
+                  null, 
+                  rdrop(ri!OrderItems, 1)
+                )
+              ),
+              a!save(
+                local!itemsToken,
+                if(count(ri!itemsToken)=1, 
+                  null, 
+                  rdrop(ri!itemsToken, 1)
+                )
+              )
+            }
+          )
+        })
+      }
+    ),
+    if(or(not(isnull(local!nameSearch)), not(isnull(local!skuSearch)), not(isnull(local!categoryFilter))), 
+    with(
+      local!datasubset: queryrecord(
+        #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3830&quot;,
+        #&quot;SYSTEM_SYSRULES_query&quot;(
+          selection: #&quot;SYSTEM_SYSRULES_querySelection&quot;(columns: {
+            #&quot;SYSTEM_SYSRULES_queryColumn&quot;(field: &quot;id&quot;),
+            #&quot;SYSTEM_SYSRULES_queryColumn&quot;(field: &quot;name&quot;),
+            #&quot;SYSTEM_SYSRULES_queryColumn&quot;(field: &quot;sku&quot;),
+            #&quot;SYSTEM_SYSRULES_queryColumn&quot;(field: &quot;description&quot;),
+            #&quot;SYSTEM_SYSRULES_queryColumn&quot;(field: &quot;productCategory&quot;),
+            #&quot;SYSTEM_SYSRULES_queryColumn&quot;(field: &quot;price&quot;),
+            #&quot;SYSTEM_SYSRULES_queryColumn&quot;(field: &quot;quantity&quot;),
+            #&quot;SYSTEM_SYSRULES_queryColumn&quot;(field: &quot;productImageDocId&quot;),
+          }),
+          logicalExpression: {
+            #&quot;SYSTEM_SYSRULES_queryLogicalExpression&quot;(
+              operator: &quot;AND&quot;,
+              filters: {
+                if(isnull(local!nameSearch), null,#&quot;SYSTEM_SYSRULES_queryFilter&quot;(
+                  field: &quot;name&quot;,
+                  operator: &quot;includes&quot;,
+                  value: local!nameSearch
+                )
+                ),
+                if(isnull(local!skuSearch), null,#&quot;SYSTEM_SYSRULES_queryFilter&quot;(
+                  field: &quot;sku&quot;,
+                  operator: &quot;includes&quot;,
+                  value: local!skuSearch
+                )
+                ),
+                if(isnull(local!categoryFilter), null,#&quot;SYSTEM_SYSRULES_queryFilter&quot;(
+                  field: &quot;productCategory&quot;,
+                  operator: &quot;=&quot;,
+                  value: local!categoryFilter
+                )
+                )
+              }
+            )
+          },
+          pagingInfo: local!pagingInfo
+        )
+      ),
+      #&quot;SYSTEM_SYSRULES_gridField&quot;(
+        instructions:&quot;Click or tap on product name to add it to the Orders grid.&quot;,
+        totalCount: local!datasubset.totalCount,
+        columns: {
+          #&quot;SYSTEM_SYSRULES_gridImageColumn&quot;(
+            label: &quot;Image&quot;,
+            field: &quot;productImageDocId&quot;,
+            data: apply(
+              #&quot;SYSTEM_SYSRULES_documentImage&quot;(
+                _,
+                &quot;product image&quot;,
+                null,
+                null
+              ),
+              todocument(index(local!datasubset.data, &quot;productImageDocId&quot;, {}))
+            ),
+            size: &quot;THUMBNAIL&quot;
+          ),
+          #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+            label: &quot;Name&quot;,
+            field: &quot;name&quot;,
+            data: index(local!datasubset.data, &quot;name&quot;, {}),
+            links: apply(
+              #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6077&quot;(
+                productID: _,
+                OrderItem: ri!OrderItems[ri!index],
+                nameSearch:local!nameSearch,
+                skuSearch:local!skuSearch,
+                categoryFilter:local!categoryFilter,
+                showGrid:ri!showGrid
+              ),
+              local!datasubset.identifiers
+            )
+          ),
+          #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+            label: &quot;SKU&quot;,
+            field: &quot;sku&quot;,
+            data: index(local!datasubset.data, &quot;sku&quot;, {})
+          ),
+          #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+            label: &quot;Description&quot;,
+            field: &quot;description&quot;,
+            data: index(local!datasubset.data, &quot;description&quot;, {})
+          ),
+          #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+            label: &quot;Price&quot;,
+            field: &quot;price&quot;,
+            data: index(local!datasubset.data, &quot;price&quot;, {})
+          ),
+          #&quot;SYSTEM_SYSRULES_gridTextColumn&quot;(
+            label: &quot;Stock&quot;,
+            field: &quot;quantity&quot;,
+            data: index(local!datasubset.data, &quot;quantity&quot;, {})
+          )
+        },
+        value: local!pagingInfo,
+        saveInto: local!pagingInfo
+      )
+    ),
+    {}
+    )
+  }
+)
+</definition>
+        <namedTypedValue>
+            <name>OrderItems</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>itemsToken</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>index</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>showGrid</name>
+            <type>
+                <name>Save</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

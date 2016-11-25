@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_productSummaryDashboard</name>
+        <uuid>1f91132e-3675-45d6-ad5e-3a0c635e71a7</uuid>
+        <description>Summary dashboard for Product record type</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5845</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>= load(&#xD;
+  local!product: #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4326&quot;(id:ri!id),&#xD;
+  #&quot;SYSTEM_SYSRULES_dashboardLayout&quot;(&#xD;
+    firstColumnContents: {&#xD;
+      #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4332&quot;(product:local!product),&#xD;
+      #&quot;SYSTEM_SYSRULES_sectionLayout&quot;(&#xD;
+        label:&quot;Shipping Details&quot;,&#xD;
+        firstColumnContents:{&#xD;
+          #&quot;SYSTEM_SYSRULES_textField&quot;(&#xD;
+            label:&quot;Shipping Weight (lbs)&quot;,&#xD;
+            labelPosition:&quot;ADJACENT&quot;,&#xD;
+            value:if(#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(rf!shippingDetails.weight),&quot;N/A&quot;,rf!shippingDetails.weight),&#xD;
+            readOnly:true&#xD;
+          ),&#xD;
+          #&quot;SYSTEM_SYSRULES_textField&quot;(&#xD;
+            label:&quot;Shipping Height (inches)&quot;,&#xD;
+            labelPosition:&quot;ADJACENT&quot;,&#xD;
+            value:if(#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(rf!shippingDetails.weight),&quot;N/A&quot;,rf!shippingDetails.height),&#xD;
+            readOnly:true&#xD;
+          )&#xD;
+        },&#xD;
+        secondColumnContents:{&#xD;
+          #&quot;SYSTEM_SYSRULES_textField&quot;(&#xD;
+            label:&quot;Shipping Width (lbs)&quot;,&#xD;
+            labelPosition:&quot;ADJACENT&quot;,&#xD;
+            value:if(#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(rf!shippingDetails.weight),&quot;N/A&quot;,rf!shippingDetails.width),&#xD;
+            readOnly:true&#xD;
+          ),&#xD;
+          #&quot;SYSTEM_SYSRULES_textField&quot;(&#xD;
+            label:&quot;Shipping Depth (inches)&quot;,&#xD;
+            labelPosition:&quot;ADJACENT&quot;,&#xD;
+            value:if(#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(rf!shippingDetails.weight),&quot;N/A&quot;,rf!shippingDetails.depth),&#xD;
+            readOnly:true&#xD;
+          )&#xD;
+        }&#xD;
+      ),&#xD;
+      #&quot;29674194-7ed2-4a6b-a994-5cb57a7a5b30&quot;(&#xD;
+        productIds:{rf!id},&#xD;
+        productName:{rf!name},&#xD;
+        showAddToOrder:false&#xD;
+        &#xD;
+      )&#xD;
+    }&#xD;
+  )&#xD;
+)</definition>
+        <namedTypedValue>
+            <name>id</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>
