@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_RandomOrder</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6420</uuid>
+        <description>Used to create a random order, containing a random customer and random order items</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6409</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>= load(
+  local!orderNum: #&quot;_a-0000d9b9-57db-8000-9e06-010000010000_831&quot;() &amp; &quot;-&quot; &amp; #&quot;_a-0000d9b9-57db-8000-9e06-010000010000_831&quot;(),
+  load(
+    local!customer: #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6410&quot;(),
+    local!orderDateTime: now() - (
+      tointeger(
+        rand() * ri!daysOrders
+      ) + rand()
+    ),
+    local!orderItems: apply(
+      #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6412&quot;(
+        _,
+        local!orderNum
+      ),
+      apply(
+        #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6416&quot;(
+          _
+        ),
+        enumerate(
+          tointeger(
+            random() * 10
+          ) + 1
+        )
+      )
+    ),
+    'type!{urn:com:appian:types:CASE_APP}CASE_APP_Order'(
+      OrderNum: local!orderNum,
+      PurchaserName: local!customer.ContactName,
+      PurchaserEmail: local!customer.Email,
+      PurchaserPhone: local!customer.OfficePhone,
+      TaxRate: #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6120&quot;,
+      ShippingCost: #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6222&quot;(
+        null
+      ),
+      Total: #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6123&quot;(
+        'type!{urn:com:appian:types:CASE_APP}CASE_APP_Order'(
+          OrderItems: local!orderItems,
+          ShippingCost: #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6222&quot;(
+            null
+          ),
+          TaxRate: #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6120&quot;
+        )
+      ),
+      OrderDate: todate(
+        local!orderDateTime
+      ),
+      OrderDateTime: local!orderDateTime,
+      CustomerOrderRefNumb: #&quot;_a-0000d9b9-57db-8000-9e06-010000010000_831&quot;() &amp; #&quot;_a-0000d9b9-57db-8000-9e06-010000010000_831&quot;(),
+      Status: #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5799&quot;(
+        #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6146&quot;
+      ),
+      Customer: local!customer,
+      ShippingAddress: 'type!{urn:com:appian:types:CASE_APP}CASE_APP_AddressType'(
+        Address: local!customer.ShippingAddress.Address,
+        Country: local!customer.ShippingAddress.Country,
+        City: local!customer.ShippingAddress.City,
+        State: local!customer.ShippingAddress.State,
+        ZIP: local!customer.ShippingAddress.ZIP
+      ),
+      BillingAddress: 'type!{urn:com:appian:types:CASE_APP}CASE_APP_AddressType'(
+        Address: local!customer.BillingAddress.Address,
+        Country: local!customer.BillingAddress.Country,
+        City: local!customer.BillingAddress.City,
+        State: local!customer.BillingAddress.State,
+        ZIP: local!customer.BillingAddress.ZIP
+      ),
+      OrderItems: local!orderItems,
+      TrackingNumber: #&quot;_a-0000d9b9-57db-8000-9e06-010000010000_831&quot;() &amp; #&quot;_a-0000d9b9-57db-8000-9e06-010000010000_831&quot;() &amp; #&quot;_a-0000d9b9-57db-8000-9e06-010000010000_831&quot;()
+    )
+  )
+)</definition>
+        <namedTypedValue>
+            <name>daysOrders</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>legacy</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

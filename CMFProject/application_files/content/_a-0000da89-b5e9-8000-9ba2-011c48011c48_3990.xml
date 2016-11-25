@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_srRandomServiceRequest</name>
+        <uuid>_a-0000da89-b5e9-8000-9ba2-011c48011c48_3990</uuid>
+        <description>Generates one random service request</description>
+        <parentUuid>_a-0000d9df-3187-8000-9ba2-011c48011c48_8373</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>=with(
+  local!srDateTime:now() - #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5798&quot;(ri!daysSRs),
+  local!customer: #&quot;_a-0000d9df-3187-8000-9ba2-011c48011c48_8375&quot;(),
+  local!status:#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5799&quot;(ldrop(rdrop(#&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2630&quot;,1),1)),
+  local!type:#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5799&quot;(append(#&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2620&quot;[{2,3,4}],#&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2620&quot;[{2,4}])),
+  local!relatedOrder:if(local!type=&quot;I need help with an Order&quot;,#&quot;_a-0000d9df-3187-8000-9ba2-011c48011c48_8379&quot;(),null),
+  'type!{urn:com:appian:types:CASE_APP}CASE_APP_ServiceRequest'(
+    requestNum: #&quot;_a-0000d9b9-57db-8000-9e06-010000010000_831&quot;() &amp; &quot;-&quot; &amp; #&quot;_a-0000d9b9-57db-8000-9e06-010000010000_831&quot;(),
+    serviceRep:#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5799&quot;(getdistinctusers(topeople(#&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2763&quot; ))),
+    requestDateTime:local!srDateTime,
+    requesterName:local!customer.ContactName,
+    requesterEmail:local!customer.Email,
+    requesterPhone:local!customer.OfficePhone,
+    comment:#&quot;_a-0000da89-b5e9-8000-9ba2-011c48011c48_4130&quot;(local!type),
+    type:local!type,
+    status:local!status,
+    resolutionTime:if(or(local!status=&quot;Solution&quot;,local!status=&quot;Closed&quot;),local!srDateTime+#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5798&quot;(#&quot;_a-0000da5f-caaa-8000-9ba2-011c48011c48_2762&quot;),null),
+    relatedCustomer:local!customer,
+    relatedOrder:local!relatedOrder,
+    relatedOrderItemId:local!relatedOrder.OrderItems.id[1]
+  )
+)</definition>
+        <namedTypedValue>
+            <name>daysSRs</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>legacy</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

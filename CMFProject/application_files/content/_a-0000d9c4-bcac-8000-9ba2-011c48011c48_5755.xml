@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>amazon</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5755</uuid>
+        <description>&lt;customer&gt;
+   &lt;Name&gt;Amazon.com, Inc.&lt;/Name&gt;   &lt;Description&gt;Amazon.com, Inc. (Amazon.com) serves consumers through its retail websites and focus on selection, price, and convenience. The Company offers programs that enables sellers to sell their products on its Websites and their own branded Websites and to fulfill orders through them , and programs that allow authors, musicians, filmmakers, application developers, and others to publish and sell content. The Company operates in two segments: North America and International. The Company serves consumers through its retail websites, and focus on selection, price, and convenience. The Company designs its Websites to enable millions of products to be sold by the Company and by third parties across dozens of product categories. Customers access its Websites directly and through its mobile Websites and apps. It also manufactures and sells Kindle devices. Effective February 5, 2014, Amazon.com Inc acquired Double Helix Games LLC. Effective May 6, 2014, the Company acquired Iconology Inc.&lt;/Description&gt;
+   &lt;emailPostFix&gt;@fake.amazon.com&lt;/emailPostFix&gt;
+   &lt;website&gt;http://www.amazon.com&lt;/website&gt;
+   &lt;address&gt;410 Terry Avenue North&lt;/address&gt;
+   &lt;city&gt;Seattle&lt;/city&gt;
+   &lt;state&gt;Washington&lt;/state&gt;
+   &lt;zip&gt;98109-5210&lt;/zip&gt;
+   &lt;country&gt;United States of America&lt;/country&gt;
+   &lt;stockTicker&gt;AMZN&lt;/stockTicker&gt;
+   &lt;industry&gt;Retail&lt;/industry&gt;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.png</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

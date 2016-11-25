@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_CreateCustomerForIndex</name>
+        <uuid>_a-0000dac9-8638-8000-9ba2-011c48011c48_5460</uuid>
+        <description>Retrieves the Nth company from the XML customer data source, and the Nth company logo from the Customer Logos constant and generates a CASE_APP_Customer object.</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4337</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>=load(
+  local!docExtension:fn!document(#&quot;_a-0000dac9-8638-8000-9ba2-011c48011c48_5340&quot;,&quot;extension&quot;),
+  local!xmlData:if(local!docExtension=&quot;xml&quot;,
+    fn!xpathdocument(#&quot;_a-0000dac9-8638-8000-9ba2-011c48011c48_5340&quot;,&quot;/customer-set/CASE_APP_Customer&quot;),
+    null
+  ),
+  local!numCustomers:if(isnull(local!xmlData),0,length(local!xmlData)),
+  local!isValidIndex:and(ri!index&gt;0,ri!index &lt;= local!numCustomers),
+  local!customerLogo:if(local!isValidIndex,#&quot;_a-0000dac9-8638-8000-9ba2-011c48011c48_5402&quot;[ri!index],null),
+  local!name: #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3248&quot;(),
+  local!customerFromXml:if(local!isValidIndex,
+    torecord(local!xmlData[ri!index],'type!{urn:com:appian:types:CASE_APP}CASE_APP_Customer'()),
+    null
+  ),
+  if(local!isValidIndex,
+    'type!{urn:com:appian:types:CASE_APP}CASE_APP_Customer'(
+      GlobalID: #&quot;_a-0000d9b9-57db-8000-9e06-010000010000_831&quot;() &amp; &quot;-&quot; &amp; upper(left(local!customerFromXml.Name, 4)),
+      Name: local!customerFromXml.Name,
+      Description: local!customerFromXml.Description,
+      AccountOwner: #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5799&quot;(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5797&quot;(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5796&quot;)),
+      ContactName: local!name.FirstName &amp; &quot; &quot; &amp; local!name.LastName,
+      Email: lower(local!name.FirstName) &amp; &quot;.&quot; &amp; lower(local!name.LastName) &amp; xpathsnippet(local!xmlData[ri!index], &quot;//EmailPostFix/text()&quot;),
+      OfficePhone: &quot;1-888-555-1212&quot;,
+      MobilePhone: &quot;1-888-555-1212&quot;,
+      Website: local!customerFromXml.Website,
+      StockTicker: local!customerFromXml.StockTicker,
+      CustomerSince: todate(now() - tointeger(rand()*5000)),
+      LogoID: document(local!customerLogo, &quot;id&quot;),
+      InactiveFlag: 0,
+      Industry: local!customerFromXml.Industry,
+      ShippingAddress: {
+        Address: xpathsnippet(local!xmlData[ri!index], &quot;//Address/text()&quot;),
+        City: xpathsnippet(local!xmlData[ri!index], &quot;//City/text()&quot;),
+        State: xpathsnippet(local!xmlData[ri!index], &quot;//State/text()&quot;),
+        ZIP: xpathsnippet(local!xmlData[ri!index], &quot;//ZIP/text()&quot;),
+        Country: xpathsnippet(local!xmlData[ri!index], &quot;//Country/text()&quot;)
+      },
+      BillingAddress: {
+        Address: xpathsnippet(local!xmlData[ri!index], &quot;//Address/text()&quot;),
+        City: xpathsnippet(local!xmlData[ri!index], &quot;//City/text()&quot;),
+        State: xpathsnippet(local!xmlData[ri!index], &quot;//State/text()&quot;),
+        ZIP: xpathsnippet(local!xmlData[ri!index], &quot;//ZIP/text()&quot;),
+        Country: xpathsnippet(local!xmlData[ri!index], &quot;//Country/text()&quot;)
+      }
+    ),
+    null
+  )
+)</definition>
+        <namedTypedValue>
+            <name>index</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>legacy</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

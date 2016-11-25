@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>edpr logo</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5775</uuid>
+        <description>&lt;customer&gt;
+   &lt;Name&gt;EDP Renovaveis SA&lt;/Name&gt;   &lt;Description&gt;Edp Renovaveis SA is a Spain-based company active in the energy sector. The Company specializes in the production of energy from renewable sources. The Company's activities comprise the development, operation and maintenance of such electric power stations as hydroelectric, wind, solar, tidal, biomass and waste plants, among others. It operates in such countries as Spain, Portugal, Belgium, France, Italy, the Netherlands, Poland, Romania, the United Kingdom, the United States and Canada. The Company�s main subsidiaries are EDP Renovaveis Portugal SA, EDP Renovables Espana SL, EDP Renewables France, EDP Renewables Belgium, EDP Renewables Polska Sp. z o.o., EDP Renewables Romania SRL, EDP Renewables Italy SRL and EDPR UK Ltd. EDP - Energias de Portugal SA is the Company�s majority shareholder with 62% of its interest.&lt;/Description&gt;
+   &lt;emailPostFix&gt;@fake.edpr.com&lt;/emailPostFix&gt;
+   &lt;website&gt;http://www.edpr.com&lt;/website&gt;
+   &lt;address&gt;Plaza Gesta, 2&lt;/address&gt;
+   &lt;city&gt;Oviedo&lt;/city&gt;
+   &lt;state /&gt;
+   &lt;zip&gt;AST 33007&lt;/zip&gt;
+   &lt;country&gt;Spain&lt;/country&gt;
+   &lt;stockTicker&gt;EDRVY&lt;/stockTicker&gt;
+   &lt;industry&gt;Energy/Utilities&lt;/industry&gt;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.jpg</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

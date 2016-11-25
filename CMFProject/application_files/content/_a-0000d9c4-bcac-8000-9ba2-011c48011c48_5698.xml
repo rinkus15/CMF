@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>teluslogo</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5698</uuid>
+        <description>&lt;customer&gt;&#xD;
+   &lt;Name&gt;TELUS Corporation&lt;/Name&gt;   &lt;Description&gt;TELUS Corporation (TELUS), incorporated on October 26, 1998, is a telecommunications companies, providing a range of telecommunications products and services products including wireless, data, Internet protocol, voice and television. The Company's operates in two segments: wireless and wireline. The Wireless segment includes voice, data and equipment sales. The Wireline segment includes data (which includes: television  Internet, enhanced data and hosting services  and managed and legacy data services), voice local, voice long distance, and other telecommunications services excluding wireless. TELUS earns revenue from access to, and the usage of, the Company�s telecommunications infrastructure, or from providing products and services that facilitate access to and usage of this infrastructure. As of December 31, 2012, the Company�s owned 100% of TELUS Communications Inc. (TCI). In 2012, the Company acquired Wolf Medical Systems.&lt;/Description&gt;&#xD;
+   &lt;emailPostFix&gt;@fake.telus.com&lt;/emailPostFix&gt;&#xD;
+   &lt;website&gt;http://www.telus.com&lt;/website&gt;&#xD;
+   &lt;address&gt;8 - 555 Robson Street&lt;/address&gt;&#xD;
+   &lt;city&gt;Vancouver&lt;/city&gt;&#xD;
+   &lt;state&gt;British Columbia&lt;/state&gt;&#xD;
+   &lt;zip&gt;V6B 3K9&lt;/zip&gt;&#xD;
+   &lt;country&gt;Canada&lt;/country&gt;&#xD;
+   &lt;stockTicker&gt;TU&lt;/stockTicker&gt;&#xD;
+   &lt;industry&gt;Telecommunications&lt;/industry&gt;&#xD;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.jpg</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

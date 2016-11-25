@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>lendlease</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5735</uuid>
+        <description>&lt;customer&gt;
+   &lt;Name&gt;Lend Lease Group&lt;/Name&gt;   &lt;Description&gt;Lend Lease Corporation Limited is an international property and infrastructure company. In Australia, the Company offers development management  investment management  project management and construction, and asset and property management. In June 2014, Lend Lease Corporation Ltd sold its its interest in the Bluewater Shopping Centre.&lt;/Description&gt;
+   &lt;emailPostFix&gt;@fake.lendlease.com&lt;/emailPostFix&gt;
+   &lt;website&gt;http://www.lendlease.com&lt;/website&gt;
+   &lt;address&gt;Level 4, 30 The Bond, 30 Hickson Road&lt;/address&gt;
+   &lt;city&gt;Millers Point&lt;/city&gt;
+   &lt;state&gt;New South Wales&lt;/state&gt;
+   &lt;zip&gt;2000&lt;/zip&gt;
+   &lt;country&gt;Australia&lt;/country&gt;
+   &lt;stockTicker /&gt;
+   &lt;industry&gt;Construction&lt;/industry&gt;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.jpeg</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

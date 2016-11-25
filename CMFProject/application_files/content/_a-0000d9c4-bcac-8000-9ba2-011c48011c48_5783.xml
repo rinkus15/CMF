@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>Statestreetlogo</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5783</uuid>
+        <description>&lt;customer&gt;
+   &lt;Name&gt;State Street Corporation&lt;/Name&gt;   &lt;Description&gt;State Street Corporation (State Street) is a financial holding company. Through its subsidiaries, including its principal banking subsidiary, State Street Bank and Trust Company (State Street Bank), the Company provides a range of financial products and services to institutional investors worldwide. The Company has two lines of business: Investment Servicing and Investment Management. At December 31, 2011, it had consolidated total deposits of $157.29 billion. Its clients include mutual funds, collective investment funds and other investment pools, corporate and public retirement plans, insurance companies, foundations, endowments and investment managers. State Street operates in 29 countries and in more than 100 geographic markets worldwide. In January 2014, its joint venture Boston Financial acquired assets and staff of The Colbent Corporation.&lt;/Description&gt;
+   &lt;emailPostFix&gt;@fake.statestreet.com&lt;/emailPostFix&gt;
+   &lt;website&gt;http://www.statestreet.com&lt;/website&gt;
+   &lt;address&gt;One Lincoln Street&lt;/address&gt;
+   &lt;city&gt;Boston&lt;/city&gt;
+   &lt;state&gt;Massachusetts&lt;/state&gt;
+   &lt;zip&gt;02111&lt;/zip&gt;
+   &lt;country&gt;United States of America&lt;/country&gt;
+   &lt;stockTicker&gt;STT&lt;/stockTicker&gt;
+   &lt;industry&gt;Financial&lt;/industry&gt;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.jpg</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

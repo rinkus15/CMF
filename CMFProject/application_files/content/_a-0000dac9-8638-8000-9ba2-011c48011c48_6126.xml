@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_getUniqueRandomNumbers</name>
+        <uuid>_a-0000dac9-8638-8000-9ba2-011c48011c48_6126</uuid>
+        <description>Returns an array of size [numSelections] of unique numbers selected from [indexArray].
+numSelections -The size of the desired array. Should not be greater than 20 or the number of items in indexArray, whichever is smaller.
+indexArray - An array of numbers to choose from
+randomSelections -A holder for the resulting random selections.
+NOTE: Returns -1 if error is found.</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4334</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>if(or(#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(ri!numSelections),ri!numSelections&lt;0,ri!NumSelections&gt;20,ri!numSelections&gt;count(ri!indexArray)),
+  -1,
+  if(#&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1982&quot;(ri!randomSelections),
+    with(
+      local!randomIndex:#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5799&quot;(ri!indexArray),
+      #&quot;_a-0000dac9-8638-8000-9ba2-011c48011c48_6126&quot;(
+        ri!numSelections,
+        remove(ri!indexArray,fn!wherecontains(local!randomIndex,ri!indexArray)),
+        {local!randomIndex}
+      )
+    ),
+    if(length(ri!randomSelections)&lt;ri!numSelections,
+      with(
+        local!randomIndex:#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5799&quot;(ri!indexArray),
+        #&quot;_a-0000dac9-8638-8000-9ba2-011c48011c48_6126&quot;(
+          ri!numSelections,
+          remove(ri!indexArray,fn!wherecontains(local!randomIndex,ri!indexArray)),
+          append(ri!randomSelections,local!randomIndex)
+        )
+      ),
+      ri!randomSelections
+    )
+  )
+)</definition>
+        <namedTypedValue>
+            <name>numSelections</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>indexArray</name>
+            <type>
+                <name>Integer?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>randomSelections</name>
+            <type>
+                <name>Integer?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>legacy</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

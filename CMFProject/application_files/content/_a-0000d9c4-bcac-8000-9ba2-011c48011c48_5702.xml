@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>atnt</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5702</uuid>
+        <description>&lt;customer&gt;&#xD;
+   &lt;Name&gt;ATT Inc.&lt;/Name&gt;   &lt;Description&gt;AT T Inc. (AT T), is a holding company. The Company is a provider of telecommunications services. The services and products offered by the Company include wireless communications, local exchange services, long-distance services, data/broadband and Internet services, video services, telecommunications equipment, managed networking, wholesale services and directory advertising and publishing. AT T operates in three segments: Wireless, Wireline, and Other. The Company�s Wireless subsidiaries provide both wireless voice and data communications services across the United States, and through roaming agreements, in a substantial number of foreign countries. Wireline subsidiaries provide primarily landline voice and data communication services. Its Other segment includes customer information services (operator services) and corporate and other operations. In March 2014, the Company completed the acquisition of prepaid wireless provider Leap Wireless International Inc.&lt;/Description&gt;&#xD;
+   &lt;emailPostFix&gt;@fake.att.com&lt;/emailPostFix&gt;&#xD;
+   &lt;website&gt;http://www.att.com&lt;/website&gt;&#xD;
+   &lt;address&gt;208 S. Akard St&lt;/address&gt;&#xD;
+   &lt;city&gt;Dallas&lt;/city&gt;&#xD;
+   &lt;state&gt;Texas&lt;/state&gt;&#xD;
+   &lt;zip&gt;75202&lt;/zip&gt;&#xD;
+   &lt;country&gt;United States of America&lt;/country&gt;&#xD;
+   &lt;stockTicker&gt;T&lt;/stockTicker&gt;&#xD;
+   &lt;industry&gt;Telecommunications&lt;/industry&gt;&#xD;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.png</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

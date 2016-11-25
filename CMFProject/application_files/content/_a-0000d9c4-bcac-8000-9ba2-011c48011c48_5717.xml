@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>AppianLogo</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5717</uuid>
+        <description>&lt;customer&gt;
+   &lt;Name&gt;Appian Corporation&lt;/Name&gt;   &lt;Description&gt;Appian wants its clients to be walking down the same path when it comes to crucial information. Appian's on-demand business process management (BPM) software is used by 3.5 million users and helps corporate, government, and non-governmental clients with process management, knowledge management, and analytics. The company's software, which includes tools for workflow management and business intelligence, addresses such core business functions as compliance, operations, finance, purchasing, sales and marketing, and human resources. It can be accessed with mobile devices and is available under the Software-as-a-Service model. Appian was founded in 1999 by Matthew Calkins and Michael Beckley.&lt;/Description&gt;
+   &lt;emailPostFix&gt;@fake.appian.com&lt;/emailPostFix&gt;
+   &lt;website&gt;http://www.appian.com&lt;/website&gt;
+   &lt;address&gt;11955 Democracy Drive&lt;/address&gt;
+   &lt;city&gt;Reston&lt;/city&gt;
+   &lt;state&gt;Virginia&lt;/state&gt;
+   &lt;zip&gt;20190&lt;/zip&gt;
+   &lt;country&gt;United States of America&lt;/country&gt;
+   &lt;stockTicker /&gt;
+   &lt;industry&gt;Software&lt;/industry&gt;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.png</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

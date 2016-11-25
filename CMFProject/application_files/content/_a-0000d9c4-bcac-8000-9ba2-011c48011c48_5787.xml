@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>kb homes</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5787</uuid>
+        <description>&lt;customer&gt;
+   &lt;Name&gt;KB Home&lt;/Name&gt;   &lt;Description&gt;KB Home is a builder of single-family residential homes, townhomes and condominiums. It constructs and sells homes through its operating divisions under the name KB Home. It operates homebuilding and financial services business serving homebuyers in various markets across the United States. Its homebuilding operations offer a variety of new homes designed primarily for first-time, move-up and active adult homebuyers, including attached and detached single-family residential homes, townhomes and condominiums. It offers homes in development communities, at urban in-fill locations and as part of mixed-use projects. The Company's financial services segment provides insurance services to its homebuyers in the same markets where it builds homes and provides title services in the majority of its markets located within its Central and Southeast homebuilding segments. In May 2014, the Company purchased 78 acres along San Antonio's IH-10 corridor for a new community called Mirabel.&lt;/Description&gt;
+   &lt;emailPostFix&gt;@fake.kbhomes.com&lt;/emailPostFix&gt;
+   &lt;website&gt;http://www.kbhomes.com&lt;/website&gt;
+   &lt;address&gt;10990 Wilshire Boulevard&lt;/address&gt;
+   &lt;city&gt;Los Angeles&lt;/city&gt;
+   &lt;state&gt;California&lt;/state&gt;
+   &lt;zip&gt;90024&lt;/zip&gt;
+   &lt;country&gt;United States of America&lt;/country&gt;
+   &lt;stockTicker&gt;KBH&lt;/stockTicker&gt;
+   &lt;industry&gt;Construction&lt;/industry&gt;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.gif</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

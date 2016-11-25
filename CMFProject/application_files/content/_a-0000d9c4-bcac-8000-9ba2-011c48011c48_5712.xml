@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>energyAlloysLogo</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5712</uuid>
+        <description>&lt;customer&gt;&#xD;
+   &lt;Name&gt;Energy Alloys, L.L.C.&lt;/Name&gt;   &lt;Description&gt;Grabbing a fistful of steel is all in a day's work for employees of Energy Alloys. The company provides oilfield metals and equipment to global oil and gas manufacturers and service companies. Energy Alloys stocks oilfield-specific inventories of carbon, alloy, stainless steel, and nickel bars, as well as tubes and engineered steel products. It also offers made-to-order machining capability for finished and semi-finished components and expert materials consulting when clients need help selecting materials, material grades, or sizes. The company has international sourcing expertise and is a global supplier.&lt;/Description&gt;&#xD;
+   &lt;emailPostFix&gt;@fake.energyalloys.com&lt;/emailPostFix&gt;&#xD;
+   &lt;website&gt;http://www.ealloys.com&lt;/website&gt;&#xD;
+   &lt;address&gt;350 Glenborough, Ste. 300&lt;/address&gt;&#xD;
+   &lt;city&gt;Houston&lt;/city&gt;&#xD;
+   &lt;state&gt;Texas&lt;/state&gt;&#xD;
+   &lt;zip&gt;77067&lt;/zip&gt;&#xD;
+   &lt;country&gt;United States of America&lt;/country&gt;&#xD;
+   &lt;stockTicker /&gt;&#xD;
+   &lt;industry&gt;Metals/Mining&lt;/industry&gt;&#xD;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.gif</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

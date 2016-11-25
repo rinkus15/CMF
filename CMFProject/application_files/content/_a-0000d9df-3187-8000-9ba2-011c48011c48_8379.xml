@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_srRandomOrder</name>
+        <uuid>_a-0000d9df-3187-8000-9ba2-011c48011c48_8379</uuid>
+        <description>Grab a random order to create context for this service request</description>
+        <parentUuid>_a-0000d9df-3187-8000-9ba2-011c48011c48_8373</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>with(
+  local!randomOrderId:#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5799&quot;(#&quot;SYSTEM_SYSRULES_queryEntity&quot;(
+    entity: #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6305&quot;,
+    query: #&quot;SYSTEM_SYSRULES_query&quot;(
+      selection: #&quot;SYSTEM_SYSRULES_querySelection&quot;(
+        columns: {
+          #&quot;SYSTEM_SYSRULES_queryColumn&quot;(
+            field: &quot;id&quot;
+          )
+        }
+      ),
+      pagingInfo: #&quot;SYSTEM_SYSRULES_pagingInfo&quot;(
+        startIndex: 1,
+        batchSize: 500
+      )
+    )
+  ).data.id),
+  local!randomOrderTmp:#&quot;SYSTEM_SYSRULES_queryEntity&quot;(
+    entity: #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6305&quot;,
+    query: #&quot;SYSTEM_SYSRULES_query&quot;(
+      selection: #&quot;SYSTEM_SYSRULES_querySelection&quot;(
+        columns: {
+          #&quot;SYSTEM_SYSRULES_queryColumn&quot;(
+            field: &quot;id&quot;
+          ),
+          #&quot;SYSTEM_SYSRULES_queryColumn&quot;(
+            field: &quot;OrderNum&quot;
+          ),
+          #&quot;SYSTEM_SYSRULES_queryColumn&quot;(
+            field: &quot;OrderDate&quot;
+          ),
+          #&quot;SYSTEM_SYSRULES_queryColumn&quot;(
+            field: &quot;PurchaserName&quot;
+          ),
+          #&quot;SYSTEM_SYSRULES_queryColumn&quot;(
+            field: &quot;Total&quot;
+          ),
+          #&quot;SYSTEM_SYSRULES_queryColumn&quot;(
+            field: &quot;Status&quot;
+          ),
+          #&quot;SYSTEM_SYSRULES_queryColumn&quot;(
+            field: &quot;Customer&quot;
+          ),
+          #&quot;SYSTEM_SYSRULES_queryColumn&quot;(
+            field: &quot;OrderItems&quot;
+          )
+        }
+      ),
+      filter: #&quot;SYSTEM_SYSRULES_queryFilter&quot;(
+        field: &quot;id&quot;,
+        operator: &quot;=&quot;,
+        value: local!randomOrderId
+      ),
+      pagingInfo: #&quot;SYSTEM_SYSRULES_pagingInfo&quot;(
+        startIndex: 1,
+        batchSize: 500
+      )
+    )
+  ).data[1],
+  local!randomOrderItemId:#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5799&quot;(local!randomOrderTmp.OrderItems.id),
+  local!randomOrder:'type!{urn:com:appian:types:CASE_APP}CASE_APP_Order'(
+    id:local!randomOrderTmp.id,
+    OrderNum:local!randomOrderTmp.OrderNum,
+    OrderDate:local!randomOrderTmp.OrderDate,
+    PurchaserName:local!randomOrderTmp.PurchaserName,
+    Total:local!randomOrderTmp.Total,
+    Status:local!randomOrderTmp.Status,
+    Customer:local!randomOrderTmp.Customer,
+    OrderItems:{
+      local!randomOrderTmp.OrderItems[wherecontains(local!randomOrderItemId,local!randomOrderTmp.OrderItems.id)]
+    }
+  ),
+  local!randomOrder
+)</definition>
+        <preferredEditor>legacy</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

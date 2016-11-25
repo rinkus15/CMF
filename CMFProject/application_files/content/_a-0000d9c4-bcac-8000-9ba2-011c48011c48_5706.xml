@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>enterpriserentlogo</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5706</uuid>
+        <description>&lt;customer&gt;&#xD;
+   &lt;Name&gt;Enterprise Holdings, Inc.&lt;/Name&gt;   &lt;Description&gt;Enterprise Holdings is in the driver's seat in the global car rental business. Through its Enterprise Rent-A-Car, Alamo Rent A Car, and National Car Rental subsidiaries, the company owns and operates a fleet of more than 1.3 million passenger cars and trucks. It rents out its vehicles from about 8,200 locations, most of which are based in airports and neighborhoods in North America, Europe, and Asia. It also runs a commercial truck rental business, as well as a car sales business that sells the company's vehicles after it removes them from the rental fleet. Enterprise Holdings was formed by the combination of Enterprise Rent-A-Car and its Vanguard Car Rental subsidiary (Alamo and National's former parent).&lt;/Description&gt;&#xD;
+   &lt;emailPostFix&gt;@fake.ehi.com&lt;/emailPostFix&gt;&#xD;
+   &lt;website&gt;http://www.enterpriseholdings.com&lt;/website&gt;&#xD;
+   &lt;address&gt;600 Corporate Park Dr.&lt;/address&gt;&#xD;
+   &lt;city&gt;St. Louis&lt;/city&gt;&#xD;
+   &lt;state&gt;Missouri&lt;/state&gt;&#xD;
+   &lt;zip&gt;63105&lt;/zip&gt;&#xD;
+   &lt;country&gt;United States of America&lt;/country&gt;&#xD;
+   &lt;stockTicker /&gt;&#xD;
+   &lt;industry&gt;Transportation&lt;/industry&gt;&#xD;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.jpeg</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

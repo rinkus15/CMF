@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<tempoFeedHaul xmlns:a="http://www.appian.com/ae/types/2009">
+<?xml version="1.0" encoding="UTF-8"?><tempoFeedHaul xmlns:a="http://www.appian.com/ae/types/2009">
     <tempoFeed>
         <uuid>a6c09161-35ff-4760-af02-9a7f47ac4f21</uuid>
         <name>Welcome to Appian Case Management</name>
@@ -15,4 +14,4 @@
             </groups>
         </role>
     </roleMap>
-</tempoFeedHaul>
+</tempoFeedHaul><!--updated on 2016-11-25T16:13:13.921-->

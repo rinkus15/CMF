@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>UPS-logo</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5710</uuid>
+        <description>&lt;customer&gt;&#xD;
+   &lt;Name&gt;United Parcel Service, Inc.&lt;/Name&gt;   &lt;Description&gt;United Parcel Service, Inc. (UPS) is a package delivery company. The Company delivers packages each business day for 1.1 million shipping customers to 7.7 million consignees in over 220 countries and territories. During the year ended December 31, 2012, it delivered an average of 16.3 million pieces per day worldwide, or a total of 4.1 billion packages. It serves the global market for logistics services, which include transportation, distribution, forwarding, ground, ocean and air freight, brokerage and financing. The Company has three segments: U.S. Domestic Package, International Package and Supply Chain   Freight. In February 2012, it acquired Kiala S.A. In February 2014, United Parcel Service acquired Polar Speed Distribution Ltd.&lt;/Description&gt;&#xD;
+   &lt;emailPostFix&gt;@fake.ups.com&lt;/emailPostFix&gt;&#xD;
+   &lt;website&gt;http://www.ups.com&lt;/website&gt;&#xD;
+   &lt;address&gt;55 GLENLAKE PARKWAY NE&lt;/address&gt;&#xD;
+   &lt;city&gt;Atlanta&lt;/city&gt;&#xD;
+   &lt;state&gt;Georgia&lt;/state&gt;&#xD;
+   &lt;zip&gt;30328&lt;/zip&gt;&#xD;
+   &lt;country&gt;United States of America&lt;/country&gt;&#xD;
+   &lt;stockTicker&gt;UPS&lt;/stockTicker&gt;&#xD;
+   &lt;industry&gt;Transportation&lt;/industry&gt;&#xD;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.png</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

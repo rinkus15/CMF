@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_LoadDataTasks</name>
+        <uuid>06fc2545-123e-4c91-88f3-e6fcd07bed2b</uuid>
+        <description>A task UI for auto loading the data</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6388</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>=#&quot;SYSTEM_SYSRULES_formLayout&quot;(
+  label: &quot;Would you like to generate Sample Data?&quot;,
+  instructions: &quot;If you proceed with sample data generation, the system will generate 50 sample users, as well as sample Customers, Products, Orders and Service Requests. Please complete the form below to define the generation parameters.&quot;,
+  firstColumnContents: {
+    #&quot;SYSTEM_SYSRULES_richTextDisplayField&quot;(
+      labelPosition:&quot;COLLAPSED&quot;,
+      value:{
+        #&quot;SYSTEM_SYSRULES_richTextItem&quot;(text:&quot;Please be advised:&quot;&amp;char(10),style:&quot;HEADER_MEDIUM&quot;),
+        #&quot;SYSTEM_SYSRULES_richTextItem&quot;(
+          text:&quot;Submitting this task will result in the generation of 50 sample users &quot;&amp;
+          &quot;and sample content.  Users cannot be deleted after being generated, they &quot;&amp;
+          &quot;can only be deactivated. If you don't want to generate data, simply cancel this task.&quot;,
+          style:&quot;UNDERLINE&quot;
+        )
+      }
+    ),
+    #&quot;SYSTEM_SYSRULES_sectionLayout&quot;(
+      label: &quot;Data Generation Parameters&quot;,
+      firstColumnContents:{
+        #&quot;SYSTEM_SYSRULES_textField&quot;(
+          label: &quot;Default Email for All Sample Users&quot;,
+          instructions: &quot;Enter a real email address that you can access.  All demo users' emails will be set to this email address.  You can use the reset password feature to access each users account.&quot;,
+          value: ri!defaultEmail,
+          saveInto: ri!defaultEmail,
+          required: true(),
+          requiredMessage: &quot;You must enter a real email address that you can access.&quot;,
+          validations: if(#&quot;_a-0000d9b9-6309-8000-9ba2-011c48011c48_1640&quot;(ri!defaultEmail),null,&quot;Please enter a valid email address&quot;)
+          
+        )
+      }
+    ),
+    #&quot;SYSTEM_SYSRULES_sectionLayout&quot;(
+      firstColumnContents:{
+        #&quot;SYSTEM_SYSRULES_richTextDisplayField&quot;(
+          labelPosition:&quot;COLLAPSED&quot;,
+          value:{
+            #&quot;SYSTEM_SYSRULES_richTextItem&quot;(text:&quot;Order data generation details:&quot;&amp;char(10),style:&quot;HEADER_SMALL&quot;)
+          }
+        ),
+        #&quot;SYSTEM_SYSRULES_integerField&quot;(
+          label: &quot;How many orders would you like to generate?&quot;,
+          instructions: &quot;This value toggles the total number of orders to generate in the system. For example, if set to 50, a total number of 50 orders will be generated. (Max 100)&quot;,          
+          value: ri!numberofOrders,
+          saveInto: ri!numberofOrders,
+          validations: {
+            if(ri!numberofOrders&lt;= 0, &quot;You must enter a value greater than zero.&quot;, null),
+            if(ri!numberofOrders&gt;100, &quot;You can enter a value up to 100.&quot;, null)
+          }
+        ),
+        #&quot;SYSTEM_SYSRULES_integerField&quot;(
+          label: &quot;Generate orders within how many days?&quot;,
+          instructions: &quot;This values toggles the number of past days to generate orders.  For example, if set to 100, all orders dates will be generated with a date posted within the last 100 days&quot;,
+          value: ri!daysOrders,
+          saveInto: ri!daysOrders,
+          validations: if(ri!daysOrders&lt;1, &quot;You must enter a value greater than zero.&quot;, null)
+        )
+      },
+      secondColumnContents:{
+        #&quot;SYSTEM_SYSRULES_richTextDisplayField&quot;(
+          labelPosition:&quot;COLLAPSED&quot;,
+          value:{
+            #&quot;SYSTEM_SYSRULES_richTextItem&quot;(text:&quot;Service Request data generation details:&quot;&amp;char(10),style:&quot;HEADER_SMALL&quot;)
+          }
+        ),
+        #&quot;SYSTEM_SYSRULES_integerField&quot;(
+          label: &quot;How many service requests would you like to generate?&quot;,
+          instructions: &quot;This value toggles the total number of service requests to generate in the system.  For example, if set to 50, a total number of 50service requests will be generated. (Max 100)&quot;,          
+          value: ri!numberOfServiceRequests,
+          saveInto: ri!numberOfServiceRequests,
+          validations: {
+            if(ri!numberofOrders&lt;= 0, &quot;You must enter a value greater than zero.&quot;, null),
+            if(ri!numberofOrders&gt;100, &quot;You can enter a value up to 100.&quot;, null)
+          }
+        ),
+        #&quot;SYSTEM_SYSRULES_integerField&quot;(
+          label: &quot;Generate service requests within how many days?&quot;,
+          instructions: &quot;This values toggles the number of past days to generate service requests.  For example, if set to 100, all service requests dates will be generated with a date posted within the last 100 days&quot;,
+          value: ri!daysServiceRequests,
+          saveInto: ri!daysServiceRequests,
+          validations: if(ri!daysServiceRequests&lt;1, &quot;You must enter a value greater than zero.&quot;, null)
+        )
+      }
+    )
+  },
+  secondColumnContents: {
+    /* Add components here for a two-column form */
+  },
+  buttons: #&quot;SYSTEM_SYSRULES_ButtonLayout&quot;(
+    primaryButtons: {
+      #&quot;SYSTEM_SYSRULES_ButtonWidgetSubmit&quot;(
+        label: &quot;Submit&quot;,
+        style: &quot;PRIMARY&quot;,
+        confirmMessage: &quot;Submitting this form will generate sample content.  Are you sure?&quot;,
+        value: false,
+        saveInto: {
+          ri!cancel,
+          a!save(
+            target: ri!daysOrders,
+            value: if(isnull(ri!daysOrders), #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6436&quot;, ri!daysOrders)
+          ),
+          a!save(
+            target: ri!numberofOrders,
+            value: if(isnull(ri!numberofOrders), #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_6438&quot;, ri!numberofOrders)
+          )
+        }
+      )
+    },
+    secondaryButtons: {
+      #&quot;SYSTEM_SYSRULES_ButtonWidgetSubmit&quot;(
+        label: &quot;Cancel&quot;,
+        confirmMessage: &quot;If you would like to generate content later, look for and run the 'CASE_APP Load All Data' process.&quot;,
+        value: true,
+        saveInto: ri!cancel,
+        skipValidation: true
+      )
+    }
+  )
+)</definition>
+        <namedTypedValue>
+            <name>cancel</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>defaultEmail</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>daysOrders</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>numberofOrders</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>numberOfServiceRequests</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>daysServiceRequests</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

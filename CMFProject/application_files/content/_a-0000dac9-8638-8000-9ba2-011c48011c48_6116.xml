@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+<?xml version="1.0" encoding="UTF-8"?><contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
     <constant>
         <name>CASE_APP_SR_CaseWorkersGroup</name>
         <uuid>_a-0000dac9-8638-8000-9ba2-011c48011c48_6116</uuid>
-        <description></description>
+        <description/>
         <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5795</parentUuid>
         <visibility>
             <advertise>false</advertise>
@@ -50,4 +49,4 @@
             <groups/>
         </role>
     </roleMap>
-</contentHaul>
+</contentHaul><!--updated on 2016-11-25T16:13:13.774-->

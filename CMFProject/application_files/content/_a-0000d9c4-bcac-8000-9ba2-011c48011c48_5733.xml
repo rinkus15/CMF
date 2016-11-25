@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>marriott</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5733</uuid>
+        <description>&lt;customer&gt;
+   &lt;Name&gt;Marriott International Inc&lt;/Name&gt;   &lt;Description&gt;Marriott International, Inc. is a diversified hospitality company. It is a lodging company with more than 3,700 properties in 73 countries and territories. It operates and franchises hotels, including Marriott, The Ritz-Carlton, JW Marriott, Bulgari, EDITION, Renaissance, Autograph Collection, AC Hotels by Marriott, Courtyard, Fairfield Inn   Suites, SpringHill Suites, Residence Inn, TownePlace Suites, ExecuStay, and Marriott Executive Apartments brand names. It operates in four segments: North American Full-Service Lodging, which includes the Marriott Hotels   Resorts  North American Limited-Service Lodging, which includes the Courtyard  International Lodging, which includes the Marriott Hotels   Resorts, and Luxury Lodging, which includes The Ritz-Carlton. In April 2014, the Company acquired 116-hotel Protea Hospitality Group (PHG), based in South Africa.&lt;/Description&gt;
+   &lt;emailPostFix&gt;@fake.marriott.com&lt;/emailPostFix&gt;
+   &lt;website&gt;http://www.marriott.com&lt;/website&gt;
+   &lt;address&gt;10400 Fernwood Road&lt;/address&gt;
+   &lt;city&gt;Bethesda&lt;/city&gt;
+   &lt;state&gt;Maryland&lt;/state&gt;
+   &lt;zip&gt;20817&lt;/zip&gt;
+   &lt;country&gt;United States of America&lt;/country&gt;
+   &lt;stockTicker&gt;MAR&lt;/stockTicker&gt;
+   &lt;industry&gt;Hospitality/Entertainment&lt;/industry&gt;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.jpg</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

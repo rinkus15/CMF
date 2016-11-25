@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_GenerateSystemPost</name>
+        <uuid>da108a5c-2de5-4397-b17c-a64112ec85c0</uuid>
+        <description>Used to generate an example system post to Tempo for demo purposes</description>
+        <parentUuid>_a-0000d9e6-8ff7-8000-174a-010000010000_2071</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>/*
+ * To Test set the default values to:
+ * 1) postTime: now(),
+ * 2) attachments: todocument(null),
+ * 3) recordAssociations:cast(typeof({type!CASE_APP_RecordAssociation()}),{}),
+ * 4) comments: cast(typeof({type!CASE_APP_TempoComments()}),{})
+ * 5) labelValueArray:cast(typeof({type!LabelValue()}),{})
+ */
+=#&quot;SYSTEM_SYSRULES_formLayout&quot;(
+  label: &quot;Create Tempo Post&quot;,
+  instructions: &quot;Use this form to generate sample tempo posts for demonstration purposes&quot;,
+  firstColumnContents: {
+    #&quot;SYSTEM_SYSRULES_dropdownField&quot;(
+      label: &quot;Select Post Type&quot;,
+      choiceLabels: {&quot;System Post&quot;,&quot;User Post&quot;},
+      placeholderLabel: &quot;--Select a Post Type--&quot;,
+      choiceValues: {&quot;system&quot;,&quot;user&quot;},
+      value: ri!postType,
+      saveInto: ri!postType,
+      required: true()
+    ),
+    if(ri!postType=&quot;system&quot;, /* Only show if post type is system */
+      {
+      #&quot;SYSTEM_SYSRULES_fileUploadField&quot;(
+        label: &quot;Icon for Tempo Post&quot;,
+        target: #&quot;_a-0000d9e6-8ff7-8000-174a-010000010000_2237&quot;,
+        value: ri!icon,
+        saveInto: ri!icon,
+        required: true()
+      ),
+      #&quot;SYSTEM_SYSRULES_textField&quot;(
+        label: &quot;Source System Name&quot;,
+        value: ri!source,
+        saveInto: ri!source
+      )
+      }
+      ,
+      {}
+    ),
+    if(ri!postType=&quot;user&quot;, 
+    {    
+      #&quot;SYSTEM_SYSRULES_pickerFieldUsers&quot;(
+        label: &quot;User to Generate Post As&quot;,
+        value: ri!user,
+        saveInto: ri!user,
+        required: true()
+     )
+    }, 
+    {}
+    ),
+    #&quot;SYSTEM_SYSRULES_paragraphField&quot;(
+      label: &quot;Message to Post&quot;,
+      value: ri!message,
+      saveInto: ri!message,
+      required: true(),
+      disabled: isnull(ri!postType)
+    ),
+    #&quot;SYSTEM_SYSRULES_dateTimeField&quot;(
+      label: &quot;Post Date and Time&quot;,
+      value: if(isnull(ri!postTime), now(), ri!postTime),
+      saveInto: ri!postTime,
+      required: true(),
+      disabled: isnull(ri!postType)
+    ),
+    #&quot;ab580801-c1af-4d06-b716-97abcbdbc239&quot;(
+      files: ri!attachments,
+      target: #&quot;_a-0000d9e6-8ff7-8000-174a-010000010000_2237&quot;,
+      disabled: isnull(ri!postType)
+    ),
+    #&quot;SYSTEM_SYSRULES_richTextDisplayField&quot;(
+      value:#&quot;SYSTEM_SYSRULES_richTextItem&quot;(text:&quot;Record Tag Associations&quot;,style:&quot;STRONG&quot;)
+    ),
+    #&quot;491c66b8-0f82-4215-8039-88f783e3405c&quot;(
+      sectionLabel: null,
+      labelPosition: &quot;ABOVE&quot;,
+      required: null,
+      requiredMessage: null,
+      maxSelections: null,
+      values: ri!recordAssociations,
+      readOnly: if(isnull(ri!postType), true(), null)
+    ),
+    #&quot;SYSTEM_SYSRULES_richTextDisplayField&quot;(
+      value:#&quot;SYSTEM_SYSRULES_richTextItem&quot;(text:&quot;Feed comments&quot;,style:&quot;STRONG&quot;)
+    ),
+    #&quot;9430de08-a236-4562-b291-99bdac7c1b94&quot;(
+      Comments: ri!comments, 
+      disabled: isnull(ri!postType)
+    ),
+    #&quot;SYSTEM_SYSRULES_sectionLayout&quot;(
+      label:&quot;More Info details&quot;,
+      firstColumnContents:{
+        #&quot;a09db1ba-0366-439d-82d5-a6ba56ebf425&quot;(ri!labelValueArray)
+      }
+    )
+  },
+  buttons: #&quot;SYSTEM_SYSRULES_ButtonLayout&quot;(
+    primaryButtons: {
+      #&quot;SYSTEM_SYSRULES_ButtonWidgetSubmit&quot;(
+        label: &quot;Submit&quot;,
+        style: &quot;PRIMARY&quot;,
+        saveInto:
+        {
+          a!save(
+            target: ri!postTime,
+            value: if(isnull(ri!postTime), now(), ri!postTime)
+          )
+        }
+      )
+    },
+    secondaryButtons: {
+      #&quot;SYSTEM_SYSRULES_ButtonWidgetSubmit&quot;(
+        label: &quot;Cancel&quot;,
+        value: true,
+        saveInto: ri!cancel,
+        skipValidation: true
+      )
+    }
+  )
+)</definition>
+        <namedTypedValue>
+            <name>cancel</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>message</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>postTime</name>
+            <type>
+                <name>dateTime</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>attachments</name>
+            <type>
+                <name>CollaborationDocument?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>recordAssociations</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>source</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>icon</name>
+            <type>
+                <name>CollaborationDocument</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>comments</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>postType</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>user</name>
+            <type>
+                <name>User</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>labelValueArray</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>Administrator</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

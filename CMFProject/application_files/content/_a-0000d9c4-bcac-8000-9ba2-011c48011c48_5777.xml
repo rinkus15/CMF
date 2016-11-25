@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>Novartis-Logo</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5777</uuid>
+        <description>&lt;customer&gt;
+   &lt;Name&gt;Novartis AG (ADR)&lt;/Name&gt;   &lt;Description&gt;Novartis AG provides healthcare solutions. The Company is a multinational group of companies specializing in the research, development, manufacturing and marketing of a range of healthcare products led by pharmaceuticals. Its portfolio includes medicines, eye care, cost-saving generic pharmaceuticals, preventive vaccines and diagnostic tools, over-the-counter and animal health products. It has five segments: Pharmaceuticals, which include patent-protected prescription medicines  Alcon, which include surgical, ophthalmic pharmaceutical and vision care products  Sandoz, which include generic pharmaceuticals  vaccines and diagnostics, which include human vaccines and blood-testing diagnostics, and consumer health, which include over-the-counter medicines (OTC) and Animal Health. In February 2014, it acquired CoStim Pharmaceuticals, Inc.&lt;/Description&gt;
+   &lt;emailPostFix&gt;@fake.novartis.com&lt;/emailPostFix&gt;
+   &lt;website&gt;http://www.novartis.com&lt;/website&gt;
+   &lt;address&gt;Lichtstrasse 35&lt;/address&gt;
+   &lt;city&gt;Basel&lt;/city&gt;
+   &lt;state /&gt;
+   &lt;zip&gt;4056&lt;/zip&gt;
+   &lt;country&gt;Switzerland&lt;/country&gt;
+   &lt;stockTicker&gt;NVS&lt;/stockTicker&gt;
+   &lt;industry&gt;Pharmaceuticals&lt;/industry&gt;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.jpg</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

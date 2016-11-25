@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>Bank-of-the-West-Logo</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5723</uuid>
+        <description>&lt;customer&gt;&#xD;
+   &lt;Name&gt;Bank of the West&lt;/Name&gt;   &lt;Description&gt;Bank of the West can't &quot;bear&quot; the thought of customers banking elsewhere. The bank (which uses a bear as its logo) has more than 700 offices in some 20 states in the western and Midwestern US. Catering to consumers and small to midsized companies, Bank of the West offers deposit accounts, credit cards, insurance, investment products, trust services, and financial planning. It focuses its lending on residential mortgages and consumer loans, which together make up about half of its loan portfolio. Parent company BancWest is owned by French bank BNP Paribas.&lt;/Description&gt;&#xD;
+   &lt;emailPostFix&gt;@fake.bankofthewest.com&lt;/emailPostFix&gt;&#xD;
+   &lt;website&gt;http://www.bankofthewest.com&lt;/website&gt;&#xD;
+   &lt;address&gt;180 Montgomery St., 25th Fl.&lt;/address&gt;&#xD;
+   &lt;city&gt;San Francisco&lt;/city&gt;&#xD;
+   &lt;state&gt;California&lt;/state&gt;&#xD;
+   &lt;zip&gt;94104&lt;/zip&gt;&#xD;
+   &lt;country&gt;United States of America&lt;/country&gt;&#xD;
+   &lt;stockTicker /&gt;&#xD;
+   &lt;industry&gt;Financial&lt;/industry&gt;&#xD;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.jpg</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

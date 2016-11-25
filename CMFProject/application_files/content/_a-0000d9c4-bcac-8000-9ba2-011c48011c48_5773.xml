@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>dominionpowerlogo</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5773</uuid>
+        <description>&lt;customer&gt;
+   &lt;Name&gt;Dominion Resources, Inc.&lt;/Name&gt;   &lt;Description&gt;Dominion Resources, Inc. (Dominion) is a producer and transporter of energy. The Company is a provider of electricity, natural gas and related services to customers primarily in the eastern region of the United States. Dominion�s portfolio of assets includes approximately 27,500 megawatts of generating capacity, 6,300 miles of electric transmission lines, 56,900 miles of electric distribution lines, 11,000 miles of natural gas transmission, gathering and storage pipeline and 21,800 miles of gas distribution pipeline, exclusive of service lines of two inches in diameter or less. Dominion also operates one of the underground natural gas storage systems, with approximately 947 billion cubic feet of storage capacity, and serves nearly six million utility and retail energy customers in 15 states. In April 2014, the Company acquired six solar development projects from Recurrent Energy, one of North America's developers of utility scale solar projects.&lt;/Description&gt;
+   &lt;emailPostFix&gt;@fake.dom.com&lt;/emailPostFix&gt;
+   &lt;website&gt;http://www.dom.com&lt;/website&gt;
+   &lt;address&gt;120 Tredegar Street&lt;/address&gt;
+   &lt;city&gt;Richmond&lt;/city&gt;
+   &lt;state&gt;Virginia&lt;/state&gt;
+   &lt;zip&gt;23219&lt;/zip&gt;
+   &lt;country&gt;United States of America&lt;/country&gt;
+   &lt;stockTicker&gt;D&lt;/stockTicker&gt;
+   &lt;industry&gt;Energy/Utilities&lt;/industry&gt;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.jpg</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

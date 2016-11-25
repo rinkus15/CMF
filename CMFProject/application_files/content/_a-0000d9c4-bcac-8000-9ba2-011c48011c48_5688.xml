@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>Gulfstream</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5688</uuid>
+        <description>&lt;customer&gt;&#xD;
+   &lt;Name&gt;Gulfstream Aerospace Corporation&lt;/Name&gt;   &lt;Description&gt;General Dynamics subsidiary Gulfstream Aerospace is flying high as one of the world's leading manufacturers of business jet aircraft. The company's fleet consists of eight types of aircraft at varying price and performance levels, ranging from the smallest plane, the eight-seat G150, to the newest and largest, the 18-seat G650. It also provides aircraft sales services for those looking to buy or trade in a pre-owned Gulfstream aircraft through its Gulfstream Pre-Owned Aircraft Sales unit. In addition, Gulfstream offers maintenance, repair, and overhaul (MRO) services to its customers through a network of about a dozen company-owned service centers worldwide.&lt;/Description&gt;&#xD;
+   &lt;emailPostFix&gt;@fake.gulfstream.com&lt;/emailPostFix&gt;&#xD;
+   &lt;website&gt;http://www.gulfstream.com&lt;/website&gt;&#xD;
+   &lt;address&gt;500 Gulfstream Rd.&lt;/address&gt;&#xD;
+   &lt;city&gt;Savannah&lt;/city&gt;&#xD;
+   &lt;state&gt;Georgia&lt;/state&gt;&#xD;
+   &lt;zip&gt;31408&lt;/zip&gt;&#xD;
+   &lt;country&gt;United States of America&lt;/country&gt;&#xD;
+   &lt;stockTicker /&gt;&#xD;
+   &lt;industry&gt;Aerospace / Defense&lt;/industry&gt;&#xD;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.png</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

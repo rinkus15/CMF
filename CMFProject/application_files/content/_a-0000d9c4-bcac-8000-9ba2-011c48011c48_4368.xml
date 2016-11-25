@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_CastBestBuyProduct</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4368</uuid>
+        <description>Cast the XML result of the Best Buy API Product description to a local product type</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4336</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>=cast(typeof('type!{urn:com:appian:types:CASE_APP}CASE_APP_Product'()),
+
+{
+
+name: xpathsnippet(ri!ProductXML, &quot;//product/name/text()&quot;),
+
+sku: xpathsnippet(ri!ProductXML, &quot;//sku/text()&quot;),
+
+description: xpathsnippet(ri!ProductXML, &quot;//shortDescription/text()&quot;),
+
+productCategory: xpathsnippet(ri!ProductXML, &quot;//category/name/text()&quot;)[3],
+
+manufacturer: xpathsnippet(ri!ProductXML, &quot;//manufacturer/text()&quot;),
+
+modelNumber: xpathsnippet(ri!ProductXML, &quot;//modelNumber/text()&quot;),
+
+releaseDate: todate(now()-(100+tointeger(rand()*2000))),
+
+isActive: xpathsnippet(ri!ProductXML, &quot;//active/text()&quot;),
+
+price: xpathsnippet(ri!ProductXML, &quot;//regularPrice/text()&quot;),
+
+quantity: 10 + tointeger(rand()*400),
+
+
+shippingDetails:
+
+{  
+
+weight: xpathsnippet(ri!ProductXML, &quot;//weight/text()&quot;),
+
+height: xpathsnippet(ri!ProductXML, &quot;//height/text()&quot;),
+
+width: xpathsnippet(ri!ProductXML, &quot;//width/text()&quot;),
+
+depth: xpathsnippet(ri!ProductXML, &quot;//depth/text()&quot;)
+
+},
+
+webImageID: 
+   append( 
+      xpathsnippet(ri!ProductXML, &quot;//image/text()&quot;),
+      xpathsnippet(ri!ProductXML, &quot;//largeImage/text()&quot;),
+      xpathsnippet(ri!ProductXML, &quot;//largeFrontImage/text()&quot;),
+      xpathsnippet(ri!ProductXML, &quot;//alternateViewsImage/text()&quot;),
+      xpathsnippet(ri!ProductXML, &quot;//backViewImage/text()&quot;),
+      xpathsnippet(ri!ProductXML, &quot;//angleImage/text()&quot;),
+      xpathsnippet(ri!ProductXML, &quot;//energyGuideImage/text()&quot;),
+      xpathsnippet(ri!ProductXML, &quot;//leftViewImage/text()&quot;),
+      xpathsnippet(ri!ProductXML, &quot;//mediumImage/text()&quot;),
+      xpathsnippet(ri!ProductXML, &quot;//remoteControlImage/text()&quot;),
+      xpathsnippet(ri!ProductXML, &quot;//rightViewImage/text()&quot;),
+      xpathsnippet(ri!ProductXML, &quot;//topViewImage/text()&quot;)
+)
+
+}
+)</definition>
+        <namedTypedValue>
+            <name>ProductXML</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <preferredEditor>legacy</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

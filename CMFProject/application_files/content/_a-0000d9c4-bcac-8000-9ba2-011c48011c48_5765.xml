@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>royal-dutch-shell-logo</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5765</uuid>
+        <description>&lt;customer&gt;
+   &lt;Name&gt;Royal Dutch Shell plc (ADR)&lt;/Name&gt;   &lt;Description&gt;Royal Dutch Shell plc (Shell) is an independent oil and gas company, based in the United Kingdom. It operates in three segments: Upstream, Downstream and Corporate. Upstream combines the operating segments Upstream International and Upstream Americas, which are engaged in searching for and recovering crude oil and natural gas, the liquefaction and transportation of gas, the extraction of bitumen from oil sands and converting it into synthetic crude oil, and wind energy. Downstream segment is engaged in manufacturing, distribution and marketing activities for oil products and chemicals, alternative energy (excluding wind), and carbon dioxide (CO2) management. Corporate segment represents the key support functions, such as Shell�s holdings, treasury and self-insurance organization. In January 2014, Royal Dutch Shell plc completed the acquisition of Repsol S.A.'s liquefied natural gas (LNG) portfolio outside North America. In June 2014, Shell sold 19% in Woodside Petroleum Limited.&lt;/Description&gt;
+   &lt;emailPostFix&gt;@fake.shell.com&lt;/emailPostFix&gt;
+   &lt;website&gt;http://www.shell.com&lt;/website&gt;
+   &lt;address&gt;Carel Van Bylandtlaan 30&lt;/address&gt;
+   &lt;city&gt;Den Haag&lt;/city&gt;
+   &lt;state /&gt;
+   &lt;zip&gt;2596 HR&lt;/zip&gt;
+   &lt;country&gt;Netherlands&lt;/country&gt;
+   &lt;stockTicker&gt;RDS-B&lt;/stockTicker&gt;
+   &lt;industry&gt;Energy/Utilities&lt;/industry&gt;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.jpg</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

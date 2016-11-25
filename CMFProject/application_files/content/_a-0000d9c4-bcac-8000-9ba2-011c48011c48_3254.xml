@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <constant>
+        <name>CASE_APP_MaleFirstNames</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3254</uuid>
+        <description>A list of 25 male first names for data generation</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4334</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <typedValue>
+            <type>
+                <name>Text?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+            <value>
+                <el>James</el>
+                <el>Michael</el>
+                <el>John</el>
+                <el>Robert</el>
+                <el>Paul</el>
+                <el>Joseph</el>
+                <el>Brian</el>
+                <el>Christopher</el>
+                <el>Daniel</el>
+                <el>Anthony</el>
+                <el>Edward</el>
+                <el>Charles</el>
+                <el>David</el>
+                <el>George</el>
+                <el>Kenneth</el>
+                <el>Martin</el>
+                <el>Kevin</el>
+                <el>Gary</el>
+                <el>Frank</el>
+                <el>Timothy</el>
+                <el>Carl</el>
+                <el>Phillip</el>
+                <el>Stephen</el>
+                <el>Larry</el>
+                <el>Andrew</el>
+            </value>
+        </typedValue>
+    </constant>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

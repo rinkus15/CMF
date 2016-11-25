@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>merck logo</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5781</uuid>
+        <description>&lt;customer&gt;
+   &lt;Name&gt;Merck \x26 Co., Inc.&lt;/Name&gt;   &lt;Description&gt;Merck   Co., Inc. (Merck), is a global health care company that delivers health solutions through its prescription medicines, vaccines, biologic therapies, animal health, and consumer care products, which it markets directly and through its joint ventures. The Company consists of four operating segments, which are the Pharmaceutical, Animal Health, Consumer Care and Alliances segments, and one reportable segment, which is the Pharmaceutical segment. The Pharmaceutical segment includes human health pharmaceutical and vaccine products marketed either directly by the Company or through joint ventures. Human health pharmaceutical products consist of therapeutic and preventive agents, generally sold by prescription, for the treatment of human disorders. On July 2, 2014, Santen Pharmaceutical Co., Ltd acquired certain ophthalmology assets from Merck   Co., Inc. On August 5, 2014, Merck   Co Inc (Merck) acquired Idenix Pharmaceuticals Inc (Idenix).&lt;/Description&gt;
+   &lt;emailPostFix&gt;@fake.merck.com&lt;/emailPostFix&gt;
+   &lt;website&gt;http://www.merck.com&lt;/website&gt;
+   &lt;address&gt;One Merck Drive, P.O. Box 100&lt;/address&gt;
+   &lt;city&gt;Whitehouse Station&lt;/city&gt;
+   &lt;state&gt;New Jersey&lt;/state&gt;
+   &lt;zip&gt;08889-0100&lt;/zip&gt;
+   &lt;country&gt;Afghanistan&lt;/country&gt;
+   &lt;stockTicker&gt;MRK&lt;/stockTicker&gt;
+   &lt;industry&gt;Pharmaceuticals&lt;/industry&gt;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.png</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

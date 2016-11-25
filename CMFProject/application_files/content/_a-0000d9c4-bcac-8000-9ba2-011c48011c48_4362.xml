@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_RetrieveBestBuyProducts</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4362</uuid>
+        <description>Used to return the the full list of Office products from the Best Buy catalog</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4336</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>=load(
+   
+   local!pageOne: xpathsnippet(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4356&quot;(1), &quot;//product&quot;),
+   local!pageTwo: xpathsnippet(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4356&quot;(2), &quot;//product&quot;),
+   local!pageThree: xpathsnippet(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4356&quot;(3), &quot;//product&quot;),
+   local!pageFour: xpathsnippet(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4356&quot;(4), &quot;//product&quot;),
+   local!pageFive: xpathsnippet(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4356&quot;(5), &quot;//product&quot;),
+
+
+append(local!pageOne,local!pageTwo,local!pageThree,local!pageFour,local!pageFive)
+)
+
+</definition>
+        <preferredEditor>legacy</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

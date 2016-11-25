@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_TempoCommentsGrid</name>
+        <uuid>9430de08-a236-4562-b291-99bdac7c1b94</uuid>
+        <description>Used to capture an array of comments for a sample Tempo Post</description>
+        <parentUuid>_a-0000d9e6-8ff7-8000-174a-010000010000_2071</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>=load(
+  local!itemsToken,
+  local!selectedItems,
+  {
+    #&quot;SYSTEM_SYSRULES_gridLayout&quot;(
+      label: &quot;Comments for this post&quot;,
+      headerCells: {
+        #&quot;SYSTEM_SYSRULES_gridLayoutHeaderCell&quot;(
+          label: &quot;Hazard&quot;,
+          align: &quot;LEFT&quot;
+        ),
+        #&quot;SYSTEM_SYSRULES_gridLayoutHeaderCell&quot;(
+          label: &quot;Comment As&quot;,
+          align: &quot;LEFT&quot;
+        ),
+        #&quot;SYSTEM_SYSRULES_gridLayoutHeaderCell&quot;(
+          label: &quot;Message&quot;,
+          align: &quot;LEFT&quot;
+        ),
+        #&quot;SYSTEM_SYSRULES_gridLayoutHeaderCell&quot;(
+          label: &quot;Delay Minutes&quot;,
+          align: &quot;LEFT&quot;
+        ),
+        #&quot;SYSTEM_SYSRULES_gridLayoutHeaderCell&quot;(
+          label: &quot;&quot;,
+          align: &quot;LEFT&quot;
+        )
+      },
+      columnConfigs: {
+        #&quot;SYSTEM_SYSRULES_gridLayoutColumnConfig&quot;(
+          width: &quot;NARROW&quot;
+        ),
+        #&quot;SYSTEM_SYSRULES_gridLayoutColumnConfig&quot;(
+          width: &quot;DISTRIBUTE&quot;
+        ),
+        #&quot;SYSTEM_SYSRULES_gridLayoutColumnConfig&quot;(
+          width: &quot;DISTRIBUTE&quot;
+        ),
+        #&quot;SYSTEM_SYSRULES_gridLayoutColumnConfig&quot;(
+          width: &quot;DISTRIBUTE&quot;
+        ),
+        #&quot;SYSTEM_SYSRULES_gridLayoutColumnConfig&quot;(
+          width: &quot;NARROW&quot;
+        )
+      },
+      rows: #&quot;SYSTEM_SYSRULES_applyComponents&quot;(
+        function: #&quot;_a-0000d9e6-8ff7-8000-174a-010000010000_2054&quot;(
+          items: ri!Comments,
+          index: _,
+          itemsToken: local!itemsToken,
+          disabled: ri!disabled
+        ),
+        array: if(or(isnull(ri!Comments), count(ri!Comments) &lt; 1), {}, 1+enumerate(count(ri!Comments))),
+        arrayVariable: local!itemsToken
+      ),
+      selectionDisabled: ri!disabled
+    ),
+    if(ri!disabled,
+      {}, 
+      {
+        #&quot;SYSTEM_SYSRULES_linkField&quot;(
+          label: &quot;Add Comment&quot;,
+          labelPosition: &quot;COLLAPSED&quot;,
+          links: #&quot;SYSTEM_SYSRULES_dynamicLink&quot;(
+            label: &quot;+Add Comment&quot;,
+            value: 'type!{urn:com:appian:types:CASE_APP}CASE_APP_TempoComments'(
+              PostDelay:  if(
+                length(ri!Comments)&lt;=1, 
+                tointeger(100* rand()), 
+                ri!Comments[length(ri!Comments)-1].PostDelay + tointeger(100* rand())
+              )
+            ),
+            saveInto: {
+              a!save(ri!Comments, append(ri!Comments, save!value)),
+              a!save(local!itemsToken, append(local!itemsToken, save!value))
+            }
+          )
+        )
+      }
+    )
+  }
+)</definition>
+        <namedTypedValue>
+            <name>Comments</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>disabled</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>Administrator</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

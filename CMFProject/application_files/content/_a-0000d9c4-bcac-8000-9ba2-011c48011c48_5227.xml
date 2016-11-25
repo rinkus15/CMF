@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_CastProductXML</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5227</uuid>
+        <description>Casts a item in the product xml constant to a product data type</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4336</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>=cast(typeof('type!{urn:com:appian:types:CASE_APP}CASE_APP_Product'()),
+
+{
+
+name: xpathsnippet(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4435&quot;[ri!index], &quot;//product/name/text()&quot;),
+
+sku: xpathsnippet(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4435&quot;[ri!index], &quot;//sku/text()&quot;),
+
+description: xpathsnippet(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4435&quot;[ri!index], &quot;//shortDescription/text()&quot;),
+
+category: 1,
+
+productCategory: xpathsnippet(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4435&quot;[ri!index], &quot;//category/name/text()&quot;)[3],
+
+manufacturer: xpathsnippet(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4435&quot;[ri!index], &quot;//manufacturer/text()&quot;),
+
+modelNumber: xpathsnippet(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4435&quot;[ri!index], &quot;//modelNumber/text()&quot;),
+
+releaseDate: todate(now()-(100+tointeger(rand()*2000))),
+
+isActive: xpathsnippet(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4435&quot;[ri!index], &quot;//active/text()&quot;),
+
+price: xpathsnippet(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4435&quot;[ri!index], &quot;//regularPrice/text()&quot;),
+
+quantity: 10 + tointeger(rand()*400),
+
+productImageDocId: #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4434&quot;[ri!index],
+shippingDetails:
+
+{  
+
+weight: xpathsnippet(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4435&quot;[ri!index], &quot;//weight/text()&quot;),
+
+height: xpathsnippet(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4435&quot;[ri!index], &quot;//height/text()&quot;),
+
+width: xpathsnippet(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4435&quot;[ri!index], &quot;//width/text()&quot;),
+
+depth: xpathsnippet(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4435&quot;[ri!index], &quot;//depth/text()&quot;)
+
+},
+
+webImageID: 
+   append( 
+      xpathsnippet(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4435&quot;[ri!index], &quot;//image/text()&quot;),
+      xpathsnippet(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4435&quot;[ri!index], &quot;//largeImage/text()&quot;),
+      xpathsnippet(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4435&quot;[ri!index], &quot;//largeFrontImage/text()&quot;),
+      xpathsnippet(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4435&quot;[ri!index], &quot;//alternateViewsImage/text()&quot;),
+      xpathsnippet(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4435&quot;[ri!index], &quot;//backViewImage/text()&quot;),
+      xpathsnippet(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4435&quot;[ri!index], &quot;//angleImage/text()&quot;),
+      xpathsnippet(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4435&quot;[ri!index], &quot;//energyGuideImage/text()&quot;),
+      xpathsnippet(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4435&quot;[ri!index], &quot;//leftViewImage/text()&quot;),
+      xpathsnippet(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4435&quot;[ri!index], &quot;//mediumImage/text()&quot;),
+      xpathsnippet(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4435&quot;[ri!index], &quot;//remoteControlImage/text()&quot;),
+      xpathsnippet(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4435&quot;[ri!index], &quot;//rightViewImage/text()&quot;),
+      xpathsnippet(#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4435&quot;[ri!index], &quot;//topViewImage/text()&quot;)
+)
+
+}
+)</definition>
+        <namedTypedValue>
+            <name>index</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>legacy</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

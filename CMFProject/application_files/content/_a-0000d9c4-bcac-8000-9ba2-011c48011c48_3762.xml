@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <constant>
+        <name>CASE_APP_Male90Photos</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3762</uuid>
+        <description>90 pixel width photos for male demo users</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3758</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <typedValue>
+            <type>
+                <name>CollaborationDocument?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+            <value>
+                <el>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3742</el>
+                <el>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3749</el>
+                <el>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3743</el>
+                <el>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3753</el>
+                <el>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3750</el>
+                <el>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3745</el>
+                <el>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3732</el>
+                <el>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3736</el>
+                <el>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3737</el>
+                <el>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3731</el>
+                <el>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3739</el>
+                <el>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3734</el>
+                <el>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3738</el>
+                <el>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3741</el>
+                <el>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3746</el>
+                <el>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3747</el>
+                <el>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3740</el>
+                <el>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3744</el>
+                <el>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3751</el>
+                <el>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3752</el>
+                <el>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3733</el>
+                <el>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3735</el>
+                <el>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3748</el>
+                <el>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3756</el>
+                <el>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3754</el>
+            </value>
+        </typedValue>
+    </constant>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

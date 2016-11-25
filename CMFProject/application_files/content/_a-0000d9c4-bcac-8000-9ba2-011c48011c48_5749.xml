@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>bedbathbeyond</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5749</uuid>
+        <description>&lt;customer&gt;&#xD;
+   &lt;Name&gt;Bed Bath and Beyond Inc.&lt;/Name&gt;   &lt;Description&gt;Bed Bath   Beyond Inc. is a chain of retail stores, operating under the names Bed Bath   Beyond (BBB), Christmas Tree Shops (CTS), Harmon and Harmon Face Values (Harmon), buybuy BABY and World Market or Cost Plus World Market (World Market). In addition, it is a partner in a joint venture, which operates three stores in the Mexico City market under the name Bed Bath   Beyond. The Company sells a range of domestics merchandise and home furnishings. Domestics merchandise includes categories, such as bed linens and related items, bath items and kitchen textiles. Home furnishings include categories, such as kitchen and tabletop items, fine tabletop, basic housewares and general home. During fiscal year ended March 2, 2013 (fiscal 2012), the Company opened a total of 38 stores, including 12 BBB stores throughout the United States and Canada, five CTS stores, one Harmon store and 18 buybuy BABY stores, and six World Market stores throughout the United States and closed one BBB store.&lt;/Description&gt;&#xD;
+   &lt;emailPostFix&gt;@fake.bedbathandbeyond.com&lt;/emailPostFix&gt;&#xD;
+   &lt;website&gt;http://www.bedbathandbeyond.com&lt;/website&gt;&#xD;
+   &lt;address&gt;650 Liberty Avenue&lt;/address&gt;&#xD;
+   &lt;city&gt;Union&lt;/city&gt;&#xD;
+   &lt;state&gt;New Jersey&lt;/state&gt;&#xD;
+   &lt;zip&gt;07083&lt;/zip&gt;&#xD;
+   &lt;country&gt;United States of America&lt;/country&gt;&#xD;
+   &lt;stockTicker&gt;BBBY&lt;/stockTicker&gt;&#xD;
+   &lt;industry&gt;Retail&lt;/industry&gt;&#xD;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.gif</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

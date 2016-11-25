@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>huskyoil</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5769</uuid>
+        <description>&lt;customer&gt;
+   &lt;Name&gt;Husky Energy Inc.&lt;/Name&gt;   &lt;Description&gt;Husky Energy Inc. (Husky) is an international integrated energy company. The Company operates in two segments: Upstream and Downstream. Upstream includes exploration for, development and production of crude oil, bitumen, natural gas and natural gas liquids and other producers� crude oil, natural gas, natural gas liquids, sulphur and petroleum coke, pipeline transportation and processing of heavy crude oil and natural gas, storage of crude oil, diluents and natural gas and cogeneration of electrical and thermal energy. Downstream includes upgrading of heavy crude oil feedstock into synthetic crude oil (upgrading), refining in Canada of crude oil and marketing of refined petroleum products, including gasoline, diesel, ethanol blended fuels, asphalt and ancillary products, and production of ethanol and refining in the United States of crude oil to produce and market gasoline, jet fuel and diesel fuels that meet United States clean fuels standards.&lt;/Description&gt;
+   &lt;emailPostFix&gt;@fake.huskyenergy.com&lt;/emailPostFix&gt;
+   &lt;website&gt;http://www.huskyenergy.com&lt;/website&gt;
+   &lt;address&gt;707-8th Avenue SW&lt;/address&gt;
+   &lt;city&gt;Calgary&lt;/city&gt;
+   &lt;state&gt;Alberta&lt;/state&gt;
+   &lt;zip&gt;T2P 3G7&lt;/zip&gt;
+   &lt;country&gt;Canada&lt;/country&gt;
+   &lt;stockTicker&gt;HSE.TO&lt;/stockTicker&gt;
+   &lt;industry&gt;Energy/Utilities&lt;/industry&gt;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.jpg</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

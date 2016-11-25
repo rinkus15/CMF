@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_TempoMoreInfoGrid</name>
+        <uuid>a09db1ba-0366-439d-82d5-a6ba56ebf425</uuid>
+        <description>An editable grid to define more info data.</description>
+        <parentUuid>_a-0000d9e6-8ff7-8000-174a-010000010000_2071</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>=load(
+  local!itemsToken,
+  {
+    #&quot;SYSTEM_SYSRULES_gridLayout&quot;(
+      instructions:&quot;Use the semicolon (';') character to separate items in the value cell.&quot;,
+      headerCells: {
+        #&quot;SYSTEM_SYSRULES_gridLayoutHeaderCell&quot;(label: &quot;Label&quot;),
+        #&quot;SYSTEM_SYSRULES_gridLayoutHeaderCell&quot;(label: &quot;Value&quot;),
+        #&quot;SYSTEM_SYSRULES_gridLayoutHeaderCell&quot;(label: &quot;&quot;)
+      },
+      columnConfigs: {
+        #&quot;SYSTEM_SYSRULES_gridLayoutColumnConfig&quot;(width: &quot;DISTRIBUTE&quot;),
+        #&quot;SYSTEM_SYSRULES_gridLayoutColumnConfig&quot;(width: &quot;DISTRIBUTE&quot;),
+        #&quot;SYSTEM_SYSRULES_gridLayoutColumnConfig&quot;(width: &quot;NARROW&quot;)
+      },
+      rows: #&quot;SYSTEM_SYSRULES_applyComponents&quot;(
+        function: #&quot;b13297cb-a557-438e-9c4b-e5c5159917ed&quot;(
+          items: ri!labelValue,
+          index: _,
+          itemsToken: local!itemsToken
+        ),
+        array: if(or(isnull(ri!labelValue), count(ri!labelValue) &lt; 1), {}, 1+enumerate(count(ri!labelValue))),
+        arrayVariable: local!itemsToken
+      )
+    ),
+    #&quot;SYSTEM_SYSRULES_linkField&quot;(
+      label: &quot;Add LabelValue Item&quot;,
+      labelPosition: &quot;COLLAPSED&quot;,
+      links: #&quot;SYSTEM_SYSRULES_dynamicLink&quot;(
+        label: &quot;+Add Item&quot;,
+        value: 'type!{http://www.appian.com/ae/types/2009}LabelValue'(),
+        saveInto: {
+          a!save(ri!labelValue, append(ri!labelValue, save!value)),
+          /* When modifying the size of the array used in a!applyComponents, /
+          / make the same change in the &quot;token&quot; array variable               */
+          a!save(local!itemsToken, append(local!itemsToken, save!value))
+        }
+      )
+    )
+  }
+)</definition>
+        <namedTypedValue>
+            <name>labelValue</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

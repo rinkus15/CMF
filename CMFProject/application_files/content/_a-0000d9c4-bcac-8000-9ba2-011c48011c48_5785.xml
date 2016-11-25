@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>Fidelity</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5785</uuid>
+        <description>&lt;customer&gt;
+   &lt;Name&gt;Fidelity Investments Institutional Services Company, Inc&lt;/Name&gt;   &lt;Description&gt;Operating as a subsidiary of mutual fund superpower Fidelity, Fidelity Investments Institutional Services distributes Fidelity-branded products and programs through investment professionals. It offers services to more than 20 million individuals and institutions, such as banks, insurance companies, securities brokerages, and financial planning firms. Doing business as Fidelity Financial Advisor Solutions, it offers Fidelity Advisor Funds, institutional money-market funds, cash management funds, international funds, and long-term investment plans. The firm also offers offshore-based funds for non-US investors and programs and services related to college savings and retirement plans.&lt;/Description&gt;
+   &lt;emailPostFix&gt;@fake.fidelity.com&lt;/emailPostFix&gt;
+   &lt;website&gt;http://www.fidelity.com&lt;/website&gt;
+   &lt;address&gt;82 Devonshire St.&lt;/address&gt;
+   &lt;city&gt;Boston&lt;/city&gt;
+   &lt;state&gt;Massachusetts&lt;/state&gt;
+   &lt;zip&gt;02109&lt;/zip&gt;
+   &lt;country&gt;United States of America&lt;/country&gt;
+   &lt;stockTicker /&gt;
+   &lt;industry&gt;Financial&lt;/industry&gt;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.jpg</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

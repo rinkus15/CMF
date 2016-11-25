@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>Scrippsnetworkslogo</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5694</uuid>
+        <description>&lt;customer&gt;&#xD;
+   &lt;Name&gt;Scripps Networks Interactive, Inc.&lt;/Name&gt;   &lt;Description&gt;Scripps Networks Interactive, Inc. is a developer of lifestyle-oriented content for television and the Internet with television and interactive brands. The Company operates through its Lifestyle Media segment. Lifestyle Media includes the Company's national television networks, Food Network, Home and Garden Television (HGTV), Travel Channel, DIY Network (DIY), Cooking Channel and Great American Country (GAC). Lifestyle Media also includes Websites that are associated with the aforementioned television brands and other Internet-based businesses serving food, home and travel related categories. The Company's lifestyle-oriented channels are available in the United Kingdom, other European markets, the Middle East, Africa and Asia-Pacific. In April 2012, it acquired Travel Channel International, Ltd. (TCI). In April 2013, it announced the acquisition of Asian Food Channel.&lt;/Description&gt;&#xD;
+   &lt;emailPostFix&gt;@fake.scripps.com&lt;/emailPostFix&gt;&#xD;
+   &lt;website&gt;http://www.scrippsnetworksinteractive.com/&lt;/website&gt;&#xD;
+   &lt;address&gt;SUITE 1800, 312 WALNUT STREET&lt;/address&gt;&#xD;
+   &lt;city&gt;CINCINNATI&lt;/city&gt;&#xD;
+   &lt;state&gt;Ohio&lt;/state&gt;&#xD;
+   &lt;zip&gt;45202&lt;/zip&gt;&#xD;
+   &lt;country&gt;United States of America&lt;/country&gt;&#xD;
+   &lt;stockTicker&gt;SNI&lt;/stockTicker&gt;&#xD;
+   &lt;industry&gt;Media&lt;/industry&gt;&#xD;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.jpg</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

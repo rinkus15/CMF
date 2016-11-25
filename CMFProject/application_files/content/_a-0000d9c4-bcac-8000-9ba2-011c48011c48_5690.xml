@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>Deloitte</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5690</uuid>
+        <description>&lt;customer&gt;&#xD;
+   &lt;Name&gt;Deloitte Touche Tohmatsu Services, Inc.&lt;/Name&gt;   &lt;Description&gt;This company is &quot;deloitted&quot; to make your acquaintance, particularly if you're a big business in need of accounting services. Deloitte Touche Tohmatsu (or Deloitte) is one of accounting's Big Four, along with Ernst   Young, KPMG, and PricewaterhouseCoopers. Deloitte operates through more than 50 independent firms in some 150 locations around the world, including US-based Deloitte LLP and its accounting arm, Deloitte   Touche LLP. Each member firm works in a specific geographic area offering audit, tax, consulting, risk management, and financial advisory services, in addition to human resources and technology services. Deloitte coordinates its member firms but does not provide services directly to clients.&lt;/Description&gt;&#xD;
+   &lt;emailPostFix&gt;@fake.deloitte.com&lt;/emailPostFix&gt;&#xD;
+   &lt;website&gt;http://www.deloitte.com&lt;/website&gt;&#xD;
+   &lt;address&gt;1633 Broadway&lt;/address&gt;&#xD;
+   &lt;city&gt;New York&lt;/city&gt;&#xD;
+   &lt;state&gt;New York&lt;/state&gt;&#xD;
+   &lt;zip&gt;10019-6754&lt;/zip&gt;&#xD;
+   &lt;country&gt;United States of America&lt;/country&gt;&#xD;
+   &lt;stockTicker /&gt;&#xD;
+   &lt;industry&gt;Consulting&lt;/industry&gt;&#xD;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.png</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

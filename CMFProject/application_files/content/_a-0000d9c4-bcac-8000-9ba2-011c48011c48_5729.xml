@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>manulife</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5729</uuid>
+        <description>&lt;customer&gt;
+   &lt;Name&gt;Manulife Financial Corp.&lt;/Name&gt;   &lt;Description&gt;Manulife Financial Corporation (MFC) is a Canada-based financial services group with principal operations in Asia, Canada and the United States. The Company�s segments are Asia, Canadian and U.S. Divisions and the Corporate and Other segment. The Company�s international network agents and distribution partners offers financial protection and wealth management products and services to clients. It also provides asset management services to institutional customers. In January 2013, the Company acquired Benesure Canada Inc. In August 2013, John Hancock, the United States division of the Company, announced that it has acquired Landmark Square in Long Beach, California. In December 2013, MFC announced its subsidiary, Manulife (International) Limited, had completed the transaction to sell its life insurance business in Taiwan to CTBC Life Insurance Co., Ltd.&lt;/Description&gt;
+   &lt;emailPostFix&gt;@fake.manulife.com&lt;/emailPostFix&gt;
+   &lt;website&gt;http://www.manulife.com&lt;/website&gt;
+   &lt;address&gt;200 Bloor Street East&lt;/address&gt;
+   &lt;city&gt;Toronto&lt;/city&gt;
+   &lt;state&gt;Ontario&lt;/state&gt;
+   &lt;zip&gt;M4W 1E5&lt;/zip&gt;
+   &lt;country&gt;United States of America&lt;/country&gt;
+   &lt;stockTicker&gt;MFC&lt;/stockTicker&gt;
+   &lt;industry&gt;Financial&lt;/industry&gt;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.jpg</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

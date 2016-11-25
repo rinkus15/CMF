@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>KPMG-logo</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5692</uuid>
+        <description>&lt;customer&gt;&#xD;
+   &lt;Name&gt;KPMG L.L.P.&lt;/Name&gt;   &lt;Description&gt;KPMG L.L.P. is the US member firm of KPMG International, a global network of accountancies with a 300-year history. Today, parent KPMG is one of the industry's Big Four (alongside Deloitte Touche Tohmatsu, Ernst   Young, and PricewaterhouseCoopers). The US-centric business of KPMG provides audit, tax, and advisory services through approximately 90 offices located nationwide. As part of its business focus, KPMG L.L.P. targets several industries, such as financial services, media and entertainment, consumer products, chemicals, and healthcare and pharmaceuticals. KPMG L.L.P. is part of KPMG's Americas division, which accounts for about a third of the group's global revenues.&lt;/Description&gt;&#xD;
+   &lt;emailPostFix&gt;@fake.kpmg.com&lt;/emailPostFix&gt;&#xD;
+   &lt;website&gt;http://www.us.kpmg.com&lt;/website&gt;&#xD;
+   &lt;address&gt;345 Park Ave.&lt;/address&gt;&#xD;
+   &lt;city&gt;New York&lt;/city&gt;&#xD;
+   &lt;state&gt;New York&lt;/state&gt;&#xD;
+   &lt;zip&gt;10154-0102&lt;/zip&gt;&#xD;
+   &lt;country&gt;United States of America&lt;/country&gt;&#xD;
+   &lt;stockTicker /&gt;&#xD;
+   &lt;industry&gt;Consulting&lt;/industry&gt;&#xD;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.jpg</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

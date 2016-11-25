@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>telstra</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5684</uuid>
+        <description>&lt;customer&gt;&#xD;
+   &lt;Name&gt;Telstra Corporation Ltd&lt;/Name&gt;   &lt;Description&gt;Telstra Corporation Limited (Telstra) telecommunications and information services company providing telecommunications and information services for domestic and international customers. The Company operates in nine segments: Telstra Consumer and Country Wide (TC CW)  Telstra Business (TB)  Telstra Enterprise and Government (TE G)  Telstra Wholesale (TW)  Telstra Media Group  Telstra International Group  TelstraClear  Telstra Operations and Other. On July 6, 2011, Telstra announced changes to its organisational structure. In November 2013, Telstra Corporation Limited increased its Autohome shareholding from 66% to 71.5%. Effective January 21, 2014, Telstra Corp Ltd acquired O2 Networks, a developer of data networking and network security software. In May 2014, the Company completed the sale of its Hong Kong based mobiles business CSL to HKT Limited. In July 2014, Telstra acquired an undisclosed minority stake in Telesign Corp.&lt;/Description&gt;&#xD;
+   &lt;emailPostFix&gt;@telstra.com&lt;/emailPostFix&gt;&#xD;
+   &lt;website&gt;http://www.telstra.com&lt;/website&gt;&#xD;
+   &lt;address&gt;LEVEL 41 242 EXHIBITION STREET&lt;/address&gt;&#xD;
+   &lt;city&gt;MELBOURNE&lt;/city&gt;&#xD;
+   &lt;state&gt;Victoria&lt;/state&gt;&#xD;
+   &lt;zip&gt;3000&lt;/zip&gt;&#xD;
+   &lt;country&gt;Australia&lt;/country&gt;&#xD;
+   &lt;stockTicker&gt;TLS&lt;/stockTicker&gt;&#xD;
+   &lt;industry&gt;Telecommunications&lt;/industry&gt;&#xD;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.jpeg</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

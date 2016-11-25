@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <constant>
+        <name>CASE_APP_LastNames</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3246</uuid>
+        <description>A list of last names for random generation of names in data generator</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4334</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <typedValue>
+            <type>
+                <name>Text?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+            <value>
+                <el>Johnson</el>
+                <el>Williams</el>
+                <el>Lopez</el>
+                <el>Jones</el>
+                <el>King</el>
+                <el>Miller</el>
+                <el>Anderson</el>
+                <el>Taylor</el>
+                <el>Wilson</el>
+                <el>Davis</el>
+                <el>Robinson</el>
+                <el>White</el>
+                <el>Jackson</el>
+                <el>Walker</el>
+                <el>Gupta</el>
+                <el>Lewis</el>
+                <el>Lee</el>
+                <el>Young</el>
+                <el>Hall</el>
+                <el>Liu</el>
+                <el>Kapur</el>
+                <el>Singh</el>
+                <el>Hernandez</el>
+                <el>Turner</el>
+                <el>Chou</el>
+                <el>Baker</el>
+                <el>Cooper</el>
+                <el>Rogers</el>
+                <el>Ward</el>
+                <el>Rao</el>
+                <el>Clark</el>
+                <el>Chen</el>
+                <el>Harris</el>
+                <el>Nelson</el>
+                <el>Hill</el>
+                <el>Phillips</el>
+                <el>Parker</el>
+                <el>Evans</el>
+                <el>Garcia</el>
+                <el>Lewis</el>
+                <el>Morgan</el>
+                <el>Reed</el>
+                <el>Howard</el>
+                <el>Liang</el>
+                <el>Kim</el>
+                <el>Patel</el>
+                <el>Sanchez</el>
+                <el>Singh</el>
+                <el>Shah</el>
+                <el>Murphy</el>
+            </value>
+        </typedValue>
+    </constant>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

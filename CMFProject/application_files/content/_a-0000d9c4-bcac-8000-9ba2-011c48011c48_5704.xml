@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>verizon</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5704</uuid>
+        <description>&lt;customer&gt;&#xD;
+   &lt;Name&gt;Verizon Communications Inc.&lt;/Name&gt;   &lt;Description&gt;Verizon Communications Inc. (Verizon) is a holding company. The Company is a provider of communications, information and entertainment products and services to consumers, businesses and governmental agencies. It operates in two primary segments: Verizon Wireless and Wireline. Verizon Wireless� communications products and services include wireless voice and data services and equipment sales, which are provided to consumer, business and government customers across the United States. Wireline�s communications products and services include voice, Internet access, broadband video and data, Internet protocol network services, network access, long distance and other services. Effective January 6, 2014, Verizon Communications Inc acquired EdgeCast Networks Inc. In February 2014, Verizon Communications Inc completed the acquisition of Vodafone Group Plc's 45% indirect interest in Verizon Wireless.&lt;/Description&gt;&#xD;
+   &lt;emailPostFix&gt;@fake.verizon.com&lt;/emailPostFix&gt;&#xD;
+   &lt;website&gt;http://www.verizon.com&lt;/website&gt;&#xD;
+   &lt;address&gt;29TH Floor, 140 West Sstreet&lt;/address&gt;&#xD;
+   &lt;city&gt;New York&lt;/city&gt;&#xD;
+   &lt;state&gt;New York&lt;/state&gt;&#xD;
+   &lt;zip&gt;10007&lt;/zip&gt;&#xD;
+   &lt;country&gt;United States of America&lt;/country&gt;&#xD;
+   &lt;stockTicker&gt;VZ&lt;/stockTicker&gt;&#xD;
+   &lt;industry&gt;Telecommunications&lt;/industry&gt;&#xD;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.png</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

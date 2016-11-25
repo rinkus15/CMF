@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <constant>
+        <name>CASE_APP_AssignedMaleUserNames</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3757</uuid>
+        <description>A list of set user names to generate user accounts.  For demonstration purposes.</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4334</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <typedValue>
+            <type>
+                <name>Text?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+            <value>
+                <el>james.baker</el>
+                <el>michael.cooper</el>
+                <el>john.rogers</el>
+                <el>robert.ward</el>
+                <el>paul.rao</el>
+                <el>joseph.clark</el>
+                <el>brian.chen</el>
+                <el>christopher.harris</el>
+                <el>daniel.nelson</el>
+                <el>anthony.hill</el>
+                <el>edward.phillips</el>
+                <el>charles.parker</el>
+                <el>david.evans</el>
+                <el>george.garcia</el>
+                <el>kenneth.lewis</el>
+                <el>kevin.reed</el>
+                <el>gary.howard</el>
+                <el>john.ross</el>
+                <el>peter.harris</el>
+                <el>phillip.sanchez</el>
+                <el>carl.peters</el>
+                <el>chris.watkins</el>
+                <el>martin.morgan</el>
+                <el>timothy.kim</el>
+                <el>stephen.singh</el>
+            </value>
+        </typedValue>
+    </constant>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>CenturyLinklogo</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5700</uuid>
+        <description>&lt;customer&gt;&#xD;
+   &lt;Name&gt;CenturyLink, Inc.&lt;/Name&gt;   &lt;Description&gt;CenturyLink, Inc. (CenturyLink) is an integrated communications company. The Company is engaged primarily in providing a range of communications services to its residential, business, governmental and wholesale customers. The Company's communications services include local and long-distance, network access, private line, public access, broadband, data, managed hosting (including cloud hosting), colocation, Wireless and video services. In certain local and regional markets, the Company also provides local access and fiber transport services to competitive local exchange carriers (CLECs) and security monitoring. The Company operates in four segments: Regional markets, Wholesale markets, Enterprise markets-network and Enterprise markets-data hosting. In November 2013, CenturyLink Inc acquired Tier 3 LLC.&lt;/Description&gt;&#xD;
+   &lt;emailPostFix&gt;@fake.centurylink.com&lt;/emailPostFix&gt;&#xD;
+   &lt;website&gt;http://www.centurylink.com&lt;/website&gt;&#xD;
+   &lt;address&gt;100 CENTURYLINK DR, P O Box 4065&lt;/address&gt;&#xD;
+   &lt;city&gt;Monroe&lt;/city&gt;&#xD;
+   &lt;state&gt;Louisiana&lt;/state&gt;&#xD;
+   &lt;zip&gt;71203&lt;/zip&gt;&#xD;
+   &lt;country&gt;United States of America&lt;/country&gt;&#xD;
+   &lt;stockTicker&gt;CTL&lt;/stockTicker&gt;&#xD;
+   &lt;industry&gt;Telecommunications&lt;/industry&gt;&#xD;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.jpg</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

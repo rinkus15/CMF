@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+<?xml version="1.0" encoding="UTF-8"?><contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
     <rule>
         <name>CASE_APP_randomItemFromArray</name>
         <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5799</uuid>
@@ -14,7 +13,7 @@
             <system>false</system>
             <unlogged>false</unlogged>
         </visibility>
-        <definition>=item[#&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5798&quot;(length(ri!item))]</definition>
+        <definition>=item[#"_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5798"(length(ri!item))]</definition>
         <namedTypedValue>
             <name>item</name>
             <type>
@@ -52,4 +51,4 @@
             <groups/>
         </role>
     </roleMap>
-</contentHaul>
+</contentHaul><!--updated on 2016-11-25T16:12:55.010-->

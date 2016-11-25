@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>libertymutuallogo</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5686</uuid>
+        <description>&lt;customer&gt;&#xD;
+   &lt;Name&gt;Liberty Mutual Holding Company Inc.&lt;/Name&gt;   &lt;Description&gt;Liberty Mutual Holding defends our freedom to buy car insurance. As the parent company of Liberty Mutual Group and its operating subsidiaries, Liberty Mutual is one of the top property/casualty insurers in the US and among the top 10 providers of automobile insurance. The company also offers homeowners' insurance, workers compensation, general liability, group disability, fire and surety, and commercial lines for small to large companies. Liberty Mutual operates through four business divisions: Personal Insurance, Commercial Insurance, Liberty International, and Global Specialty. It distributes its products through a diversified blend of independent and exclusive agents, brokers, and direct sales.&lt;/Description&gt;&#xD;
+   &lt;emailPostFix&gt;@fake.libertymutual.com&lt;/emailPostFix&gt;&#xD;
+   &lt;website&gt;http://www.libertymutual.com&lt;/website&gt;&#xD;
+   &lt;address&gt;175 Berkeley St.&lt;/address&gt;&#xD;
+   &lt;city&gt;Boston&lt;/city&gt;&#xD;
+   &lt;state&gt;Massachusetts&lt;/state&gt;&#xD;
+   &lt;zip&gt;02116&lt;/zip&gt;&#xD;
+   &lt;country&gt;United States of America&lt;/country&gt;&#xD;
+   &lt;stockTicker /&gt;&#xD;
+   &lt;industry&gt;Insurance&lt;/industry&gt;&#xD;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.gif</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

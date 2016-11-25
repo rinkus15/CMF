@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>ryderlogo</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5708</uuid>
+        <description>&lt;customer&gt;&#xD;
+   &lt;Name&gt;Ryder System, Inc.&lt;/Name&gt;   &lt;Description&gt;Ryder System, Inc. (Ryder) is engaged in transportation and supply chain management solutions. Ryder operates in three business segments: Fleet Management Solutions (FMS), which provides full service leasing, contract maintenance, contract-related maintenance and commercial rental of trucks, tractors and trailers to customers principally in the United States, Canada and the United Kingdom  Supply Chain Solutions (SCS), which provides supply chain solutions, including distribution and transportation services throughout North America and Asia, and Dedicated Contract Carriage (DCC), which provides vehicles and drivers as part of a dedicated transportation solution in the United States. On June 8, 2011, it acquired all of the common stock of Hill Hire plc (Hill Hire). On August 1, 2012, it acquired Euroway Group Ltd. In September 2012, it opened its new Ryder Vehicle Sales center, offering used trucks for sale in the Greater Vancouver Area.&lt;/Description&gt;&#xD;
+   &lt;emailPostFix&gt;@fake.ryder.com&lt;/emailPostFix&gt;&#xD;
+   &lt;website&gt;http://www.ryder.com&lt;/website&gt;&#xD;
+   &lt;address&gt;11690 N.W. 105TH Street&lt;/address&gt;&#xD;
+   &lt;city&gt;Miami&lt;/city&gt;&#xD;
+   &lt;state&gt;Florida&lt;/state&gt;&#xD;
+   &lt;zip&gt;33178-1103&lt;/zip&gt;&#xD;
+   &lt;country&gt;Afghanistan&lt;/country&gt;&#xD;
+   &lt;stockTicker&gt;R&lt;/stockTicker&gt;&#xD;
+   &lt;industry&gt;Transportation&lt;/industry&gt;&#xD;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.jpg</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

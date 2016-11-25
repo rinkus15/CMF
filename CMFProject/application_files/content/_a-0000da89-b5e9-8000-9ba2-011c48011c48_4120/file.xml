@@ -1,0 +1,66 @@
+<serviceRequest>
+  <item>
+    <type>I need help with an Order</type>
+    <text>The item arrived damaged.</text>
+  </item>
+  <item>
+    <type>I need help with an Order</type>
+    <text>Customer has requested a cancellation to the order.  It is already in shipping.  Please investigate if this order can be recalled or if the customer will need to return.</text>
+  </item>
+  <item>
+    <type>I need help with an Order</type>
+    <text>The customer would like to return part of his order.</text>
+  </item>
+  <item>
+    <type>I need help with an Order</type>
+    <text>Product was defective. Requesting a refund.</text>
+  </item>
+  <item>
+    <type>I need help with an Order</type>
+    <text>Customer would like to cancel the order</text>
+  </item>
+  <item>
+    <type>I need help with an Order</type>
+    <text>Order was not shipped correctly.  The customer says they only received half of the items that were in the order</text>
+  </item>
+  <item>
+    <type>I need help with an Order</type>
+    <text>The products arrived, but customer no longer wants one. Would like to return.</text>
+  </item>  
+  <item>
+    <type>I need help with an Order</type>
+    <text>The customer accidentally submitted this order twice.  They would like to cancel this order and just retain the previous order</text>
+  </item>  
+  <item>
+    <type>I need help with an Order</type>
+    <text>Incorrect order was shipped to customer.  They will return and expect a refund.</text>
+  </item>
+  <item>
+    <type>I need help with an Order</type>
+    <text>Customer needs information on warranty for products.</text>
+  </item>
+  <item>
+    <type>I need help with something else</type>
+    <text>Feedback: I would like to be able to buy Activity Trackers</text>
+  </item>
+  <item>
+    <type>I need help with something else</type>
+    <text>How can I see a history of my previous orders?</text>
+  </item>
+  <item>
+    <type>I need help with something else</type>
+    <text>I would like to setup recurring orders</text>
+  </item>
+  <item>
+    <type>I need help with something else</type>
+    <text>How can I setup my printer in my wireless network?</text>
+  </item>
+  <item>
+    <type>I need help with something else</type>
+    <text>Can I get discounts on bulk purchases?</text>
+  </item>
+  <item>
+    <type>I need help with something else</type>
+    <text>Why don't you offer free shipping on orders over a certain amount?</text>
+  </item>
+</serviceRequest>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_srGetRandomCommentForType</name>
+        <uuid>_a-0000da89-b5e9-8000-9ba2-011c48011c48_4130</uuid>
+        <description></description>
+        <parentUuid>_a-0000d9df-3187-8000-9ba2-011c48011c48_8373</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>=with(
+  local!types:xpathdocument(#&quot;_a-0000da89-b5e9-8000-9ba2-011c48011c48_4063&quot;,&quot;/serviceRequest/item/type/text()&quot;),
+  local!texts:xpathdocument(#&quot;_a-0000da89-b5e9-8000-9ba2-011c48011c48_4063&quot;,&quot;/serviceRequest/item/text/text()&quot;),
+  local!srData:apply(
+     #&quot;_a-0000da89-b5e9-8000-9ba2-011c48011c48_4064&quot;(_,_),
+     merge(local!types,local!texts)
+  ),
+  local!indices:wherecontains(ri!type,cast(typeof({&quot;A&quot;}),local!srData.type)),
+  if(#&quot;_a-0000d9a9-eb56-8000-9e06-010000010000_751&quot;(local!indices),
+    null,
+    #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5799&quot;(local!srData.text[local!indices])
+  )
+)</definition>
+        <namedTypedValue>
+            <name>type</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <preferredEditor>legacy</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

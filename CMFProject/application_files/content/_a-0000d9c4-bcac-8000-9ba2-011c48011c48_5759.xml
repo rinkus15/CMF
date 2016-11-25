@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>punch-taverns-logo</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5759</uuid>
+        <description>&lt;customer&gt;
+   &lt;Name&gt;Punch Taverns plc&lt;/Name&gt;   &lt;Description&gt;Punch Taverns plc is a pub company. The Company is engaged in the operation of public houses under the leased model. This involves the granting of leases to tenants who operate the pub as their own business, paying rent to the Company, purchasing beer and other drinks from the Company and entering into profit-sharing arrangements for income from leisure machines. The Company�s Community Pubs are local pubs, situated in towns, suburbs and villages. The Company�s subsidiaries include Punch Partnerships (PGRP) Limited, Punch Partnerships (PTL) Limited, Punch Partnerships (PML) Limited, Punch Taverns (Services) Limited, Punch Taverns Finance plc, Punch Taverns Finance B Limited, Punch Taverns (Finco) Limited, Punch Taverns (PRAF) Limited and Punch Taverns (Offices) Limited.&lt;/Description&gt;
+   &lt;emailPostFix&gt;@fake.punchtaverns.com&lt;/emailPostFix&gt;
+   &lt;website&gt;http://www.punchtaverns.com&lt;/website&gt;
+   &lt;address&gt;Jubilee House / Second Avenue&lt;/address&gt;
+   &lt;city&gt;Burton Upon Trent&lt;/city&gt;
+   &lt;state /&gt;
+   &lt;zip&gt;ENG DE14 2WF&lt;/zip&gt;
+   &lt;country&gt;United Kingdom&lt;/country&gt;
+   &lt;stockTicker /&gt;
+   &lt;industry&gt;Retail&lt;/industry&gt;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.jpg</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

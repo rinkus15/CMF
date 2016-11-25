@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>pepcologo</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5771</uuid>
+        <description>&lt;customer&gt;
+   &lt;Name&gt;Pepco Holdings, Inc.&lt;/Name&gt;   &lt;Description&gt;Pepco Holdings, Inc. (PHI) is a holding company, that, through regulated public utility subsidiaries, is engaged primarily in the transmission, distribution and default supply of electricity and the distribution and supply of natural gas (Power Delivery): Potomac Electric Power Company (Pepco), Delmarva Power   Light Company (DPL) and Atlantic City Electric Company (ACE). As of December 31, 2012, the Company segments include Power Delivery, consisting of the operations of Pepco, DPL and ACE, engaged in the transmission, distribution and default supply of electricity and the distribution and supply of natural gas, Pepco Energy Services and Other Non-Regulated, consisting primarily of the operations of PCI. PHI Service Company, a subsidiary service company of PHI, provides a range of support services, including legal, accounting, treasury, tax, purchasing and information technology services, to PHI and its operating subsidiaries.&lt;/Description&gt;
+   &lt;emailPostFix&gt;@fake.pepco.com&lt;/emailPostFix&gt;
+   &lt;website&gt;http://www.pepco.com&lt;/website&gt;
+   &lt;address&gt;701 Ninth Street, N.W.&lt;/address&gt;
+   &lt;city&gt;Washington&lt;/city&gt;
+   &lt;state&gt;District of Columbia&lt;/state&gt;
+   &lt;zip&gt;20068&lt;/zip&gt;
+   &lt;country&gt;United States of America&lt;/country&gt;
+   &lt;stockTicker&gt;POM&lt;/stockTicker&gt;
+   &lt;industry&gt;Energy/Utilities&lt;/industry&gt;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.jpg</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

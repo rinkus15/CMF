@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>paypal-logo</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5725</uuid>
+        <description>&lt;customer&gt;
+   &lt;Name&gt;PayPal, Inc.&lt;/Name&gt;   &lt;Description&gt;PayPal wants to be your best bud in the electronic payments industry. The company allows individuals and merchants to transfer money via personal computer or smartphone, with transactions charged to the customer's bank account, credit card, or PayPal account. The company earns fees mainly from payment transactions, foreign exchange, and withdrawals from foreign bank accounts, as well as on its customer balances and PayPal-branded credit and debit cards. PayPal connects with more than 15,000 financial institutions in 190 markets in 25 currencies around the world. Founded in 1998, PayPal is a subsidiary of Internet marketplace eBay and accounts for more than 40% of eBay's sales.&lt;/Description&gt;
+   &lt;emailPostFix&gt;@fake.paypal.com&lt;/emailPostFix&gt;
+   &lt;website&gt;http://www.paypal.com&lt;/website&gt;
+   &lt;address&gt;2211 N. First St.&lt;/address&gt;
+   &lt;city&gt;San Jose&lt;/city&gt;
+   &lt;state&gt;California&lt;/state&gt;
+   &lt;zip&gt;95131&lt;/zip&gt;
+   &lt;country&gt;United States of America&lt;/country&gt;
+   &lt;stockTicker /&gt;
+   &lt;industry&gt;Financial&lt;/industry&gt;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.png</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

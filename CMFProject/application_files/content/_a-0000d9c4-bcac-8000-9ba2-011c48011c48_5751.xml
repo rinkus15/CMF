@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>Walgreens</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5751</uuid>
+        <description>&lt;customer&gt;
+   &lt;Name&gt;Walgreen Company&lt;/Name&gt;   &lt;Description&gt;Walgreen Co. (Walgreens), together with its subsidiaries, operates as a retail drugstore chain in the United States. The Company provides its customers with access to consumer goods and services, pharmacy, and health and wellness services in communities across America. The Company offers its products and services through drugstores, as well as through mail, by telephone and online. The Company sells prescription and non-prescription drugs, as well as general merchandise products, including household items, convenience and fresh foods, personal care, beauty care, photofinishing and candy. As of March 31, 2014, Walgreens operated 8,688 locations (including 8,221 drugstores) in all 50 states, the District of Columbia, Puerto Rico, Guam and the United States Virgin Islands. The Company also operates infusion and respiratory services facilities, specialty pharmacies and mail service facilities.&lt;/Description&gt;
+   &lt;emailPostFix&gt;@fale.walgreens.com&lt;/emailPostFix&gt;
+   &lt;website&gt;http://www.walgreens.com&lt;/website&gt;
+   &lt;address&gt;801 Adlai Stevenson Dr&lt;/address&gt;
+   &lt;city&gt;Springfield&lt;/city&gt;
+   &lt;state&gt;Illinois&lt;/state&gt;
+   &lt;zip&gt;62703&lt;/zip&gt;
+   &lt;country&gt;United States of America&lt;/country&gt;
+   &lt;stockTicker&gt;WAG&lt;/stockTicker&gt;
+   &lt;industry&gt;Retail&lt;/industry&gt;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.jpg</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

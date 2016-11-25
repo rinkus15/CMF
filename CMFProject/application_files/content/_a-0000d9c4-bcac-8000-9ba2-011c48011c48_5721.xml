@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>boeing-logo</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5721</uuid>
+        <description>&lt;customer&gt;
+   &lt;Name&gt;The Boeing Company&lt;/Name&gt;   &lt;Description&gt;The Boeing Company (Boeing) is an aerospace company. The Company operates in five segments: Commercial Airplanes, Boeing Military Aircraft (BMA), Network   Space Systems (N SS), Global Services   Support (GS S) and Boeing Capital Corporation (BCC). Boeing Defence, Space   Security (BDS) consists of three capabilities-driven businesses: BMA, N SS and GS S. Its Other segment includes the unallocated activities of engineering, operations and technology (EO T) and Shared Services Group (SSG), as well as intercompany guarantees provided to BCC. EO T provides Boeing with technical and functional capabilities, including information technology, research and development, test and evaluation, technology strategy development, environmental remediation management and intellectual property management. In June 2014, Boeing Co acquired Ventura Solutions Inc, an Annapolis Junction-based developer of custom software and hardware solutions.&lt;/Description&gt;
+   &lt;emailPostFix&gt;@fake.boeing.com&lt;/emailPostFix&gt;
+   &lt;website&gt;http://www.boeing.com&lt;/website&gt;
+   &lt;address&gt;100 North Riverside&lt;/address&gt;
+   &lt;city&gt;Chicago&lt;/city&gt;
+   &lt;state&gt;Illinois&lt;/state&gt;
+   &lt;zip&gt;60606-1596&lt;/zip&gt;
+   &lt;country&gt;United States of America&lt;/country&gt;
+   &lt;stockTicker&gt;BA&lt;/stockTicker&gt;
+   &lt;industry&gt;Aerospace / Defense&lt;/industry&gt;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.jpg</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>oracle-logo</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5719</uuid>
+        <description>&lt;customer&gt;
+   &lt;Name&gt;Oracle Corporation&lt;/Name&gt;   &lt;Description&gt;Oracle Corporation is a provider of enterprise software and computer hardware products and services. The Company provides cloud services as well as software and hardware products to other cloud service providers, both public and private. The Company�s software business consists of two segments: new software licenses and cloud software subscriptions and software license updates and product support. The Company's hardware systems business consists of two operating segments: hardware systems products and hardware systems support. The Company�s services business consists of the remainder of its operating segments and offers consulting services, managed cloud services and education services. Effective February 6, 2014, Oracle Corp acquired the entire share capital of Responsys Inc. Effective June 2, 2014, Oracle Corp acquired GreenBytes Inc, a Providence-based developer of software. In September 2014, Oracle Corp completes acquisition of MICROS Systems.&lt;/Description&gt;
+   &lt;emailPostFix&gt;@fake.oracle.com&lt;/emailPostFix&gt;
+   &lt;website&gt;http://www.oracle.com&lt;/website&gt;
+   &lt;address&gt;500 Oracle Parkway&lt;/address&gt;
+   &lt;city&gt;Redwood City&lt;/city&gt;
+   &lt;state&gt;California&lt;/state&gt;
+   &lt;zip&gt;94065&lt;/zip&gt;
+   &lt;country&gt;United States of America&lt;/country&gt;
+   &lt;stockTicker&gt;ORCL&lt;/stockTicker&gt;
+   &lt;industry&gt;Software&lt;/industry&gt;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.png</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<customer-set xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<CASE_APP_Customer>
+		<Name>Penrose Energy</Name>
+		<Description>An action item promotes the stakeholders, while vertical, future and productive efficient frontiers motivate the standard-setters. The business leaders incentivize an efficient portfolio shaping.</Description>
+		<EmailPostFix>@fake.penroseenergy.com</EmailPostFix>
+		<Website>http://www.penroseenergy.com</Website>
+		<Address>1200 Pacific Avenue</Address>
+		<City>Santa Cruz</City>
+		<State>California</State>
+		<ZIP>95060</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Energy/Utilities</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Parsec Express</Name>
+		<Description>Cornerstone, pyramid and serviceability consistently accelerate parallel, transparent and alert roadmaps. In the same time, the powerful champion fleshes out an organizational Control Information System. Executive-level objectives add value; this is why our metrics-driven incentives deepen an idiosyncratic, high-definition, wide-ranging and high-level strategy using multi-channel breakthroughes. Multi-source, new, global and informed decisions swiftly generate strategic staircases. In the same time, our impactful and socially conscious successful execution quickly fosters market-altering, well-implemented and multi-source supply-chains by nurturing talent.</Description>
+		<EmailPostFix>@fake.parsecexpress.com</EmailPostFix>
+		<Website>http://www.parsecexpress.com</Website>
+		<Address>999 18th Street</Address>
+		<City>Denver</City>
+		<State>Colorado</State>
+		<ZIP>80202</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Healthcare</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Galaxy Corporation</Name>
+		<Description>Scaling, communication and pre-plan 200% empower a multi-channel support structure. Centerpiece, pillar and Balanced Scorecard influence the Chief IT Operations Officer, while the carefully thought-out, future-oriented, value proposition accelerates a top-line and well-communicated thought leadership. We continue to work tirelessly and diligently to differentiate a time-phase. The powerful champion deepens rock-solid efficiency gain. The category manager differentiates a world-class impetus. A breakthrough synergizes our enterprise-wide, heart-of-the-business, empowerment using the day-to-day convergence. Roadmaps organically generate a bullet-proof benchmark. The human resources deepen measures, while the senior support staff institutionalizes systematized, high-powered and transitional brand images.</Description>
+		<EmailPostFix>@fake.galaxycorporation.com</EmailPostFix>
+		<Website>http://www.galaxycorporation.com</Website>
+		<Address>4935 Hannan Road</Address>
+		<City>Wayne</City>
+		<State>Michigan</State>
+		<ZIP>48184</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Telecommunications</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Groombridge Cleaning</Name>
+		<Description>A controlled governance carefully enables the resources. The gatekeeper avoids gaps by leveraging macroscopic diversities.</Description>
+		<EmailPostFix>@fake.groombridgecleaning.com</EmailPostFix>
+		<Website>http://www.groombridgecleaning.com</Website>
+		<Address>8104 Sea Light Lane</Address>
+		<City>Columbia</City>
+		<State>Maryland</State>
+		<ZIP>21045</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Services</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Gliese and Associates</Name>
+		<Description>The gatekeeper engineers a hyper-hybrid scaling. The clients engineer problem-solving brandings. A compelling Quality Management System culturally transfers the unparalleled efficiency gain, whereas a consumer-facing, value-added and principle-based alternative leverages a trusted intelligence 50/50. The community analyses feedbacks; nevertheless we are working hard to innovate resilient, phased, trends across our portfolio. The stakeholders enforce our open-door policies taking advantage of a well-communicated leverage, while the operating strategy motivates the Chief IT Strategy Officer. The group influences assets, while the tactical policies streamline our next-level paradigms. A value-adding channel prioritizes the multi-tasked environments; this is why the stakeholders adapt a 360-degree visual thinking. Onboarding solution and open-door policy promote the decision champion. The standard-setters boost our challenging and strategic measurements.</Description>
+		<EmailPostFix>@fake.glieseandassociates.com</EmailPostFix>
+		<Website>http://www.glieseandassociates.com</Website>
+		<Address>215 Perry Hill Road</Address>
+		<City>Montgomery</City>
+		<State>Alabama</State>
+		<ZIP>36109</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Real Estate</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Sculptor Bank</Name>
+		<Description>A compelling and innovation-driven smooth transition motivates the Chief Management Office Officer on a transitional basis. Architectures interact with high-definition evolutions, while the skills enable the resources. Value creation and risk appetite 200% boost client-oriented win-win solutions, whereas bandwidth and core meeting enable the Acting Chief of Operations.</Description>
+		<EmailPostFix>@fake.sculptorbank.com</EmailPostFix>
+		<Website>http://www.sculptorbank.com</Website>
+		<Address>3730 Rhone Circle #203</Address>
+		<City>Archorage</City>
+		<State>Alaska</State>
+		<ZIP>99508</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Financial Services</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Tetraquark International</Name>
+		<Description>Our leading-edge, wide-spectrum, centerpiece targets the customers. Our gut-feeling is that controlling should address our long-term success factor. A visual thinking strengthens the gatekeeper.</Description>
+		<EmailPostFix>@fake.tetraquarkinternational.com</EmailPostFix>
+		<Website>http://www.tetraquarkinternational.com</Website>
+		<Address>10730 Main Street</Address>
+		<City>Fairfax</City>
+		<State>Virginia</State>
+		<ZIP>22030</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Retail</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Pion Partners</Name>
+		<Description>The stakeholders broaden unique cost savings. The thought leader improves visionary trends.</Description>
+		<EmailPostFix>@fake.pionpartners.com</EmailPostFix>
+		<Website>http://www.pionpartners.com</Website>
+		<Address>585 North 500 West</Address>
+		<City>Provo</City>
+		<State>Utah</State>
+		<ZIP>84601</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Consulting</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Planck Industries Inc</Name>
+		<Description>The human resources swiftly deploy the future, extensible and long-running credibilities within the matrix. We need to go forward together; nevertheless we continue to work tirelessly and diligently to innovate a replacement on-boarding process. Our gut-feeling is that the enablers overdeliver profit-maximizing landscapes. The clients proactively optimize our structure, whilst the goal-based market conditions synergize the human resources. Our forward-looking customer centricities drive constructive, wide-ranging and compatible scalabilities, whilst an accurate, extensible and future solution drives the project leader. The project leader right-scales our delivery frameworks. A productive sustainability deepens the global scaling, while the laser-focused interdependency significantly promotes the Global Chief Customer Relations Officer by leveraging the usage-based content.</Description>
+		<EmailPostFix>@fake.planckindustriesinc.com</EmailPostFix>
+		<Website>http://www.planckindustriesinc.com</Website>
+		<Address>1900 Silver Cross Boulevard</Address>
+		<City>New Lenox</City>
+		<State>Illinois</State>
+		<ZIP>60451</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Retail</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Lebedev </Name>
+		<Description>The resource structures a technical strength. The gatekeeper re-imagines our high-definition mission. We must activate the silo to formulate the full range of products.</Description>
+		<EmailPostFix>@fake.lebedev.com</EmailPostFix>
+		<Website>http://www.lebedev.com</Website>
+		<Address>1 Tampa General Circle</Address>
+		<City>Tampa</City>
+		<State>Florida</State>
+		<ZIP>33606</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Retail</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Helicon Double Layer Desserts</Name>
+		<Description>The project leader visualizes an outside-in and value-adding self-awareness. Our gut-feeling is that the Chief Visionary Officer strengthens our personalized, results-centric, performance-based and go-to-market architecture.</Description>
+		<EmailPostFix>@fake.helicondoublelayerdesserts.com</EmailPostFix>
+		<Website>http://www.helicondoublelayerdesserts.com</Website>
+		<Address>2041 Martin Luther King Junior Avenue Southeast</Address>
+		<City>Washington</City>
+		<State>District of Columbia</State>
+		<ZIP>20020</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Food Services</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Alcubierre Taxi Service</Name>
+		<Description>Our gut-feeling is that alert momentums leverage our market-altering, goal-oriented, implications. The resource 200% improves performance-based dialogues. Our game-changing solution facilitates phased innovations. The product manager addresses black swans. Our innovation-driven, progressive, efficient frontiers promote a right content across the spheres. As a result, the clients cautiously deliver an atmosphere. Our outstanding brand pyramids adequately strengthen the project leader. The thought leader quickly facilitates a long-established and high-quality trust from the get-go.</Description>
+		<EmailPostFix>@fake.alcubierretaxiservice.com</EmailPostFix>
+		<Website>http://www.alcubierretaxiservice.com</Website>
+		<Address>470 Taylor Road #100</Address>
+		<City>Montgomery</City>
+		<State>Alabama</State>
+		<ZIP>36117</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Transportation</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Lorentz and FitzGerald</Name>
+		<Description>The key people reach out multidisciplinary, seamless, replacement and new solutions. The human resources go forward together. A state-of-the-art scaling expediently promotes the risk/return profile champion.</Description>
+		<EmailPostFix>@fake.lorentzandfitzgerald.com</EmailPostFix>
+		<Website>http://www.lorentzandfitzgerald.com</Website>
+		<Address>7105 Bailey Creek Circle Southeast</Address>
+		<City>Huntsville</City>
+		<State>Alabama</State>
+		<ZIP>35802</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Real Estate</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Terrell Automotive</Name>
+		<Description>Our interdependencies inspire the partners.</Description>
+		<EmailPostFix>@fake.terrellautomotive.com</EmailPostFix>
+		<Website>http://www.terrellautomotive.com</Website>
+		<Address>2002 Holcombe Boulevard</Address>
+		<City>Houston</City>
+		<State>Texas</State>
+		<ZIP>77030</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Transportation</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Eddington Ergonomics</Name>
+		<Description>Our cost savings boost roles and responsibilities. Our well-crafted focus aggregates our credibility by expanding boundaries.</Description>
+		<EmailPostFix>@fake.eddingtonergonomics.com</EmailPostFix>
+		<Website>http://www.eddingtonergonomics.com</Website>
+		<Address>2515 North Clark Street</Address>
+		<City>Chicago</City>
+		<State>Illinois</State>
+		<ZIP>60614</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Manufacturing</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Almach</Name>
+		<Description>The reporting unit should credibly embrace our risk/return profile reaped from our double-digit improvement; nevertheless the stakeholders innovate a pipeline. A well-communicated calibration strengthens the enabler.</Description>
+		<EmailPostFix>@fake.almach.com</EmailPostFix>
+		<Website>http://www.almach.com</Website>
+		<Address>18220 Tomball Parkway</Address>
+		<City>Houston</City>
+		<State>Texas</State>
+		<ZIP>77070</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Transportation</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Altair Teas and Coffees</Name>
+		<Description>Profile and cornerstone transfer the enablers. The resource addresses the organizational diseconomies. In the same time, the enablers reach out our transitional, powerful, executive-level and value-driven client needs at the end of the day. The stakeholders seamlessly envision a momentum, whereas the Chief Human Resources Officer generates our time-phased time-phase.</Description>
+		<EmailPostFix>@fake.altairteasandcoffees.com</EmailPostFix>
+		<Website>http://www.altairteasandcoffees.com</Website>
+		<Address>2141 K Street NW #606</Address>
+		<City>Washington</City>
+		<State>District of Columbia</State>
+		<ZIP>20037</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Food Services</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Electra Utilities</Name>
+		<Description>Unified opportunities streamline our progressive empowerment within the matrix; nevertheless the clients synergize our roles and responsibilities.</Description>
+		<EmailPostFix>@fake.electrautilities.com</EmailPostFix>
+		<Website>http://www.electrautilities.com</Website>
+		<Address>562 E Main Street</Address>
+		<City>Louisville</City>
+		<State>Mississippi</State>
+		<ZIP>39339</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Energy/Utilities</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Gemma</Name>
+		<Description>Business model and full range of products consistently promote a multidisciplinary plan.</Description>
+		<EmailPostFix>@fake.gemma.com</EmailPostFix>
+		<Website>http://www.gemma.com</Website>
+		<Address>600 Caisson Hill Road</Address>
+		<City>Smoky Hill</City>
+		<State>Kansas</State>
+		<ZIP>66442</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Transportation</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Hamal</Name>
+		<Description>Structure and low hanging fruit drive a powerful, motivational and versatile landscape.</Description>
+		<EmailPostFix>@fake.hamal.com</EmailPostFix>
+		<Website>http://www.hamal.com</Website>
+		<Address>3300 Rivermont Avenue</Address>
+		<City>Lynchburg</City>
+		<State>Virginia</State>
+		<ZIP>24503</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Services</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Kaus Media</Name>
+		<Description>Reputation, perspective and innovation proactively transfer the Chief Strategic Planning Officer. The Chief of Business Operations standardizes landscapes. Our differentiating respect strengthens the Chief Digital Officer, while our multi-tasked workshops synergize differentiated concepts. The resources deploy enterprise-wide benchmarks across the matrices, while the Chief Digital Officer strategizes an organizational market practice. Our relevant, dynamic, infrastructures seamlessly synergize our competitive, visionary, document.</Description>
+		<EmailPostFix>@fake.kausmedia.com</EmailPostFix>
+		<Website>http://www.kausmedia.com</Website>
+		<Address>1 West Lakeshore Drive</Address>
+		<City>Birmingham</City>
+		<State>Alabama</State>
+		<ZIP>35242</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Legal Services</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Merak </Name>
+		<Description>Our gut-feeling is that the resources prioritize a differentiating, balanced and non-deterministic reward. Open-door policy, vision and requirement carefully streamline our well-communicated wow factors. Our productive internal clients result in a hyper-hybrid and turn-key reward. Problem-solving platforms synergize usage-based footprints on a transitional basis.</Description>
+		<EmailPostFix>@fake.merak.com</EmailPostFix>
+		<Website>http://www.merak.com</Website>
+		<Address>3505 Pemberton Square Boulevard</Address>
+		<City>Vicksburg</City>
+		<State>Mississippi</State>
+		<ZIP>39180</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Food Services</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Mira Delivery</Name>
+		<Description>The product manager standardizes a centralized emotional intelligence. The senior support staff pre-prepares our above-average, coordinated, analytics-based and multi-source consistency. The clients promote our thought leadership.</Description>
+		<EmailPostFix>@fake.miradelivery.com</EmailPostFix>
+		<Website>http://www.miradelivery.com</Website>
+		<Address>11 Gallatin Street</Address>
+		<City>Liberty</City>
+		<State>Missouri</State>
+		<ZIP>64068</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Services</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Nash Hotels</Name>
+		<Description>A stellar and firm-wide open-door policy transfers the stakeholders. The controlled executive talents diligently promote the partners ahead of schedule. The resources address informed standardizations at the end of the day.</Description>
+		<EmailPostFix>@fake.nashhotels.com</EmailPostFix>
+		<Website>http://www.nashhotels.com</Website>
+		<Address>1720A Medical Park Drive #160</Address>
+		<City>Biloxi</City>
+		<State>Mississippi</State>
+		<ZIP>39532</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Hospitality/Entertainment</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Peacock Pet Care</Name>
+		<Description>The brand manager strategizes operational enhanced data captures. The Chief Facilities Management Officer whiteboards a next-generation, fact-based, trusted and diversifying guideline taking advantage of roles and responsibilities. In the same time, the senior support staff quickly drives high-performing pre-plans.</Description>
+		<EmailPostFix>@fake.peacockpetcare.com</EmailPostFix>
+		<Website>http://www.peacockpetcare.com</Website>
+		<Address>1165 Montgomery Drive</Address>
+		<City>Santa Rosa</City>
+		<State>California</State>
+		<ZIP>95405</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Services</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Polaris Lighting and Fixtures</Name>
+		<Description>The Head of Marketing optimizes our educated benefits.</Description>
+		<EmailPostFix>@fake.polarislightingandfixtures.com</EmailPostFix>
+		<Website>http://www.polarislightingandfixtures.com</Website>
+		<Address>7309 South 180 West</Address>
+		<City>Midvale</City>
+		<State>Utah</State>
+		<ZIP>84047</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Retail</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Rigel Real Estate Brokers</Name>
+		<Description>The resources standardize business lines; nevertheless a mission-critical alternative efficiently influences the Executive Head of Client Leadership. The problem-solving, above-average, message interactively inspires the clients. The group adequately delivers, while the stakeholders broaden our responsible levers. The brand manager addresses unknown unknowns. Our strategic strategic staircases enhance our diversifying Strategic Management Systems across and beyond the cubes, while the sales manager globally analyses our tactics. A quest for quality interactively interacts with a trusted business philosophy. The project leader tables a goal-based customer centricity.</Description>
+		<EmailPostFix>@fake.rigelrealestatebrokers.com</EmailPostFix>
+		<Website>http://www.rigelrealestatebrokers.com</Website>
+		<Address>1017 Jackson Avenue</Address>
+		<City>Leakesville</City>
+		<State>Mississippi</State>
+		<ZIP>39451</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Real Estate</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Sceptrum Apartments</Name>
+		<Description>Multidisciplinary benefits promote the standard-setters, while the key people foster competent, educated, incentives. The Acting President of Controlling promotes a well-communicated, centralized and bullet-proof line-of-sight. The stakeholders make things happen; nevertheless the thought leader leverages our improved efficient frontiers. Market conditions streamline a results-centric shareholder value, while the multidisciplinary organizing principles generate the trigger events. The business model champion embraces the interdependency, whilst collaborations generate high-margin bottom lines. The enablers embrace a large-scale delivery framework; this is why the partners swiftly empower our full-scale frameworks. Action item and benefit influence the enablers by leveraging scenario-based, siloed, goal-oriented and centralized internal clients. Our communication strategically enables the group.</Description>
+		<EmailPostFix>@fake.sceptrumapartments.com</EmailPostFix>
+		<Website>http://www.sceptrumapartments.com</Website>
+		<Address>1200 North Beaver Street</Address>
+		<City>Flagstaff</City>
+		<State>Arizona</State>
+		<ZIP>86001</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Real Estate</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Wezen Construction</Name>
+		<Description>The business leaders institutionalize a problem-solving, high-definition, leading and time-phased best practice, while convergence, benchmarking and low hanging fruit drive the gatekeeper. A scenario-based informationalization enables the stakeholders. Enabler, business line and cost efficiency adequately influence intelligent insights, relative to our peers. A well-communicated business line synergizes a low-risk high-yield empowerment. The Chief Controlling Officer conservatively addresses our high-powered escalation; this is why the enablers organically peel the onion.</Description>
+		<EmailPostFix>@fake.wezenconstruction.com</EmailPostFix>
+		<Website>http://www.wezenconstruction.com</Website>
+		<Address>725 East Northern Lights Boulevard</Address>
+		<City>Anchorage</City>
+		<State>Alaska</State>
+		<ZIP>99503</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Other</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Zibal Tax Services</Name>
+		<Description>Educated concepts promote the organic solutions. The key people differentiate the collaborative momentum across the board. A dramatic bandwidth enables the resource. As a result, our goal-based role building incentivises the resources. A vertical and/or next-generation pillar boosts a flexibility.</Description>
+		<EmailPostFix>@fake.zibaltaxservices.com</EmailPostFix>
+		<Website>http://www.zibaltaxservices.com</Website>
+		<Address>1500 Southwest 10th Avenue</Address>
+		<City>Topeka</City>
+		<State>Kansas</State>
+		<ZIP>66606</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Financial Services</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Universal Exports</Name>
+		<Description>Collaborative cost efficiencies synergize the enablers. As a result, the standard-setters empower the constructive responsibility at the individual, team and organizational level. The standard-setters technically visualize our responsible, medium-to-long-term and potential trigger events. As a result, the Chief Strategic Planning Officer enables an on-message sales target. The value-adding, world-class, stress management quickly synergizes a policy. Pyramids foster a long-term, immersive, execution. The standard-setters globally benchmark multi-source, consumer-facing, systems, while the enablers target spectral touchpoints using an actionable business model. Unified solutions boost an one-to-one calibration by thinking and acting beyond boundaries.</Description>
+		<EmailPostFix>@fake.universalexports.com</EmailPostFix>
+		<Website>http://www.universalexports.com</Website>
+		<Address>3715 Highway 280/431 North</Address>
+		<City>Phenix City</City>
+		<State>Alabama</State>
+		<ZIP>36867</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Software</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Trans Globe Logistics</Name>
+		<Description>We will go the extra mile to right-scale our large-scale, growing, educated and transparent brand images. The Group Chief Operations Officer identifies unfavorable developments. Responsive missions enable the President of Client Relationship. The smooth transition seamlessly strengthens the business leaders. Pursuing this route will enable us to manage our organic, scalable, gamification. The standard-setters envision our outward-looking branding strategies.</Description>
+		<EmailPostFix>@fake.transglobelogistics.com</EmailPostFix>
+		<Website>http://www.transglobelogistics.com</Website>
+		<Address>969 Lakeland Drive</Address>
+		<City>Jackson</City>
+		<State>Mississippi</State>
+		<ZIP>39216</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Education</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Globex Corporation</Name>
+		<Description>The team players whiteboard balanced roadmaps. Our informed, resilient, long-established and visionary standardization consistently drives the in-depth vision because the empowerments produce sustainable efficiency gain. The enablers benchmark a service-oriented flexibility. Win-win solution and solution orientation facilitate an outward-looking and coordinated centerpiece by leveraging a scalable, usage-based and dynamic performance, while the Senior Head of Internal Audit addresses issues on a transitional basis.</Description>
+		<EmailPostFix>@fake.globexcorporation.com</EmailPostFix>
+		<Website>http://www.globexcorporation.com</Website>
+		<Address>1314 Belk Boulevard</Address>
+		<City>Oxford</City>
+		<State>Mississippi</State>
+		<ZIP>38655</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Real Estate</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Transworld Consortium</Name>
+		<Description>The powerful champion institutionalizes scenario-based transformation processes. The team players optimize a specific and analytics-based risk management. The human resources seamlessly address threats. The business leaders learn our non-standard business models up-front; this is why our aligned pre-plan incentivises the standard-setters. Our right value fosters our cross-enterprise solution provider; this is why escalation and idiosyncrasy transfer the resource. The senior support staff strategizes a promising, adequate, industry, while Strategic Management System and impetus cultivate emerging collaborations. A technology cultivates multi-tasked and/or awesome solution providers, while the double-digit improvement standardizes the targeted core business. The enabler maximizes goal-oriented value creations. A multi-channel, resilient, solid and outstanding performance culture prioritizes the human resources. The standard-setters influence a cross-enterprise implementation. The clients 24/7 keep it on the radar. The Chief Strategic Planning Officer diligently envisions a siloed value, whereas the account executive quickly manages a high-definition, impactful, cooperative and growing support structure within the industry. Lessons learned enable the steering committee. The stakeholders embrace well-positioned momentums; nevertheless the brand manager jump-starts plannings. Controlling should make it possible, while the Chief Visionary Officer embraces our risk appetite. The measurable differentiator standardizes the leading-edge, firm-wide, footprint; this is why our scalable, cooperative, high-level and insightful intuitiveness 24/7 delivers maximum impact. Sustainable yield enhancement prioritize the sales manager. We continue to work tirelessly and diligently to improve fine-grained, goal-directed, leadership strategies, while the brand manager diligently synergizes the vertical wow factors.</Description>
+		<EmailPostFix>@fake.transworldconsortium.com</EmailPostFix>
+		<Website>http://www.transworldconsortium.com</Website>
+		<Address>1625 North George Mason Drive #415</Address>
+		<City>Arlington</City>
+		<State>Virginia</State>
+		<ZIP>22205</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Financial Services</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Trantor Inc</Name>
+		<Description>The community learns our targeted touchpoints, while accomplishments enforce a world-class client satisfaction. The key people enforce a serviceability, whereas the sales manager broadens cultures.</Description>
+		<EmailPostFix>@fake.trantorinc.com</EmailPostFix>
+		<Website>http://www.trantorinc.com</Website>
+		<Address>2800 Clay Edwards Drive</Address>
+		<City>Kansas City</City>
+		<State>Missouri</State>
+		<ZIP>64116</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Transportation</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Terminus Technologies</Name>
+		<Description>The gatekeeper maximizes the value. As a result, a principle-based, differentiated, say/do ratio generates an outsourced governance. Our gut-feeling is that the team players flesh out an under-the-radar adaptability reaped from our healthy yield enhancement.</Description>
+		<EmailPostFix>@fake.terminustechnologies.com</EmailPostFix>
+		<Website>http://www.terminustechnologies.com</Website>
+		<Address>1025 South 6th Street</Address>
+		<City>Springfield</City>
+		<State>Illinois</State>
+		<ZIP>62703</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Aerospace / Defense</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Salvor Remanufacturing Inc</Name>
+		<Description>The key people right-size our outside-in shareholder values.</Description>
+		<EmailPostFix>@fake.salvorremanufacturinginc.com</EmailPostFix>
+		<Website>http://www.salvorremanufacturinginc.com</Website>
+		<Address>7229 Forest Avenue #208</Address>
+		<City>Richmond</City>
+		<State>Virginia</State>
+		<ZIP>23226</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Manufacturing</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Kaku Corn and Feed</Name>
+		<Description>Tolerably expensive commitments strategically drive scalable, enhanced, baseline starting points.</Description>
+		<EmailPostFix>@fake.kakucornandfeed.com</EmailPostFix>
+		<Website>http://www.kakucornandfeed.com</Website>
+		<Address>1401 South Grand Avenue</Address>
+		<City>Los Angeles</City>
+		<State>California</State>
+		<ZIP>90015</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Food Services</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Dune Office Automation</Name>
+		<Description>An outsourced planning standardizes methodologies. The powerful champion executes the strategy.</Description>
+		<EmailPostFix>@fake.duneofficeautomation.com</EmailPostFix>
+		<Website>http://www.duneofficeautomation.com</Website>
+		<Address>1611 Northwest 12th Avenue</Address>
+		<City>Miami</City>
+		<State>Florida</State>
+		<ZIP>33136</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Consulting</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Durden Collectibles</Name>
+		<Description>Our requirement prioritizes the partners, while the category manager engineers responsible projections. Our gut-feeling is that the partners visualize a personalized performance culture. A high-level technology results in cross-functional and vertical incentives. In the same time, the Group Chief Management Office Officer resets the benchmark across and beyond the organizations. The client needs transfer the partners. As a result, the steering committee influences our analytics-based best practices 50/50.</Description>
+		<EmailPostFix>@fake.durdencollectibles.com</EmailPostFix>
+		<Website>http://www.durdencollectibles.com</Website>
+		<Address>2220 Canterbury Drive</Address>
+		<City>Hays</City>
+		<State>Kansas</State>
+		<ZIP>67601</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Retail</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Boson Banquets and Catering</Name>
+		<Description>Strategic staircase and matrix leverage cost-effective partnerships ahead of schedule.</Description>
+		<EmailPostFix>@fake.bosonbanquetsandcatering.com</EmailPostFix>
+		<Website>http://www.bosonbanquetsandcatering.com</Website>
+		<Address>1168 First Colonial Road</Address>
+		<City>Virginia Beach</City>
+		<State>Virginia</State>
+		<ZIP>23454</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Food Services</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Bossk Tourist Adventures</Name>
+		<Description>Low-risk high-yield mindsets inspire the gatekeeper. Client perspective, measurement and business line synergize the Executive President of Client Leadership. A realignment efficiently drives an aligned client satisfaction. Organizing principles promote accurate client needs. Wide-ranging correlations carefully facilitate a systematized talent retention.</Description>
+		<EmailPostFix>@fake.bossktouristadventures.com</EmailPostFix>
+		<Website>http://www.bossktouristadventures.com</Website>
+		<Address>100 Fairview Drive</Address>
+		<City>Franklin</City>
+		<State>Virginia</State>
+		<ZIP>23851</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Services</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Dengar Dynamics</Name>
+		<Description>Our diversifying, rock-solid, enhanced and accessible flexibility influences the human resources. A prioritizing say/do ratio transfers the partners as a consequence of measured expansion; this is why an executive technology enforces enhanced metrics. Our one-to-one next steps carefully enforce our reliable, reliable, Control Information Systems; nevertheless benchmark and decision making empower the aggressive, personalized, business case within the industry. Business lines technically empower a prospective correlation.</Description>
+		<EmailPostFix>@fake.dengardynamics.com</EmailPostFix>
+		<Website>http://www.dengardynamics.com</Website>
+		<Address>83 West Miller Street</Address>
+		<City>Orlando</City>
+		<State>Florida</State>
+		<ZIP>32806</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Pharmaceuticals</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Malakili Animal Care</Name>
+		<Description>The resources formulate the metrics-driven leadership strategy, while a non-deterministic niche standardizes the unprecedented throughput increase across and beyond the silos. The business leaders accelerate a forward planning across the spheres. The enablers standardize a solid throughput increase, while the standard-setters right-scale our game-changing, goal-oriented and progressive win-win solution. A right collaboration engages granular, time-phased and constructive diversities from the get-go. The category manager consistently innovates a turn-key paradigm shift. The customers focus on top perspectives. Credibility and image strengthen an enhanced and large-scale challenge. Our calibrations incentivise the Director of Client Leadership in this space. Our line of business incentivises the team players.</Description>
+		<EmailPostFix>@fake.malakilianimalcare.com</EmailPostFix>
+		<Website>http://www.malakilianimalcare.com</Website>
+		<Address>301 University Boulevard</Address>
+		<City>Galveston</City>
+		<State>Texas</State>
+		<ZIP>77555</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Services</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Lobot Linguistics Services</Name>
+		<Description>Our gut-feeling is that evolution and accomplishment standardize our immersive, modular, brandings. The Chief Marketing Officer establishes solution-oriented, transitional, executions.</Description>
+		<EmailPostFix>@fake.lobotlinguisticsservices.com</EmailPostFix>
+		<Website>http://www.lobotlinguisticsservices.com</Website>
+		<Address>3023 Hamaker Court</Address>
+		<City>Fairfax</City>
+		<State>Virginia</State>
+		<ZIP>22031</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Services</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Tarkin Construction</Name>
+		<Description>Proactive shareholder values incentivise the business leaders; this is why the Chief Human Resources Officer outperforms peers.</Description>
+		<EmailPostFix>@fake.tarkinconstruction.com</EmailPostFix>
+		<Website>http://www.tarkinconstruction.com</Website>
+		<Address>18220 Tomball Parkway</Address>
+		<City>Houston</City>
+		<State>Texas</State>
+		<ZIP>77070</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Manufacturing</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Tiure Enterprises</Name>
+		<Description>The customers challenge established ideas. The enablers enforce a well-defined technology by thinking outside of the box. Scalability and workflow impact a pyramid, while the Chief Client Leadership Officer interactively enforces the talents. A high-powered mission standardizes changes; nevertheless correlation, execution and document synergize the senior support staff. A firm-wide footprint transfers an overarching structure. Immersive performances efficiently cultivate parallel and transparent expectations and allocations, while the team players swiftly adapt time-honored trends.</Description>
+		<EmailPostFix>@fake.tiureenterprises.com</EmailPostFix>
+		<Website>http://www.tiureenterprises.com</Website>
+		<Address>12 North Thompson Street</Address>
+		<City>Richmond</City>
+		<State>Virginia</State>
+		<ZIP>23221</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Telecommunications</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Antilles Transport</Name>
+		<Description>The Chief Business Planning Officer avoids uncertainties.</Description>
+		<EmailPostFix>@fake.antillestransport.com</EmailPostFix>
+		<Website>http://www.antillestransport.com</Website>
+		<Address>100 Kingsley Lane</Address>
+		<City>Norfolk</City>
+		<State>Virginia</State>
+		<ZIP>23505</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Transportation</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Yavin Enterprises</Name>
+		<Description>Learning, innovation and talent retention incentivise the team players. The Global Chief Legal Officer credibly influences high-performing and multi-source brand images. As a result, the clients right-scale accomplishments throughout the organization. A siloed and/or long-term risk/return profile motivates the team players from the get-go, while a focus architects the transformation processes. The clients manage a sustained throughput increase.</Description>
+		<EmailPostFix>@fake.yavinenterprises.com</EmailPostFix>
+		<Website>http://www.yavinenterprises.com</Website>
+		<Address>4077 Fifth Avenue</Address>
+		<City>San Diego</City>
+		<State>California</State>
+		<ZIP>92103</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Energy/Utilities</Industry>
+	</CASE_APP_Customer>
+	<CASE_APP_Customer>
+		<Name>Rebo and Sons</Name>
+		<Description>The Head of IT Operations avoids consumer/agent disconnects. An integration structures the emotional impact as a consequence of measured growth. A compelling content drives the clients. Enabler and trust empower interactive, overarching, established and top-line executive talents.</Description>
+		<EmailPostFix>@fake.reboandsons.com</EmailPostFix>
+		<Website>http://www.reboandsons.com</Website>
+		<Address>1001 Potrero Avenue</Address>
+		<City>San Francisco</City>
+		<State>California</State>
+		<ZIP>94110</ZIP>
+		<Country>United States of America</Country>
+		<Industry>Education</Industry>
+	</CASE_APP_Customer>
+</customer-set>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <constant>
+        <name>CASE_APP_FirstNames</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3245</uuid>
+        <description>A list of first names for random generation of names in data generator</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4334</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <typedValue>
+            <type>
+                <name>Text?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+            <value>
+                <el>Patricia</el>
+                <el>Susan</el>
+                <el>Maria</el>
+                <el>Linda</el>
+                <el>Mary</el>
+                <el>Donna</el>
+                <el>Karen</el>
+                <el>Sandra</el>
+                <el>Carol</el>
+                <el>Laura</el>
+                <el>Sarah</el>
+                <el>Sharon</el>
+                <el>Ruth</el>
+                <el>Lisa</el>
+                <el>Deborah</el>
+                <el>Angela</el>
+                <el>Amy</el>
+                <el>Jessica</el>
+                <el>Melissa</el>
+                <el>Virginia</el>
+                <el>Pamela</el>
+                <el>Martha</el>
+                <el>Debra</el>
+                <el>Marie</el>
+                <el>Christine</el>
+                <el>James</el>
+                <el>Michael</el>
+                <el>John</el>
+                <el>Robert</el>
+                <el>Paul</el>
+                <el>Joseph</el>
+                <el>Brian</el>
+                <el>Christopher</el>
+                <el>Daniel</el>
+                <el>Anthony</el>
+                <el>Edward</el>
+                <el>Charles</el>
+                <el>David</el>
+                <el>George</el>
+                <el>Kenneth</el>
+                <el>Martin</el>
+                <el>Kevin</el>
+                <el>Gary</el>
+                <el>Frank</el>
+                <el>Timothy</el>
+                <el>Carl</el>
+                <el>Phillip</el>
+                <el>Stephen</el>
+                <el>Larry</el>
+                <el>Andrew</el>
+            </value>
+        </typedValue>
+    </constant>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

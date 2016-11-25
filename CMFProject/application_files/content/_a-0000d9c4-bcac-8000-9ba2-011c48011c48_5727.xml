@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>pacific-life-lgo</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5727</uuid>
+        <description>&lt;customer&gt;
+   &lt;Name&gt;Pacific Life Insurance Company&lt;/Name&gt;   &lt;Description&gt;While the breaching whale logo used by Pacific Life Insurance evokes the West Coast, the company operates all across the US. As the primary operating subsidiary of Pacific Mutual Holding Company, Pacific Life offers a wide range of life insurance, asset management, and financial services products, including individual annuities and mutual funds. It also offers a variety of investment products and services for individuals, businesses, and pension plans. Subsidiary Pacific Life   Annuity offers the same mix of life insurance and investment products and services for individuals and businesses in New York. Pacific Life was founded in 1868.&lt;/Description&gt;
+   &lt;emailPostFix&gt;@fake.pacificlife.com&lt;/emailPostFix&gt;
+   &lt;website&gt;http://www.pacificlife.com&lt;/website&gt;
+   &lt;address&gt;700 Newport Center Dr.&lt;/address&gt;
+   &lt;city&gt;Newport Beach&lt;/city&gt;
+   &lt;state&gt;California&lt;/state&gt;
+   &lt;zip&gt;92660-6397&lt;/zip&gt;
+   &lt;country&gt;United States of America&lt;/country&gt;
+   &lt;stockTicker /&gt;
+   &lt;industry&gt;Insurance&lt;/industry&gt;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.jpg</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

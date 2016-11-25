@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <rule>
+        <name>CASE_APP_BestBuyProductURL</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4356</uuid>
+        <description>Returns the URL for the Best Buy catalog given the page number.  API Key constant must be set for this to work</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4336</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>=&quot;http://api.remix.bestbuy.com/v1/products(categoryPath.name=Office)?show=name,sku,manufacturer,modelNumber,releaseDate,active,categoryPath.name,modelNumber,upc,regularPrice,shortDescription,weight,height,depth,width,image,largeImage,largeFrontImage,alternateViewsImage,backViewImage,angleImage,energyGuideImage,leftViewImage,mediumImage,remoteControlImage,rightViewImage,topViewImage&amp;format=xml&amp;pageSize=100&amp;page=&quot; &amp; ri!pageNumber &amp;  &quot;&amp;apiKey=&quot; &amp; #&quot;_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4353&quot;</definition>
+        <namedTypedValue>
+            <name>pageNumber</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>legacy</preferredEditor>
+    </rule>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

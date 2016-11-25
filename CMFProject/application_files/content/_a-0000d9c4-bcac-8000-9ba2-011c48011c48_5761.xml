@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>BPLogo</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5761</uuid>
+        <description>&lt;customer&gt;
+   &lt;Name&gt;BP plc (ADR)&lt;/Name&gt;   &lt;Description&gt;BP p.l.c. (BP) is an integrated oil and gas company. The Company provides its customers with fuel for transportation, energy for heat and light, lubricants and the petrochemicals products used to make everyday items as diverse as paints, clothes and packaging. The Company operates in two business segments: Exploration and Production, and Refining and Marketing. Its Exploration and Production segment is responsible for its activities in oil and natural gas exploration, field development and production  midstream transportation, storage and processing, and the marketing and trading of natural gas, including liquefied natural gas, together with power and natural gas liquids. Its Refining and Marketing segment is responsible for the refining, manufacturing, marketing, transportation, and supply and trading of crude oil, petroleum, petrochemicals products and related services to wholesale and retail customers. In July 2014, Rubis SCA acquired BP Plc's LPG business in Portugal.&lt;/Description&gt;
+   &lt;emailPostFix&gt;@fake.bpm.com&lt;/emailPostFix&gt;
+   &lt;website&gt;http://www.bp.com&lt;/website&gt;
+   &lt;address&gt;1 St James Square&lt;/address&gt;
+   &lt;city&gt;London&lt;/city&gt;
+   &lt;state /&gt;
+   &lt;zip&gt;ENG SW1Y 4PD&lt;/zip&gt;
+   &lt;country&gt;United Kingdom&lt;/country&gt;
+   &lt;stockTicker&gt;BP&lt;/stockTicker&gt;
+   &lt;industry&gt;Energy/Utilities&lt;/industry&gt;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.png</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>debenhams</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5741</uuid>
+        <description>&lt;customer&gt;
+   &lt;Name&gt;Debenhams Plc&lt;/Name&gt;   &lt;Description&gt;Debenhams plc is a United Kingdom-based holding company. The principal activities of the Company and its subsidiaries are the sale of fashion clothing and accessories, cosmetics and products for use in the home. The Company trades from department stores in the United Kingdom, the Republic of Ireland and Denmark, on the Internet and has international franchise stores. The Company brand trades through 240 stores in 28 countries and is available online in 70 countries. Customers can also shop through smartphones, tablet computers and other mobile devices as well as more traditional sales channels, such as catalogues and by telephone. The Company own stores in the Republic of Ireland and in Denmark through the country�s department store chain Magasin du.&lt;/Description&gt;
+   &lt;emailPostFix&gt;@fake.debenhams.com&lt;/emailPostFix&gt;
+   &lt;website&gt;http://www.debenhams.co.uk&lt;/website&gt;
+   &lt;address&gt;10 Brock Street, Regent's Place&lt;/address&gt;
+   &lt;city&gt;London&lt;/city&gt;
+   &lt;state /&gt;
+   &lt;zip&gt;NW1 3FG&lt;/zip&gt;
+   &lt;country&gt;United Kingdom&lt;/country&gt;
+   &lt;stockTicker /&gt;
+   &lt;industry&gt;Retail&lt;/industry&gt;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.jpg</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

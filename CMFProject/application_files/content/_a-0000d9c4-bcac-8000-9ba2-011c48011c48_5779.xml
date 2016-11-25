@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>sanofi</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5779</uuid>
+        <description>&lt;customer&gt;
+   &lt;Name&gt;Sanofi SA (ADR)&lt;/Name&gt;   &lt;Description&gt;Sanofi, formerly Sanofi-Aventis is a global and diversified healthcare company. The Company discovers, develops and distributes therapeutic solutions focused on patients� needs. Sanofi focuses on the field of healthcare with seven growth platforms: diabetes solutions, human vaccines, innovative drugs, rare diseases, consumer healthcare, emerging markets and animal health. As of February 2011, Sanofi portfolio comprised 55 projects in clinical development, of which 13 were in Phase III or had been submitted to the health authorities for approval. Sanofi has a portfolio of prescription drugs, vaccines, generics and consumer healthcare products. In December 2011, Sanofi announced that it completed the divestiture of its dermatology business, Dermik, to Valeant Pharmaceuticals International, Inc. Effective March 5, 2014, Sanofi SA of France acquired an undisclosed minority stake in Regulus Therapeutics Inc.&lt;/Description&gt;
+   &lt;emailPostFix&gt;@fake.sanofi.com&lt;/emailPostFix&gt;
+   &lt;website&gt;http://www.sanofi.com&lt;/website&gt;
+   &lt;address&gt;54 rue la Boetie&lt;/address&gt;
+   &lt;city&gt;Paris&lt;/city&gt;
+   &lt;state /&gt;
+   &lt;zip&gt;75008&lt;/zip&gt;
+   &lt;country&gt;France&lt;/country&gt;
+   &lt;stockTicker&gt;SNY&lt;/stockTicker&gt;
+   &lt;industry&gt;Pharmaceuticals&lt;/industry&gt;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.jpeg</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

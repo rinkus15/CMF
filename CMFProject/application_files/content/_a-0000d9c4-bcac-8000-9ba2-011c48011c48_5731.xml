@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>Choice-Hotels-Logo</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5731</uuid>
+        <description>&lt;customer&gt;
+   &lt;Name&gt;Choice Hotels International Inc&lt;/Name&gt;   &lt;Description&gt;Choice Hotels International, Inc.( Choice) is one of the hotel franchisors with 6,243 hotels open and 482 hotels under construction, awaiting conversion or approved for development as of December 31, 2012 representing 499,253 rooms open and 38,969 rooms under construction, awaiting conversion or approved for development in 49 states, the District of Columbia and over 35 countries and territories outside the United States. Choice franchises lodging properties under brand names: Comfort Inn, Comfort Suites, Quality, Clarion, Sleep Inn, Econo Lodge, Rodeway Inn, MainStay Suites, Suburban Extended Stay Hotel, Cambria Suites and Ascend Collection (collectively, the Choice brands). In May 2014, the Company opened three more hotels to the brand portfolio. Avania Inn of Santa Barbara, Margarita European Inn in Evanston, Illinois and the Yellowstone Valley Lodge in Livingston, Montana.&lt;/Description&gt;
+   &lt;emailPostFix&gt;@fake.choicehotels.com&lt;/emailPostFix&gt;
+   &lt;website&gt;http://www.choicehotels.com&lt;/website&gt;
+   &lt;address&gt;Suite 400, 1 Choice Hotels Circle&lt;/address&gt;
+   &lt;city&gt;Rockville&lt;/city&gt;
+   &lt;state&gt;Maryland&lt;/state&gt;
+   &lt;zip&gt;20850&lt;/zip&gt;
+   &lt;country&gt;United States of America&lt;/country&gt;
+   &lt;stockTicker&gt;CHH&lt;/stockTicker&gt;
+   &lt;industry&gt;Hospitality/Entertainment&lt;/industry&gt;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.jpg</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

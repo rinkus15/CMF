@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <constant>
+        <name>CASE_APP_CUSTOMER_LOGOS</name>
+        <uuid>_a-0000dac9-8638-8000-9ba2-011c48011c48_5402</uuid>
+        <description>Customer logos. Should be in same order as XML data, and there should be one logo for each customer.</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_4337</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <typedValue>
+            <type>
+                <name>CollaborationDocument?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+            <value>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5403</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5404</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5405</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5406</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5407</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5408</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5409</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5410</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5411</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5452</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5412</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5413</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5414</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5415</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5416</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5417</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5418</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5419</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5420</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5421</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5422</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5423</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5424</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5425</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5426</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5427</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5428</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5429</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5430</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5431</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5432</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5433</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5434</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5435</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5436</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5437</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5438</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5439</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5440</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5441</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5442</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5443</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5444</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5445</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5446</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5447</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5448</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5449</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5450</el>
+                <el>_a-0000dac9-8638-8000-9ba2-011c48011c48_5451</el>
+            </value>
+        </typedValue>
+    </constant>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>jorge.sanchez</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

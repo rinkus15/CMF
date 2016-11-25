@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>starbucks</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5757</uuid>
+        <description>&lt;customer&gt;
+   &lt;Name&gt;Starbucks Corporation&lt;/Name&gt;   &lt;Description&gt;Starbucks Corporation (Starbucks) is a roaster, marketer and retailer of specialty coffee in the world, operating in 62 countries. The Company purchases and roasts coffees that it sells, along with handcrafted coffee, tea and other beverages and a variety of fresh food items, through company operated stores. The Company also sells a variety of coffee and tea products and licenses its trademarks through other channels, such as licensed stores, grocery and national foodservice accounts. In addition to its flagship Starbucks brand, the Company�s portfolio also includes goods and services offered under these brands: Teavana, Tazo, Seattle�s Best Coffee, Starbucks VIA, Starbucks Refreshers, Evolution Fresh, La Boulange and Verismo. The Company operates in four segments: Americas, inclusive of the US, Canada, and Latin America  Europe, Middle East, and Africa (EMEA)  China / Asia Pacific (CAP) and Channel Development.&lt;/Description&gt;
+   &lt;emailPostFix&gt;@fake.starbucks.com&lt;/emailPostFix&gt;
+   &lt;website&gt;http://www.starbucks.com&lt;/website&gt;
+   &lt;address&gt;PO Box 3717&lt;/address&gt;
+   &lt;city&gt;Seattle&lt;/city&gt;
+   &lt;state&gt;Washington&lt;/state&gt;
+   &lt;zip&gt;98124-1067&lt;/zip&gt;
+   &lt;country&gt;United States of America&lt;/country&gt;
+   &lt;stockTicker&gt;SBUX&lt;/stockTicker&gt;
+   &lt;industry&gt;Retail&lt;/industry&gt;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.png</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>

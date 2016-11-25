@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <document>
+        <name>marathonoillogodetail</name>
+        <uuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_5767</uuid>
+        <description>&lt;customer&gt;
+   &lt;Name&gt;Marathon Oil Corporation&lt;/Name&gt;   &lt;Description&gt;Marathon Oil Corporation (Marathon Oil) is an international energy company engaged in exploration and production, oil sands mining and integrated gas with operations in the United States, Angola, Canada, Equatorial Guinea.(E.G.), Ethiopia, Gabon, Kenya, the Kurdistan Region of Iraq, Libya, Norway, Poland and the United Kingdom. The Company operates in three business segments: Exploration and Production Segment, explores for, produces and markets liquid hydrocarbons and natural gas on a worldwide basis  Oil sands mining segment, mines, extracts and transports bitumen from oil sands deposits in Alberta, Canada, and upgrades the bitumen to produce and market synthetic crude oil and vacuum gas oil, and integrated gas, produces and markets products manufactured from natural gas, such as LNG and methanol, in E.G. During the year ended December 31, 2012 , the Company Company acquired approximately 25,000 net acres in the core of the Eagle Ford shale.&lt;/Description&gt;
+   &lt;emailPostFix&gt;@fake.marathonoil.com&lt;/emailPostFix&gt;
+   &lt;website&gt;http://www.marathonoil.com&lt;/website&gt;
+   &lt;address&gt;P O Box 3128&lt;/address&gt;
+   &lt;city&gt;Houston&lt;/city&gt;
+   &lt;state&gt;Texas&lt;/state&gt;
+   &lt;zip&gt;77253-3128&lt;/zip&gt;
+   &lt;country&gt;United Arab Emirates&lt;/country&gt;
+   &lt;stockTicker&gt;MRO&lt;/stockTicker&gt;
+   &lt;industry&gt;Energy/Utilities&lt;/industry&gt;
+&lt;/customer&gt;</description>
+        <parentUuid>_a-0000d9c4-bcac-8000-9ba2-011c48011c48_3077</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </document>
+    <file>file.gif</file>
+    <roleMap public="true">
+        <role allowForAll="false" inherit="true" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="true" name="administrators">
+            <users>
+                <userUuid>malcolm.ross@appian.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role allowForAll="false" inherit="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+</contentHaul>
